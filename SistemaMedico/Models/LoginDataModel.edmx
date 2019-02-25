@@ -1,0 +1,1237 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MeSysModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Alergias">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Atleta" Type="int" Nullable="false" />
+          <Property Name="Alergia" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Anexos">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Atleta" Type="int" Nullable="false" />
+          <Property Name="Otros_Hallazgos" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="Recomendaciones" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="Observaciones" Type="varchar" MaxLength="1000" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Aparato_Locomotor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Atleta" Type="int" Nullable="false" />
+          <Property Name="Preguntas" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Respuestas" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Detalles" Type="varchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Apoyo_Economico">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Atleta" Type="int" Nullable="false" />
+          <Property Name="Preguntas" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Respuestas" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Detalles" Type="varchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Atleta_Categoria">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Atleta" Type="int" Nullable="false" />
+          <Property Name="ID_Categoria" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Carrera_Deportiva">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Atleta" Type="int" Nullable="false" />
+          <Property Name="Preguntas" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Respuestas" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Detalles" Type="varchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Carrera_Deportiva_Evento">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Atleta" Type="int" Nullable="false" />
+          <Property Name="Prueba" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Resultado" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Fecha_Y_Lugar" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Evento" Type="varchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Carrera_Deportiva_Familiar">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Atleta" Type="int" Nullable="false" />
+          <Property Name="Evento" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Fecha" Type="date" Nullable="false" />
+          <Property Name="Lugar" Type="varchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Categorias">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Deporte" Type="int" Nullable="false" />
+          <Property Name="Categoria" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Condiciones_Clinicas_Actuales">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Condiciones_Clinicas_Actuales_Principal">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Atleta" Type="int" Nullable="false" />
+          <Property Name="ID_Condiciones_Clinicas_Actuales" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Valor" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Consiste_Apoyo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Atleta" Type="int" Nullable="false" />
+          <Property Name="Preguntas" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Respuestas" Type="varchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Datos_Atleta">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Foto" Type="varbinary(max)" />
+          <Property Name="Primer_Nombre" Type="text" />
+          <Property Name="Segundo_Nombre" Type="text" />
+          <Property Name="Primer_Apellido" Type="text" />
+          <Property Name="Segundo_Apellido" Type="text" />
+          <Property Name="Nombre_Completo" Type="text" />
+          <Property Name="Edad" Type="int" />
+          <Property Name="Fecha_De_Registro" Type="date" />
+          <Property Name="Genero" Type="char" MaxLength="10" />
+          <Property Name="Numero_De_Cedula" Type="nvarchar" MaxLength="20" />
+          <Property Name="Correo_Electronico" Type="nvarchar" MaxLength="100" />
+          <Property Name="Telefono_Convencional" Type="nvarchar" MaxLength="14" />
+          <Property Name="Telefono_Celular" Type="varchar" MaxLength="14" />
+          <Property Name="Tiene_Seguro" Type="char" MaxLength="7" />
+          <Property Name="Hospital" Type="int" Nullable="false" />
+          <Property Name="Dirreccion" Type="varchar" MaxLength="500" />
+          <Property Name="Municipio" Type="int" Nullable="false" />
+          <Property Name="Nombre_Madre" Type="varchar" MaxLength="50" />
+          <Property Name="Telefono_Madre" Type="nvarchar" MaxLength="14" />
+          <Property Name="Nombre_Padre" Type="varchar" MaxLength="50" />
+          <Property Name="Telefono_Padre" Type="nvarchar" MaxLength="14" />
+          <Property Name="Emergencia" Type="varchar" MaxLength="50" />
+          <Property Name="Dirreccion_Emergencia" Type="varchar" MaxLength="200" />
+          <Property Name="Embarazo" Type="char" MaxLength="7" />
+        </EntityType>
+        <EntityType Name="Departamentos">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Deporte">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Educacion">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Atleta" Type="int" Nullable="false" />
+          <Property Name="Preguntas" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Respuestas" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Detalles" Type="varchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Eventos">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Lugar" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Examen_Fisico">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Estructura" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Examen_Fisico_Principal">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Atleta" Type="int" Nullable="false" />
+          <Property Name="ID_Examen_Fisico" Type="int" Nullable="false" />
+          <Property Name="Normal" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="Hallazgos_Anormales" Type="varchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Examenes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Condiciones_Clinicas_Actuales" Type="int" Nullable="false" />
+          <Property Name="ID_Examen_Fisico" Type="int" Nullable="false" />
+          <Property Name="ID_Ficha_Antropometrica" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ficha_Antropometrica">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Atleta" Type="int" Nullable="false" />
+          <Property Name="Nombre_Y_Apellidos" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Evaluacion" Type="int" Nullable="false" />
+          <Property Name="Fecha_De_Evaluacion" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Sexo" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="Fecha_De_Nacimiento" Type="date" Nullable="false" />
+          <Property Name="Menstruacion" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="Antropometrista" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Anotador" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="ID_Ficha_Antropometrica" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Toma1" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="Toma2" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="Toma3" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="Promedio_Mediana" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Habitacion">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Atleta" Type="int" Nullable="false" />
+          <Property Name="Preguntas" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Respuestas" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Detalles" Type="varchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Habitos">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Atleta" Type="int" Nullable="false" />
+          <Property Name="Preguntas" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Respuestas" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Detalles" Type="varchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Historia_Familiar">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Atleta" Type="int" Nullable="false" />
+          <Property Name="Preguntas" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Respuestas" Type="varchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Historial_Medico">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Atleta" Type="int" Nullable="false" />
+          <Property Name="Preguntas" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Respuestas" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Detalles" Type="varchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Hospital">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Informacion_Familiar">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Atleta" Type="int" Nullable="false" />
+          <Property Name="Preguntas" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Respuestas" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Detalles" Type="varchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Medicamentos">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Atleta" Type="int" Nullable="false" />
+          <Property Name="Medicamentos" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Medico">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Apellido" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Tipo_Medico" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Municipio">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Departamento" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Rol" Type="varchar" MaxLength="100" />
+          <Property Name="Activo" Type="bit" />
+        </EntityType>
+        <EntityType Name="Situacion_Laboral">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Atleta" Type="int" Nullable="false" />
+          <Property Name="Preguntas" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Respuestas" Type="varchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+          <Property Name="Contraseña" Type="varchar" MaxLength="200" />
+          <Property Name="Correo" Type="varchar" MaxLength="50" />
+          <Property Name="ID_Rol" Type="int" />
+          <Property Name="Activo" Type="bit" />
+        </EntityType>
+        <Association Name="FK_Usuarios_Roles">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="ID_Rol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MeSysModelStoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Alergias" EntityType="Self.Alergias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Anexos" EntityType="Self.Anexos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Aparato_Locomotor" EntityType="Self.Aparato_Locomotor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Apoyo_Economico" EntityType="Self.Apoyo_Economico" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Atleta_Categoria" EntityType="Self.Atleta_Categoria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Carrera_Deportiva" EntityType="Self.Carrera_Deportiva" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Carrera_Deportiva_Evento" EntityType="Self.Carrera_Deportiva_Evento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Carrera_Deportiva_Familiar" EntityType="Self.Carrera_Deportiva_Familiar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Categorias" EntityType="Self.Categorias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Condiciones_Clinicas_Actuales" EntityType="Self.Condiciones_Clinicas_Actuales" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Condiciones_Clinicas_Actuales_Principal" EntityType="Self.Condiciones_Clinicas_Actuales_Principal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Consiste_Apoyo" EntityType="Self.Consiste_Apoyo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Datos_Atleta" EntityType="Self.Datos_Atleta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Departamentos" EntityType="Self.Departamentos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Deporte" EntityType="Self.Deporte" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Educacion" EntityType="Self.Educacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Eventos" EntityType="Self.Eventos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Examen_Fisico" EntityType="Self.Examen_Fisico" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Examen_Fisico_Principal" EntityType="Self.Examen_Fisico_Principal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Examenes" EntityType="Self.Examenes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ficha_Antropometrica" EntityType="Self.Ficha_Antropometrica" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Habitacion" EntityType="Self.Habitacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Habitos" EntityType="Self.Habitos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Historia_Familiar" EntityType="Self.Historia_Familiar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Historial_Medico" EntityType="Self.Historial_Medico" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hospital" EntityType="Self.Hospital" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Informacion_Familiar" EntityType="Self.Informacion_Familiar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Medicamentos" EntityType="Self.Medicamentos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Medico" EntityType="Self.Medico" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Municipio" EntityType="Self.Municipio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Situacion_Laboral" EntityType="Self.Situacion_Laboral" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Usuarios_Roles" Association="Self.FK_Usuarios_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MeSysModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Alergia">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Atleta" Type="Int32" Nullable="false" />
+          <Property Name="Alergia1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Anexo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Atleta" Type="Int32" Nullable="false" />
+          <Property Name="Otros_Hallazgos" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Recomendaciones" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Observaciones" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Aparato_Locomotor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Atleta" Type="Int32" Nullable="false" />
+          <Property Name="Preguntas" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Respuestas" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Detalles" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Apoyo_Economico">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Atleta" Type="Int32" Nullable="false" />
+          <Property Name="Preguntas" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Respuestas" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Detalles" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Atleta_Categoria">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Atleta" Type="Int32" Nullable="false" />
+          <Property Name="ID_Categoria" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Carrera_Deportiva">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Atleta" Type="Int32" Nullable="false" />
+          <Property Name="Preguntas" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Respuestas" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Detalles" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Carrera_Deportiva_Evento">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Atleta" Type="Int32" Nullable="false" />
+          <Property Name="Prueba" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Resultado" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Fecha_Y_Lugar" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Evento" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Carrera_Deportiva_Familiar">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Atleta" Type="Int32" Nullable="false" />
+          <Property Name="Evento" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Lugar" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Categoria">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Deporte" Type="Int32" Nullable="false" />
+          <Property Name="Categoria1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Condiciones_Clinicas_Actuales">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Condiciones_Clinicas_Actuales_Principal">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Atleta" Type="Int32" Nullable="false" />
+          <Property Name="ID_Condiciones_Clinicas_Actuales" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Valor" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Consiste_Apoyo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Atleta" Type="Int32" Nullable="false" />
+          <Property Name="Preguntas" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Respuestas" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Datos_Atleta">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Foto" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Primer_Nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Segundo_Nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Primer_Apellido" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Segundo_Apellido" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre_Completo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Edad" Type="Int32" />
+          <Property Name="Fecha_De_Registro" Type="DateTime" Precision="0" />
+          <Property Name="Genero" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="Numero_De_Cedula" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Correo_Electronico" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Telefono_Convencional" Type="String" MaxLength="14" FixedLength="false" Unicode="true" />
+          <Property Name="Telefono_Celular" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
+          <Property Name="Tiene_Seguro" Type="String" MaxLength="7" FixedLength="true" Unicode="false" />
+          <Property Name="Hospital" Type="Int32" Nullable="false" />
+          <Property Name="Dirreccion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Municipio" Type="Int32" Nullable="false" />
+          <Property Name="Nombre_Madre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono_Madre" Type="String" MaxLength="14" FixedLength="false" Unicode="true" />
+          <Property Name="Nombre_Padre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono_Padre" Type="String" MaxLength="14" FixedLength="false" Unicode="true" />
+          <Property Name="Emergencia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Dirreccion_Emergencia" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Embarazo" Type="String" MaxLength="7" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Departamento">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Deporte">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Educacion">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Atleta" Type="Int32" Nullable="false" />
+          <Property Name="Preguntas" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Respuestas" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Detalles" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Evento">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Lugar" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Examen_Fisico">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Estructura" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Examen_Fisico_Principal">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Atleta" Type="Int32" Nullable="false" />
+          <Property Name="ID_Examen_Fisico" Type="Int32" Nullable="false" />
+          <Property Name="Normal" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Hallazgos_Anormales" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Examene">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Condiciones_Clinicas_Actuales" Type="Int32" Nullable="false" />
+          <Property Name="ID_Examen_Fisico" Type="Int32" Nullable="false" />
+          <Property Name="ID_Ficha_Antropometrica" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ficha_Antropometrica">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Atleta" Type="Int32" Nullable="false" />
+          <Property Name="Nombre_Y_Apellidos" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Evaluacion" Type="Int32" Nullable="false" />
+          <Property Name="Fecha_De_Evaluacion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Sexo" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Fecha_De_Nacimiento" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Menstruacion" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Antropometrista" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Anotador" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_Ficha_Antropometrica" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Toma1" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="Toma2" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="Toma3" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="Promedio_Mediana" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Habitacion">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Atleta" Type="Int32" Nullable="false" />
+          <Property Name="Preguntas" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Respuestas" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Detalles" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Habito">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Atleta" Type="Int32" Nullable="false" />
+          <Property Name="Preguntas" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Respuestas" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Detalles" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Historia_Familiar">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Atleta" Type="Int32" Nullable="false" />
+          <Property Name="Preguntas" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Respuestas" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Historial_Medico">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Atleta" Type="Int32" Nullable="false" />
+          <Property Name="Preguntas" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Respuestas" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Detalles" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Hospital">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Informacion_Familiar">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Atleta" Type="Int32" Nullable="false" />
+          <Property Name="Preguntas" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Respuestas" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Detalles" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Medicamento">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Atleta" Type="Int32" Nullable="false" />
+          <Property Name="Medicamentos" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Medico">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Apellido" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Tipo_Medico" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Municipio">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Departamento" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Situacion_Laboral">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Atleta" Type="Int32" Nullable="false" />
+          <Property Name="Preguntas" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Respuestas" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Contraseña" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Correo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ID_Rol" Type="Int32" />
+          <Property Name="Activo" Type="Boolean" />
+          <NavigationProperty Name="Role" Relationship="MeSysModel.FK_Usuarios_Roles" FromRole="Usuario" ToRole="Role" />
+        </EntityType>
+        <EntityContainer Name="MeSysEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+          <EntitySet Name="Alergias" EntityType="Self.Alergia" />
+          <EntitySet Name="Anexos" EntityType="Self.Anexo" />
+          <EntitySet Name="Aparato_Locomotor" EntityType="Self.Aparato_Locomotor" />
+          <EntitySet Name="Apoyo_Economico" EntityType="Self.Apoyo_Economico" />
+          <EntitySet Name="Atleta_Categoria" EntityType="Self.Atleta_Categoria" />
+          <EntitySet Name="Carrera_Deportiva" EntityType="Self.Carrera_Deportiva" />
+          <EntitySet Name="Carrera_Deportiva_Evento" EntityType="Self.Carrera_Deportiva_Evento" />
+          <EntitySet Name="Carrera_Deportiva_Familiar" EntityType="Self.Carrera_Deportiva_Familiar" />
+          <EntitySet Name="Categorias" EntityType="Self.Categoria" />
+          <EntitySet Name="Condiciones_Clinicas_Actuales" EntityType="Self.Condiciones_Clinicas_Actuales" />
+          <EntitySet Name="Condiciones_Clinicas_Actuales_Principal" EntityType="Self.Condiciones_Clinicas_Actuales_Principal" />
+          <EntitySet Name="Consiste_Apoyo" EntityType="Self.Consiste_Apoyo" />
+          <EntitySet Name="Datos_Atleta" EntityType="Self.Datos_Atleta" />
+          <EntitySet Name="Departamentos" EntityType="Self.Departamento" />
+          <EntitySet Name="Deportes" EntityType="Self.Deporte" />
+          <EntitySet Name="Educacions" EntityType="Self.Educacion" />
+          <EntitySet Name="Eventos" EntityType="Self.Evento" />
+          <EntitySet Name="Examen_Fisico" EntityType="Self.Examen_Fisico" />
+          <EntitySet Name="Examen_Fisico_Principal" EntityType="Self.Examen_Fisico_Principal" />
+          <EntitySet Name="Examenes" EntityType="Self.Examene" />
+          <EntitySet Name="Ficha_Antropometrica" EntityType="Self.Ficha_Antropometrica" />
+          <EntitySet Name="Habitacions" EntityType="Self.Habitacion" />
+          <EntitySet Name="Habitos" EntityType="Self.Habito" />
+          <EntitySet Name="Historia_Familiar" EntityType="Self.Historia_Familiar" />
+          <EntitySet Name="Historial_Medico" EntityType="Self.Historial_Medico" />
+          <EntitySet Name="Hospitals" EntityType="Self.Hospital" />
+          <EntitySet Name="Informacion_Familiar" EntityType="Self.Informacion_Familiar" />
+          <EntitySet Name="Medicamentos" EntityType="Self.Medicamento" />
+          <EntitySet Name="Medicos" EntityType="Self.Medico" />
+          <EntitySet Name="Municipios" EntityType="Self.Municipio" />
+          <EntitySet Name="Situacion_Laboral" EntityType="Self.Situacion_Laboral" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuario" />
+          <EntitySet Name="Roles" EntityType="MeSysModel.Role" />
+          <AssociationSet Name="FK_Usuarios_Roles" Association="MeSysModel.FK_Usuarios_Roles">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="Usuario" EntitySet="Usuarios" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Rol" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Activo" Type="Boolean" />
+          <NavigationProperty Name="Usuarios" Relationship="MeSysModel.FK_Usuarios_Roles" FromRole="Role" ToRole="Usuario" />
+        </EntityType>
+        <Association Name="FK_Usuarios_Roles">
+          <End Type="MeSysModel.Role" Role="Role" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="MeSysModel.Usuario" Role="Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="ID_Rol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MeSysModelStoreContainer" CdmEntityContainer="MeSysEntities">
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="MeSysModel.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Alergias">
+            <EntityTypeMapping TypeName="MeSysModel.Alergia">
+              <MappingFragment StoreEntitySet="Alergias">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_Atleta" ColumnName="ID_Atleta" />
+                <ScalarProperty Name="Alergia1" ColumnName="Alergia" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Anexos">
+            <EntityTypeMapping TypeName="MeSysModel.Anexo">
+              <MappingFragment StoreEntitySet="Anexos">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_Atleta" ColumnName="ID_Atleta" />
+                <ScalarProperty Name="Otros_Hallazgos" ColumnName="Otros_Hallazgos" />
+                <ScalarProperty Name="Recomendaciones" ColumnName="Recomendaciones" />
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Aparato_Locomotor">
+            <EntityTypeMapping TypeName="MeSysModel.Aparato_Locomotor">
+              <MappingFragment StoreEntitySet="Aparato_Locomotor">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_Atleta" ColumnName="ID_Atleta" />
+                <ScalarProperty Name="Preguntas" ColumnName="Preguntas" />
+                <ScalarProperty Name="Respuestas" ColumnName="Respuestas" />
+                <ScalarProperty Name="Detalles" ColumnName="Detalles" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Apoyo_Economico">
+            <EntityTypeMapping TypeName="MeSysModel.Apoyo_Economico">
+              <MappingFragment StoreEntitySet="Apoyo_Economico">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_Atleta" ColumnName="ID_Atleta" />
+                <ScalarProperty Name="Preguntas" ColumnName="Preguntas" />
+                <ScalarProperty Name="Respuestas" ColumnName="Respuestas" />
+                <ScalarProperty Name="Detalles" ColumnName="Detalles" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Atleta_Categoria">
+            <EntityTypeMapping TypeName="MeSysModel.Atleta_Categoria">
+              <MappingFragment StoreEntitySet="Atleta_Categoria">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_Atleta" ColumnName="ID_Atleta" />
+                <ScalarProperty Name="ID_Categoria" ColumnName="ID_Categoria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Carrera_Deportiva">
+            <EntityTypeMapping TypeName="MeSysModel.Carrera_Deportiva">
+              <MappingFragment StoreEntitySet="Carrera_Deportiva">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_Atleta" ColumnName="ID_Atleta" />
+                <ScalarProperty Name="Preguntas" ColumnName="Preguntas" />
+                <ScalarProperty Name="Respuestas" ColumnName="Respuestas" />
+                <ScalarProperty Name="Detalles" ColumnName="Detalles" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Carrera_Deportiva_Evento">
+            <EntityTypeMapping TypeName="MeSysModel.Carrera_Deportiva_Evento">
+              <MappingFragment StoreEntitySet="Carrera_Deportiva_Evento">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_Atleta" ColumnName="ID_Atleta" />
+                <ScalarProperty Name="Prueba" ColumnName="Prueba" />
+                <ScalarProperty Name="Resultado" ColumnName="Resultado" />
+                <ScalarProperty Name="Fecha_Y_Lugar" ColumnName="Fecha_Y_Lugar" />
+                <ScalarProperty Name="Evento" ColumnName="Evento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Carrera_Deportiva_Familiar">
+            <EntityTypeMapping TypeName="MeSysModel.Carrera_Deportiva_Familiar">
+              <MappingFragment StoreEntitySet="Carrera_Deportiva_Familiar">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_Atleta" ColumnName="ID_Atleta" />
+                <ScalarProperty Name="Evento" ColumnName="Evento" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Lugar" ColumnName="Lugar" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categorias">
+            <EntityTypeMapping TypeName="MeSysModel.Categoria">
+              <MappingFragment StoreEntitySet="Categorias">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_Deporte" ColumnName="ID_Deporte" />
+                <ScalarProperty Name="Categoria1" ColumnName="Categoria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Condiciones_Clinicas_Actuales">
+            <EntityTypeMapping TypeName="MeSysModel.Condiciones_Clinicas_Actuales">
+              <MappingFragment StoreEntitySet="Condiciones_Clinicas_Actuales">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Condiciones_Clinicas_Actuales_Principal">
+            <EntityTypeMapping TypeName="MeSysModel.Condiciones_Clinicas_Actuales_Principal">
+              <MappingFragment StoreEntitySet="Condiciones_Clinicas_Actuales_Principal">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_Atleta" ColumnName="ID_Atleta" />
+                <ScalarProperty Name="ID_Condiciones_Clinicas_Actuales" ColumnName="ID_Condiciones_Clinicas_Actuales" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Consiste_Apoyo">
+            <EntityTypeMapping TypeName="MeSysModel.Consiste_Apoyo">
+              <MappingFragment StoreEntitySet="Consiste_Apoyo">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_Atleta" ColumnName="ID_Atleta" />
+                <ScalarProperty Name="Preguntas" ColumnName="Preguntas" />
+                <ScalarProperty Name="Respuestas" ColumnName="Respuestas" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Datos_Atleta">
+            <EntityTypeMapping TypeName="MeSysModel.Datos_Atleta">
+              <MappingFragment StoreEntitySet="Datos_Atleta">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Foto" ColumnName="Foto" />
+                <ScalarProperty Name="Primer_Nombre" ColumnName="Primer_Nombre" />
+                <ScalarProperty Name="Segundo_Nombre" ColumnName="Segundo_Nombre" />
+                <ScalarProperty Name="Primer_Apellido" ColumnName="Primer_Apellido" />
+                <ScalarProperty Name="Segundo_Apellido" ColumnName="Segundo_Apellido" />
+                <ScalarProperty Name="Nombre_Completo" ColumnName="Nombre_Completo" />
+                <ScalarProperty Name="Edad" ColumnName="Edad" />
+                <ScalarProperty Name="Fecha_De_Registro" ColumnName="Fecha_De_Registro" />
+                <ScalarProperty Name="Genero" ColumnName="Genero" />
+                <ScalarProperty Name="Numero_De_Cedula" ColumnName="Numero_De_Cedula" />
+                <ScalarProperty Name="Correo_Electronico" ColumnName="Correo_Electronico" />
+                <ScalarProperty Name="Telefono_Convencional" ColumnName="Telefono_Convencional" />
+                <ScalarProperty Name="Telefono_Celular" ColumnName="Telefono_Celular" />
+                <ScalarProperty Name="Tiene_Seguro" ColumnName="Tiene_Seguro" />
+                <ScalarProperty Name="Hospital" ColumnName="Hospital" />
+                <ScalarProperty Name="Dirreccion" ColumnName="Dirreccion" />
+                <ScalarProperty Name="Municipio" ColumnName="Municipio" />
+                <ScalarProperty Name="Nombre_Madre" ColumnName="Nombre_Madre" />
+                <ScalarProperty Name="Telefono_Madre" ColumnName="Telefono_Madre" />
+                <ScalarProperty Name="Nombre_Padre" ColumnName="Nombre_Padre" />
+                <ScalarProperty Name="Telefono_Padre" ColumnName="Telefono_Padre" />
+                <ScalarProperty Name="Emergencia" ColumnName="Emergencia" />
+                <ScalarProperty Name="Dirreccion_Emergencia" ColumnName="Dirreccion_Emergencia" />
+                <ScalarProperty Name="Embarazo" ColumnName="Embarazo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Departamentos">
+            <EntityTypeMapping TypeName="MeSysModel.Departamento">
+              <MappingFragment StoreEntitySet="Departamentos">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Deportes">
+            <EntityTypeMapping TypeName="MeSysModel.Deporte">
+              <MappingFragment StoreEntitySet="Deporte">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Educacions">
+            <EntityTypeMapping TypeName="MeSysModel.Educacion">
+              <MappingFragment StoreEntitySet="Educacion">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_Atleta" ColumnName="ID_Atleta" />
+                <ScalarProperty Name="Preguntas" ColumnName="Preguntas" />
+                <ScalarProperty Name="Respuestas" ColumnName="Respuestas" />
+                <ScalarProperty Name="Detalles" ColumnName="Detalles" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Eventos">
+            <EntityTypeMapping TypeName="MeSysModel.Evento">
+              <MappingFragment StoreEntitySet="Eventos">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Lugar" ColumnName="Lugar" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Examen_Fisico">
+            <EntityTypeMapping TypeName="MeSysModel.Examen_Fisico">
+              <MappingFragment StoreEntitySet="Examen_Fisico">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Estructura" ColumnName="Estructura" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Examen_Fisico_Principal">
+            <EntityTypeMapping TypeName="MeSysModel.Examen_Fisico_Principal">
+              <MappingFragment StoreEntitySet="Examen_Fisico_Principal">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_Atleta" ColumnName="ID_Atleta" />
+                <ScalarProperty Name="ID_Examen_Fisico" ColumnName="ID_Examen_Fisico" />
+                <ScalarProperty Name="Normal" ColumnName="Normal" />
+                <ScalarProperty Name="Hallazgos_Anormales" ColumnName="Hallazgos_Anormales" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Examenes">
+            <EntityTypeMapping TypeName="MeSysModel.Examene">
+              <MappingFragment StoreEntitySet="Examenes">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_Condiciones_Clinicas_Actuales" ColumnName="ID_Condiciones_Clinicas_Actuales" />
+                <ScalarProperty Name="ID_Examen_Fisico" ColumnName="ID_Examen_Fisico" />
+                <ScalarProperty Name="ID_Ficha_Antropometrica" ColumnName="ID_Ficha_Antropometrica" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ficha_Antropometrica">
+            <EntityTypeMapping TypeName="MeSysModel.Ficha_Antropometrica">
+              <MappingFragment StoreEntitySet="Ficha_Antropometrica">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_Atleta" ColumnName="ID_Atleta" />
+                <ScalarProperty Name="Nombre_Y_Apellidos" ColumnName="Nombre_Y_Apellidos" />
+                <ScalarProperty Name="Evaluacion" ColumnName="Evaluacion" />
+                <ScalarProperty Name="Fecha_De_Evaluacion" ColumnName="Fecha_De_Evaluacion" />
+                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+                <ScalarProperty Name="Fecha_De_Nacimiento" ColumnName="Fecha_De_Nacimiento" />
+                <ScalarProperty Name="Menstruacion" ColumnName="Menstruacion" />
+                <ScalarProperty Name="Antropometrista" ColumnName="Antropometrista" />
+                <ScalarProperty Name="Anotador" ColumnName="Anotador" />
+                <ScalarProperty Name="ID_Ficha_Antropometrica" ColumnName="ID_Ficha_Antropometrica" />
+                <ScalarProperty Name="Toma1" ColumnName="Toma1" />
+                <ScalarProperty Name="Toma2" ColumnName="Toma2" />
+                <ScalarProperty Name="Toma3" ColumnName="Toma3" />
+                <ScalarProperty Name="Promedio_Mediana" ColumnName="Promedio_Mediana" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Habitacions">
+            <EntityTypeMapping TypeName="MeSysModel.Habitacion">
+              <MappingFragment StoreEntitySet="Habitacion">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_Atleta" ColumnName="ID_Atleta" />
+                <ScalarProperty Name="Preguntas" ColumnName="Preguntas" />
+                <ScalarProperty Name="Respuestas" ColumnName="Respuestas" />
+                <ScalarProperty Name="Detalles" ColumnName="Detalles" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Habitos">
+            <EntityTypeMapping TypeName="MeSysModel.Habito">
+              <MappingFragment StoreEntitySet="Habitos">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_Atleta" ColumnName="ID_Atleta" />
+                <ScalarProperty Name="Preguntas" ColumnName="Preguntas" />
+                <ScalarProperty Name="Respuestas" ColumnName="Respuestas" />
+                <ScalarProperty Name="Detalles" ColumnName="Detalles" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Historia_Familiar">
+            <EntityTypeMapping TypeName="MeSysModel.Historia_Familiar">
+              <MappingFragment StoreEntitySet="Historia_Familiar">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_Atleta" ColumnName="ID_Atleta" />
+                <ScalarProperty Name="Preguntas" ColumnName="Preguntas" />
+                <ScalarProperty Name="Respuestas" ColumnName="Respuestas" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Historial_Medico">
+            <EntityTypeMapping TypeName="MeSysModel.Historial_Medico">
+              <MappingFragment StoreEntitySet="Historial_Medico">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_Atleta" ColumnName="ID_Atleta" />
+                <ScalarProperty Name="Preguntas" ColumnName="Preguntas" />
+                <ScalarProperty Name="Respuestas" ColumnName="Respuestas" />
+                <ScalarProperty Name="Detalles" ColumnName="Detalles" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hospitals">
+            <EntityTypeMapping TypeName="MeSysModel.Hospital">
+              <MappingFragment StoreEntitySet="Hospital">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Informacion_Familiar">
+            <EntityTypeMapping TypeName="MeSysModel.Informacion_Familiar">
+              <MappingFragment StoreEntitySet="Informacion_Familiar">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_Atleta" ColumnName="ID_Atleta" />
+                <ScalarProperty Name="Preguntas" ColumnName="Preguntas" />
+                <ScalarProperty Name="Respuestas" ColumnName="Respuestas" />
+                <ScalarProperty Name="Detalles" ColumnName="Detalles" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Medicamentos">
+            <EntityTypeMapping TypeName="MeSysModel.Medicamento">
+              <MappingFragment StoreEntitySet="Medicamentos">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_Atleta" ColumnName="ID_Atleta" />
+                <ScalarProperty Name="Medicamentos" ColumnName="Medicamentos" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Medicos">
+            <EntityTypeMapping TypeName="MeSysModel.Medico">
+              <MappingFragment StoreEntitySet="Medico">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Tipo_Medico" ColumnName="Tipo_Medico" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Municipios">
+            <EntityTypeMapping TypeName="MeSysModel.Municipio">
+              <MappingFragment StoreEntitySet="Municipio">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_Departamento" ColumnName="ID_Departamento" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Situacion_Laboral">
+            <EntityTypeMapping TypeName="MeSysModel.Situacion_Laboral">
+              <MappingFragment StoreEntitySet="Situacion_Laboral">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_Atleta" ColumnName="ID_Atleta" />
+                <ScalarProperty Name="Preguntas" ColumnName="Preguntas" />
+                <ScalarProperty Name="Respuestas" ColumnName="Respuestas" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="MeSysModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="MeSysModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="ID_Rol" ColumnName="ID_Rol" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Contraseña" ColumnName="Contraseña" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="MeSysModel.Role">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="Rol" ColumnName="Rol" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

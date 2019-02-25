@@ -1,0 +1,12 @@
+﻿@model SistemaMedico.Models.Usuario
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    if (Session["ID"] == null)
+    {
+        Response.Redirect("~/Login/Index");
+    }
+
+}
+
+<h2>Index</h2>
+

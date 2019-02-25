@@ -1,0 +1,95 @@
+﻿@model SistemaMedico.Models.Usuario
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    if (Session["ID"] == null)
+    {
+        Response.Redirect("~/Login/Index");
+    }
+
+}
+
+<div class="container-fluid">
+    <div class="block-header">
+        <h2>DASHBOARD</h2>
+    </div>
+    <div class="row el-element-overlay">
+        <div class="col-md-12">
+        </div>
+        <div class="col-lg-3 col-md-6">
+            <div class="cardnigga">
+                <div class="el-card-item">
+                    <div class="el-card-avatar el-overlay-1">
+                        <img src="~/Recursos/images/users/5.jpg" alt="user" />
+                        <div class="el-overlay scrl-dwn">
+                            <ul class="el-info">
+                                <li><a class="btn default btn-outline image-popup-vertical-fit" href="~/Recursos/images/users/5.jpg"><i class="icon-magnifier"></i></a></li>
+                                <li><a class="btn default btn-outline" href="javascript:void(0);"><i class="icon-link"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="el-card-content">
+                        <h3 class="box-title">Genelia Deshmukh</h3> <small>Managing Director</small>
+                        <br />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+            <div class="cardnigga">
+                <div class="el-card-item">
+                    <div class="el-card-avatar el-overlay-1">
+                        <img src="~/Recursos/images/users/6.jpg" alt="user" />
+                        <div class="el-overlay scrl-dwn">
+                            <ul class="el-info">
+                                <li><a class="btn default btn-outline image-popup-vertical-fit" href="~/Recursos/images/users/6.jpg"><i class="icon-magnifier"></i></a></li>
+                                <li><a class="btn default btn-outline" href="javascript:void(0);"><i class="icon-link"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="el-card-content">
+                        <h3 class="box-title">Genelia Deshmukh</h3> <small>Managing Director</small>
+                        <br />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+            <div class="cardnigga">
+                <div class="el-card-item">
+                    <div class="el-card-avatar el-overlay-1">
+                        <img src="~/Recursos/images/users/7.jpg" alt="user" />
+                        <div class="el-overlay scrl-dwn">
+                            <ul class="el-info">
+                                <li><a class="btn default btn-outline image-popup-vertical-fit" href="~/Recursos/images/users/7.jpg"><i class="icon-magnifier"></i></a></li>
+                                <li><a class="btn default btn-outline" href="javascript:void(0);"><i class="icon-link"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="el-card-content">
+                        <h3 class="box-title">Genelia Deshmukh</h3> <small>Managing Director</small>
+                        <br />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6">
+            <div class="cardnigga">
+                <div class="el-card-item">
+                    <div class="el-card-avatar el-overlay-1">
+                        <img src="~/Recursos/images/users/8.jpg" alt="user" />
+                        <div class="el-overlay scrl-dwn">
+                            <ul class="el-info">
+                                <li><a class="btn default btn-outline image-popup-vertical-fit" href="~/Recursos/images/users/8.jpg"><i class="icon-magnifier"></i></a></li>
+                                <li><a class="btn default btn-outline" href="javascript:void(0);"><i class="icon-link"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="el-card-content">
+                        <h3 class="box-title">Genelia Deshmukh</h3> <small>Managing Director</small>
+                        <br />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
