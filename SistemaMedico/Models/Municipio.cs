@@ -9,16 +9,10 @@
 
 namespace SistemaMedico.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Web.Mvc;
-
     public partial class Municipio
     {
         public int ID { get; set; }
         public int ID_Departamento { get; set; }
-        public IEnumerable<SelectListItem> Dep { get; set; }
         public string Nombre { get; set; }
-        public IEnumerable<SelectListItem> Mun { get; set; }
     }
 }

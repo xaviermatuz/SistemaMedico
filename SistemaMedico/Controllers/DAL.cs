@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
-using System.Data.SqlClient;
-using System.Data;
-using System.Configuration;
-using System.Collections;
 using System.Web.Mvc;
 
 namespace SistemaMedico.Controllers
@@ -18,7 +17,7 @@ namespace SistemaMedico.Controllers
         public static SqlConnection connect()
         {
             //Reading the connection string from web.config    
-            string Name = ConfigurationManager.ConnectionStrings["connect"].ConnectionString;
+            string Name = ConfigurationManager.ConnectionStrings["Connect"].ConnectionString;
             //Passing the string in sqlconnection.    
             SqlConnection con = new SqlConnection(Name);
             //Check wheather the connection is close or not if open close it else open it    
@@ -48,6 +47,5 @@ namespace SistemaMedico.Controllers
             return dt;
 
         }
-
     }
 }

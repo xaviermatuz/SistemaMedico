@@ -156,19 +156,13 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group col-md-4 ">
-                                            <select class="form-control " name="departamento" id="select-departamento">
-                                                <option value="0" disable="true" selected="true">==Seleccione un Departamento==</option>
-                                                <option value=""></option>
-                                            </select>
+                                            @Html.DropDownList("country", ViewBag.country as List<SelectListItem>, new { @class = "form-control" })
                                         </div>
                                     </div>
 
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <select class="form-control p-0" name="municipio" id="select-municipio">
-                                                @*<option value="0" disable="true" selected="true">=== Seleccione un municipio ===</option>*@
-                                                @Html.DropDownList("Mun", ViewBag.country as List<SelectListItem>, new { style = "width: 200px;" })
-                                            </select>
+                                            @Html.DropDownList("State", new SelectList(string.Empty, "Value", "Text"), "--Seleccionar Municipio--", new { @class = "form-control p-0" })
                                         </div>
                                     </div>
                                     <div class="col-md-12">
@@ -463,22 +457,38 @@
     </script>
     <!--Select Dinamico Departamento y Muncipio-->
     <script type="text/javascript">
-        $(function () {
-            $('#select-departamento').on('change', municipioSelec);
-        });
 
-        function municipioSelec() {
-            var Id_departamento = $(this).val();
-            //Ajax
-            $.get('/api/municipio/' + Id_departamento + '/municipio', function (data) {
-                var html_select = '<option value="" disable>Seleccione un Municipio</option>';
-                for (var i = 0; i < data.length; ++i) {
-                    html_select += '<option value="' + data[i].ID + '">' + data[i].Nombre + '</option>';
+
+    $(document).ready(function () {
+
+        $("#country").change(function () {
+            $("#State").empty();
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("getstate")',
+
+                dataType: 'json',
+
+                data: { id: $("#country").val() },
+
+
+                success: function (states) {
+
+
+                    $.each(states, function (i, state) {
+                        $("#State").append('<option value="' + state.Value + '">' +
+                             state.Text + '</option>');
+
+                    });
+                },
+                error: function (ex) {
+                    alert('Failed to retrieve country states.' + ex);
                 }
-                $('#select-municipio').html(html_select);
             });
+            return false;
+        })
+    });
 
-        }
     </script>
     <!--Form Hospital-->
     <script type="text/javascript">
