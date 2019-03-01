@@ -157,6 +157,7 @@
                                     <div class="col-md-4">
                                         <div class="form-group col-md-4 ">
                                             @Html.DropDownList("country", ViewBag.country as List<SelectListItem>, new { @class = "form-control" })
+                                            @Html.DropDownListFor(x => x.Departamento, SistemaMedico.Controllers.HomeAdminController.GetDropDown(), new { @class = "form-control" })
                                         </div>
                                     </div>
 
