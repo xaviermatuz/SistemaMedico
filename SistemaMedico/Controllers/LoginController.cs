@@ -56,8 +56,8 @@ namespace SistemaMedico.Controllers
                                     Session["Nombre"] = obj.Nombre.ToString();
                                     Session["ID_Rol"] = obj.ID_Rol.ToString();
                                     Session["Correo"] = obj.Correo.ToString();                                    
-                                    FormsAuthentication.SetAuthCookie(obj.ID_Rol.ToString(), false);
-                                    return View("~/Views/Home/Index.cshtml");
+                                    //FormsAuthentication.SetAuthCookie(obj.ID_Rol.ToString(), false);
+                                    return Redirect("~/HomeAdmin/");
                                 }
                                 else if (obj.ID_Rol.ToString() == Convert.ToString("2"))
                                 {
@@ -65,7 +65,7 @@ namespace SistemaMedico.Controllers
                                     Session["Nombre"] = obj.Nombre.ToString();
                                     Session["ID_Rol"] = obj.ID_Rol.ToString();
                                     Session["Correo"] = obj.Correo.ToString();
-                                    return View("~/Views/Home/View.cshtml");
+                                    return View("~/Views/Home/Vista.cshtml");
                                 }
                             }
                         }

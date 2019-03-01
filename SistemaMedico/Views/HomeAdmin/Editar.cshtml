@@ -1,0 +1,85 @@
+﻿@model SistemaMedico.Models.Usuario
+@{
+    ViewBag.Title = "Editar Usuario";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    //if (Session["ID"] == null)
+    //{
+    //    Response.Redirect("~/Login/Index");
+    //}
+    //IEnumerable<Usuario> Usuarios = (IEnumerable<Usuario>)ViewBag.Usuario;
+}
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header">
+                <h2 style="text-transform:uppercase;">@ViewBag.title @ViewBag.Nombre </h2>
+            </div>
+            <div class="body">
+                @using (Html.BeginForm("Editar", "HomeAdmin", FormMethod.Post))
+                {
+                    <div class="row">
+                        <div class="col-md-12">
+                            @Html.HiddenFor(d => d.ID);
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            @Html.LabelFor(d => d.Nombre, new { @class = "form-label" })
+                                            @Html.TextBoxFor(d => d.Nombre, "", new { @class = "form-control" })
+                                        </div>
+                                    </div>
+                                </div>
+
+                                @*@Html.ValidationMessageFor(d => d.UserName, null, new { @class = "red" })*@
+                            </div>
+                            @* Correo *@
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            @Html.LabelFor(d => d.Correo, new { @class = "form-label" })
+                                            @Html.TextBoxFor(d => d.Correo, "", new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(d => d.Correo, null, new { @class = "red" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @* Contraeña *@
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            @Html.LabelFor(d => d.Contraseña, new { @class = "form-label" })
+                                            @Html.PasswordFor(d => d.Contraseña, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(d => d.Contraseña, null, new { @class = "danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group form-float">
+
+                                        @Html.Label("Rol") <br />
+                                        @Html.DropDownListFor(x => x.ID_Rol, SistemaMedico.Controllers.HomeAdminController.GetDropDown())
+                                        @*@Html.DropDownListFor(d => d.ID_Rol, new SelectList(ViewBag.Roles, "Value", "Text"), new { @class = "form-control p-0" })*@
+                                        @*@Html.DropDownListFor(model => model.ID_Rol, ViewBag.Roles as List<SelectListItem>, "ID", "Rol", "- Please Select -")*@
+                                        @* @Html.DropDownList("Rol", ViewBag.Roles as List<SelectListItem>, new { @class = "form-control p-0" })*@
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="text-align:left;">
+                                <a href="~/HomeAdmin/"><button type="button" class="btn btn-danger">Cancelar</button></a>
+                                <button type="submit" class="btn btn-success">Guardar</button>
+
+                            </div>
+                        </div>
+
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+

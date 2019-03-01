@@ -4311,7 +4311,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\HomeAdmin\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -4319,7 +4319,7 @@
     <Compile Include="Controllers\DAL.cs" />
     <Compile Include="Controllers\ExamenFisicoController.cs" />
     <Compile Include="Controllers\HistorialMedicoController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HomeAdminController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -4444,6 +4444,8 @@
     <Compile Include="Models\Usuario.cs">
       <DependentUpon>LoginDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ViewModel\LoginViewModel.cs" />
+    <Compile Include="Models\ViewModel\UsuarioViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -4451,7 +4453,7 @@
       <SubType>Designer</SubType>
     </Content>
     <None Include="packages.config" />
-    <Content Include="Views\Home\Vista.cshtml" />
+    <Content Include="Views\HomeAdmin\Vista.cshtml" />
     <Content Include="Views\Atleta\Crear.cshtml" />
     <Content Include="Views\Atleta\Actualizar.cshtml" />
     <Content Include="Views\Atleta\Index.cshtml" />
@@ -4461,6 +4463,8 @@
     <Content Include="Views\HistorialMedico\Index.cshtml" />
     <Content Include="Views\HistorialMedico\Crear.cshtml" />
     <Content Include="Views\HistorialMedico\Actualizar.cshtml" />
+    <Content Include="Views\HomeAdmin\Editar.cshtml" />
+    <Content Include="Views\HomeAdmin\Nuevo.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

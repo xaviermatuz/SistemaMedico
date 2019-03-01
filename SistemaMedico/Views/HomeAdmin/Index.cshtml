@@ -1,0 +1,63 @@
+﻿@*@model SistemaMedico.Models.Usuario*@
+@using SistemaMedico.Models
+@{
+    ViewBag.Title = "Lista de Usuarios";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    //if (Session["ID"] == null)
+    //{
+    //    Response.Redirect("~/Login/Index");
+    //}
+    IEnumerable<Usuario> Usuarios = (IEnumerable<Usuario>)ViewBag.Usuario;
+    var variable = 1;
+}
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header">
+                <h2 style="text-transform:uppercase;">@ViewBag.Title</h2>
+            </div>
+            <div class="body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Usuario</th>
+                                        <th>Correo</th>
+                                        @* <th>Password</th>*@
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+
+                                @foreach (Usuario oElemento in Usuarios)
+                                {
+                                    <tr>
+                                        <td>@variable</td>
+                                        <td>@oElemento.Nombre</td>
+                                        <td>@oElemento.Correo</td>
+                                        @*<td>@oElemento.Contraseña</td>*@
+                                        <td>
+                                            <a href="~/HomeAdmin/Editar/@oElemento.ID" class="btn bg-orange btn-circle waves-effect waves-circle waves-float">
+                                                <i class="material-icons">mode_edit</i>
+                                            </a>
+                                            <a class="btn bg-red btn-circle waves-effect waves-circle waves-float">
+                                                <i class="material-icons">delete</i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    variable++;
+
+                                }
+
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
