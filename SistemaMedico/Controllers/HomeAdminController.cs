@@ -20,7 +20,7 @@ namespace SistemaMedico.Controllers
         // [Authorize]
         public ActionResult Index()
         {
-            IEnumerable<Usuario> User = db.Usuarios.ToList();
+            IEnumerable<Usuario> User = db.Usuarios.Where(s =>s.Activo.ToString() == "true");
             ViewBag.Usuario = User;
             return View();
         }
@@ -78,12 +78,16 @@ namespace SistemaMedico.Controllers
             db.Usuarios.Add(ousuario);
             db.SaveChanges();
             return Redirect("~/HomeAdmin/");
+            //asp me la pela
+            //x2
+            //x3
         }
         public static List<SelectListItem> GetDropDown()
         {
             MeSysEntities db1 = new MeSysEntities();
             List<SelectListItem> ls = new List<SelectListItem>();
             var lm = db1.Roles.ToList();
+            ls.Add(new SelectListItem { Text = "--Seleccionar Rol--", Value = "0" });
             foreach (var temp in lm)
             {
                 ls.Add(new SelectListItem() { Text = temp.Rol, Value = temp.ID.ToString() });
@@ -100,6 +104,14 @@ namespace SistemaMedico.Controllers
             for (int i = 0; i < stream.Length; i++) sb.AppendFormat("{0:x2}", stream[i]);
             return sb.ToString();
         }
-
+        [HttpGet]
+        public ActionResult Eliminar(int ID)
+        {
+            var ousuario = db.Usuarios.Find(ID);
+            ousuario.Activo = false;
+            db.Entry(ousuario).State = System.Data.Entity.EntityState.Modified;
+            db.SaveChanges();
+            return Redirect("~/HomeAdmin/");
+        }
     }
 }
