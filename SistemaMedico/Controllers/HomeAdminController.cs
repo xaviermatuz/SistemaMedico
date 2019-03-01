@@ -79,6 +79,7 @@ namespace SistemaMedico.Controllers
             db.SaveChanges();
             return Redirect("~/HomeAdmin/");
             //asp me la pela
+            //x2
         }
         public static List<SelectListItem> GetDropDown()
         {
