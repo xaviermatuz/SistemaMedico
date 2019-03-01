@@ -176,14 +176,11 @@
                                                     <label for="radio17">Si </label>
                                                 </div>
                                             </div>
-                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#responsive-modalH" class="model_img img-responsive"> Crear Hospital</button>
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#responsive-modalH" > Crear Hospital</button>
                                         </div>
                                         <div class="col-md-6" id="hosp" style="display:none;">
                                             <div class="form-group">
-                                                <select class="form-control" name="hospitalafiliado">
-                                                    <option value="0" disable="true" selected="true">=== Seleccione un hospital ===</option>
-                                                    <option value=""></option>
-                                                </select>
+                                                @Html.DropDownList("Hospital", ViewBag.Hospital as List<SelectListItem>, new { @class = "form-control" })
                                             </div>
                                         </div>
                                     </div>
@@ -196,19 +193,14 @@
                                 <div class="row col-md-12">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <select class="form-control p-0" name="deporte" id="select-deporte">
-                                                <option value="0" disable="true" selected="true">=== Seleccione un deporte ===</option>
-                                                <option value=""></option>
-                                            </select>
+                                            @Html.DropDownList("Deporte", ViewBag.Deporte as List<SelectListItem>, new { @class = "form-control" })
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <select class="form-control p-0" name="categoria" id="select-categoria">
-                                                <option value="0" disable="true" selected="true">=== Seleccione sus Categoria ===</option>
-                                            </select>
+                                            @Html.DropDownList("Categoria", new SelectList(string.Empty, "Value", "Text"), "--Seleccionar Categoria--", new { @class = "form-control p-0" })
                                         </div>
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#responsive-modal" class="model_img img-responsive"> Crear Categoria</button>
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#responsive-modal"> Crear Categoria</button>
                                     </div>
 
                                 </div>
@@ -457,38 +449,51 @@
     </script>
     <!--Select Dinamico Departamento y Muncipio-->
     <script type="text/javascript">
-
-
     $(document).ready(function () {
-
         $("#country").change(function () {
             $("#State").empty();
             $.ajax({
                 type: 'POST',
                 url: '@Url.Action("getstate")',
-
                 dataType: 'json',
-
                 data: { id: $("#country").val() },
-
-
                 success: function (states) {
-
-
                     $.each(states, function (i, state) {
                         $("#State").append('<option value="' + state.Value + '">' +
                              state.Text + '</option>');
-
                     });
                 },
                 error: function (ex) {
-                    alert('Failed to retrieve country states.' + ex);
+                    alert('Fallo al cargar Departamento/Municipio.' + ex);
                 }
             });
             return false;
         })
     });
-
+    </script>
+    <!--Select Dinamico Deporte y Categoria-->
+    <script type="text/javascript">
+    $(document).ready(function () {
+        $("#Deporte").change(function () {
+            $("#Categoria").empty();
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("getsDeporte")',
+                dataType: 'json',
+                data: { id: $("#Deporte").val() },
+                success: function (states) {
+                    $.each(states, function (i, state) {
+                        $("#Categoria").append('<option value="' + state.Value + '">' +
+                             state.Text + '</option>');
+                    });
+                },
+                error: function (ex) {
+                    alert('Fallo al cargar Deporte/Categoria.' + ex);
+                }
+            });
+            return false;
+        })
+    });
     </script>
     <!--Form Hospital-->
     <script type="text/javascript">

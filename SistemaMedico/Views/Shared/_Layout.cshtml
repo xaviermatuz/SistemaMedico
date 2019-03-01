@@ -101,13 +101,27 @@
             <div class="menu">
                 <ul class="list">
                     <li class="header">Menu</li>
-                    <li class="active">
-                        <a href="@Url.Action("Index", "Home")">
-
-                            <i class="material-icons">home</i>
-                            <span>Inicio</span>
-                        </a>
-                    </li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        if (User.IsInRole("Administrador"))
+                        {
+                            <li class="active">
+                                <a href="@Url.Action("Index", "Home")">
+                                    <i class="material-icons">home</i>
+                                    <span>Inicio</span>
+                                </a>
+                            </li>
+                        }
+                        else if (User.IsInRole("Invitado"))
+                        {
+                            <li class="active">
+                                <a href="@Url.Action("Vista", "Home")">
+                                    <i class="material-icons">home</i>
+                                    <span>Inicio</span>
+                                </a>
+                            </li>
+                        }
+                    }
                     <li class="">
                         <a href="@Url.Action("Index", "Atleta")">
                             <i class="material-icons">account_box</i>

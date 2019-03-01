@@ -55,7 +55,8 @@ namespace SistemaMedico.Controllers
                                     Session["ID"] = obj.ID.ToString();
                                     Session["Nombre"] = obj.Nombre.ToString();
                                     Session["ID_Rol"] = obj.ID_Rol.ToString();
-                                    Session["Correo"] = obj.Correo.ToString();
+                                    Session["Correo"] = obj.Correo.ToString();                                    
+                                    FormsAuthentication.SetAuthCookie(obj.ID_Rol.ToString(), false);
                                     return View("~/Views/Home/Index.cshtml");
                                 }
                                 else if (obj.ID_Rol.ToString() == Convert.ToString("2"))
@@ -86,8 +87,7 @@ namespace SistemaMedico.Controllers
         }
 
         public ActionResult LogOut()
-        {
-            FormsAuthentication.SignOut();            
+        {           
             Session.Abandon();
             return RedirectToAction("Index", "Login");
         }

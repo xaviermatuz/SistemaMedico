@@ -44,6 +44,8 @@ namespace SistemaMedico.Controllers
 
             da.Fill(dt);
             List<SelectListItem> list = new List<SelectListItem>();
+            List<SelectListItem> list1 = new List<SelectListItem>();
+            List<SelectListItem> list2 = new List<SelectListItem>();
             return dt;
 
         }
