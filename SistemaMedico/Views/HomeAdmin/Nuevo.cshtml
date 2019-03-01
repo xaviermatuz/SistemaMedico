@@ -19,7 +19,7 @@
                 {
                     <div class="row">
                         <div class="col-md-12">
-                            @Html.HiddenFor(d => d.ID);
+                            @Html.HiddenFor(d => d.ID)
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group form-float">
@@ -61,7 +61,7 @@
                                     <div class="form-group form-float">
 
                                         @Html.Label("Rol") <br />
-                                        @Html.DropDownListFor(x => x.ID_Rol, SistemaMedico.Controllers.HomeAdminController.GetDropDown())
+                                        @Html.DropDownListFor(x => x.ID_Rol, SistemaMedico.Controllers.HomeAdminController.GetDropDown(), new { @class = "form-control p-0" })
                                         @*@Html.DropDownListFor(d => d.ID_Rol, new SelectList(ViewBag.Roles, "Value", "Text"), new { @class = "form-control p-0" })*@
                                         @*@Html.DropDownListFor(model => model.ID_Rol, ViewBag.Roles as List<SelectListItem>, "ID", "Rol", "- Please Select -")*@
                                         @* @Html.DropDownList("Rol", ViewBag.Roles as List<SelectListItem>, new { @class = "form-control p-0" })*@
