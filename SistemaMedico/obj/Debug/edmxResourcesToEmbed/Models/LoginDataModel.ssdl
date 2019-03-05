@@ -127,7 +127,7 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Foto" Type="varbinary(max)" />
+    <Property Name="Foto" Type="varchar(max)" />
     <Property Name="Primer_Nombre" Type="text" />
     <Property Name="Segundo_Nombre" Type="text" />
     <Property Name="Primer_Apellido" Type="text" />
@@ -151,6 +151,7 @@
     <Property Name="Emergencia" Type="varchar" MaxLength="50" />
     <Property Name="Dirreccion_Emergencia" Type="varchar" MaxLength="200" />
     <Property Name="Embarazo" Type="char" MaxLength="7" />
+    <Property Name="Activo" Type="bit" />
   </EntityType>
   <EntityType Name="Departamentos">
     <Key>
@@ -350,6 +351,20 @@
     <Property Name="ID_Rol" Type="int" />
     <Property Name="Activo" Type="bit" />
   </EntityType>
+  <Association Name="FK_Datos_Atleta_Hospital">
+    <End Role="Hospital" Type="Self.Hospital" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Datos_Atleta" Type="Self.Datos_Atleta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Hospital">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Datos_Atleta">
+        <PropertyRef Name="Hospital" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Usuarios_Roles">
     <End Role="Roles" Type="Self.Roles" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
@@ -400,6 +415,10 @@
     <EntitySet Name="Situacion_Laboral" EntityType="Self.Situacion_Laboral" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Datos_Atleta_Hospital" Association="Self.FK_Datos_Atleta_Hospital">
+      <End Role="Hospital" EntitySet="Hospital" />
+      <End Role="Datos_Atleta" EntitySet="Datos_Atleta" />
+    </AssociationSet>
     <AssociationSet Name="FK_Usuarios_Roles" Association="Self.FK_Usuarios_Roles">
       <End Role="Roles" EntitySet="Roles" />
       <End Role="Usuarios" EntitySet="Usuarios" />

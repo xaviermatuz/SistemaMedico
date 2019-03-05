@@ -12,10 +12,15 @@ namespace SistemaMedico.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Evento
+    public partial class Usuarios
     {
         public int ID { get; set; }
         public string Nombre { get; set; }
-        public string Lugar { get; set; }
+        public string Contraseña { get; set; }
+        public string Correo { get; set; }
+        public Nullable<int> ID_Rol { get; set; }
+        public Nullable<bool> Activo { get; set; }
+    
+        public virtual Roles Roles { get; set; }
     }
 }

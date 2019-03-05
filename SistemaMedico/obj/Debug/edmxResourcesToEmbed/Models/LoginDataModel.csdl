@@ -10,16 +10,16 @@
     <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
     <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
   </EntityType>
-  <EntityType Name="Alergia">
+  <EntityType Name="Alergias">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="ID_Atleta" Type="Int32" Nullable="false" />
-    <Property Name="Alergia1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Alergia" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
   </EntityType>
-  <EntityType Name="Anexo">
+  <EntityType Name="Anexos">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
@@ -88,13 +88,13 @@
     <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="Lugar" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
   </EntityType>
-  <EntityType Name="Categoria">
+  <EntityType Name="Categorias">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="ID_Deporte" Type="Int32" Nullable="false" />
-    <Property Name="Categoria1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Categoria" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
   </EntityType>
   <EntityType Name="Condiciones_Clinicas_Actuales">
     <Key>
@@ -127,7 +127,7 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Foto" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Foto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="Primer_Nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="Segundo_Nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="Primer_Apellido" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
@@ -151,8 +151,10 @@
     <Property Name="Emergencia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Dirreccion_Emergencia" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
     <Property Name="Embarazo" Type="String" MaxLength="7" FixedLength="true" Unicode="false" />
+    <Property Name="Activo" Type="Boolean" />
+    <NavigationProperty Name="Hospital1" Relationship="Self.FK_Datos_Atleta_Hospital" FromRole="Datos_Atleta" ToRole="Hospital" />
   </EntityType>
-  <EntityType Name="Departamento">
+  <EntityType Name="Departamentos">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
@@ -176,7 +178,7 @@
     <Property Name="Respuestas" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Detalles" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
   </EntityType>
-  <EntityType Name="Evento">
+  <EntityType Name="Eventos">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
@@ -201,7 +203,7 @@
     <Property Name="Normal" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
     <Property Name="Hallazgos_Anormales" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
   </EntityType>
-  <EntityType Name="Examene">
+  <EntityType Name="Examenes">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
@@ -240,7 +242,7 @@
     <Property Name="Respuestas" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Detalles" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
   </EntityType>
-  <EntityType Name="Habito">
+  <EntityType Name="Habitos">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
@@ -275,6 +277,7 @@
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Datos_Atleta" Relationship="Self.FK_Datos_Atleta_Hospital" FromRole="Hospital" ToRole="Datos_Atleta" />
   </EntityType>
   <EntityType Name="Informacion_Familiar">
     <Key>
@@ -286,13 +289,13 @@
     <Property Name="Respuestas" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Detalles" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
   </EntityType>
-  <EntityType Name="Medicamento">
+  <EntityType Name="Medicamentos">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="ID_Atleta" Type="Int32" Nullable="false" />
-    <Property Name="Medicamentos" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Medicamentos1" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Descripcion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
   </EntityType>
   <EntityType Name="Medico">
@@ -312,6 +315,15 @@
     <Property Name="ID_Departamento" Type="Int32" Nullable="false" />
     <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
   </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Rol" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Activo" Type="Boolean" />
+    <NavigationProperty Name="Usuarios" Relationship="Self.FK_Usuarios_Roles" FromRole="Roles" ToRole="Usuarios" />
+  </EntityType>
   <EntityType Name="Situacion_Laboral">
     <Key>
       <PropertyRef Name="ID" />
@@ -321,7 +333,7 @@
     <Property Name="Preguntas" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Respuestas" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
   </EntityType>
-  <EntityType Name="sysdiagram">
+  <EntityType Name="sysdiagrams">
     <Key>
       <PropertyRef Name="diagram_id" />
     </Key>
@@ -331,7 +343,7 @@
     <Property Name="version" Type="Int32" />
     <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
-  <EntityType Name="Usuario">
+  <EntityType Name="Usuarios">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
@@ -341,70 +353,79 @@
     <Property Name="Correo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="ID_Rol" Type="Int32" />
     <Property Name="Activo" Type="Boolean" />
-    <NavigationProperty Name="Role" Relationship="MeSysModel.FK_Usuarios_Roles" FromRole="Usuario" ToRole="Role" />
+    <NavigationProperty Name="Roles" Relationship="Self.FK_Usuarios_Roles" FromRole="Usuarios" ToRole="Roles" />
   </EntityType>
+  <Association Name="FK_Datos_Atleta_Hospital">
+    <End Role="Hospital" Type="Self.Hospital" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Datos_Atleta" Type="Self.Datos_Atleta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Hospital">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Datos_Atleta">
+        <PropertyRef Name="Hospital" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Usuarios_Roles">
+    <End Role="Roles" Type="Self.Roles" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Usuarios">
+        <PropertyRef Name="ID_Rol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="MeSysEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
-    <EntitySet Name="Alergias" EntityType="Self.Alergia" />
-    <EntitySet Name="Anexos" EntityType="Self.Anexo" />
+    <EntitySet Name="Alergias" EntityType="Self.Alergias" />
+    <EntitySet Name="Anexos" EntityType="Self.Anexos" />
     <EntitySet Name="Aparato_Locomotor" EntityType="Self.Aparato_Locomotor" />
     <EntitySet Name="Apoyo_Economico" EntityType="Self.Apoyo_Economico" />
     <EntitySet Name="Atleta_Categoria" EntityType="Self.Atleta_Categoria" />
     <EntitySet Name="Carrera_Deportiva" EntityType="Self.Carrera_Deportiva" />
     <EntitySet Name="Carrera_Deportiva_Evento" EntityType="Self.Carrera_Deportiva_Evento" />
     <EntitySet Name="Carrera_Deportiva_Familiar" EntityType="Self.Carrera_Deportiva_Familiar" />
-    <EntitySet Name="Categorias" EntityType="Self.Categoria" />
+    <EntitySet Name="Categorias" EntityType="Self.Categorias" />
     <EntitySet Name="Condiciones_Clinicas_Actuales" EntityType="Self.Condiciones_Clinicas_Actuales" />
     <EntitySet Name="Condiciones_Clinicas_Actuales_Principal" EntityType="Self.Condiciones_Clinicas_Actuales_Principal" />
     <EntitySet Name="Consiste_Apoyo" EntityType="Self.Consiste_Apoyo" />
     <EntitySet Name="Datos_Atleta" EntityType="Self.Datos_Atleta" />
-    <EntitySet Name="Departamentos" EntityType="Self.Departamento" />
-    <EntitySet Name="Deportes" EntityType="Self.Deporte" />
-    <EntitySet Name="Educacions" EntityType="Self.Educacion" />
-    <EntitySet Name="Eventos" EntityType="Self.Evento" />
+    <EntitySet Name="Departamentos" EntityType="Self.Departamentos" />
+    <EntitySet Name="Deporte" EntityType="Self.Deporte" />
+    <EntitySet Name="Educacion" EntityType="Self.Educacion" />
+    <EntitySet Name="Eventos" EntityType="Self.Eventos" />
     <EntitySet Name="Examen_Fisico" EntityType="Self.Examen_Fisico" />
     <EntitySet Name="Examen_Fisico_Principal" EntityType="Self.Examen_Fisico_Principal" />
-    <EntitySet Name="Examenes" EntityType="Self.Examene" />
+    <EntitySet Name="Examenes" EntityType="Self.Examenes" />
     <EntitySet Name="Ficha_Antropometrica" EntityType="Self.Ficha_Antropometrica" />
-    <EntitySet Name="Habitacions" EntityType="Self.Habitacion" />
-    <EntitySet Name="Habitos" EntityType="Self.Habito" />
+    <EntitySet Name="Habitacion" EntityType="Self.Habitacion" />
+    <EntitySet Name="Habitos" EntityType="Self.Habitos" />
     <EntitySet Name="Historia_Familiar" EntityType="Self.Historia_Familiar" />
     <EntitySet Name="Historial_Medico" EntityType="Self.Historial_Medico" />
-    <EntitySet Name="Hospitals" EntityType="Self.Hospital" />
+    <EntitySet Name="Hospital" EntityType="Self.Hospital" />
     <EntitySet Name="Informacion_Familiar" EntityType="Self.Informacion_Familiar" />
-    <EntitySet Name="Medicamentos" EntityType="Self.Medicamento" />
-    <EntitySet Name="Medicos" EntityType="Self.Medico" />
-    <EntitySet Name="Municipios" EntityType="Self.Municipio" />
+    <EntitySet Name="Medicamentos" EntityType="Self.Medicamentos" />
+    <EntitySet Name="Medico" EntityType="Self.Medico" />
+    <EntitySet Name="Municipio" EntityType="Self.Municipio" />
+    <EntitySet Name="Roles" EntityType="Self.Roles" />
     <EntitySet Name="Situacion_Laboral" EntityType="Self.Situacion_Laboral" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
-    <EntitySet Name="Usuarios" EntityType="Self.Usuario" />
-    <EntitySet Name="Roles" EntityType="MeSysModel.Role" />
-    <AssociationSet Name="FK_Usuarios_Roles" Association="MeSysModel.FK_Usuarios_Roles">
-      <End Role="Role" EntitySet="Roles" />
-      <End Role="Usuario" EntitySet="Usuarios" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
+    <AssociationSet Name="FK_Datos_Atleta_Hospital" Association="Self.FK_Datos_Atleta_Hospital">
+      <End Role="Hospital" EntitySet="Hospital" />
+      <End Role="Datos_Atleta" EntitySet="Datos_Atleta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuarios_Roles" Association="Self.FK_Usuarios_Roles">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="Usuarios" EntitySet="Usuarios" />
     </AssociationSet>
   </EntityContainer>
-  <EntityType Name="Role">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Rol" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="Activo" Type="Boolean" />
-    <NavigationProperty Name="Usuarios" Relationship="MeSysModel.FK_Usuarios_Roles" FromRole="Role" ToRole="Usuario" />
-  </EntityType>
-  <Association Name="FK_Usuarios_Roles">
-    <End Type="MeSysModel.Role" Role="Role" Multiplicity="0..1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Type="MeSysModel.Usuario" Role="Usuario" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Role">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="Usuario">
-        <PropertyRef Name="ID_Rol" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
 </Schema>

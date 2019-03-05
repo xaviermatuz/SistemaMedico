@@ -26,39 +26,39 @@ namespace SistemaMedico.Models
         }
     
         public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
-        public virtual DbSet<Alergia> Alergias { get; set; }
-        public virtual DbSet<Anexo> Anexos { get; set; }
+        public virtual DbSet<Alergias> Alergias { get; set; }
+        public virtual DbSet<Anexos> Anexos { get; set; }
         public virtual DbSet<Aparato_Locomotor> Aparato_Locomotor { get; set; }
         public virtual DbSet<Apoyo_Economico> Apoyo_Economico { get; set; }
         public virtual DbSet<Atleta_Categoria> Atleta_Categoria { get; set; }
         public virtual DbSet<Carrera_Deportiva> Carrera_Deportiva { get; set; }
         public virtual DbSet<Carrera_Deportiva_Evento> Carrera_Deportiva_Evento { get; set; }
         public virtual DbSet<Carrera_Deportiva_Familiar> Carrera_Deportiva_Familiar { get; set; }
-        public virtual DbSet<Categoria> Categorias { get; set; }
+        public virtual DbSet<Categorias> Categorias { get; set; }
         public virtual DbSet<Condiciones_Clinicas_Actuales> Condiciones_Clinicas_Actuales { get; set; }
         public virtual DbSet<Condiciones_Clinicas_Actuales_Principal> Condiciones_Clinicas_Actuales_Principal { get; set; }
         public virtual DbSet<Consiste_Apoyo> Consiste_Apoyo { get; set; }
         public virtual DbSet<Datos_Atleta> Datos_Atleta { get; set; }
-        public virtual DbSet<Departamento> Departamentos { get; set; }
-        public virtual DbSet<Deporte> Deportes { get; set; }
-        public virtual DbSet<Educacion> Educacions { get; set; }
-        public virtual DbSet<Evento> Eventos { get; set; }
+        public virtual DbSet<Departamentos> Departamentos { get; set; }
+        public virtual DbSet<Deporte> Deporte { get; set; }
+        public virtual DbSet<Educacion> Educacion { get; set; }
+        public virtual DbSet<Eventos> Eventos { get; set; }
         public virtual DbSet<Examen_Fisico> Examen_Fisico { get; set; }
         public virtual DbSet<Examen_Fisico_Principal> Examen_Fisico_Principal { get; set; }
-        public virtual DbSet<Examene> Examenes { get; set; }
+        public virtual DbSet<Examenes> Examenes { get; set; }
         public virtual DbSet<Ficha_Antropometrica> Ficha_Antropometrica { get; set; }
-        public virtual DbSet<Habitacion> Habitacions { get; set; }
-        public virtual DbSet<Habito> Habitos { get; set; }
+        public virtual DbSet<Habitacion> Habitacion { get; set; }
+        public virtual DbSet<Habitos> Habitos { get; set; }
         public virtual DbSet<Historia_Familiar> Historia_Familiar { get; set; }
         public virtual DbSet<Historial_Medico> Historial_Medico { get; set; }
-        public virtual DbSet<Hospital> Hospitals { get; set; }
+        public virtual DbSet<Hospital> Hospital { get; set; }
         public virtual DbSet<Informacion_Familiar> Informacion_Familiar { get; set; }
-        public virtual DbSet<Medicamento> Medicamentos { get; set; }
-        public virtual DbSet<Medico> Medicos { get; set; }
-        public virtual DbSet<Municipio> Municipios { get; set; }
+        public virtual DbSet<Medicamentos> Medicamentos { get; set; }
+        public virtual DbSet<Medico> Medico { get; set; }
+        public virtual DbSet<Municipio> Municipio { get; set; }
+        public virtual DbSet<Roles> Roles { get; set; }
         public virtual DbSet<Situacion_Laboral> Situacion_Laboral { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
-        public virtual DbSet<Usuario> Usuarios { get; set; }
-        public virtual DbSet<Role> Roles { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<Usuarios> Usuarios { get; set; }
     }
 }

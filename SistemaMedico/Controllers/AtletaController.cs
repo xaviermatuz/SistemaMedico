@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace SistemaMedico.Controllers
@@ -13,6 +14,9 @@ namespace SistemaMedico.Controllers
         // GET: Atleta
         public ActionResult Index()
         {
+
+            IEnumerable<Datos_Atleta> Atleta = ME.Datos_Atleta.Where(s => s.Activo.ToString() == "true");
+            ViewBag.Atleta = Atleta;
             return View();
         }
         

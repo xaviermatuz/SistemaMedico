@@ -1,5 +1,4 @@
-﻿@model SistemaMedico.Models.Usuario
-
+﻿@using SistemaMedico.Helper
 <!DOCTYPE html>
 <html>
 
@@ -100,28 +99,32 @@
             <!-- Menu -->
             <div class="menu">
                 <ul class="list">
-                <li class="header">Menu</li>
-                    <li class="active">
-                        <a href="@Url.Action("Index", "Home")">
-                            <i class="material-icons">home</i>
-                            <span>Inicio</span>
-                        </a>
-                    </li>
-                    @* supongamos que se sube sin errores y vos los descarga y funciona *@
-                       
-                    @*<li class="active">
-                        <a href="@Url.Action("Vista", "Home")">
-                            <i class="material-icons">home</i>
-                            <span>Inicio</span>
-                        </a>
-                    </li>*@
-                    <li class="">
+                    <li class="header">Menu</li>
+                    @if (Session["ID_Rol"].ToString() == "1")
+                    {
+                        <li class="@Html.ActivePage("HomeAdmin", "Index")">
+                            <a href="@Url.Action("Index", "HomeAdmin")">
+                                <i class="material-icons">home</i>
+                                <span>Inicio</span>
+                            </a>
+                        </li>
+                    }
+                    else if (Session["ID_Rol"].ToString() == "2")
+                    {
+                        <li class="@Html.ActivePage("HomeAdmin", "Vista")">
+                            <a href="@Url.Action("Vista", "HomeAdmin")">
+                                <i class="material-icons">home</i>
+                                <span>Inicio</span>
+                            </a>
+                        </li>
+                    }
+                    <li class="@Html.ActivePage("Atleta", "Index")">
                         <a href="@Url.Action("Index", "Atleta")">
                             <i class="material-icons">account_box</i>
                             <span>Listado de Atletas</span>
                         </a>
                     </li>
-                    <li class="">
+                    <li class="@Html.ActivePage("Atleta", "Crear")">
                         <a href="@Url.Action("Crear", "Atleta")">
                             <i class="material-icons">create</i>
                             <span>Registro de Atletas</span>
@@ -133,8 +136,8 @@
                             <span>Roles</span>
                         </a>
                         <ul class="ml-menu">
-                            <li class=""><a href="">Lista de roles</a></li>
-                            <li class=""><a href="">Crear Rol</a></li>
+                            <li class="@Html.ActivePage("Atleta", "Index")"><a href="">Lista de roles</a></li>
+                            <li class="@Html.ActivePage("Atleta", "Index")"><a href="">Crear Rol</a></li>
                         </ul>
                     </li>
                 </ul>

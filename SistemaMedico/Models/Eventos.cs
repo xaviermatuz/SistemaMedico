@@ -12,19 +12,10 @@ namespace SistemaMedico.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Role
+    public partial class Eventos
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Role()
-        {
-            this.Usuarios = new HashSet<Usuario>();
-        }
-    
         public int ID { get; set; }
-        public string Rol { get; set; }
-        public Nullable<bool> Activo { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Usuario> Usuarios { get; set; }
+        public string Nombre { get; set; }
+        public string Lugar { get; set; }
     }
 }

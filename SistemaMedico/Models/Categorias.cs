@@ -12,10 +12,10 @@ namespace SistemaMedico.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Categoria
+    public partial class Categorias
     {
         public int ID { get; set; }
         public int ID_Deporte { get; set; }
-        public string Categoria1 { get; set; }
+        public string Categoria { get; set; }
     }
 }

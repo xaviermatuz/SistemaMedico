@@ -12,17 +12,17 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Alergias">
-      <EntityTypeMapping TypeName="MeSysModel.Alergia">
+      <EntityTypeMapping TypeName="MeSysModel.Alergias">
         <MappingFragment StoreEntitySet="Alergias">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="ID_Atleta" ColumnName="ID_Atleta" />
-          <ScalarProperty Name="Alergia1" ColumnName="Alergia" />
+          <ScalarProperty Name="Alergia" ColumnName="Alergia" />
           <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Anexos">
-      <EntityTypeMapping TypeName="MeSysModel.Anexo">
+      <EntityTypeMapping TypeName="MeSysModel.Anexos">
         <MappingFragment StoreEntitySet="Anexos">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="ID_Atleta" ColumnName="ID_Atleta" />
@@ -98,11 +98,11 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Categorias">
-      <EntityTypeMapping TypeName="MeSysModel.Categoria">
+      <EntityTypeMapping TypeName="MeSysModel.Categorias">
         <MappingFragment StoreEntitySet="Categorias">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="ID_Deporte" ColumnName="ID_Deporte" />
-          <ScalarProperty Name="Categoria1" ColumnName="Categoria" />
+          <ScalarProperty Name="Categoria" ColumnName="Categoria" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -163,18 +163,19 @@
           <ScalarProperty Name="Emergencia" ColumnName="Emergencia" />
           <ScalarProperty Name="Dirreccion_Emergencia" ColumnName="Dirreccion_Emergencia" />
           <ScalarProperty Name="Embarazo" ColumnName="Embarazo" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Departamentos">
-      <EntityTypeMapping TypeName="MeSysModel.Departamento">
+      <EntityTypeMapping TypeName="MeSysModel.Departamentos">
         <MappingFragment StoreEntitySet="Departamentos">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Deportes">
+    <EntitySetMapping Name="Deporte">
       <EntityTypeMapping TypeName="MeSysModel.Deporte">
         <MappingFragment StoreEntitySet="Deporte">
           <ScalarProperty Name="ID" ColumnName="ID" />
@@ -182,7 +183,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Educacions">
+    <EntitySetMapping Name="Educacion">
       <EntityTypeMapping TypeName="MeSysModel.Educacion">
         <MappingFragment StoreEntitySet="Educacion">
           <ScalarProperty Name="ID" ColumnName="ID" />
@@ -194,7 +195,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Eventos">
-      <EntityTypeMapping TypeName="MeSysModel.Evento">
+      <EntityTypeMapping TypeName="MeSysModel.Eventos">
         <MappingFragment StoreEntitySet="Eventos">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -222,7 +223,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Examenes">
-      <EntityTypeMapping TypeName="MeSysModel.Examene">
+      <EntityTypeMapping TypeName="MeSysModel.Examenes">
         <MappingFragment StoreEntitySet="Examenes">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="ID_Condiciones_Clinicas_Actuales" ColumnName="ID_Condiciones_Clinicas_Actuales" />
@@ -252,7 +253,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Habitacions">
+    <EntitySetMapping Name="Habitacion">
       <EntityTypeMapping TypeName="MeSysModel.Habitacion">
         <MappingFragment StoreEntitySet="Habitacion">
           <ScalarProperty Name="ID" ColumnName="ID" />
@@ -264,7 +265,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Habitos">
-      <EntityTypeMapping TypeName="MeSysModel.Habito">
+      <EntityTypeMapping TypeName="MeSysModel.Habitos">
         <MappingFragment StoreEntitySet="Habitos">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="ID_Atleta" ColumnName="ID_Atleta" />
@@ -295,7 +296,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Hospitals">
+    <EntitySetMapping Name="Hospital">
       <EntityTypeMapping TypeName="MeSysModel.Hospital">
         <MappingFragment StoreEntitySet="Hospital">
           <ScalarProperty Name="ID" ColumnName="ID" />
@@ -315,16 +316,16 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Medicamentos">
-      <EntityTypeMapping TypeName="MeSysModel.Medicamento">
+      <EntityTypeMapping TypeName="MeSysModel.Medicamentos">
         <MappingFragment StoreEntitySet="Medicamentos">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="ID_Atleta" ColumnName="ID_Atleta" />
-          <ScalarProperty Name="Medicamentos" ColumnName="Medicamentos" />
+          <ScalarProperty Name="Medicamentos1" ColumnName="Medicamentos" />
           <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Medicos">
+    <EntitySetMapping Name="Medico">
       <EntityTypeMapping TypeName="MeSysModel.Medico">
         <MappingFragment StoreEntitySet="Medico">
           <ScalarProperty Name="ID" ColumnName="ID" />
@@ -334,12 +335,21 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Municipios">
+    <EntitySetMapping Name="Municipio">
       <EntityTypeMapping TypeName="MeSysModel.Municipio">
         <MappingFragment StoreEntitySet="Municipio">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="ID_Departamento" ColumnName="ID_Departamento" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="MeSysModel.Roles">
+        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Rol" ColumnName="Rol" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -354,7 +364,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="sysdiagrams">
-      <EntityTypeMapping TypeName="MeSysModel.sysdiagram">
+      <EntityTypeMapping TypeName="MeSysModel.sysdiagrams">
         <MappingFragment StoreEntitySet="sysdiagrams">
           <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -365,23 +375,14 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Usuarios">
-      <EntityTypeMapping TypeName="MeSysModel.Usuario">
+      <EntityTypeMapping TypeName="MeSysModel.Usuarios">
         <MappingFragment StoreEntitySet="Usuarios">
-          <ScalarProperty Name="Activo" ColumnName="Activo" />
-          <ScalarProperty Name="ID_Rol" ColumnName="ID_Rol" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
           <ScalarProperty Name="Contraseña" ColumnName="Contraseña" />
           <ScalarProperty Name="Correo" ColumnName="Correo" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Roles">
-      <EntityTypeMapping TypeName="MeSysModel.Role">
-        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="ID_Rol" ColumnName="ID_Rol" />
           <ScalarProperty Name="Activo" ColumnName="Activo" />
-          <ScalarProperty Name="Rol" ColumnName="Rol" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

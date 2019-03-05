@@ -12,11 +12,11 @@ namespace SistemaMedico.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Alergia
+    public partial class Examenes
     {
         public int ID { get; set; }
-        public int ID_Atleta { get; set; }
-        public string Alergia1 { get; set; }
-        public string Descripcion { get; set; }
+        public int ID_Condiciones_Clinicas_Actuales { get; set; }
+        public int ID_Examen_Fisico { get; set; }
+        public int ID_Ficha_Antropometrica { get; set; }
     }
 }

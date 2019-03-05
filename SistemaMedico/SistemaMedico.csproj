@@ -112,6 +112,16 @@
     <Content Include="Content\materialize.css" />
     <Content Include="Content\notificacion.css" />
     <Content Include="Content\select2.min.css" />
+    <Content Include="Models\LoginDataModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>LoginDataModel.edmx</DependentUpon>
+      <LastGenOutput>LoginDataModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\LoginDataModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>LoginDataModel.edmx</DependentUpon>
+      <LastGenOutput>LoginDataModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Recursos\css\notificacion.css" />
     <Content Include="Recursos\js\notificacion.js" />
     <Content Include="Recursos\plugins\dropify\.gitignore" />
@@ -140,16 +150,6 @@
     <Content Include="Image\Logo.jpg" />
     <Content Include="Image\no_image.png" />
     <Content Include="Image\user.png" />
-    <Content Include="Models\LoginDataModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>LoginDataModel.Context.cs</LastGenOutput>
-      <DependentUpon>LoginDataModel.edmx</DependentUpon>
-    </Content>
-    <Content Include="Models\LoginDataModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>LoginDataModel.edmx</DependentUpon>
-      <LastGenOutput>LoginDataModel.cs</LastGenOutput>
-    </Content>
     <Content Include="Perfiles\AlbertoAlberto mendieta.JPG" />
     <Content Include="Perfiles\AlisonAlisson Ortega.JPG" />
     <Content Include="Perfiles\alysAlys Cruz.JPG" />
@@ -3886,13 +3886,6 @@
     <Content Include="Scripts\esm\popper.js.map" />
     <Content Include="Scripts\esm\popper-utils.min.js.map" />
     <Content Include="Scripts\esm\popper-utils.js.map" />
-    <EntityDeploy Include="Models\LoginDataModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>LoginDataModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\LoginDataModel.edmx.diagram">
-      <DependentUpon>LoginDataModel.edmx</DependentUpon>
-    </Content>
     <Content Include="fonts\FontAwesome.otf" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\fontawesome-webfont.woff" />
@@ -4267,6 +4260,13 @@
     <Content Include="Recursos\plugins\dropify\src\sass\demo\_variables.scss" />
     <Content Include="Recursos\plugins\dropify\src\sass\dropify.scss" />
     <Content Include="Recursos\plugins\dropify\src\sass\_dropify-font.scss" />
+    <EntityDeploy Include="Models\LoginDataModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>LoginDataModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\LoginDataModel.edmx.diagram">
+      <DependentUpon>LoginDataModel.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -4324,10 +4324,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Alergia.cs">
+    <Compile Include="Helper\HtmlHelperExtensions.cs" />
+    <Compile Include="Models\Alergias.cs">
       <DependentUpon>LoginDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Anexo.cs">
+    <Compile Include="Models\Anexos.cs">
       <DependentUpon>LoginDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Aparato_Locomotor.cs">
@@ -4348,7 +4349,7 @@
     <Compile Include="Models\Carrera_Deportiva_Familiar.cs">
       <DependentUpon>LoginDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Categoria.cs">
+    <Compile Include="Models\Categorias.cs">
       <DependentUpon>LoginDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Condiciones_Clinicas_Actuales.cs">
@@ -4366,7 +4367,7 @@
     <Compile Include="Models\Datos_Atleta.cs">
       <DependentUpon>LoginDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Departamento.cs">
+    <Compile Include="Models\Departamentos.cs">
       <DependentUpon>LoginDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Deporte.cs">
@@ -4375,10 +4376,10 @@
     <Compile Include="Models\Educacion.cs">
       <DependentUpon>LoginDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Evento.cs">
+    <Compile Include="Models\Eventos.cs">
       <DependentUpon>LoginDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Examene.cs">
+    <Compile Include="Models\Examenes.cs">
       <DependentUpon>LoginDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Examen_Fisico.cs">
@@ -4393,7 +4394,7 @@
     <Compile Include="Models\Habitacion.cs">
       <DependentUpon>LoginDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Habito.cs">
+    <Compile Include="Models\Habitos.cs">
       <DependentUpon>LoginDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Historial_Medico.cs">
@@ -4423,7 +4424,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>LoginDataModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\Medicamento.cs">
+    <Compile Include="Models\Medicamentos.cs">
       <DependentUpon>LoginDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Medico.cs">
@@ -4432,16 +4433,16 @@
     <Compile Include="Models\Municipio.cs">
       <DependentUpon>LoginDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Role.cs">
+    <Compile Include="Models\Roles.cs">
       <DependentUpon>LoginDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Situacion_Laboral.cs">
       <DependentUpon>LoginDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\sysdiagram.cs">
+    <Compile Include="Models\sysdiagrams.cs">
       <DependentUpon>LoginDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Usuario.cs">
+    <Compile Include="Models\Usuarios.cs">
       <DependentUpon>LoginDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ViewModel\LoginViewModel.cs" />

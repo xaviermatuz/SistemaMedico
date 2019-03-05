@@ -20,13 +20,13 @@ namespace SistemaMedico.Controllers
         // [Authorize]
         public ActionResult Index()
         {
-            IEnumerable<Usuario> User = db.Usuarios.Where(s =>s.Activo.ToString() == "true");
+            IEnumerable<Usuarios> User = db.Usuarios.Where(s =>s.Activo.ToString() == "true");
             ViewBag.Usuario = User;
             return View();
         }
         public ActionResult Editar(int id)
         {
-            Usuario model = new Usuario();
+            Usuarios model = new Usuarios();
             var otabla = db.Usuarios.Find(id);
             model.ID = otabla.ID;
             model.Nombre = otabla.Nombre;
@@ -50,7 +50,7 @@ namespace SistemaMedico.Controllers
             return View(model);
         }
         [HttpPost]
-        public ActionResult Editar(Usuario model)
+        public ActionResult Editar(Usuarios model)
         {
             var ousuario = db.Usuarios.Find(model.ID);
             ousuario.Nombre = model.Nombre;
@@ -69,7 +69,7 @@ namespace SistemaMedico.Controllers
         [HttpPost]
         public ActionResult Nuevo(UsuarioViewModel model)
         {
-            Usuario ousuario = new Usuario();
+            Usuarios ousuario = new Usuarios();
             ousuario.Nombre = model.Nombre;
             ousuario.Correo = model.Correo;
             ousuario.Contraseña = SHA256(model.Contraseña.ToString());
@@ -82,6 +82,7 @@ namespace SistemaMedico.Controllers
             //x2
             //x3
             //x4
+            //x5
         }
         public static List<SelectListItem> GetDropDown()
         {

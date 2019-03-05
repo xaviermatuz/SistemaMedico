@@ -11,21 +11,12 @@ namespace SistemaMedico.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
-    public partial class Usuario
+    
+    public partial class Medicamentos
     {
         public int ID { get; set; }
-        public string Nombre { get; set; }
-        [DataType(DataType.Password)]
-        [Required(ErrorMessage = "Este campo es requerido")]
-        public string Contraseña { get; set; }
-        [Required(ErrorMessage = "Este campo es requerido")]
-        public string Correo { get; set; }
-        public Nullable<int> ID_Rol { get; set; }
-        public Nullable<bool> Activo { get; set; }
-    
-        public virtual Role Role { get; set; }
-        public string LoginErrorMessage { get; set; }
+        public int ID_Atleta { get; set; }
+        public string Medicamentos1 { get; set; }
+        public string Descripcion { get; set; }
     }
 }

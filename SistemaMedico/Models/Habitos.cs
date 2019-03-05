@@ -12,7 +12,7 @@ namespace SistemaMedico.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Habito
+    public partial class Habitos
     {
         public int ID { get; set; }
         public int ID_Atleta { get; set; }

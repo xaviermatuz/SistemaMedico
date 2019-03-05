@@ -15,7 +15,7 @@ namespace SistemaMedico.Models
     public partial class Datos_Atleta
     {
         public int ID { get; set; }
-        public byte[] Foto { get; set; }
+        public string Foto { get; set; }
         public string Primer_Nombre { get; set; }
         public string Segundo_Nombre { get; set; }
         public string Primer_Apellido { get; set; }
@@ -39,5 +39,8 @@ namespace SistemaMedico.Models
         public string Emergencia { get; set; }
         public string Dirreccion_Emergencia { get; set; }
         public string Embarazo { get; set; }
+        public Nullable<bool> Activo { get; set; }
+    
+        public virtual Hospital Hospital1 { get; set; }
     }
 }

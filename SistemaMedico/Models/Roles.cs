@@ -12,12 +12,19 @@ namespace SistemaMedico.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Anexo
+    public partial class Roles
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Roles()
+        {
+            this.Usuarios = new HashSet<Usuarios>();
+        }
+    
         public int ID { get; set; }
-        public int ID_Atleta { get; set; }
-        public string Otros_Hallazgos { get; set; }
-        public string Recomendaciones { get; set; }
-        public string Observaciones { get; set; }
+        public string Rol { get; set; }
+        public Nullable<bool> Activo { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Usuarios> Usuarios { get; set; }
     }
 }

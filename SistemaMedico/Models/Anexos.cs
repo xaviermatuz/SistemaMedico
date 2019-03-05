@@ -12,9 +12,12 @@ namespace SistemaMedico.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Departamento
+    public partial class Anexos
     {
         public int ID { get; set; }
-        public string Nombre { get; set; }
+        public int ID_Atleta { get; set; }
+        public string Otros_Hallazgos { get; set; }
+        public string Recomendaciones { get; set; }
+        public string Observaciones { get; set; }
     }
 }

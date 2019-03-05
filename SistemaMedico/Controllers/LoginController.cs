@@ -21,7 +21,7 @@ namespace SistemaMedico.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult Auth(Usuario usermodel)
+        public ActionResult Auth(Usuarios usermodel)
         {
             if (ModelState.IsValid)
             {
@@ -31,19 +31,19 @@ namespace SistemaMedico.Controllers
                     var obj = db.Usuarios.Where(a => a.Correo.Equals(usermodel.Correo) && a.Contraseña.Equals(Pwd)).FirstOrDefault();
                     if (usermodel.Correo == null && usermodel.Contraseña == null)
                     {
-                        usermodel.LoginErrorMessage = "Correo y Contraseña no pueden estar vacios";
+                        //usermodel.LoginErrorMessage = "Correo y Contraseña no pueden estar vacios";
                         return View("Index", usermodel);
                     }
                     else
                     {
                         if (usermodel.Correo == null)
                         {
-                            usermodel.LoginErrorMessage = "Campo Correo No puede estar vacio";
+                            //usermodel.LoginErrorMessage = "Campo Correo No puede estar vacio";
                             return View("Index", usermodel);
                         }
                         else if (usermodel.Contraseña == null)
                         {
-                            usermodel.LoginErrorMessage = "Campo Contraseña No puede estar vacio";
+                            //usermodel.LoginErrorMessage = "Campo Contraseña No puede estar vacio";
                             return View("Index", usermodel);
                         }
                         else
@@ -65,7 +65,7 @@ namespace SistemaMedico.Controllers
                                     Session["Nombre"] = obj.Nombre.ToString();
                                     Session["ID_Rol"] = obj.ID_Rol.ToString();
                                     Session["Correo"] = obj.Correo.ToString();
-                                    return View("~/Views/Home/Vista.cshtml");
+                                    return View("~/Views/HomeAdmin/Vista.cshtml");
                                 }
                             }
                         }

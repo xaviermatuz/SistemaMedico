@@ -12,11 +12,12 @@ namespace SistemaMedico.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Medicamento
+    public partial class sysdiagrams
     {
-        public int ID { get; set; }
-        public int ID_Atleta { get; set; }
-        public string Medicamentos { get; set; }
-        public string Descripcion { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }
