@@ -1,4 +1,5 @@
-﻿@model SistemaMedico.Models.Examen_Fisico_Principal
+﻿@model SistemaMedico.Models.ViewModel.ExamenFisicoViewModel
+@*@using SistemaMedico.Helper*@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
     if (Session["ID"] == null)
@@ -11,7 +12,7 @@
 @section CrearExamenFisicoCss
 {
     <!-- Bootstrap Material Datetime Picker Css -->
-    @*<link href="../Recursos//plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet" />*@
+    <link href="../Recursos//plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet" />
 
 }
 
@@ -56,7 +57,8 @@
             <div class="body">
                 <form action="" method="post" autocomplete="off" enctype="multipart/form-data">
                     <div style="display:none;">
-                        <input type="text" value="" class="form-control" name="txt_atleta">
+                        @Html.TextBoxFor(model => model.ID_Atleta, new { @Value = ViewBag.id})
+                        <input type="text" value="@ViewBag.id" class="form-control" name="txt_atleta">
                     </div>
                     <div class="row clearfix">
                         <div class="col-md-12">
@@ -85,14 +87,19 @@
                                                                 <th>Estructura anatomica</th>
                                                                 <th>Normal</th>
                                                                 <th>Hallazgos Anormales</th>
-                                                               <!--Output Data for each row-->
+                                                                <!--Output Data for each row-->
 
                                                             <tr>
                                                                 <td align="center">1</td>
                                                                 <td>Cuello</td>
                                                                 <td align="center">
-                                                                    <input type="checkbox" id="1" name="Si_Cuello" class="chk-col-green">
-                                                                    <label for="1">Si</label>
+                                                                    @Html.CheckBoxFor(model => model.Normal, new { @class = "chk-col-green" })
+                                                                    <label for="Normal">Si</label>
+                                                                   @* @Html.CheckBox("Si", new { @value = "SI" })*@
+                                                                    @*@Html.CheckBoxFor(m => m.Normal, new { @id = "Si_CUE",@class= "chk-col-green" })
+                                                                    @Html.Label("Si_CUE", "Si")*@
+                                                                    @*<input type="checkbox" id="1" name="Si_Cuello" class="chk-col-green">
+                                                                    <label for="1">Si</label>*@
                                                                 </td>
                                                                 <td><input type="text" name="HA_Cuello" class="form-control"></td>
                                                             </tr>
@@ -635,7 +642,7 @@
                                                                 <td><input type="text" name="otros3toma2"></td>
                                                                 <td><input type="text" name="otros3toma3"></td>
                                                                 <td><input type="text" name="otros3promed"></td>
-                                                            </tr>                                                            
+                                                            </tr>
                                                         </table>
                                                         <!--FINAL TABLA ANTROPOMETRIA-->
                                                     </div>
@@ -690,8 +697,8 @@
                                     </div>
                                 </div>
                             </div>
-                            </div>
                         </div>
+                    </div>
                 </form>
             </div>
         </div>
@@ -703,7 +710,7 @@
 {
 
     <script src="~/Recursos/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
-    <!-- Input Mask Plugin Js -->    
+    <!-- Input Mask Plugin Js -->
     <script src="~/Recursos/plugins/jquery-inputmask/jquery.inputmask.bundle.js"></script>
     <script>
         $(document).ready(function () {

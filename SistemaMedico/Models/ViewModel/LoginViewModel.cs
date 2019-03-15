@@ -10,9 +10,9 @@ namespace SistemaMedico.Models.ViewModel
     {
         public int ID { get; set; }
         [DataType(DataType.Password)]
-        [Required(ErrorMessage = "Este campo es requerido")]
+        [Required]
         public string Contraseña { get; set; }
-        [Required(ErrorMessage = "Este campo es requerido")]
+        [Required]
         public string Correo { get; set; }
         public Nullable<int> ID_Rol { get; set; }
         public Nullable<bool> Activo { get; set; }

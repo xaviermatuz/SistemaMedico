@@ -124,6 +124,12 @@
                             <span>Listado de Atletas</span>
                         </a>
                     </li>
+                    <li style="display:none;" class="@Html.ActivePage("ExamenFisico", "Crear")">
+                        <a href="@Url.Action("Crear", "ExamenFisico")">
+                            <i class="material-icons">account_box</i>
+                            <span>Listado de Atletas</span>
+                        </a>
+                    </li>
                     <li class="@Html.ActivePage("Atleta", "Crear")">
                         <a href="@Url.Action("Crear", "Atleta")">
                             <i class="material-icons">create</i>
@@ -133,11 +139,11 @@
                     <li class="">
                         <a href="#" class="menu-toggle">
                             <i class="material-icons">account_circle</i>
-                            <span>Roles</span>
+                            <span>Usuarios</span>
                         </a>
                         <ul class="ml-menu">
-                            <li class="@Html.ActivePage("Atleta", "Index")"><a href="">Lista de roles</a></li>
-                            <li class="@Html.ActivePage("Atleta", "Index")"><a href="">Crear Rol</a></li>
+                            <li class="@Html.ActivePage("Atleta", "Index")"><a href="">Lista de Usuarios</a></li>
+                            <li class="@Html.ActivePage("Atleta", "Index")"><a href="">Crear Usuario</a></li>
                         </ul>
                     </li>
                 </ul>

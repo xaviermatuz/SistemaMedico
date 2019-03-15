@@ -1,4 +1,5 @@
 ﻿using SistemaMedico.Models;
+using SistemaMedico.Models.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,7 @@ namespace SistemaMedico.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult Auth(Usuarios usermodel)
+        public ActionResult Index(LoginViewModel usermodel)
         {
             if (ModelState.IsValid)
             {

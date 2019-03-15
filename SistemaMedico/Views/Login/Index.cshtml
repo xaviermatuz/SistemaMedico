@@ -1,4 +1,4 @@
-﻿@model SistemaMedico.Models.Usuarios
+﻿@model SistemaMedico.Models.ViewModel.LoginViewModel
 @{
     Layout = null;
 }
@@ -34,17 +34,17 @@
 </head>
 <body>
     <div class="limiter">
-        @using (Html.BeginForm("Auth", "Login", FormMethod.Post))
-        {
-            @Html.AntiForgeryToken()
-            @Html.ValidationSummary(true)
+       
             <div class="container-login100">
 
                 <div class="wrap-login100">
                     <div class="login100-pic js-tilt" data-tilt>
                         <img src="~/Image/Logo.jpg" alt="IMG" />
                     </div>
-                    <div class="login100-form validate-form">
+                    @using (Html.BeginForm("Index", "Login", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true)
                         <span class="login100-form-title">
                             Login
                         </span>
@@ -67,13 +67,12 @@
                         </div>
                         @*<label class="field-validation-error">@Html.DisplayFor(model => model.LoginErrorMessage)</label>*@
                         <div class="container-login100-form-btn">
-                            <input type="submit" name="name" value="Login" id="Submitbtn" class="login100-form-btn" />
+                            <input type="submit" name="name" value="Login" class="login100-form-btn" />
                         </div>
-                    </div>
+                    }
+                </div>
                 </div>
             </div>
-        }
-    </div>
 
     <!--===============================================================================================-->
     @*<script src="~/Scripts/jquery-3.2.1.min.js"></script>*@
@@ -96,24 +95,5 @@
     </script>
     <!--===============================================================================================-->
     <script src="~/Scripts/main.js"></script>
-    @* script con validaciones *@
-    <script>
-        document.getElementById('Submitbtn').addEventListener('click', validate);
-
-        function validate() {
-            var password = prompt("Introduzca su contraseña: ");
-            if (password == "") {
-                alert("Introduzca su contraseña!")
-                return false
-            }
-            if (password == "123") {
-                alert("Contraseña correcta");
-                return false;
-            }
-            else {
-                alert("Contraseña incorrecta, intente de nuevo");
-            }
-        }
-    </script>
 </body>
 </html> 
