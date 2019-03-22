@@ -18,6 +18,7 @@ namespace SistemaMedico.Models
         public int ID_Atleta { get; set; }
         public string Preguntas { get; set; }
         public string Respuestas { get; set; }
-        public string Detalles { get; set; }
+    
+        public virtual Datos_Atleta Datos_Atleta { get; set; }
     }
 }

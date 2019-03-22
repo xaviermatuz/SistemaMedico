@@ -4449,6 +4449,7 @@
     <Compile Include="Models\ViewModel\LoginViewModel.cs" />
     <Compile Include="Models\ViewModel\UsuarioViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\Shared\HtmlUtility.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config">

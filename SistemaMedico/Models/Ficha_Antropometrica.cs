@@ -18,7 +18,7 @@ namespace SistemaMedico.Models
         public int ID_Atleta { get; set; }
         public string Nombre_Y_Apellidos { get; set; }
         public int Evaluacion { get; set; }
-        public string Fecha_De_Evaluacion { get; set; }
+        public System.DateTime Fecha_De_Evaluacion { get; set; }
         public string Sexo { get; set; }
         public System.DateTime Fecha_De_Nacimiento { get; set; }
         public string Menstruacion { get; set; }
@@ -29,5 +29,7 @@ namespace SistemaMedico.Models
         public decimal Toma2 { get; set; }
         public decimal Toma3 { get; set; }
         public decimal Promedio_Mediana { get; set; }
+    
+        public virtual Datos_Atleta Datos_Atleta { get; set; }
     }
 }
