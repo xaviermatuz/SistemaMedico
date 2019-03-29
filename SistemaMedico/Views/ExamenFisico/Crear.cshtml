@@ -370,14 +370,14 @@
                                                         <div class="col-sm-6">
                                                             <div class="form-group">
                                                                 <div class="form-line">
-                                                                    <input disable="true" class="form-control" type="text" name="nombre" value="" />
+                                                                    <input disable="true" class="form-control" type="text" name="nombre" value="@ViewBag.nombre" />
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-6">
                                                             <div class="form-group form-float">
                                                                 <div class="form-line">
-                                                                    <input class="form-control" type="text" disable="true" name="genero" value="" />
+                                                                    <input class="form-control" type="text" disable="true" name="genero" value="@ViewBag.genero" />
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -409,7 +409,7 @@
                                                         <div class="col-sm-6">
                                                             <div class="form-group form-float">
                                                                 <div class="form-line">
-                                                                    <input type="text"  class="form-control" name="Anotador" />
+                                                                    <input type="text" class="form-control" name="Anotador" />
                                                                     <label class="form-label">Anotador </label>
                                                                 </div>
                                                             </div>
@@ -418,22 +418,38 @@
                                                             <div class="demo-masked-input">
                                                                 <div class="input-group">
                                                                     <div class="form-line">
-                                                                        <input type="text" name="fechaNac" class="form-control date" placeholder="Ex: 30/07/2016">
+                                                                        <input type="text" name="fechaNac" class="form-control date" placeholder="Fecha De Nacimiento Ejemplo: 30/07/2016">
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
 
 
-                                                        <div class="col-sm-6">
-                                                            <div class="form-group form-float">
-                                                                <div class="form-line">
-                                                                    <input type="text" class="form-control" name="menstruacion" />
-                                                                    <label class="form-label">Mentruacion </label>
+                                                        @if (ViewBag.genero == "Masculino ")
+                                                        {
+                                                            <div class="col-sm-6">
+                                                                <div class="form-group form-float">
+                                                                    <div class="form-line">
+                                                                        <input type="text" disabled class="form-control" value="No" name="menstruacion" />
+                                                                        <label class="form-label">Mentruacion </label>
+                                                                    </div>
                                                                 </div>
-                                                            </div>
 
-                                                        </div>
+                                                            </div>
+                                                        }
+                                                        else
+                                                        {
+                                                            <div class="col-sm-6">
+                                                                <div class="form-group form-float">
+                                                                    <div class="form-line">
+                                                                        <input type="text" class="form-control" name="menstruacion" />
+                                                                        <label class="form-label">Mentruacion </label>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        }
+
                                                     </div>
 
 

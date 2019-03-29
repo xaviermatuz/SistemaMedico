@@ -138,8 +138,6 @@
     <Content Include="Recursos\plugins\dropify\src\images\test-image-1.jpg" />
     <Content Include="Recursos\plugins\dropify\src\images\test-image-2.jpg" />
     <Content Include="Recursos\plugins\dropify\src\js\dropify.js" />
-    <Content Include="Scripts\Atleta\CatDeport.js" />
-    <Content Include="Scripts\Atleta\Create.js" />
     <Content Include="Scripts\select2.min.js" />
     <Content Include="Content\style.css" />
     <Content Include="Content\style.min.css" />
@@ -4317,7 +4315,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Clases\FilesHelper.cs" />
     <Compile Include="Controllers\AtletaController.cs" />
     <Compile Include="Controllers\DAL.cs" />
     <Compile Include="Controllers\ExamenFisicoController.cs" />
@@ -4340,7 +4337,6 @@
     <Compile Include="Models\Apoyo_Economico.cs">
       <DependentUpon>LoginDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\AtletaView.cs" />
     <Compile Include="Models\Atleta_Categoria.cs">
       <DependentUpon>LoginDataModel.tt</DependentUpon>
     </Compile>
@@ -4472,7 +4468,6 @@
     <Content Include="Views\HistorialMedico\Actualizar.cshtml" />
     <Content Include="Views\HomeAdmin\Editar.cshtml" />
     <Content Include="Views\HomeAdmin\Nuevo.cshtml" />
-    <Content Include="Views\Atleta\_Category.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -4482,7 +4477,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\Images\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
