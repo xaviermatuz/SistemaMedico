@@ -1,8 +1,0 @@
-﻿@using SistemaMedico.Models
-@model Atleta_Categoria
-
-<li class="list-group-item d-flex justify-content-between align-items-center show_hide_hover">
-    <input hidden id="ID_Categoria" value="@Model.ID_Categoria" name="categorias[].ID_Categoria" />
-    @Model.Categorias.Categoria <span class="" style="color:darkred; cursor:pointer;" onclick="removeCatg(this)"> (Eliminar) </span>
-</li>
-
