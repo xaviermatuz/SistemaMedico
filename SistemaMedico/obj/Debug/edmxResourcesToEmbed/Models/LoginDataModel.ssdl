@@ -37,7 +37,6 @@
     <Property Name="ID_Atleta" Type="int" Nullable="false" />
     <Property Name="Preguntas" Type="varchar" MaxLength="500" Nullable="false" />
     <Property Name="Respuestas" Type="varchar" MaxLength="500" Nullable="false" />
-    <Property Name="Detalles" Type="varchar" MaxLength="500" Nullable="false" />
   </EntityType>
   <EntityType Name="Apoyo_Economico">
     <Key>
@@ -85,8 +84,8 @@
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ID_Atleta" Type="int" Nullable="false" />
     <Property Name="Evento" Type="varchar" MaxLength="500" Nullable="false" />
-    <Property Name="Fecha" Type="date" Nullable="false" />
-    <Property Name="Lugar" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="FechayLugar" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="Resultado" Type="varchar" MaxLength="500" Nullable="false" />
   </EntityType>
   <EntityType Name="Categorias">
     <Key>
@@ -219,7 +218,7 @@
     <Property Name="ID_Atleta" Type="int" Nullable="false" />
     <Property Name="Nombre_Y_Apellidos" Type="varchar" MaxLength="500" Nullable="false" />
     <Property Name="Evaluacion" Type="int" Nullable="false" />
-    <Property Name="Fecha_De_Evaluacion" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="Fecha_De_Evaluacion" Type="date" Nullable="false" />
     <Property Name="Sexo" Type="char" MaxLength="10" Nullable="false" />
     <Property Name="Fecha_De_Nacimiento" Type="date" Nullable="false" />
     <Property Name="Menstruacion" Type="char" MaxLength="5" Nullable="false" />
@@ -351,6 +350,186 @@
     <Property Name="ID_Rol" Type="int" />
     <Property Name="Activo" Type="bit" />
   </EntityType>
+  <Association Name="FK_Alergias_Datos_Atleta">
+    <End Role="Datos_Atleta" Type="Self.Datos_Atleta" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Alergias" Type="Self.Alergias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Datos_Atleta">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Alergias">
+        <PropertyRef Name="ID_Atleta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Anexos_Datos_Atleta">
+    <End Role="Datos_Atleta" Type="Self.Datos_Atleta" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Anexos" Type="Self.Anexos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Datos_Atleta">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Anexos">
+        <PropertyRef Name="ID_Atleta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Aparato_Locomotor_Datos_Atleta">
+    <End Role="Datos_Atleta" Type="Self.Datos_Atleta" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Aparato_Locomotor" Type="Self.Aparato_Locomotor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Datos_Atleta">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Aparato_Locomotor">
+        <PropertyRef Name="ID_Atleta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Apoyo_Economico_Datos_Atleta">
+    <End Role="Datos_Atleta" Type="Self.Datos_Atleta" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Apoyo_Economico" Type="Self.Apoyo_Economico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Datos_Atleta">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Apoyo_Economico">
+        <PropertyRef Name="ID_Atleta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Atleta_Categoria_Categorias">
+    <End Role="Categorias" Type="Self.Categorias" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Atleta_Categoria" Type="Self.Atleta_Categoria" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categorias">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Atleta_Categoria">
+        <PropertyRef Name="ID_Categoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Atleta_Categoria_Datos_Atleta">
+    <End Role="Datos_Atleta" Type="Self.Datos_Atleta" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Atleta_Categoria" Type="Self.Atleta_Categoria" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Datos_Atleta">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Atleta_Categoria">
+        <PropertyRef Name="ID_Atleta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Carrera_Deportiva_Datos_Atleta">
+    <End Role="Datos_Atleta" Type="Self.Datos_Atleta" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Carrera_Deportiva" Type="Self.Carrera_Deportiva" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Datos_Atleta">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Carrera_Deportiva">
+        <PropertyRef Name="ID_Atleta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Carrera_Deportiva_Evento_Datos_Atleta">
+    <End Role="Datos_Atleta" Type="Self.Datos_Atleta" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Carrera_Deportiva_Evento" Type="Self.Carrera_Deportiva_Evento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Datos_Atleta">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Carrera_Deportiva_Evento">
+        <PropertyRef Name="ID_Atleta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Carrera_Deportiva_Familiar_Datos_Atleta">
+    <End Role="Datos_Atleta" Type="Self.Datos_Atleta" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Carrera_Deportiva_Familiar" Type="Self.Carrera_Deportiva_Familiar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Datos_Atleta">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Carrera_Deportiva_Familiar">
+        <PropertyRef Name="ID_Atleta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Categorias_Deporte">
+    <End Role="Deporte" Type="Self.Deporte" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Categorias" Type="Self.Categorias" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Deporte">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Categorias">
+        <PropertyRef Name="ID_Deporte" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Condiciones_Clinicas_Actuales_Principal_Condiciones_Clinicas_Actuales">
+    <End Role="Condiciones_Clinicas_Actuales" Type="Self.Condiciones_Clinicas_Actuales" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Condiciones_Clinicas_Actuales_Principal" Type="Self.Condiciones_Clinicas_Actuales_Principal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Condiciones_Clinicas_Actuales">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Condiciones_Clinicas_Actuales_Principal">
+        <PropertyRef Name="ID_Condiciones_Clinicas_Actuales" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Condiciones_Clinicas_Actuales_Principal_Datos_Atleta">
+    <End Role="Datos_Atleta" Type="Self.Datos_Atleta" Multiplicity="1" />
+    <End Role="Condiciones_Clinicas_Actuales_Principal" Type="Self.Condiciones_Clinicas_Actuales_Principal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Datos_Atleta">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Condiciones_Clinicas_Actuales_Principal">
+        <PropertyRef Name="ID_Atleta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Consiste_Apoyo_Datos_Atleta">
+    <End Role="Datos_Atleta" Type="Self.Datos_Atleta" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Consiste_Apoyo" Type="Self.Consiste_Apoyo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Datos_Atleta">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Consiste_Apoyo">
+        <PropertyRef Name="ID_Atleta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Datos_Atleta_Hospital">
     <End Role="Hospital" Type="Self.Hospital" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -362,6 +541,184 @@
       </Principal>
       <Dependent Role="Datos_Atleta">
         <PropertyRef Name="Hospital" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Datos_Atleta_Municipio">
+    <End Role="Municipio" Type="Self.Municipio" Multiplicity="1" />
+    <End Role="Datos_Atleta" Type="Self.Datos_Atleta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Municipio">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Datos_Atleta">
+        <PropertyRef Name="Municipio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Educacion_Datos_Atleta">
+    <End Role="Datos_Atleta" Type="Self.Datos_Atleta" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Educacion" Type="Self.Educacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Datos_Atleta">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Educacion">
+        <PropertyRef Name="ID_Atleta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Examen_Fisico_Principal_Datos_Atleta">
+    <End Role="Datos_Atleta" Type="Self.Datos_Atleta" Multiplicity="1" />
+    <End Role="Examen_Fisico_Principal" Type="Self.Examen_Fisico_Principal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Datos_Atleta">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Examen_Fisico_Principal">
+        <PropertyRef Name="ID_Atleta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Examen_Fisico_Principal_Examen_Fisico">
+    <End Role="Examen_Fisico" Type="Self.Examen_Fisico" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Examen_Fisico_Principal" Type="Self.Examen_Fisico_Principal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Examen_Fisico">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Examen_Fisico_Principal">
+        <PropertyRef Name="ID_Examen_Fisico" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ficha_Antropometrica_Datos_Atleta">
+    <End Role="Datos_Atleta" Type="Self.Datos_Atleta" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Ficha_Antropometrica" Type="Self.Ficha_Antropometrica" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Datos_Atleta">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Ficha_Antropometrica">
+        <PropertyRef Name="ID_Atleta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Habitacion_Datos_Atleta">
+    <End Role="Datos_Atleta" Type="Self.Datos_Atleta" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Habitacion" Type="Self.Habitacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Datos_Atleta">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Habitacion">
+        <PropertyRef Name="ID_Atleta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Habitos_Datos_Atleta">
+    <End Role="Datos_Atleta" Type="Self.Datos_Atleta" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Habitos" Type="Self.Habitos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Datos_Atleta">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Habitos">
+        <PropertyRef Name="ID_Atleta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Historia_Familiar_Datos_Atleta">
+    <End Role="Datos_Atleta" Type="Self.Datos_Atleta" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Historia_Familiar" Type="Self.Historia_Familiar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Datos_Atleta">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Historia_Familiar">
+        <PropertyRef Name="ID_Atleta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Historial_Medico_Datos_Atleta">
+    <End Role="Datos_Atleta" Type="Self.Datos_Atleta" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Historial_Medico" Type="Self.Historial_Medico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Datos_Atleta">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Historial_Medico">
+        <PropertyRef Name="ID_Atleta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Informacion_Familiar_Datos_Atleta">
+    <End Role="Datos_Atleta" Type="Self.Datos_Atleta" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Informacion_Familiar" Type="Self.Informacion_Familiar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Datos_Atleta">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Informacion_Familiar">
+        <PropertyRef Name="ID_Atleta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Medicamentos_Datos_Atleta">
+    <End Role="Datos_Atleta" Type="Self.Datos_Atleta" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Medicamentos" Type="Self.Medicamentos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Datos_Atleta">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Medicamentos">
+        <PropertyRef Name="ID_Atleta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Municipio_Departamentos">
+    <End Role="Departamentos" Type="Self.Departamentos" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Municipio" Type="Self.Municipio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Departamentos">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Municipio">
+        <PropertyRef Name="ID_Departamento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Situacion_Laboral_Datos_Atleta">
+    <End Role="Datos_Atleta" Type="Self.Datos_Atleta" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Situacion_Laboral" Type="Self.Situacion_Laboral" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Datos_Atleta">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Situacion_Laboral">
+        <PropertyRef Name="ID_Atleta" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -415,9 +772,113 @@
     <EntitySet Name="Situacion_Laboral" EntityType="Self.Situacion_Laboral" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Alergias_Datos_Atleta" Association="Self.FK_Alergias_Datos_Atleta">
+      <End Role="Datos_Atleta" EntitySet="Datos_Atleta" />
+      <End Role="Alergias" EntitySet="Alergias" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Anexos_Datos_Atleta" Association="Self.FK_Anexos_Datos_Atleta">
+      <End Role="Datos_Atleta" EntitySet="Datos_Atleta" />
+      <End Role="Anexos" EntitySet="Anexos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Aparato_Locomotor_Datos_Atleta" Association="Self.FK_Aparato_Locomotor_Datos_Atleta">
+      <End Role="Datos_Atleta" EntitySet="Datos_Atleta" />
+      <End Role="Aparato_Locomotor" EntitySet="Aparato_Locomotor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Apoyo_Economico_Datos_Atleta" Association="Self.FK_Apoyo_Economico_Datos_Atleta">
+      <End Role="Datos_Atleta" EntitySet="Datos_Atleta" />
+      <End Role="Apoyo_Economico" EntitySet="Apoyo_Economico" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Atleta_Categoria_Categorias" Association="Self.FK_Atleta_Categoria_Categorias">
+      <End Role="Categorias" EntitySet="Categorias" />
+      <End Role="Atleta_Categoria" EntitySet="Atleta_Categoria" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Atleta_Categoria_Datos_Atleta" Association="Self.FK_Atleta_Categoria_Datos_Atleta">
+      <End Role="Datos_Atleta" EntitySet="Datos_Atleta" />
+      <End Role="Atleta_Categoria" EntitySet="Atleta_Categoria" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Carrera_Deportiva_Datos_Atleta" Association="Self.FK_Carrera_Deportiva_Datos_Atleta">
+      <End Role="Datos_Atleta" EntitySet="Datos_Atleta" />
+      <End Role="Carrera_Deportiva" EntitySet="Carrera_Deportiva" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Carrera_Deportiva_Evento_Datos_Atleta" Association="Self.FK_Carrera_Deportiva_Evento_Datos_Atleta">
+      <End Role="Datos_Atleta" EntitySet="Datos_Atleta" />
+      <End Role="Carrera_Deportiva_Evento" EntitySet="Carrera_Deportiva_Evento" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Carrera_Deportiva_Familiar_Datos_Atleta" Association="Self.FK_Carrera_Deportiva_Familiar_Datos_Atleta">
+      <End Role="Datos_Atleta" EntitySet="Datos_Atleta" />
+      <End Role="Carrera_Deportiva_Familiar" EntitySet="Carrera_Deportiva_Familiar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Categorias_Deporte" Association="Self.FK_Categorias_Deporte">
+      <End Role="Deporte" EntitySet="Deporte" />
+      <End Role="Categorias" EntitySet="Categorias" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Condiciones_Clinicas_Actuales_Principal_Condiciones_Clinicas_Actuales" Association="Self.FK_Condiciones_Clinicas_Actuales_Principal_Condiciones_Clinicas_Actuales">
+      <End Role="Condiciones_Clinicas_Actuales" EntitySet="Condiciones_Clinicas_Actuales" />
+      <End Role="Condiciones_Clinicas_Actuales_Principal" EntitySet="Condiciones_Clinicas_Actuales_Principal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Condiciones_Clinicas_Actuales_Principal_Datos_Atleta" Association="Self.FK_Condiciones_Clinicas_Actuales_Principal_Datos_Atleta">
+      <End Role="Datos_Atleta" EntitySet="Datos_Atleta" />
+      <End Role="Condiciones_Clinicas_Actuales_Principal" EntitySet="Condiciones_Clinicas_Actuales_Principal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Consiste_Apoyo_Datos_Atleta" Association="Self.FK_Consiste_Apoyo_Datos_Atleta">
+      <End Role="Datos_Atleta" EntitySet="Datos_Atleta" />
+      <End Role="Consiste_Apoyo" EntitySet="Consiste_Apoyo" />
+    </AssociationSet>
     <AssociationSet Name="FK_Datos_Atleta_Hospital" Association="Self.FK_Datos_Atleta_Hospital">
       <End Role="Hospital" EntitySet="Hospital" />
       <End Role="Datos_Atleta" EntitySet="Datos_Atleta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Datos_Atleta_Municipio" Association="Self.FK_Datos_Atleta_Municipio">
+      <End Role="Municipio" EntitySet="Municipio" />
+      <End Role="Datos_Atleta" EntitySet="Datos_Atleta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Educacion_Datos_Atleta" Association="Self.FK_Educacion_Datos_Atleta">
+      <End Role="Datos_Atleta" EntitySet="Datos_Atleta" />
+      <End Role="Educacion" EntitySet="Educacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Examen_Fisico_Principal_Datos_Atleta" Association="Self.FK_Examen_Fisico_Principal_Datos_Atleta">
+      <End Role="Datos_Atleta" EntitySet="Datos_Atleta" />
+      <End Role="Examen_Fisico_Principal" EntitySet="Examen_Fisico_Principal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Examen_Fisico_Principal_Examen_Fisico" Association="Self.FK_Examen_Fisico_Principal_Examen_Fisico">
+      <End Role="Examen_Fisico" EntitySet="Examen_Fisico" />
+      <End Role="Examen_Fisico_Principal" EntitySet="Examen_Fisico_Principal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ficha_Antropometrica_Datos_Atleta" Association="Self.FK_Ficha_Antropometrica_Datos_Atleta">
+      <End Role="Datos_Atleta" EntitySet="Datos_Atleta" />
+      <End Role="Ficha_Antropometrica" EntitySet="Ficha_Antropometrica" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Habitacion_Datos_Atleta" Association="Self.FK_Habitacion_Datos_Atleta">
+      <End Role="Datos_Atleta" EntitySet="Datos_Atleta" />
+      <End Role="Habitacion" EntitySet="Habitacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Habitos_Datos_Atleta" Association="Self.FK_Habitos_Datos_Atleta">
+      <End Role="Datos_Atleta" EntitySet="Datos_Atleta" />
+      <End Role="Habitos" EntitySet="Habitos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Historia_Familiar_Datos_Atleta" Association="Self.FK_Historia_Familiar_Datos_Atleta">
+      <End Role="Datos_Atleta" EntitySet="Datos_Atleta" />
+      <End Role="Historia_Familiar" EntitySet="Historia_Familiar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Historial_Medico_Datos_Atleta" Association="Self.FK_Historial_Medico_Datos_Atleta">
+      <End Role="Datos_Atleta" EntitySet="Datos_Atleta" />
+      <End Role="Historial_Medico" EntitySet="Historial_Medico" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Informacion_Familiar_Datos_Atleta" Association="Self.FK_Informacion_Familiar_Datos_Atleta">
+      <End Role="Datos_Atleta" EntitySet="Datos_Atleta" />
+      <End Role="Informacion_Familiar" EntitySet="Informacion_Familiar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Medicamentos_Datos_Atleta" Association="Self.FK_Medicamentos_Datos_Atleta">
+      <End Role="Datos_Atleta" EntitySet="Datos_Atleta" />
+      <End Role="Medicamentos" EntitySet="Medicamentos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Municipio_Departamentos" Association="Self.FK_Municipio_Departamentos">
+      <End Role="Departamentos" EntitySet="Departamentos" />
+      <End Role="Municipio" EntitySet="Municipio" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Situacion_Laboral_Datos_Atleta" Association="Self.FK_Situacion_Laboral_Datos_Atleta">
+      <End Role="Datos_Atleta" EntitySet="Datos_Atleta" />
+      <End Role="Situacion_Laboral" EntitySet="Situacion_Laboral" />
     </AssociationSet>
     <AssociationSet Name="FK_Usuarios_Roles" Association="Self.FK_Usuarios_Roles">
       <End Role="Roles" EntitySet="Roles" />

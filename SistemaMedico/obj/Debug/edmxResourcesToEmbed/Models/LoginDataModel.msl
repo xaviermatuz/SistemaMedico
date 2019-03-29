@@ -39,7 +39,6 @@
           <ScalarProperty Name="ID_Atleta" ColumnName="ID_Atleta" />
           <ScalarProperty Name="Preguntas" ColumnName="Preguntas" />
           <ScalarProperty Name="Respuestas" ColumnName="Respuestas" />
-          <ScalarProperty Name="Detalles" ColumnName="Detalles" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -92,8 +91,8 @@
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="ID_Atleta" ColumnName="ID_Atleta" />
           <ScalarProperty Name="Evento" ColumnName="Evento" />
-          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-          <ScalarProperty Name="Lugar" ColumnName="Lugar" />
+          <ScalarProperty Name="FechayLugar" ColumnName="FechayLugar" />
+          <ScalarProperty Name="Resultado" ColumnName="Resultado" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

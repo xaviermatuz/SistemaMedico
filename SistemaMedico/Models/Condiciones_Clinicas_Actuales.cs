@@ -14,7 +14,16 @@ namespace SistemaMedico.Models
     
     public partial class Condiciones_Clinicas_Actuales
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Condiciones_Clinicas_Actuales()
+        {
+            this.Condiciones_Clinicas_Actuales_Principal = new HashSet<Condiciones_Clinicas_Actuales_Principal>();
+        }
+    
         public int ID { get; set; }
         public string Nombre { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Condiciones_Clinicas_Actuales_Principal> Condiciones_Clinicas_Actuales_Principal { get; set; }
     }
 }

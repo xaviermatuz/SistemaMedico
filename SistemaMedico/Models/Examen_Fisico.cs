@@ -14,7 +14,16 @@ namespace SistemaMedico.Models
     
     public partial class Examen_Fisico
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Examen_Fisico()
+        {
+            this.Examen_Fisico_Principal = new HashSet<Examen_Fisico_Principal>();
+        }
+    
         public int ID { get; set; }
         public string Estructura { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Examen_Fisico_Principal> Examen_Fisico_Principal { get; set; }
     }
 }

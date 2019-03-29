@@ -14,6 +14,31 @@ namespace SistemaMedico.Models
     
     public partial class Datos_Atleta
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Datos_Atleta()
+        {
+            this.Alergias = new HashSet<Alergias>();
+            this.Anexos = new HashSet<Anexos>();
+            this.Aparato_Locomotor = new HashSet<Aparato_Locomotor>();
+            this.Apoyo_Economico = new HashSet<Apoyo_Economico>();
+            this.Atleta_Categoria = new HashSet<Atleta_Categoria>();
+            this.Carrera_Deportiva = new HashSet<Carrera_Deportiva>();
+            this.Carrera_Deportiva_Evento = new HashSet<Carrera_Deportiva_Evento>();
+            this.Carrera_Deportiva_Familiar = new HashSet<Carrera_Deportiva_Familiar>();
+            this.Condiciones_Clinicas_Actuales_Principal = new HashSet<Condiciones_Clinicas_Actuales_Principal>();
+            this.Consiste_Apoyo = new HashSet<Consiste_Apoyo>();
+            this.Educacion = new HashSet<Educacion>();
+            this.Examen_Fisico_Principal = new HashSet<Examen_Fisico_Principal>();
+            this.Ficha_Antropometrica = new HashSet<Ficha_Antropometrica>();
+            this.Habitacion = new HashSet<Habitacion>();
+            this.Habitos = new HashSet<Habitos>();
+            this.Historia_Familiar = new HashSet<Historia_Familiar>();
+            this.Historial_Medico = new HashSet<Historial_Medico>();
+            this.Informacion_Familiar = new HashSet<Informacion_Familiar>();
+            this.Medicamentos = new HashSet<Medicamentos>();
+            this.Situacion_Laboral = new HashSet<Situacion_Laboral>();
+        }
+    
         public int ID { get; set; }
         public string Foto { get; set; }
         public string Primer_Nombre { get; set; }
@@ -41,6 +66,47 @@ namespace SistemaMedico.Models
         public string Embarazo { get; set; }
         public Nullable<bool> Activo { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Alergias> Alergias { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Anexos> Anexos { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Aparato_Locomotor> Aparato_Locomotor { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Apoyo_Economico> Apoyo_Economico { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Atleta_Categoria> Atleta_Categoria { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Carrera_Deportiva> Carrera_Deportiva { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Carrera_Deportiva_Evento> Carrera_Deportiva_Evento { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Carrera_Deportiva_Familiar> Carrera_Deportiva_Familiar { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Condiciones_Clinicas_Actuales_Principal> Condiciones_Clinicas_Actuales_Principal { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Consiste_Apoyo> Consiste_Apoyo { get; set; }
         public virtual Hospital Hospital1 { get; set; }
+        public virtual Municipio Municipio1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Educacion> Educacion { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Examen_Fisico_Principal> Examen_Fisico_Principal { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Ficha_Antropometrica> Ficha_Antropometrica { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Habitacion> Habitacion { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Habitos> Habitos { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Historia_Familiar> Historia_Familiar { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Historial_Medico> Historial_Medico { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Informacion_Familiar> Informacion_Familiar { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Medicamentos> Medicamentos { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Situacion_Laboral> Situacion_Laboral { get; set; }
     }
 }

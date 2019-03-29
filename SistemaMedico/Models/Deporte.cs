@@ -14,7 +14,16 @@ namespace SistemaMedico.Models
     
     public partial class Deporte
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Deporte()
+        {
+            this.Categorias = new HashSet<Categorias>();
+        }
+    
         public int ID { get; set; }
         public string Nombre { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Categorias> Categorias { get; set; }
     }
 }

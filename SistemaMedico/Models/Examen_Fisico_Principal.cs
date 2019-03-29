@@ -19,5 +19,8 @@ namespace SistemaMedico.Models
         public int ID_Examen_Fisico { get; set; }
         public string Normal { get; set; }
         public string Hallazgos_Anormales { get; set; }
+    
+        public virtual Datos_Atleta Datos_Atleta { get; set; }
+        public virtual Examen_Fisico Examen_Fisico { get; set; }
     }
 }

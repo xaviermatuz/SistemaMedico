@@ -17,7 +17,9 @@ namespace SistemaMedico.Models
         public int ID { get; set; }
         public int ID_Atleta { get; set; }
         public string Evento { get; set; }
-        public System.DateTime Fecha { get; set; }
-        public string Lugar { get; set; }
+        public string FechayLugar { get; set; }
+        public string Resultado { get; set; }
+    
+        public virtual Datos_Atleta Datos_Atleta { get; set; }
     }
 }

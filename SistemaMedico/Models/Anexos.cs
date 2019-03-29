@@ -19,5 +19,7 @@ namespace SistemaMedico.Models
         public string Otros_Hallazgos { get; set; }
         public string Recomendaciones { get; set; }
         public string Observaciones { get; set; }
+    
+        public virtual Datos_Atleta Datos_Atleta { get; set; }
     }
 }
