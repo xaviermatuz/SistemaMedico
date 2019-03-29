@@ -18,6 +18,7 @@ namespace SistemaMedico.Models
         public MeSysEntities()
             : base("name=MeSysEntities")
         {
+            this.Configuration.ProxyCreationEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
