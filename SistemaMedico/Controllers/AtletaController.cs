@@ -19,8 +19,9 @@ namespace SistemaMedico.Controllers
         // GET: Atleta
         public ActionResult Index()
         {
-            var datos_Atleta = db.Datos_Atleta.Include(d => d.Hospital1);
-            return View(datos_Atleta.ToList());
+            IEnumerable<Datos_Atleta> Atleta = db.Datos_Atleta.Where(s => s.Activo.ToString() == "true");
+            ViewBag.Atleta = Atleta;
+            return View();
         }
 
         // GET: Atleta/Details/5
