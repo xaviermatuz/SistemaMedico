@@ -58,7 +58,9 @@
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
-    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.Entity">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
@@ -112,6 +114,7 @@
     <Content Include="Content\materialize.css" />
     <Content Include="Content\notificacion.css" />
     <Content Include="Content\select2.min.css" />
+    <Content Include="Image\large2019.gif" />
     <Content Include="Models\LoginDataModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>LoginDataModel.edmx</DependentUpon>
@@ -138,8 +141,6 @@
     <Content Include="Recursos\plugins\dropify\src\images\test-image-1.jpg" />
     <Content Include="Recursos\plugins\dropify\src\images\test-image-2.jpg" />
     <Content Include="Recursos\plugins\dropify\src\js\dropify.js" />
-    <Content Include="Scripts\Atleta\CatDeport.js" />
-    <Content Include="Scripts\Atleta\Create.js" />
     <Content Include="Scripts\select2.min.js" />
     <Content Include="Content\style.css" />
     <Content Include="Content\style.min.css" />
@@ -4317,7 +4318,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Clases\FilesHelper.cs" />
     <Compile Include="Controllers\AtletaController.cs" />
     <Compile Include="Controllers\DAL.cs" />
     <Compile Include="Controllers\ExamenFisicoController.cs" />
@@ -4340,7 +4340,6 @@
     <Compile Include="Models\Apoyo_Economico.cs">
       <DependentUpon>LoginDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\AtletaView.cs" />
     <Compile Include="Models\Atleta_Categoria.cs">
       <DependentUpon>LoginDataModel.tt</DependentUpon>
     </Compile>
@@ -4451,6 +4450,7 @@
     </Compile>
     <Compile Include="Models\ViewModel\ExamenFisicoViewModel.cs" />
     <Compile Include="Models\ViewModel\LoginViewModel.cs" />
+    <Compile Include="Models\ViewModel\Actualizar.cs" />
     <Compile Include="Models\ViewModel\UsuarioViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\Shared\HtmlUtility.cs" />
@@ -4472,7 +4472,6 @@
     <Content Include="Views\HistorialMedico\Actualizar.cshtml" />
     <Content Include="Views\HomeAdmin\Editar.cshtml" />
     <Content Include="Views\HomeAdmin\Nuevo.cshtml" />
-    <Content Include="Views\Atleta\_Category.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

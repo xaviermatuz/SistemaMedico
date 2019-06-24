@@ -2,7 +2,6 @@
 using SistemaMedico.Models.ViewModel;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -22,15 +21,19 @@ namespace SistemaMedico.Controllers
             var nom = db.Datos_Atleta.Find(ID);
             ViewBag.id = ID;
             ViewBag.nombre = nom.Nombre_Completo;
-            ViewBag.genero = nom.Genero;
             return View();
         }
         [HttpPost]
-        public ActionResult Crear(ExamenFisicoViewModel model, FormCollection collection)
+        public ActionResult Crear(ExamenFisicoViewModel model)
         {
-           
-            //ficha antroprometrica
-
+            //pregunta 1 
+            Examen_Fisico_Principal Examen1 = new Examen_Fisico_Principal();
+            Examen1.ID_Atleta = model.ID_Atleta;
+            Examen1.ID_Examen_Fisico = 1;
+            Examen1.Normal = "Si";
+            Examen1.Hallazgos_Anormales = "";
+            db.Examen_Fisico_Principal.Add(Examen1);
+            db.SaveChanges();
             return Redirect("~/HomeAdmin/");
            
         }

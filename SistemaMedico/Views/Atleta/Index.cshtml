@@ -22,14 +22,13 @@
                 <div class="cardnigga">
                     <div class="el-card-item">
                         <div class="el-card-avatar el-overlay-1">
-                            <img src="~/Perfiles/@oElemento.Foto" alt="user" />
+                            <img src="~/@oElemento.Foto" alt="user" />
                             <div class="el-overlay scrl-dwn">
                                 <ul class="el-info">
                                     <li><a class="btn default btn-outline image-popup-vertical-fit" href="~/HistorialMedico/Crear/@oElemento.ID"><i class="icon-question"></i></a></li>
-                                    <li><a class="btn default btn-outline image-popup-vertical-fit" href="~/Perfiles/@oElemento.Foto"><i class="icon-eye"></i></a></li>
+                                    <li><a class="btn default btn-outline image-popup-vertical-fit" href="~/HistorialMedico/Actualizar/@oElemento.ID"><i class="icon-eye"></i></a></li>
                                     <li><a class="btn default btn-outline image-popup-vertical-fit" href="~/ExamenFisico/Crear/@oElemento.ID"><i class="mdi mdi-run"></i></a></li>
                                     @*  <li><a href="#">@Html.ActionLink("madasn",new { controller = "Articles", action = "Details",id = oElemento.ID })</a></li>*@
-
                                     @*<li><a class="btn default btn-outline" href="javascript:void(0);"><i class="icon-link"></i></a></li>*@
                                 </ul>
                             </div>
@@ -38,14 +37,7 @@
                             <h4 class="box-title">@oElemento.Nombre_Completo</h4>
                             <h5>@oElemento.Correo_Electronico</h5>
                             <h5>Deporte</h5>
-                            @*Html.ActionLink(article.Title,
-                                      "Login",  // <-- Controller Name.
-                                                       "Item" ,   // <-- ActionMethod
-                                                                         new { id=article.ArticleID }, // <-- Route arguments.
-                                                                                                              null  // <-- htmlArguments .. which are none. You need this value
-                                //     otherwise you call the WRONG method ...
-                                      //     (refer to comments, below).
-                                      )*@
+                            @*Html.ActionLink(article.Title,"Login",  // <-- Controller Name."Item" ,   // <-- ActionMethod new { id=article.ArticleID }, // <-- Route arguments. null  // <-- htmlArguments .. which are none. You need this value //     otherwise you call the WRONG method ... //     (refer to comments, below).)*@
                             @*<button class="btn btn-default" type="button">@Html.ActionLink("madasn", "Crear","ExamenFisico", new {id = oElemento.ID ,nombre=oElemento.Nombre_Completo},new { @class = "" })</button>*@
                             <br />
                         </div>

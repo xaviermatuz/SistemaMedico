@@ -57,7 +57,7 @@
             <div class="body">
                 <form action="" method="post" autocomplete="off" enctype="multipart/form-data">
                     <div style="display:none;">
-                        @*@Html.TextBoxFor(model => model.ID_Atleta, new { @Value = ViewBag.id})*@
+                        @Html.TextBoxFor(model => model.ID_Atleta, new { @Value = ViewBag.id})
                         <input type="text" value="@ViewBag.id" class="form-control" name="txt_atleta">
                     </div>
                     <div class="row clearfix">
@@ -93,19 +93,21 @@
                                                                 <td align="center">1</td>
                                                                 <td>Cuello</td>
                                                                 <td align="center">
-                                                                    <input type="checkbox" id="1" name="Si_Cuello" class="chk-col-green" onclick="Habilitar_DesabilitarTXT(this,HA_Cuello)">
-                                                                    <label for="1">Si</label>
+                                                                    @Html.CheckBoxFor(model => model.Normal, new { @class = "chk-col-green" })
+                                                                    <label for="Normal">Si</label>
+                                                                   @* @Html.CheckBox("Si", new { @value = "SI" })*@
+                                                                    @*@Html.CheckBoxFor(m => m.Normal, new { @id = "Si_CUE",@class= "chk-col-green" })
+                                                                    @Html.Label("Si_CUE", "Si")*@
+                                                                    @*<input type="checkbox" id="1" name="Si_Cuello" class="chk-col-green">
+                                                                    <label for="1">Si</label>*@
                                                                 </td>
-                                                                <td>
-                                                                    <input type="text" id="HA_Cuello" name="HA_Cuello" class="form-control">
-                                                                    @*@Html.TextBoxFor(d => d.Hallazgos_Anormales, "", new { @class = "form-control" })*@
-                                                                </td>
+                                                                <td><input type="text" name="HA_Cuello" class="form-control"></td>
                                                             </tr>
                                                             <tr>
                                                                 <td align="center">2</td>
                                                                 <td>Espalda</td>
                                                                 <td align="center">
-                                                                    <input type="checkbox" id="2" name="Si_Espalda" class="chk-col-green" onclick="Habilitar_DesabilitarTXT(this,HA_espalda)">
+                                                                    <input type="checkbox" id="2" name="Si_Espalda" class="chk-col-green">
                                                                     <label for="2">Si</label>
                                                                 </td>
                                                                 <td><input type="text" name="HA_espalda" class="form-control"></td>
@@ -115,17 +117,17 @@
                                                                 <td align="center">3</td>
                                                                 <td>Hombro/Brazo</td>
                                                                 <td align="center">
-                                                                    <input type="checkbox" id="3" name="Si_Hombro" class="chk-col-green" onclick="Habilitar_DesabilitarTXT(this,HA_hombro)">
+                                                                    <input type="checkbox" id="3" name="Si_Hombro" class="chk-col-green">
                                                                     <label for="3">Si</label>
                                                                 </td>
-                                                                <td><input type="text" name="HA_hombro" class="form-control" ></td>
+                                                                <td><input type="text" name="HA_hombro" class="form-control"></td>
                                                             </tr>
 
                                                             <tr>
                                                                 <td align="center">4</td>
                                                                 <td>Codo/Antebrazo  </td>
                                                                 <td align="center">
-                                                                    <input type="checkbox" id="4" name="Si_Codo" class="chk-col-green" onclick="Habilitar_DesabilitarTXT(this,HA_codo)">
+                                                                    <input type="checkbox" id="4" name="Si_Codo" class="chk-col-green">
                                                                     <label for="4">Si</label>
                                                                 </td>
                                                                 <td><input type="text" name="HA_codo" class="form-control"></td>
@@ -135,7 +137,7 @@
                                                                 <td align="center">5</td>
                                                                 <td>Muñeca/Mano/Dedos</td>
                                                                 <td align="center">
-                                                                    <input type="checkbox" id="5" name="Si_Muñeca" class="chk-col-green" onclick="Habilitar_DesabilitarTXT(this,HA_muñeca)">
+                                                                    <input type="checkbox" id="5" name="Si_Muñeca" class="chk-col-green">
                                                                     <label for="5">Si</label>
                                                                 </td>
                                                                 <td><input type="text" name="HA_muñeca" class="form-control"></td>
@@ -145,7 +147,7 @@
                                                                 <td align="center">6</td>
                                                                 <td>Cadera/Muslo</td>
                                                                 <td align="center">
-                                                                    <input type="checkbox" id="6" name="Si_Cadera" class="chk-col-green" onclick="Habilitar_DesabilitarTXT(this,HA_cadera)">
+                                                                    <input type="checkbox" id="6" name="Si_Cadera" class="chk-col-green">
                                                                     <label for="6">Si</label>
                                                                 </td>
                                                                 <td><input type="text" name="HA_cadera" class="form-control"></td>
@@ -155,7 +157,7 @@
                                                                 <td align="center">7</td>
                                                                 <td>Rodilla</td>
                                                                 <td align="center">
-                                                                    <input type="checkbox" id="7" name="Si_Rodilla" class="chk-col-green" onclick="Habilitar_DesabilitarTXT(this,HA_rodilla)">
+                                                                    <input type="checkbox" id="7" name="Si_Rodilla" class="chk-col-green">
                                                                     <label for="7">Si</label>
                                                                 </td>
                                                                 <td><input type="text" name="HA_rodilla" class="form-control"></td>
@@ -165,7 +167,7 @@
                                                                 <td align="center">8</td>
                                                                 <td>Pierna/Tobillo</td>
                                                                 <td align="center">
-                                                                    <input type="checkbox" id="8" name="Si_Pierna" class="chk-col-green" onclick="Habilitar_DesabilitarTXT(this,HA_pierna)">
+                                                                    <input type="checkbox" id="8" name="Si_Pierna" class="chk-col-green">
                                                                     <label for="8">Si</label>
                                                                 </td>
                                                                 <td><input type="text" name="HA_pierna" class="form-control"></td>
@@ -175,7 +177,7 @@
                                                                 <td align="center">9</td>
                                                                 <td>Pie/Dedos</td>
                                                                 <td align="center">
-                                                                    <input type="checkbox" id="9" name="Si_dedos" class="chk-col-green" onclick="Habilitar_DesabilitarTXT(this,HA_dedos)">
+                                                                    <input type="checkbox" id="9" name="Si_dedos" class="chk-col-green">
                                                                     <label for="9">Si</label>
                                                                 </td>
                                                                 <td><input type="text" name="HA_dedos" class="form-control"></td>
@@ -275,7 +277,7 @@
                                                                 <td>
                                                                     <input type="checkbox" name="EP" id="$121" class="chk-col-green">
                                                                     <label for="$121">Erupciones/Purito</label><br>
-                                                                    <input type="checkbox" name="Ulceras" id="$122" class="chk-col-green">
+                                                                    <input type="checkbox" name="Ulseras" id="$122" class="chk-col-green">
                                                                     <label for="$122">Ulceras/Llagas</label><br>
                                                                     <input type="checkbox" name="hongos" id="$123" class="chk-col-green">
                                                                     <label for="$123">Hongos en los pies</label><br>
@@ -370,14 +372,14 @@
                                                         <div class="col-sm-6">
                                                             <div class="form-group">
                                                                 <div class="form-line">
-                                                                    <input disable="true" class="form-control" type="text" name="nombre" value="@ViewBag.nombre" />
+                                                                    <input disable="true" class="form-control" type="text" name="nombre" value="" />
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-6">
                                                             <div class="form-group form-float">
                                                                 <div class="form-line">
-                                                                    <input class="form-control" type="text" disable="true" name="genero" value="@ViewBag.genero" />
+                                                                    <input class="form-control" type="text" disable="true" name="genero" value="" />
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -401,7 +403,7 @@
                                                         <div class="col-sm-6">
                                                             <div class="form-group form-float">
                                                                 <div class="form-line">
-                                                                    <input type="text" class="form-control" name="Antropometrista" />
+                                                                    <input type="text" name="Antropometrista" class="form-control" name="Antropometrista" />
                                                                     <label class="form-label">Antropometrista/Evaluador</label>
                                                                 </div>
                                                             </div>
@@ -409,7 +411,7 @@
                                                         <div class="col-sm-6">
                                                             <div class="form-group form-float">
                                                                 <div class="form-line">
-                                                                    <input type="text" class="form-control" name="Anotador" />
+                                                                    <input type="text" name="anotador" class="form-control" name="Anotador" />
                                                                     <label class="form-label">Anotador </label>
                                                                 </div>
                                                             </div>
@@ -418,38 +420,22 @@
                                                             <div class="demo-masked-input">
                                                                 <div class="input-group">
                                                                     <div class="form-line">
-                                                                        <input type="text" name="fechaNac" class="form-control date" placeholder="Fecha De Nacimiento Ejemplo: 30/07/2016">
+                                                                        <input type="text" name="fechaNac" class="form-control date" placeholder="Ex: 30/07/2016">
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
 
 
-                                                        @if (ViewBag.genero == "Masculino ")
-                                                        {
-                                                            <div class="col-sm-6">
-                                                                <div class="form-group form-float">
-                                                                    <div class="form-line">
-                                                                        <input type="text" disabled class="form-control" value="No" name="menstruacion" />
-                                                                        <label class="form-label">Mentruacion </label>
-                                                                    </div>
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group form-float">
+                                                                <div class="form-line">
+                                                                    <input type="text" class="form-control" name="menstruacion" />
+                                                                    <label class="form-label">Mentruacion </label>
                                                                 </div>
-
                                                             </div>
-                                                        }
-                                                        else
-                                                        {
-                                                            <div class="col-sm-6">
-                                                                <div class="form-group form-float">
-                                                                    <div class="form-line">
-                                                                        <input type="text" class="form-control" name="menstruacion" />
-                                                                        <label class="form-label">Mentruacion </label>
-                                                                    </div>
-                                                                </div>
 
-                                                            </div>
-                                                        }
-
+                                                        </div>
                                                     </div>
 
 
@@ -692,7 +678,7 @@
                                                                 <input type="text" id="Fecha" name="prueba[]" class="form-control" placeholder="Fecha" />
                                                             </td>
                                                             <td>
-                                                                <input type="text" id="Nota" name="resultado[]" class="form-control" placeholder="Nota" >
+                                                                <input type="text" id="Nota" name="resultado[]" class="form-control" placeholder="Nota" width="100%">
                                                             </td>
                                                             <td>
                                                                 <input type="text" id="F" name="fechaYlugar[]" class="form-control" placeholder="F" />
@@ -751,9 +737,5 @@
             $demoMaskedInput.find('.cedula').inputmask('[0-3]/mm/yyyy', { placeholder: '__/__/____' });
         });
     </script>
-    <script type="text/javascript">
-        function Habilitar_DesabilitarTXT(chkSI, txtID) {
-            txtID.disabled = chkSI.checked ? true : false;
-        }
-    </script>
+
 }
