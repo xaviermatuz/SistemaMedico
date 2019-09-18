@@ -9,6 +9,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 using System.Web.Security;
 
 namespace SistemaMedico.Controllers
@@ -186,9 +187,8 @@ namespace SistemaMedico.Controllers
                 {
                     ViewBag.Hmr12 = i.Respuestas;
                 }
-            }
-            //
-            //Aqui va Historial Medico
+            }            
+            //Aqui va Historial Familiar
             var HFIE = db.Historia_Familiar.Where(s => s.ID_Atleta == ID);
             foreach (var i in HFIE.ToList())
             {
@@ -263,7 +263,6 @@ namespace SistemaMedico.Controllers
                     ViewBag.Alr8 = i.Respuestas;
                 }
             }
-
             //Aqui va Carrera Deportiva
             var CDIE = db.Carrera_Deportiva.Where(s => s.ID_Atleta == ID);
             foreach (var i in CDIE.ToList())
@@ -309,6 +308,12 @@ namespace SistemaMedico.Controllers
                     ViewBag.CDd7 = i.Detalles;
                 }
             }
+            //Aqui va Carrera Deportiva evento
+            IEnumerable<Carrera_Deportiva_Evento> CDEIEI = db.Carrera_Deportiva_Evento.Where(s => s.ID_Atleta == ID).ToList();
+            ViewBag.CDTABLITA1 = CDEIEI;
+            //Aqui va Carrera Deportiva familiar
+            IEnumerable<Carrera_Deportiva_Familiar> CDEFIEI = db.Carrera_Deportiva_Familiar.Where(s => s.ID_Atleta == ID).ToList();
+            ViewBag.CDTABLITA2 = CDEFIEI;
             //Aqui va Informacion Laboral Economica
             //Situacion Laboral
             var SLIE = db.Situacion_Laboral.Where(s => s.ID_Atleta == ID);
@@ -548,16 +553,23 @@ namespace SistemaMedico.Controllers
                 }
                 //¿Usted Toma?
                 if (i.Preguntas == "¿Usted Toma?")
-                {                    
+                {
+                    string[] toma = i.Detalles.Split(',');
+                    string cerveza = toma[0];
+                    string licor = toma[1];
                     ViewBag.HABabr2 = i.Respuestas;
-                    ViewBag.HABabd2 = i.Detalles;
+                    ViewBag.HABabd21 = cerveza;
+                    ViewBag.HABabd22 = licor;
                 }
             }
             return View();
-        }
+        }        
         [HttpPost]
         public ActionResult Crear(FormCollection collection)
         {
+            var fdr = DateTime.Today;
+            bool state = true;
+            char[] caractdelimita = { ' ', ',' };
             //MEDICAMENTOS
             //Relajantes Musculares
             if (!string.IsNullOrEmpty(collection["btnrelajantes"]))
@@ -566,6 +578,8 @@ namespace SistemaMedico.Controllers
                 Medica1.ID_Atleta = Convert.ToInt32(collection["txt_atleta"]);
                 Medica1.Medicamentos1 = "Relajante Musculares";
                 Medica1.Descripcion = collection["txt_medicamentos"];
+                Medica1.Fecha_de_Registro = fdr;
+                Medica1.Estado = state;
                 //Debug.WriteLine("Relajante Muscular");
                 //Debug.WriteLine(collection["txt_medicamentos"]);
                 db.Medicamentos.Add(Medica1);
@@ -582,6 +596,8 @@ namespace SistemaMedico.Controllers
                 Medica2.ID_Atleta = Convert.ToInt32(collection["txt_atleta"]);
                 Medica2.Medicamentos1 = "Antiinflamatorios";
                 Medica2.Descripcion = collection["txt_antiinflamatorios"];
+                Medica2.Fecha_de_Registro = fdr;
+                Medica2.Estado = state;
                 db.Medicamentos.Add(Medica2);
                 db.SaveChanges();
                 //Debug.WriteLine("Antiinflamatorios");
@@ -598,6 +614,8 @@ namespace SistemaMedico.Controllers
                 Medica3.ID_Atleta = Convert.ToInt32(collection["txt_atleta"]);
                 Medica3.Medicamentos1 = "Analgesico";
                 Medica3.Descripcion = collection["txt_analgesicos"];
+                Medica3.Fecha_de_Registro = fdr;
+                Medica3.Estado = state;
                 db.Medicamentos.Add(Medica3);
                 db.SaveChanges();
                 //Debug.WriteLine("Analgesico");
@@ -614,6 +632,8 @@ namespace SistemaMedico.Controllers
                 Medica4.ID_Atleta = Convert.ToInt32(collection["txt_atleta"]);
                 Medica4.Medicamentos1 = "Otros Medicamentos";
                 Medica4.Descripcion = collection["txt_medicamentos_otros"];
+                Medica4.Fecha_de_Registro = fdr;
+                Medica4.Estado = state;
                 db.Medicamentos.Add(Medica4);
                 db.SaveChanges();
                 //Debug.WriteLine("Otros");
@@ -633,6 +653,8 @@ namespace SistemaMedico.Controllers
                     Alergia1.ID_Atleta = Convert.ToInt32(collection["txt_atleta"]);
                     Alergia1.Alergia = "Medicamento";
                     Alergia1.Descripcion = collection["txt_medicamentos_alergicos"];
+                    Alergia1.Fecha_de_Registro = fdr;
+                    Alergia1.Estado = state;
                     db.Alergias.Add(Alergia1);
                     db.SaveChanges();
                     //Debug.WriteLine("Medicamento");
@@ -649,6 +671,8 @@ namespace SistemaMedico.Controllers
                     Alergia2.ID_Atleta = Convert.ToInt32(collection["txt_atleta"]);
                     Alergia2.Alergia = "Polen";
                     Alergia2.Descripcion = collection["txt_alergia_polen"];
+                    Alergia2.Fecha_de_Registro = fdr;
+                    Alergia2.Estado = state;
                     db.Alergias.Add(Alergia2);
                     db.SaveChanges();
                     //Debug.WriteLine("Polen");
@@ -665,6 +689,8 @@ namespace SistemaMedico.Controllers
                     Alergia3.ID_Atleta = Convert.ToInt32(collection["txt_atleta"]);
                     Alergia3.Alergia = "Comida";
                     Alergia3.Descripcion = collection["txtalergiacomida"];
+                    Alergia3.Fecha_de_Registro = fdr;
+                    Alergia3.Estado = state;
                     db.Alergias.Add(Alergia3);
                     db.SaveChanges();
                     //Debug.WriteLine("Comida");
@@ -681,6 +707,8 @@ namespace SistemaMedico.Controllers
                     Alergia4.ID_Atleta = Convert.ToInt32(collection["txt_atleta"]);
                     Alergia4.Alergia = "Piquetes de insectos";
                     Alergia4.Descripcion = collection["txtpiquete"];
+                    Alergia4.Fecha_de_Registro = fdr;
+                    Alergia4.Estado = state;
                     db.Alergias.Add(Alergia4);
                     db.SaveChanges();
                     //Debug.WriteLine("Piquetes de insectos");
@@ -697,6 +725,8 @@ namespace SistemaMedico.Controllers
                     Alergia5.ID_Atleta = Convert.ToInt32(collection["txt_atleta"]);
                     Alergia5.Alergia = "Otros";
                     Alergia5.Descripcion = collection["txtotra_alergia"];
+                    Alergia5.Fecha_de_Registro = fdr;
+                    Alergia5.Estado = state;
                     db.Alergias.Add(Alergia5);
                     db.SaveChanges();
                     //Debug.WriteLine("Otros");
@@ -726,6 +756,8 @@ namespace SistemaMedico.Controllers
                 HM1.ID_Atleta = Convert.ToInt32(collection["txt_atleta"]);
                 HM1.Preguntas = "¿Alguna vez un doctor te ha prohibido limitado tu participacion en deportes por alguna razon?";
                 HM1.Respuestas = collection["pregunta_A"];
+                HM1.Fecha_de_Registro = fdr;
+                HM1.Estado = state;
                 HM1.Detalles = "";
                 db.Historial_Medico.Add(HM1);
                 db.SaveChanges();
@@ -744,6 +776,8 @@ namespace SistemaMedico.Controllers
                 HM2.Preguntas = "¿Has sido ingresado alguna vez en el hospital?";
                 HM2.Respuestas = collection["pregunta_B"];
                 HM2.Detalles = "";
+                HM2.Fecha_de_Registro = fdr;
+                HM2.Estado = state;
                 db.Historial_Medico.Add(HM2);
                 db.SaveChanges();
                 //Debug.WriteLine("¿Has sido ingresado alguna vez en el hospital?");
@@ -757,6 +791,8 @@ namespace SistemaMedico.Controllers
                 HM3.Preguntas = "¿Has tenido cirugia alguna vez?";
                 HM3.Respuestas = collection["pregunta_C"];
                 HM3.Detalles = "";
+                HM3.Fecha_de_Registro = fdr;
+                HM3.Estado = state;
                 db.Historial_Medico.Add(HM3);
                 db.SaveChanges();
                 //Debug.WriteLine("¿Has tenido cirugia alguna vez?");
@@ -774,6 +810,8 @@ namespace SistemaMedico.Controllers
                 HM4.Preguntas = "¿Usas lentes o lentes de contacto?";
                 HM4.Respuestas = collection["pregunta_D"];
                 HM4.Detalles = "";
+                HM4.Fecha_de_Registro = fdr;
+                HM4.Estado = state;
                 db.Historial_Medico.Add(HM4);
                 db.SaveChanges();
                 //Debug.WriteLine("¿Usas lentes o lentes de contacto?");
@@ -791,6 +829,8 @@ namespace SistemaMedico.Controllers
                 HM5.Preguntas = "¿Naciste o te falta un riñon,un ojo,un testiculo u algun otro órgano?";
                 HM5.Respuestas = collection["pregunta_E"];
                 HM5.Detalles = "";
+                HM5.Fecha_de_Registro = fdr;
+                HM5.Estado = state;
                 db.Historial_Medico.Add(HM5);
                 db.SaveChanges();
                 //Debug.WriteLine("¿Naciste o te falta un riñon,un ojo,untesticulo u algun otro órgano?");
@@ -808,6 +848,8 @@ namespace SistemaMedico.Controllers
                 HM6.Preguntas = "¿Te has desmayado durante o despues de hacer ejercicios?";
                 HM6.Respuestas = collection["pregunta_F"];
                 HM6.Detalles = "";
+                HM6.Fecha_de_Registro = fdr;
+                HM6.Estado = state;
                 db.Historial_Medico.Add(HM6);
                 db.SaveChanges();
                 //Debug.WriteLine("¿Te has desmayado durante o despues de hacer ejercicios?");
@@ -825,6 +867,8 @@ namespace SistemaMedico.Controllers
                 HM7.Preguntas = "¿Has tenido alguna vez molestias dolor o presion en el pecho cuando haces ejercicios?";
                 HM7.Respuestas = collection["pregunta_G"];
                 HM7.Detalles = "";
+                HM7.Fecha_de_Registro = fdr;
+                HM7.Estado = state;
                 db.Historial_Medico.Add(HM7);
                 db.SaveChanges();
                 //Debug.WriteLine("¿Has tenido alguna vez molestias dolor o presion en el pecho cuando haces ejercicios?");
@@ -842,6 +886,8 @@ namespace SistemaMedico.Controllers
                 HM8.Preguntas = "¿Alguna vez has tenido palpitaciones o latidos irregulares cuando haces ejercicios?";
                 HM8.Respuestas = collection["pregunta_H"];
                 HM8.Detalles = "";
+                HM8.Fecha_de_Registro = fdr;
+                HM8.Estado = state;
                 db.Historial_Medico.Add(HM8);
                 db.SaveChanges();
                 //Debug.WriteLine("¿Alguna vez has tenido palpitaciones o latidos irregulares cuando haces ejercicios?");
@@ -859,6 +905,8 @@ namespace SistemaMedico.Controllers
                 HM9.Preguntas = "¿Te ha dicho un doctor que tienes un problema del Corazón?";
                 HM9.Respuestas = collection["pregunta_I"];
                 HM9.Detalles = "";
+                HM9.Fecha_de_Registro = fdr;
+                HM9.Estado = state;
                 db.Historial_Medico.Add(HM9);
                 db.SaveChanges();
                 //Debug.WriteLine("¿Te ha dicho un doctor que tienes un problema del corazon?");
@@ -871,6 +919,8 @@ namespace SistemaMedico.Controllers
                     HM10.Preguntas = "I.A Presion Alta";
                     HM10.Respuestas = collection["presion_alta"];
                     HM10.Detalles = "";
+                    HM10.Fecha_de_Registro = fdr;
+                    HM10.Estado = state;
                     db.Historial_Medico.Add(HM10);
                     db.SaveChanges();
                     //Debug.WriteLine("Presion Alta");
@@ -888,6 +938,8 @@ namespace SistemaMedico.Controllers
                     HM11.Preguntas = "I.B Soplo en el Corazón";
                     HM11.Respuestas = collection["Soplo"];
                     HM11.Detalles = "";
+                    HM11.Fecha_de_Registro = fdr;
+                    HM11.Estado = state;
                     db.Historial_Medico.Add(HM11);
                     db.SaveChanges();
                     //Debug.WriteLine("Soplo en el Corazón");
@@ -905,6 +957,8 @@ namespace SistemaMedico.Controllers
                     HM12.Preguntas = "I.C Nivel alto de Colesterol";
                     HM12.Respuestas = collection["colesterol"];
                     HM12.Detalles = "";
+                    HM12.Fecha_de_Registro = fdr;
+                    HM12.Estado = state;
                     db.Historial_Medico.Add(HM12);
                     db.SaveChanges();
                     //Debug.WriteLine("Nivel alto de Colesterol");
@@ -922,6 +976,8 @@ namespace SistemaMedico.Controllers
                     HM13.Preguntas = "I.D Otro";
                     HM13.Respuestas = collection["otroenfer"];
                     HM13.Detalles = collection["txt_especificacion_otros"];
+                    HM13.Fecha_de_Registro = fdr;
+                    HM13.Estado = state;
                     db.Historial_Medico.Add(HM13);
                     db.SaveChanges();
                     //Debug.WriteLine("otro");
@@ -945,6 +1001,8 @@ namespace SistemaMedico.Controllers
                 HM14.Preguntas = "¿Alguna vez un doctor te ha pedido que te hagas una prueba del corazon¿Ej:Electrocardiograma?";
                 HM14.Respuestas = collection["pregunta_J"];
                 HM14.Detalles = "";
+                HM14.Fecha_de_Registro = fdr;
+                HM14.Estado = state;
                 db.Historial_Medico.Add(HM14);
                 db.SaveChanges();
                 //Debug.WriteLine("¿Alguna vez un doctor te ha pedido que te hagas una prueba del corazon¿Ej:Electrocardiograma?");
@@ -962,6 +1020,8 @@ namespace SistemaMedico.Controllers
                 HM15.Preguntas = "¿Te sientes mareado o te falta el aire mas de lo esperado cuando haces ejercicios?";
                 HM15.Respuestas = collection["pregunta_K"];
                 HM15.Detalles = "";
+                HM15.Fecha_de_Registro = fdr;
+                HM15.Estado = state;
                 db.Historial_Medico.Add(HM15);
                 db.SaveChanges();
                 //Debug.WriteLine("¿Te sientes mareado o te falta el aire mas de lo esperado cuando haces ejercicios?");
@@ -979,6 +1039,8 @@ namespace SistemaMedico.Controllers
                 HM16.Preguntas = "¿Has tenido una convulsion inexplicable?";
                 HM16.Respuestas = collection["pregunta_L"];
                 HM16.Detalles = "";
+                HM16.Fecha_de_Registro = fdr;
+                HM16.Estado = state;
                 db.Historial_Medico.Add(HM16);
                 db.SaveChanges();
                 //Debug.WriteLine("¿Has tenido una convulsion inexplicable?");
@@ -996,6 +1058,8 @@ namespace SistemaMedico.Controllers
                 HF1.ID_Atleta = Convert.ToInt32(collection["txt_atleta"]);
                 HF1.Preguntas = "¿Has tenido algun familiar que haya fallecido a causa de problemas de corazon, o bien que haya fallecido de forma inexplicable antes de los 50 años?";
                 HF1.Respuestas = collection["pregunta_fam_1"];
+                HF1.Fecha_de_Registro = fdr;
+                HF1.Estado = state;
                 db.Historia_Familiar.Add(HF1);
                 db.SaveChanges();
                 //Debug.WriteLine("¿Has tenido algun familiar que haya fallecido a causa de problemas de corazon, o bien que haya fallecido de forma inexplicable antes de los 50 años?");
@@ -1012,6 +1076,8 @@ namespace SistemaMedico.Controllers
                 HF2.ID_Atleta = Convert.ToInt32(collection["txt_atleta"]);
                 HF2.Preguntas = "¿Alguien de tu familia tiene problemas del corazon, un marcapaso o un desfibrilador en su corazon?";
                 HF2.Respuestas = collection["pregunta_fam_2"];
+                HF2.Fecha_de_Registro = fdr;
+                HF2.Estado = state;
                 db.Historia_Familiar.Add(HF2);
                 db.SaveChanges();
                 //Debug.WriteLine("¿Alguien de tu familia tiene problemas del corazon, un marcapaso o un desfibrilador en su corazon?");
@@ -1028,6 +1094,8 @@ namespace SistemaMedico.Controllers
                 HF3.ID_Atleta = Convert.ToInt32(collection["txt_atleta"]);
                 HF3.Preguntas = "¿Ha sufrido algun familiar un desmayo inexplicable o convulsiones?";
                 HF3.Respuestas = collection["pregunta_fam_3"];
+                HF3.Fecha_de_Registro = fdr;
+                HF3.Estado = state;
                 db.Historia_Familiar.Add(HF3);
                 db.SaveChanges();
                 //Debug.WriteLine("¿Ha sufrido algun familiar un desmayo inexplicable o convulsiones ? ");
@@ -1044,6 +1112,8 @@ namespace SistemaMedico.Controllers
                 HF4.ID_Atleta = Convert.ToInt32(collection["txt_atleta"]);
                 HF4.Preguntas = "¿Alguien de su familia padece de Diabetes?";
                 HF4.Respuestas = collection["pregunta_fam_4"];
+                HF4.Fecha_de_Registro = fdr;
+                HF4.Estado = state;
                 db.Historia_Familiar.Add(HF4);
                 db.SaveChanges();
                 //Debug.WriteLine("¿Alguien de su familia padece de Diabetes?");
@@ -1060,6 +1130,8 @@ namespace SistemaMedico.Controllers
                 HF5.ID_Atleta = Convert.ToInt32(collection["txt_atleta"]);
                 HF5.Preguntas = "¿Alguien de su familia padece de asma?";
                 HF5.Respuestas = collection["pregunta_fam_5"];
+                HF5.Fecha_de_Registro = fdr;
+                HF5.Estado = state;
                 db.Historia_Familiar.Add(HF5);
                 db.SaveChanges();
                 //Debug.WriteLine("¿Alguien de su familia padece de asma?");
@@ -1077,6 +1149,8 @@ namespace SistemaMedico.Controllers
                 AL1.ID_Atleta = Convert.ToInt32(collection["txt_atleta"]);
                 AL1.Preguntas = "¿Alguna vez ha perdido un entrenamiento o evento por haber sufrido lesion en el hueso, tendon o musculo?";
                 AL1.Respuestas = collection["pregunta_locomotor_1"];
+                AL1.Fecha_de_Registro = fdr;
+                AL1.Estado = state;
                 db.Aparato_Locomotor.Add(AL1);
                 db.SaveChanges();
                 //Debug.WriteLine("¿Alguna vez ha perdido un entrenamiento o evento por haber sufrido lesion en el hueso, tendon o musculo?");
@@ -1093,6 +1167,8 @@ namespace SistemaMedico.Controllers
                 AL2.ID_Atleta = Convert.ToInt32(collection["txt_atleta"]);
                 AL2.Preguntas = "¿Te has fracturado alguna vez un hueso o dislocado una articulacion?";
                 AL2.Respuestas = collection["pregunta_locomotor_2"];
+                AL2.Fecha_de_Registro = fdr;
+                AL2.Estado = state;
                 db.Aparato_Locomotor.Add(AL2);
                 db.SaveChanges();
                 //Debug.WriteLine("¿Te has fracturado alguna vez un hueso o dislocado una articulacion?");
@@ -1109,6 +1185,8 @@ namespace SistemaMedico.Controllers
                 AL3.ID_Atleta = Convert.ToInt32(collection["txt_atleta"]);
                 AL3.Preguntas = "¿Has sufrido alguna lesion que haya requerido radiografias,tomografias, o resonancia magnetica, soporte ortopedico,como yeso o tablilla?";
                 AL3.Respuestas = collection["pregunta_locomotor_3"];
+                AL3.Fecha_de_Registro = fdr;
+                AL3.Estado = state;
                 db.Aparato_Locomotor.Add(AL3);
                 db.SaveChanges();
                 //Debug.WriteLine("¿Has sufrido alguna lesion que haya requerido radiografias,tomografias, o resonancia magnetica, soporte ortopedico,como yeso o tablilla?");
@@ -1125,6 +1203,8 @@ namespace SistemaMedico.Controllers
                 AL4.ID_Atleta = Convert.ToInt32(collection["txt_atleta"]);
                 AL4.Preguntas = "¿Usas regularmente una tablilla/soporte ortopedico u otro dispositivo de asistencia?";
                 AL4.Respuestas = collection["pregunta_locomotor_4"];
+                AL4.Fecha_de_Registro = fdr;
+                AL4.Estado = state;
                 db.Aparato_Locomotor.Add(AL4);
                 db.SaveChanges();
                 //Debug.WriteLine("¿Usas regularmente una tablilla/soporte ortopedico u otro dispositivo de asistencia?");
@@ -1141,6 +1221,8 @@ namespace SistemaMedico.Controllers
                 AL5.ID_Atleta = Convert.ToInt32(collection["txt_atleta"]);
                 AL5.Preguntas = "¿Tienes calambres frecuentes en los musculos cuando haces ejercicios?";
                 AL5.Respuestas = collection["pregunta_locomotor_5"];
+                AL5.Fecha_de_Registro = fdr;
+                AL5.Estado = state;
                 db.Aparato_Locomotor.Add(AL5);
                 db.SaveChanges();
                 //Debug.WriteLine("¿Tienes calambres frecuentes en los musculos cuando haces ejercicios?");
@@ -1157,6 +1239,8 @@ namespace SistemaMedico.Controllers
                 AL6.ID_Atleta = Convert.ToInt32(collection["txt_atleta"]);
                 AL6.Preguntas = "¿Has tenido Hinchazon en alguna de tus articulaciones?";
                 AL6.Respuestas = collection["pregunta_locomotor_6"];
+                AL6.Fecha_de_Registro = fdr;
+                AL6.Estado = state;
                 db.Aparato_Locomotor.Add(AL6);
                 db.SaveChanges();
                 //Debug.WriteLine("¿Has tenido Hinchazon en alguna de tus articulaciones?");
@@ -1172,6 +1256,8 @@ namespace SistemaMedico.Controllers
                 AL7.ID_Atleta = Convert.ToInt32(collection["txt_atleta"]);
                 AL7.Preguntas = "Cirugias(especifique que tipo de cirugias y cuando fue realizada)";
                 AL7.Respuestas = collection["cirugias"];
+                AL7.Fecha_de_Registro = fdr;
+                AL7.Estado = state;
                 db.Aparato_Locomotor.Add(AL7);
                 db.SaveChanges();
                 //Debug.WriteLine("Cirugias(especifique que tipo de cirugias y cuando fue realizada)");
@@ -1187,6 +1273,8 @@ namespace SistemaMedico.Controllers
                 AL8.ID_Atleta = Convert.ToInt32(collection["txt_atleta"]);
                 AL8.Preguntas = "Hospitalizaciones(Especifique si ha sido hospitalizado,las fechas y las causas)";
                 AL8.Respuestas = collection["hospitalizaciones"];
+                AL8.Fecha_de_Registro = fdr;
+                AL8.Estado = state;
                 db.Aparato_Locomotor.Add(AL8);
                 db.SaveChanges();
                 //Debug.WriteLine("Hospitalizaciones(Especifique si ha sido hospitalizado,las fechas y las causas)");
@@ -1204,6 +1292,8 @@ namespace SistemaMedico.Controllers
                 CD1.ID_Atleta = Convert.ToInt32(collection["txt_atleta"]);
                 CD1.Preguntas = "Cuanto Tiempo lleva Compitiendo";
                 CD1.Respuestas = collection["compitiendo"];
+                CD1.Fecha_de_Registro = fdr;
+                CD1.Estado = state;
                 db.Carrera_Deportiva.Add(CD1);
                 db.SaveChanges();
                 //Debug.WriteLine("Cuanto Tiempo lleva Compitiendo");
@@ -1211,26 +1301,54 @@ namespace SistemaMedico.Controllers
             }
             //Antecedentes Deportivos. Carrera deportiva
             if (!string.IsNullOrEmpty(collection["prueba[]"]) || !string.IsNullOrEmpty(collection["resultado[]"]) || !string.IsNullOrEmpty(collection["fechaYlugar[]"]) || !string.IsNullOrEmpty(collection["evento[]"]))
-            {
+            {                                
                 var prueba = collection["prueba[]"];
+                var pruebafin = "";                
                 var resul = collection["resultado[]"];
+                var resulfin = "";
                 var fyl = collection["fechaYlugar[]"];
+                var fylfin = "";
                 var eve = collection["evento[]"];
-                for (var i = 0; i < prueba.Count(); i++)
+                var evefin = "";
+                //Prueba
+                foreach (var i in prueba)
                 {
-                    if (prueba[i].ToString() != "," || resul[i].ToString() != "," || fyl[i].ToString() != "," || eve[i].ToString() != ",")
-                    {
-                        Carrera_Deportiva_Evento CDE1 = new Carrera_Deportiva_Evento();
-                        CDE1.ID_Atleta = Convert.ToInt32(collection["txt_atleta"]);
-                        CDE1.Prueba = prueba[i].ToString();
-                        CDE1.Resultado = resul[i].ToString();
-                        CDE1.Fecha_Y_Lugar = fyl[i].ToString();
-                        CDE1.Evento = eve[i].ToString();
-                        db.Carrera_Deportiva_Evento.Add(CDE1);
-                        db.SaveChanges();
-                    }
+                    pruebafin = pruebafin + i.ToString();                    
                 }
-
+                //resultado
+                foreach (var i in resul)
+                {
+                    resulfin = resulfin + i.ToString();
+                }
+                //fecha y lugar
+                foreach (var i in fyl)
+                {
+                    fylfin = fylfin + i.ToString();
+                }
+                //evento
+                foreach (var i in eve)
+                {
+                    evefin = evefin + i.ToString();
+                }
+                string[] sincoma = pruebafin.Split(caractdelimita);
+                string[] sincoma2 = resulfin.Split(caractdelimita);
+                string[] sincoma3 = fylfin.Split(caractdelimita);
+                string[] sincoma4 = evefin.Split(caractdelimita);
+                string[] finalsincoma1 = new string[sincoma.Rank];                                                           
+                //guardado
+                for (int i = 0; i < sincoma.Length; i++)
+                {
+                    Carrera_Deportiva_Evento CDE1 = new Carrera_Deportiva_Evento();
+                    CDE1.ID_Atleta = Convert.ToInt32(collection["txt_atleta"]);
+                    CDE1.Prueba =sincoma[i];
+                    CDE1.Resultado = sincoma2[i];
+                    CDE1.Fecha_Y_Lugar = sincoma3[i];
+                    CDE1.Evento = sincoma4[i];
+                    CDE1.Fecha_de_Registro = fdr;
+                    CDE1.Estado = state;
+                    db.Carrera_Deportiva_Evento.Add(CDE1);
+                    db.SaveChanges();                    
+                }                
                 //Debug.WriteLine("Antecedentes Deportivos: a continuacion, mencione sus logros y medallas mas importantes en competencias como seleccionado (a) o en eventos olimpicos");
                 //Debug.WriteLine(collection["prueba[]"]);
                 //Debug.WriteLine(collection["resultado[]"]);
@@ -1241,25 +1359,44 @@ namespace SistemaMedico.Controllers
             if (!string.IsNullOrEmpty(collection["evento_fam[]"]) || !string.IsNullOrEmpty(collection["resultado_fam[]"]) || !string.IsNullOrEmpty(collection["fechaYlugarfam[]"]))
             {
                 var pruebafam = collection["evento_fam[]"];
+                var pruebafamfin = "";
                 var fylfam = collection["fechaYlugarfam[]"];
+                var fylfamfin = "";                
                 var resulfam = collection["resultado_fam[]"];
-                for (var i = 0; i < pruebafam.Count(); i++)
+                var resulfamfin = "";
+
+                //Pruebafam
+                foreach (var i in pruebafam)
                 {
-                    if (pruebafam[i].ToString() != "," || fylfam[i].ToString() != "," || resulfam[i].ToString() != ",")
-                    {
-                        Carrera_Deportiva_Familiar CDF1 = new Carrera_Deportiva_Familiar();
-                        CDF1.ID_Atleta = Convert.ToInt32(collection["txt_atleta"]);
-                        CDF1.Evento = pruebafam[i].ToString();
-                        CDF1.FechayLugar = fylfam[i].ToString();
-                        CDF1.Resultado = resulfam[i].ToString();
-                        db.Carrera_Deportiva_Familiar.Add(CDF1);
-                        db.SaveChanges();
-                    }
+                    pruebafamfin = pruebafamfin + i.ToString();
                 }
-                //Debug.WriteLine("Espeifique si algun familiar ha participado en eventos deportivos de alto rendimiento o de seleccion nacional.");
-                //Debug.WriteLine(collection["evento_fam[]"]);
-                //Debug.WriteLine(collection["resultado_fam[]"]);
-                //Debug.WriteLine(collection["fechaYlugarfam[]"]);
+                //resulfam
+                foreach (var i in resulfam)
+                {
+                    resulfamfin = resulfamfin + i.ToString();
+                }
+                //fylfam
+                foreach (var i in fylfam)
+                {
+                    fylfamfin = fylfamfin + i.ToString();
+                }
+
+                string[] sincoma = pruebafamfin.Split(caractdelimita);
+                string[] sincoma3 = fylfamfin.Split(caractdelimita);
+                string[] sincoma2 = resulfamfin.Split(caractdelimita);                                             
+                //guardado
+                for (int i = 0; i < sincoma.Length; i++)
+                {
+                    Carrera_Deportiva_Familiar CDF1 = new Carrera_Deportiva_Familiar();
+                    CDF1.ID_Atleta = Convert.ToInt32(collection["txt_atleta"]);
+                    CDF1.Evento = sincoma[i];
+                    CDF1.FechayLugar = sincoma3[i];
+                    CDF1.Resultado = sincoma2[i];
+                    CDF1.Fecha_de_Registro = fdr;
+                    CDF1.Estado = state;
+                    db.Carrera_Deportiva_Familiar.Add(CDF1);
+                    db.SaveChanges();
+                }
             }
             //Entrenamientos
             if (!string.IsNullOrEmpty(collection["entrenamiento"]))
@@ -1269,6 +1406,8 @@ namespace SistemaMedico.Controllers
                 CD2.Preguntas = "Entreno(dias por semana)";
                 CD2.Respuestas = collection["entrenamiento"];
                 CD2.Detalles = collection["sesiones"];
+                CD2.Fecha_de_Registro = fdr;
+                CD2.Estado = state;
                 db.Carrera_Deportiva.Add(CD2);
                 db.SaveChanges();
                 //Debug.WriteLine("Entreno(dias por semana)");
@@ -1283,6 +1422,8 @@ namespace SistemaMedico.Controllers
                 CD3.Preguntas = "Horas de entrenamiento por sesion";
                 CD3.Respuestas = collection["por_sesion"];
                 CD3.Detalles = "";
+                CD3.Fecha_de_Registro = fdr;
+                CD3.Estado = state;
                 db.Carrera_Deportiva.Add(CD3);
                 db.SaveChanges();
                 //Debug.WriteLine("Horas de entrenamiento por sesion");
@@ -1296,6 +1437,8 @@ namespace SistemaMedico.Controllers
                 CD4.Preguntas = "Modalidad de entrenamiento";
                 CD4.Respuestas = collection["modalidad_entrenamiento"];
                 CD4.Detalles = "";
+                CD4.Fecha_de_Registro = fdr;
+                CD4.Estado = state;
                 db.Carrera_Deportiva.Add(CD4);
                 db.SaveChanges();
                 //Debug.WriteLine("Modalidad de entrenamiento");
@@ -1309,6 +1452,8 @@ namespace SistemaMedico.Controllers
                 CD5.Preguntas = "Cuento con un plan de entrenamiento que:";
                 CD5.Respuestas = collection["plan"];
                 CD5.Detalles = "";
+                CD5.Fecha_de_Registro = fdr;
+                CD5.Estado = state;
                 db.Carrera_Deportiva.Add(CD5);
                 db.SaveChanges();
                 //Debug.WriteLine("Cuento con un plan de entrenamiento que:");
@@ -1334,6 +1479,8 @@ namespace SistemaMedico.Controllers
                 {
                     CD6.Detalles = "";
                 }
+                CD6.Fecha_de_Registro = fdr;
+                CD6.Estado = state;
                 db.Carrera_Deportiva.Add(CD6);
                 db.SaveChanges();
                 //Debug.WriteLine("Sus actividades se adaptan a sus horararios y sesiones de entrenamiento");
@@ -1361,6 +1508,8 @@ namespace SistemaMedico.Controllers
                 }
                 //Debug.WriteLine("Su sitio de entrenamiento es:");
                 //Debug.WriteLine(collection["sitio"]);
+                CD7.Fecha_de_Registro = fdr;
+                CD7.Estado = state;
                 db.Carrera_Deportiva.Add(CD7);
                 db.SaveChanges();
             }
@@ -1373,6 +1522,8 @@ namespace SistemaMedico.Controllers
                 SL1.ID_Atleta = Convert.ToInt32(collection["txt_atleta"]);
                 SL1.Preguntas = "Trabaja Actualmente";
                 SL1.Respuestas = collection["trabaja"];
+                SL1.Fecha_de_Registro = fdr;
+                SL1.Estado = state;
                 db.Situacion_Laboral.Add(SL1);
                 db.SaveChanges();
                 //Debug.WriteLine("Trabaja Actualmente");
@@ -1385,6 +1536,8 @@ namespace SistemaMedico.Controllers
                 SL2.ID_Atleta = Convert.ToInt32(collection["txt_atleta"]);
                 SL2.Preguntas = "Tiene personas a cargo";
                 SL2.Respuestas = collection["personas"];
+                SL2.Fecha_de_Registro = fdr;
+                SL2.Estado = state;
                 db.Situacion_Laboral.Add(SL2);
                 db.SaveChanges();
                 //Debug.WriteLine("Tiene personas a cargo");
@@ -1400,6 +1553,8 @@ namespace SistemaMedico.Controllers
                 AE1.Preguntas = "Las necesidades economicas del atleta para su practica deportiva son asumidas por:";
                 AE1.Respuestas = collection["NEA"];
                 AE1.Detalles = "";
+                AE1.Fecha_de_Registro = fdr;
+                AE1.Estado = state;
                 db.Apoyo_Economico.Add(AE1);
                 db.SaveChanges();
             }
@@ -1415,6 +1570,8 @@ namespace SistemaMedico.Controllers
                 AE2.Preguntas = "Las necesidades economicas del atleta para su practica deportiva son asumidas por:";
                 AE2.Respuestas = collection["NEP"];
                 AE2.Detalles = "";
+                AE2.Fecha_de_Registro = fdr;
+                AE2.Estado = state;
                 db.Apoyo_Economico.Add(AE2);
                 db.SaveChanges();
             }
@@ -1430,6 +1587,8 @@ namespace SistemaMedico.Controllers
                 AE3.Preguntas = "Las necesidades economicas del atleta para su practica deportiva son asumidas por:";
                 AE3.Respuestas = collection["NEM"];
                 AE3.Detalles = "";
+                AE3.Fecha_de_Registro = fdr;
+                AE3.Estado = state;
                 db.Apoyo_Economico.Add(AE3);
                 db.SaveChanges();
             }
@@ -1445,6 +1604,8 @@ namespace SistemaMedico.Controllers
                 AE4.Preguntas = "Las necesidades economicas del atleta para su practica deportiva son asumidas por:";
                 AE4.Respuestas = collection["NEPA"];
                 AE4.Detalles = "";
+                AE4.Fecha_de_Registro = fdr;
+                AE4.Estado = state;
                 db.Apoyo_Economico.Add(AE4);
                 db.SaveChanges();
             }
@@ -1460,6 +1621,8 @@ namespace SistemaMedico.Controllers
                 AE5.Preguntas = "Las necesidades economicas del atleta para su practica deportiva son asumidas por:";
                 AE5.Respuestas = collection["NEOMF"];
                 AE5.Detalles = collection["txt_otrosmiembros"];
+                AE5.Fecha_de_Registro = fdr;
+                AE5.Estado = state;
                 db.Apoyo_Economico.Add(AE5);
                 db.SaveChanges();
             }
@@ -1475,6 +1638,8 @@ namespace SistemaMedico.Controllers
                 AE6.Preguntas = "Las necesidades economicas del atleta para su practica deportiva son asumidas por:";
                 AE6.Respuestas = collection["NEOMC"];
                 AE6.Detalles = collection["txt_otrospersonas"];
+                AE6.Fecha_de_Registro = fdr;
+                AE6.Estado = state;
                 db.Apoyo_Economico.Add(AE6);
                 db.SaveChanges();
             }
@@ -1490,6 +1655,8 @@ namespace SistemaMedico.Controllers
                 AE7.Preguntas = "Las necesidades economicas del atleta para su practica deportiva son asumidas por:";
                 AE7.Respuestas = collection["NENRAM"];
                 AE7.Detalles = "";
+                AE7.Fecha_de_Registro = fdr;
+                AE7.Estado = state;
                 db.Apoyo_Economico.Add(AE7);
                 db.SaveChanges();
             }
@@ -1505,6 +1672,8 @@ namespace SistemaMedico.Controllers
                 AE8.Preguntas = "Las necesidades economicas del atleta para su practica deportiva son asumidas por:";
                 AE8.Respuestas = collection["NEAMPD"];
                 AE8.Detalles = "";
+                AE8.Fecha_de_Registro = fdr;
+                AE8.Estado = state;
                 db.Apoyo_Economico.Add(AE8);
                 db.SaveChanges();
             }
@@ -1520,6 +1689,8 @@ namespace SistemaMedico.Controllers
                 AE9.Preguntas = "Las necesidades economicas del atleta para su practica deportiva son asumidas por:";
                 AE9.Respuestas = collection["NEF"];
                 AE9.Detalles = "";
+                AE9.Fecha_de_Registro = fdr;
+                AE9.Estado = state;
                 db.Apoyo_Economico.Add(AE9);
                 db.SaveChanges();
             }
@@ -1535,6 +1706,8 @@ namespace SistemaMedico.Controllers
                 AE10.Preguntas = "Las necesidades economicas del atleta para su practica deportiva son asumidas por:";
                 AE10.Respuestas = collection["NEOA"];
                 AE10.Detalles = collection["txt_otrosapoyos1"];
+                AE10.Fecha_de_Registro = fdr;
+                AE10.Estado = state;
                 db.Apoyo_Economico.Add(AE10);
                 db.SaveChanges();
             }
@@ -1551,6 +1724,8 @@ namespace SistemaMedico.Controllers
                 CA1.ID_Atleta = Convert.ToInt32(collection["txt_atleta"]);
                 CA1.Preguntas = "En que consiste el apoyo que recibe:";
                 CA1.Respuestas = collection["CAM"];
+                CA1.Fecha_de_Registro = fdr;
+                CA1.Estado = state;
                 db.Consiste_Apoyo.Add(CA1);
                 db.SaveChanges();
                 //Debug.WriteLine("En que consiste el apoyo que recibe:");
@@ -1567,6 +1742,8 @@ namespace SistemaMedico.Controllers
                 CA2.ID_Atleta = Convert.ToInt32(collection["txt_atleta"]);
                 CA2.Preguntas = "En que consiste el apoyo que recibe:";
                 CA2.Respuestas = collection["CAECD"];
+                CA2.Fecha_de_Registro = fdr;
+                CA2.Estado = state;
                 db.Consiste_Apoyo.Add(CA2);
                 db.SaveChanges();
                 //Debug.WriteLine("En que consiste el apoyo que recibe:");
@@ -1583,6 +1760,8 @@ namespace SistemaMedico.Controllers
                 CA3.ID_Atleta = Convert.ToInt32(collection["txt_atleta"]);
                 CA3.Preguntas = "En que consiste el apoyo que recibe:";
                 CA3.Respuestas = collection["CAE"];
+                CA3.Fecha_de_Registro = fdr;
+                CA3.Estado = state;
                 db.Consiste_Apoyo.Add(CA3);
                 db.SaveChanges();
                 //Debug.WriteLine("En que consiste el apoyo que recibe:");
@@ -1599,6 +1778,8 @@ namespace SistemaMedico.Controllers
                 CA4.ID_Atleta = Convert.ToInt32(collection["txt_atleta"]);
                 CA4.Preguntas = "En que consiste el apoyo que recibe:";
                 CA4.Respuestas = collection["CAA"];
+                CA4.Fecha_de_Registro = fdr;
+                CA4.Estado = state;
                 db.Consiste_Apoyo.Add(CA4);
                 db.SaveChanges();
                 //Debug.WriteLine("En que consiste el apoyo que recibe:");
@@ -1615,6 +1796,8 @@ namespace SistemaMedico.Controllers
                 CA5.ID_Atleta = Convert.ToInt32(collection["txt_atleta"]);
                 CA5.Preguntas = "En que consiste el apoyo que recibe:";
                 CA5.Respuestas = collection["CAT"];
+                CA5.Fecha_de_Registro = fdr;
+                CA5.Estado = state;
                 db.Consiste_Apoyo.Add(CA5);
                 db.SaveChanges();
                 //Debug.WriteLine("En que consiste el apoyo que recibe:");
@@ -1631,6 +1814,8 @@ namespace SistemaMedico.Controllers
                 CA6.ID_Atleta = Convert.ToInt32(collection["txt_atleta"]);
                 CA6.Preguntas = "En que consiste el apoyo que recibe:";
                 CA6.Respuestas = collection["CAAL"];
+                CA6.Fecha_de_Registro = fdr;
+                CA6.Estado = state;
                 db.Consiste_Apoyo.Add(CA6);
                 db.SaveChanges();
                 //Debug.WriteLine("En que consiste el apoyo que recibe:");
@@ -1649,6 +1834,8 @@ namespace SistemaMedico.Controllers
                 AE17.Preguntas = "En que invierte su apoyo monetario";
                 AE17.Respuestas = collection["IAMPD"];
                 AE17.Detalles = "";
+                AE17.Fecha_de_Registro = fdr;
+                AE17.Estado = state;
                 db.Apoyo_Economico.Add(AE17);
                 db.SaveChanges();
                 //Debug.WriteLine("En que invierte su apoyo monetario");
@@ -1666,6 +1853,8 @@ namespace SistemaMedico.Controllers
                 AE18.Preguntas = "En que invierte su apoyo monetario";
                 AE18.Respuestas = collection["IAMEF"];
                 AE18.Detalles = "";
+                AE18.Fecha_de_Registro = fdr;
+                AE18.Estado = state;
                 db.Apoyo_Economico.Add(AE18);
                 db.SaveChanges();
                 //Debug.WriteLine("En que invierte su apoyo monetario");
@@ -1683,6 +1872,8 @@ namespace SistemaMedico.Controllers
                 AE19.Preguntas = "En que invierte su apoyo monetario";
                 AE19.Respuestas = collection["IAME"];
                 AE19.Detalles = "";
+                AE19.Fecha_de_Registro = fdr;
+                AE19.Estado = state;
                 db.Apoyo_Economico.Add(AE19);
                 db.SaveChanges();
                 //Debug.WriteLine("En que invierte su apoyo monetario");
@@ -1704,6 +1895,8 @@ namespace SistemaMedico.Controllers
                 IF1.Preguntas = "Con quien vive";
                 IF1.Respuestas = collection["CQVS"];
                 IF1.Detalles = "";
+                IF1.Fecha_de_Registro = fdr;
+                IF1.Estado = state;
                 db.Informacion_Familiar.Add(IF1);
                 db.SaveChanges();
                 //Debug.WriteLine("Con quien vive");
@@ -1717,6 +1910,8 @@ namespace SistemaMedico.Controllers
                 IF2.Preguntas = "Con quien vive";
                 IF2.Respuestas = collection["CQVA"];
                 IF2.Detalles = "";
+                IF2.Fecha_de_Registro = fdr;
+                IF2.Estado = state;
                 db.Informacion_Familiar.Add(IF2);
                 db.SaveChanges();
                 //Debug.WriteLine("Con quien vive");
@@ -1730,6 +1925,8 @@ namespace SistemaMedico.Controllers
                 IF3.Preguntas = "Con quien vive";
                 IF3.Respuestas = collection["CQVPA"];
                 IF3.Detalles = "";
+                IF3.Fecha_de_Registro = fdr;
+                IF3.Estado = state;
                 db.Informacion_Familiar.Add(IF3);
                 db.SaveChanges();
                 //Debug.WriteLine("Con quien vive");
@@ -1743,6 +1940,8 @@ namespace SistemaMedico.Controllers
                 IF4.Preguntas = "Con quien vive";
                 IF4.Respuestas = collection["CQVMA"];
                 IF4.Detalles = "";
+                IF4.Fecha_de_Registro = fdr;
+                IF4.Estado = state;
                 db.Informacion_Familiar.Add(IF4);
                 db.SaveChanges();
                 //Debug.WriteLine("Con quien vive");
@@ -1763,6 +1962,8 @@ namespace SistemaMedico.Controllers
                 {
                     IF5.Detalles = "";
                 }
+                IF5.Fecha_de_Registro = fdr;
+                IF5.Estado = state;
                 db.Informacion_Familiar.Add(IF5);
                 db.SaveChanges();
                 //Debug.WriteLine("Con quien vive");
@@ -1783,6 +1984,8 @@ namespace SistemaMedico.Controllers
                 {
                     IF6.Detalles = "";
                 }
+                IF6.Fecha_de_Registro = fdr;
+                IF6.Estado = state;
                 db.Informacion_Familiar.Add(IF6);
                 db.SaveChanges();
                 //Debug.WriteLine("Con quien vive");
@@ -1803,6 +2006,8 @@ namespace SistemaMedico.Controllers
                 {
                     IF7.Detalles = "";
                 }
+                IF7.Fecha_de_Registro = fdr;
+                IF7.Estado = state;
                 db.Informacion_Familiar.Add(IF7);
                 db.SaveChanges();
                 //Debug.WriteLine("Con quien vive");
@@ -1823,6 +2028,8 @@ namespace SistemaMedico.Controllers
                 {
                     IF8.Detalles = "";
                 }
+                IF8.Fecha_de_Registro = fdr;
+                IF8.Estado = state;
                 db.Informacion_Familiar.Add(IF8);
                 db.SaveChanges();
                 //Debug.WriteLine("Con quien vive");
@@ -1836,6 +2043,8 @@ namespace SistemaMedico.Controllers
                 IF9.Preguntas = "Con quien vive";
                 IF9.Respuestas = collection["CQVAD"];
                 IF9.Detalles = "";
+                IF9.Fecha_de_Registro = fdr;
+                IF9.Estado = state;
                 db.Informacion_Familiar.Add(IF9);
                 db.SaveChanges();
                 //Debug.WriteLine("Con quien vive");
@@ -1849,6 +2058,8 @@ namespace SistemaMedico.Controllers
                 IF10.Preguntas = "¿Tiene Hijos?";
                 IF10.Respuestas = collection["btnhijos"];
                 IF10.Detalles = "";
+                IF10.Fecha_de_Registro = fdr;
+                IF10.Estado = state;
                 db.Informacion_Familiar.Add(IF10);
                 db.SaveChanges();
                 //Debug.WriteLine("¿Tiene Hijos?");
@@ -1862,6 +2073,8 @@ namespace SistemaMedico.Controllers
                 IF11.Preguntas = "¿Proyecta Tener Hijos?";
                 IF11.Respuestas = collection["pmhijos"];
                 IF11.Detalles = "";
+                IF11.Fecha_de_Registro = fdr;
+                IF11.Estado = state;
                 db.Informacion_Familiar.Add(IF11);
                 db.SaveChanges();
                 //Debug.WriteLine("¿Proyecta Tener Hijos?");
@@ -1883,6 +2096,8 @@ namespace SistemaMedico.Controllers
                 {
                     IF12.Detalles = "";
                 }
+                IF12.Fecha_de_Registro = fdr;
+                IF12.Estado = state;
                 db.Informacion_Familiar.Add(IF12);
                 db.SaveChanges();
                 //Debug.WriteLine("Números de personas con las que Vive");
@@ -1897,6 +2112,8 @@ namespace SistemaMedico.Controllers
                 E1.Preguntas = "Estudia Actualmente";
                 E1.Respuestas = collection["Est"];
                 E1.Detalles = "";
+                E1.Fecha_de_Registro = fdr;
+                E1.Estado = state;
                 db.Educacion.Add(E1);
                 db.SaveChanges();
                 //Debug.WriteLine("Estudia Actualmente");
@@ -1918,6 +2135,8 @@ namespace SistemaMedico.Controllers
                 {
                     E2.Detalles = "";
                 }
+                E2.Fecha_de_Registro = fdr;
+                E2.Estado = state;
                 db.Educacion.Add(E2);
                 db.SaveChanges();
                 //Debug.WriteLine("Ultimo nivel academico terminado");
@@ -1944,6 +2163,8 @@ namespace SistemaMedico.Controllers
                 E3.Preguntas = "¿Donde Estudia?";
                 E3.Respuestas = collection["txt_donde_Estudia"];
                 E3.Detalles = "";
+                E3.Fecha_de_Registro = fdr;
+                E3.Estado = state;
                 db.Educacion.Add(E3);
                 db.SaveChanges();
             }
@@ -1963,6 +2184,8 @@ namespace SistemaMedico.Controllers
                 {
                     habitacion1.Detalles = "";
                 }
+                habitacion1.Fecha_de_Registro = fdr;
+                habitacion1.Estado = state;
                 db.Habitacion.Add(habitacion1);
                 db.SaveChanges();
                 //Debug.WriteLine("Cómo calificaría su barrio");
@@ -1980,6 +2203,8 @@ namespace SistemaMedico.Controllers
                 habitacion2.Preguntas = "Como describiria el estado de la vivienda en que reside actualmente";
                 habitacion2.Respuestas = collection["vivienda"];
                 habitacion2.Detalles = "";
+                habitacion2.Fecha_de_Registro = fdr;
+                habitacion2.Estado = state;
                 db.Habitacion.Add(habitacion2);
                 db.SaveChanges();
                 //Debug.WriteLine("Como describiria el estado de la vivienda en que reside actualmente");
@@ -2001,6 +2226,8 @@ namespace SistemaMedico.Controllers
                 {
                     habitos1.Detalles = "";
                 }
+                habitos1.Fecha_de_Registro = fdr;
+                habitos1.Estado = state;
                 db.Habitos.Add(habitos1);
                 db.SaveChanges();
                 //Debug.WriteLine("¿Usted Fuma?");
@@ -2017,15 +2244,15 @@ namespace SistemaMedico.Controllers
                 habitos2.ID_Atleta = Convert.ToInt32(collection["txt_atleta"]);
                 habitos2.Preguntas = "¿Usted Toma?";
                 habitos2.Respuestas = collection["toma"];
-                if (!string.IsNullOrEmpty(collection["cerveza"]))
+                if (!string.IsNullOrEmpty(collection["cerveza"]) && !string.IsNullOrEmpty(collection["licor"]))
+                {
+                    habitos2.Detalles = collection["cerveza"] + "," + collection["licor"];
+                }
+                else if (!string.IsNullOrEmpty(collection["cerveza"]))
                 {
                     habitos2.Detalles = collection["cerveza"];
                 }
-                else
-                {
-                    habitos2.Detalles = "";
-                }
-                if (!string.IsNullOrEmpty(collection["licor"]))
+                else if (!string.IsNullOrEmpty(collection["licor"]))
                 {
                     habitos2.Detalles = collection["licor"];
                 }
@@ -2033,6 +2260,8 @@ namespace SistemaMedico.Controllers
                 {
                     habitos2.Detalles = "";
                 }
+                habitos2.Fecha_de_Registro = fdr;
+                habitos2.Estado = state;
                 db.Habitos.Add(habitos2);
                 db.SaveChanges();
                 //Debug.WriteLine("¿Usted toma?");
@@ -2051,6 +2280,9 @@ namespace SistemaMedico.Controllers
         [HttpPost]
         public ActionResult Actualizar(int ID, FormCollection collection)
         {
+            var fdr = DateTime.Today;
+            bool state = true;
+            char[] caractdelimita = { ',' };
             //MEDICAMENTOS
             //Relajantes Musculares
             if (!string.IsNullOrEmpty(collection["btnrelajantes"]))
@@ -3629,7 +3861,169 @@ namespace SistemaMedico.Controllers
                 }
             }
             //Antecedentes Deportivos. Carrera deportiva
+            if (!string.IsNullOrEmpty(collection["prueba[]"]) || !string.IsNullOrEmpty(collection["resultado[]"]) || !string.IsNullOrEmpty(collection["fechaYlugar[]"]) || !string.IsNullOrEmpty(collection["evento[]"]))
+            {
+                ////Devuleve la tabla
+                //var CDET1 = db.Carrera_Deportiva_Evento.Where(s => s.ID_Atleta == ID);
+                ////Imprime de la vista
+                //var prueba = collection["prueba[]"];
+                //var pruebafin = "";
+                //var resul = collection["resultado[]"];
+                //var resulfin = "";
+                //var fyl = collection["fechaYlugar[]"];
+                //var fylfin = "";
+                //var eve = collection["evento[]"];
+                //var evefin = "";
+                ////Prueba
+                //foreach (var i in prueba)
+                //{
+                //    pruebafin = pruebafin + i.ToString();
+                //}
+                ////resultado
+                //foreach (var i in resul)
+                //{
+                //    resulfin = resulfin + i.ToString();
+                //}
+                ////fecha y lugar
+                //foreach (var i in fyl)
+                //{
+                //    fylfin = fylfin + i.ToString();
+                //}
+                ////evento
+                //foreach (var i in eve)
+                //{
+                //    evefin = evefin + i.ToString();
+                //}
+                //string[] sincoma = pruebafin.Split(caractdelimita);
+                //string[] sincoma2 = resulfin.Split(caractdelimita);
+                //string[] sincoma3 = fylfin.Split(caractdelimita);
+                //string[] sincoma4 = evefin.Split(caractdelimita);
+                //string[] finalsincoma1 = new string[sincoma.Rank];
+                //string mh1 = "";
+                //string mh2 = "";
+                //string mh3 = "";
+                //string mh4 = "";
+                ////Debug.WriteLine(sincoma.Length);
+                //int nosecomolequerasponer = 0, h = 0;
+                //foreach (var i in CDET1)
+                //{
+                //    nosecomolequerasponer++;
+                //    if (nosecomolequerasponer <= sincoma.Length)
+                //    {
+                //        if (i.Prueba != sincoma[nosecomolequerasponer - 1])
+                //        {
+                //            mh1 = i.Prueba;
+                //            mh2 = i.Resultado;
+                //            mh3 = i.Fecha_Y_Lugar;
+                //            mh4 = i.Evento;
+                //            h = nosecomolequerasponer;
+                //            break;
+                //        }
+                //        else
+                //        {
+                //            //No entra
+                //        }
+                //    }
+                //    else if (h == 0)
+                //    {
+                //        mh1 = i.Prueba;
+                //        mh2 = i.Resultado;
+                //        mh3 = i.Fecha_Y_Lugar;
+                //        mh4 = i.Evento;
+                //    }
+                //}
+                //if (mh1 != "")
+                //{
+                //    //Carrera_Deportiva_Evento cde = db.Carrera_Deportiva_Evento.FirstOrDefault(s => s.ID_Atleta == ID && s.Prueba == mh1);
+                //    //cde.Prueba = mh1;
+                //    //cde.Resultado = mh2;
+                //    //cde.Fecha_Y_Lugar = mh3;
+                //    //cde.Evento = mh4;
+                //    //cde.Fecha_de_Registro = fdr;
+                //    //cde.Estado = state;
+                //    //db.Carrera_Deportiva_Evento.Remove(cde);
+                //    //db.SaveChanges();
+                //    foreach (var item in CDET1)
+                //    {
+                //        for (int i = 0; i < sincoma.Length; i++)
+                //        {
+                //            if (item.Prueba != sincoma[i])
+                //            {
+                //                mh1 = item.Prueba;
+                //                mh2 = item.Resultado;
+                //                mh3 = item.Fecha_Y_Lugar;
+                //                mh4 = item.Evento;
+                                
+                //            }
+                //            else if (item.Prueba == sincoma[i])
+                //            {
+                //                Debug.WriteLine("funciona por favor");
+                //            }
+                //        }
+                //    }
+                //    Debug.WriteLine(mh1);
+                //}
+                //else
+                //{
+                //    Carrera_Deportiva_Evento cde = db.Carrera_Deportiva_Evento.FirstOrDefault(s => s.ID_Atleta == ID && s.Prueba == mh1);
+                //    cde.Prueba = mh1;
+                //    cde.Resultado = mh2;
+                //    cde.Fecha_Y_Lugar = mh3;
+                //    cde.Evento = mh4;
+                //    cde.Fecha_de_Registro = fdr;
+                //    cde.Estado = state;
+                //    db.Entry(cde).State = System.Data.Entity.EntityState.Modified;
+                //    db.SaveChanges();
+                //}
+                //Debug.WriteLine("Antecedentes Deportivos: a continuacion, mencione sus logros y medallas mas importantes en competencias como seleccionado (a) o en eventos olimpicos");
+                //Debug.WriteLine(collection["prueba[]"]);
+                //Debug.WriteLine(collection["resultado[]"]);
+                //Debug.WriteLine(collection["fechaYlugar[]"]);
+                //Debug.WriteLine(collection["evento[]"]);
+            }
             //Antecedentes Deportivos. Carrera deportiva Familiar
+            if (!string.IsNullOrEmpty(collection["evento_fam[]"]) || !string.IsNullOrEmpty(collection["resultado_fam[]"]) || !string.IsNullOrEmpty(collection["fechaYlugarfam[]"]))
+            {
+                //var pruebafam = collection["evento_fam[]"];
+                //var pruebafamfin = "";
+                //var fylfam = collection["fechaYlugarfam[]"];
+                //var fylfamfin = "";
+                //var resulfam = collection["resultado_fam[]"];
+                //var resulfamfin = "";
+
+                ////Pruebafam
+                //foreach (var i in pruebafam)
+                //{
+                //    pruebafamfin = pruebafamfin + i.ToString();
+                //}
+                ////resulfam
+                //foreach (var i in resulfam)
+                //{
+                //    resulfamfin = resulfamfin + i.ToString();
+                //}
+                ////fylfam
+                //foreach (var i in fylfam)
+                //{
+                //    fylfamfin = fylfamfin + i.ToString();
+                //}
+
+                //string[] sincoma = pruebafamfin.Split(caractdelimita);
+                //string[] sincoma3 = fylfamfin.Split(caractdelimita);
+                //string[] sincoma2 = resulfamfin.Split(caractdelimita);
+                ////guardado
+                //for (int i = 0; i < sincoma.Length; i++)
+                //{
+                //    Carrera_Deportiva_Familiar CDF1 = new Carrera_Deportiva_Familiar();
+                //    CDF1.ID_Atleta = Convert.ToInt32(collection["txt_atleta"]);
+                //    CDF1.Evento = sincoma[i];
+                //    CDF1.FechayLugar = sincoma3[i];
+                //    CDF1.Resultado = sincoma2[i];
+                //    CDF1.Fecha_de_Registro = fdr;
+                //    CDF1.Estado = state;
+                //    db.Carrera_Deportiva_Familiar.Add(CDF1);
+                //    db.SaveChanges();
+                //}
+            }
             //Entrenamientos
             if (!string.IsNullOrEmpty(collection["entrenamiento"]))
             {
@@ -5524,19 +5918,17 @@ namespace SistemaMedico.Controllers
                     habitos2.ID_Atleta = Convert.ToInt32(collection["txt_atleta"]);
                     habitos2.Preguntas = "¿Usted Toma?";
                     habitos2.Respuestas = collection["toma"];
-                    if (!string.IsNullOrEmpty(collection["cerveza"]))
-                    {
-                        habitos2.Detalles = collection["cerveza"];
-                    }
-                    else
-                    if (!string.IsNullOrEmpty(collection["licor"]))
-                    {
-                        habitos2.Detalles = collection["licor"];
-                    }
-                    else
                     if (!string.IsNullOrEmpty(collection["cerveza"]) && !string.IsNullOrEmpty(collection["licor"]))
                     {
                         habitos2.Detalles = collection["cerveza"] + "," + collection["licor"];
+                    }
+                    else if (!string.IsNullOrEmpty(collection["cerveza"]))
+                    {
+                        habitos2.Detalles = collection["cerveza"];
+                    }
+                    else if (!string.IsNullOrEmpty(collection["licor"]))
+                    {
+                        habitos2.Detalles = collection["licor"];
                     }
                     else
                     {
@@ -5550,15 +5942,15 @@ namespace SistemaMedico.Controllers
                     A.ID_Atleta = ID;
                     A.Preguntas = "¿Usted Toma?";
                     A.Respuestas = collection["toma"];
-                    if (!string.IsNullOrEmpty(collection["cerveza"]))
+                    if (!string.IsNullOrEmpty(collection["cerveza"]) && !string.IsNullOrEmpty(collection["licor"]))
+                    {
+                        A.Detalles = collection["cerveza"] + "," + collection["licor"];
+                    }
+                    else if (!string.IsNullOrEmpty(collection["cerveza"]))
                     {
                         A.Detalles = collection["cerveza"];
                     }
-                    else
-                    {
-                        A.Detalles = "";
-                    }
-                    if (!string.IsNullOrEmpty(collection["licor"]))
+                    else if (!string.IsNullOrEmpty(collection["licor"]))
                     {
                         A.Detalles = collection["licor"];
                     }

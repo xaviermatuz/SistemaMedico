@@ -23,6 +23,8 @@ namespace SistemaMedico.Models
         public int ID { get; set; }
         public int ID_Deporte { get; set; }
         public string Categoria { get; set; }
+        public Nullable<System.DateTime> Fecha_de_Registro { get; set; }
+        public Nullable<bool> Estado { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Atleta_Categoria> Atleta_Categoria { get; set; }

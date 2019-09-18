@@ -36,6 +36,7 @@
     @RenderSection("CrearAtletaCss", required: false)
     @RenderSection("ActualizarAtletaCss", required: false)
     @RenderSection("CrearExamenFisicoCss", required: false)
+    @RenderSection("IndexCss", required: false)
 </head>
 
 <body class="theme-blue-grey">
@@ -80,8 +81,8 @@
             <!-- User Info -->
             <div class="user-info">
                 @*<video width="320" height="240" autoplay loop>
-                    <source src="~/Image/LOGEB.mp4" type="video/mp4" />                    
-                </video>*@
+                        <source src="~/Image/LOGEB.mp4" type="video/mp4" />
+                    </video>*@
                 <div class="image">
                     <img src="~/Recursos/images/user.png" width="48" height="48" alt="User" />
                 </div>
@@ -161,6 +162,12 @@
                             <li class="@Html.ActivePage("Atleta", "Index")"><a href="">Crear Usuario</a></li>
                         </ul>
                     </li>
+                    <li style="display:none;" class="@Html.ActivePage("Lesiones", "Index")">
+                        <a href="@Url.Action("Index", "Lesiones")">
+                            <i class="material-icons">accessible_forward</i>
+                            <span>Lesiones</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
             <!-- #Menu -->
@@ -208,6 +215,7 @@
     @RenderSection("ActualizarAtletaScript", required: false)
     @RenderSection("CrearExamenFisicoScript", required: false)
     @RenderSection("CrearHistorialMedicoScript", required: false)
+    @RenderSection("IndexScript", required: false)
 
     <!-- Custom Js -->
     <script src="~/Recursos/js/admin.js"></script>

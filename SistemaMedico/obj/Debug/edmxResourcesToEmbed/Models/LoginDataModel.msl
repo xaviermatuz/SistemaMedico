@@ -14,6 +14,8 @@
     <EntitySetMapping Name="Alergias">
       <EntityTypeMapping TypeName="MeSysModel.Alergias">
         <MappingFragment StoreEntitySet="Alergias">
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Fecha_de_Registro" ColumnName="Fecha_de_Registro" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="ID_Atleta" ColumnName="ID_Atleta" />
           <ScalarProperty Name="Alergia" ColumnName="Alergia" />
@@ -24,6 +26,8 @@
     <EntitySetMapping Name="Anexos">
       <EntityTypeMapping TypeName="MeSysModel.Anexos">
         <MappingFragment StoreEntitySet="Anexos">
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Fecha_de_Registro" ColumnName="Fecha_de_Registro" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="ID_Atleta" ColumnName="ID_Atleta" />
           <ScalarProperty Name="Otros_Hallazgos" ColumnName="Otros_Hallazgos" />
@@ -35,6 +39,8 @@
     <EntitySetMapping Name="Aparato_Locomotor">
       <EntityTypeMapping TypeName="MeSysModel.Aparato_Locomotor">
         <MappingFragment StoreEntitySet="Aparato_Locomotor">
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Fecha_de_Registro" ColumnName="Fecha_de_Registro" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="ID_Atleta" ColumnName="ID_Atleta" />
           <ScalarProperty Name="Preguntas" ColumnName="Preguntas" />
@@ -45,6 +51,8 @@
     <EntitySetMapping Name="Apoyo_Economico">
       <EntityTypeMapping TypeName="MeSysModel.Apoyo_Economico">
         <MappingFragment StoreEntitySet="Apoyo_Economico">
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Fecha_de_Registro" ColumnName="Fecha_de_Registro" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="ID_Atleta" ColumnName="ID_Atleta" />
           <ScalarProperty Name="Preguntas" ColumnName="Preguntas" />
@@ -56,6 +64,8 @@
     <EntitySetMapping Name="Atleta_Categoria">
       <EntityTypeMapping TypeName="MeSysModel.Atleta_Categoria">
         <MappingFragment StoreEntitySet="Atleta_Categoria">
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Fecha_de_Registro" ColumnName="Fecha_de_Registro" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="ID_Atleta" ColumnName="ID_Atleta" />
           <ScalarProperty Name="ID_Categoria" ColumnName="ID_Categoria" />
@@ -65,6 +75,8 @@
     <EntitySetMapping Name="Carrera_Deportiva">
       <EntityTypeMapping TypeName="MeSysModel.Carrera_Deportiva">
         <MappingFragment StoreEntitySet="Carrera_Deportiva">
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Fecha_de_Registro" ColumnName="Fecha_de_Registro" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="ID_Atleta" ColumnName="ID_Atleta" />
           <ScalarProperty Name="Preguntas" ColumnName="Preguntas" />
@@ -76,6 +88,8 @@
     <EntitySetMapping Name="Carrera_Deportiva_Evento">
       <EntityTypeMapping TypeName="MeSysModel.Carrera_Deportiva_Evento">
         <MappingFragment StoreEntitySet="Carrera_Deportiva_Evento">
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Fecha_de_Registro" ColumnName="Fecha_de_Registro" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="ID_Atleta" ColumnName="ID_Atleta" />
           <ScalarProperty Name="Prueba" ColumnName="Prueba" />
@@ -88,6 +102,8 @@
     <EntitySetMapping Name="Carrera_Deportiva_Familiar">
       <EntityTypeMapping TypeName="MeSysModel.Carrera_Deportiva_Familiar">
         <MappingFragment StoreEntitySet="Carrera_Deportiva_Familiar">
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Fecha_de_Registro" ColumnName="Fecha_de_Registro" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="ID_Atleta" ColumnName="ID_Atleta" />
           <ScalarProperty Name="Evento" ColumnName="Evento" />
@@ -99,6 +115,8 @@
     <EntitySetMapping Name="Categorias">
       <EntityTypeMapping TypeName="MeSysModel.Categorias">
         <MappingFragment StoreEntitySet="Categorias">
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Fecha_de_Registro" ColumnName="Fecha_de_Registro" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="ID_Deporte" ColumnName="ID_Deporte" />
           <ScalarProperty Name="Categoria" ColumnName="Categoria" />
@@ -116,6 +134,8 @@
     <EntitySetMapping Name="Condiciones_Clinicas_Actuales_Principal">
       <EntityTypeMapping TypeName="MeSysModel.Condiciones_Clinicas_Actuales_Principal">
         <MappingFragment StoreEntitySet="Condiciones_Clinicas_Actuales_Principal">
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Fecha_de_Registro" ColumnName="Fecha_de_Registro" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="ID_Atleta" ColumnName="ID_Atleta" />
           <ScalarProperty Name="ID_Condiciones_Clinicas_Actuales" ColumnName="ID_Condiciones_Clinicas_Actuales" />
@@ -127,6 +147,8 @@
     <EntitySetMapping Name="Consiste_Apoyo">
       <EntityTypeMapping TypeName="MeSysModel.Consiste_Apoyo">
         <MappingFragment StoreEntitySet="Consiste_Apoyo">
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Fecha_de_Registro" ColumnName="Fecha_de_Registro" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="ID_Atleta" ColumnName="ID_Atleta" />
           <ScalarProperty Name="Preguntas" ColumnName="Preguntas" />
@@ -185,6 +207,8 @@
     <EntitySetMapping Name="Educacion">
       <EntityTypeMapping TypeName="MeSysModel.Educacion">
         <MappingFragment StoreEntitySet="Educacion">
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Fecha_de_Registro" ColumnName="Fecha_de_Registro" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="ID_Atleta" ColumnName="ID_Atleta" />
           <ScalarProperty Name="Preguntas" ColumnName="Preguntas" />
@@ -196,6 +220,8 @@
     <EntitySetMapping Name="Eventos">
       <EntityTypeMapping TypeName="MeSysModel.Eventos">
         <MappingFragment StoreEntitySet="Eventos">
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Fecha_de_Registro" ColumnName="Fecha_de_Registro" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
           <ScalarProperty Name="Lugar" ColumnName="Lugar" />
@@ -213,6 +239,8 @@
     <EntitySetMapping Name="Examen_Fisico_Principal">
       <EntityTypeMapping TypeName="MeSysModel.Examen_Fisico_Principal">
         <MappingFragment StoreEntitySet="Examen_Fisico_Principal">
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Fecha_de_Registro" ColumnName="Fecha_de_Registro" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="ID_Atleta" ColumnName="ID_Atleta" />
           <ScalarProperty Name="ID_Examen_Fisico" ColumnName="ID_Examen_Fisico" />
@@ -234,6 +262,9 @@
     <EntitySetMapping Name="Ficha_Antropometrica">
       <EntityTypeMapping TypeName="MeSysModel.Ficha_Antropometrica">
         <MappingFragment StoreEntitySet="Ficha_Antropometrica">
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Fecha_de_Registro" ColumnName="Fecha_de_Registro" />
+          <ScalarProperty Name="Txt_Ficha_Antropometrica" ColumnName="Txt_Ficha_Antropometrica" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="ID_Atleta" ColumnName="ID_Atleta" />
           <ScalarProperty Name="Nombre_Y_Apellidos" ColumnName="Nombre_Y_Apellidos" />
@@ -244,7 +275,6 @@
           <ScalarProperty Name="Menstruacion" ColumnName="Menstruacion" />
           <ScalarProperty Name="Antropometrista" ColumnName="Antropometrista" />
           <ScalarProperty Name="Anotador" ColumnName="Anotador" />
-          <ScalarProperty Name="ID_Ficha_Antropometrica" ColumnName="ID_Ficha_Antropometrica" />
           <ScalarProperty Name="Toma1" ColumnName="Toma1" />
           <ScalarProperty Name="Toma2" ColumnName="Toma2" />
           <ScalarProperty Name="Toma3" ColumnName="Toma3" />
@@ -255,6 +285,8 @@
     <EntitySetMapping Name="Habitacion">
       <EntityTypeMapping TypeName="MeSysModel.Habitacion">
         <MappingFragment StoreEntitySet="Habitacion">
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Fecha_de_Registro" ColumnName="Fecha_de_Registro" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="ID_Atleta" ColumnName="ID_Atleta" />
           <ScalarProperty Name="Preguntas" ColumnName="Preguntas" />
@@ -266,6 +298,8 @@
     <EntitySetMapping Name="Habitos">
       <EntityTypeMapping TypeName="MeSysModel.Habitos">
         <MappingFragment StoreEntitySet="Habitos">
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Fecha_de_Registro" ColumnName="Fecha_de_Registro" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="ID_Atleta" ColumnName="ID_Atleta" />
           <ScalarProperty Name="Preguntas" ColumnName="Preguntas" />
@@ -277,6 +311,8 @@
     <EntitySetMapping Name="Historia_Familiar">
       <EntityTypeMapping TypeName="MeSysModel.Historia_Familiar">
         <MappingFragment StoreEntitySet="Historia_Familiar">
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Fecha_de_Registro" ColumnName="Fecha_de_Registro" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="ID_Atleta" ColumnName="ID_Atleta" />
           <ScalarProperty Name="Preguntas" ColumnName="Preguntas" />
@@ -287,6 +323,8 @@
     <EntitySetMapping Name="Historial_Medico">
       <EntityTypeMapping TypeName="MeSysModel.Historial_Medico">
         <MappingFragment StoreEntitySet="Historial_Medico">
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Fecha_de_Registro" ColumnName="Fecha_de_Registro" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="ID_Atleta" ColumnName="ID_Atleta" />
           <ScalarProperty Name="Preguntas" ColumnName="Preguntas" />
@@ -306,6 +344,8 @@
     <EntitySetMapping Name="Informacion_Familiar">
       <EntityTypeMapping TypeName="MeSysModel.Informacion_Familiar">
         <MappingFragment StoreEntitySet="Informacion_Familiar">
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Fecha_de_Registro" ColumnName="Fecha_de_Registro" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="ID_Atleta" ColumnName="ID_Atleta" />
           <ScalarProperty Name="Preguntas" ColumnName="Preguntas" />
@@ -317,6 +357,8 @@
     <EntitySetMapping Name="Medicamentos">
       <EntityTypeMapping TypeName="MeSysModel.Medicamentos">
         <MappingFragment StoreEntitySet="Medicamentos">
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Fecha_de_Registro" ColumnName="Fecha_de_Registro" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="ID_Atleta" ColumnName="ID_Atleta" />
           <ScalarProperty Name="Medicamentos1" ColumnName="Medicamentos" />
@@ -355,6 +397,8 @@
     <EntitySetMapping Name="Situacion_Laboral">
       <EntityTypeMapping TypeName="MeSysModel.Situacion_Laboral">
         <MappingFragment StoreEntitySet="Situacion_Laboral">
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Fecha_de_Registro" ColumnName="Fecha_de_Registro" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="ID_Atleta" ColumnName="ID_Atleta" />
           <ScalarProperty Name="Preguntas" ColumnName="Preguntas" />

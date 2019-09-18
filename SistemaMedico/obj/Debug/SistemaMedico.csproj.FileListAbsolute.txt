@@ -487,8 +487,8 @@ C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\es\System.Web.Razor.res
 C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\es\System.Web.WebPages.resources.dll
 C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\es\System.Web.WebPages.Deployment.resources.dll
 C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\es\System.Web.WebPages.Razor.resources.dll
-C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\obj\Debug\SistemaMedico.csprojAssemblyReference.cache
 C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\obj\Debug\SistemaMedico.csproj.CoreCompileInputs.cache
 C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\obj\Debug\SistemaMedico.csproj.CopyComplete
 C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\obj\Debug\SistemaMedico.dll
 C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\obj\Debug\SistemaMedico.pdb
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\obj\Debug\SistemaMedico.csprojAssemblyReference.cache

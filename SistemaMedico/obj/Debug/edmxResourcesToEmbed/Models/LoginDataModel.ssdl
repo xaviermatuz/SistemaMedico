@@ -18,6 +18,8 @@
     <Property Name="ID_Atleta" Type="int" Nullable="false" />
     <Property Name="Alergia" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="Descripcion" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Fecha_de_Registro" Type="date" Nullable="false" />
+    <Property Name="Estado" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="Anexos">
     <Key>
@@ -28,6 +30,8 @@
     <Property Name="Otros_Hallazgos" Type="varchar" MaxLength="1000" Nullable="false" />
     <Property Name="Recomendaciones" Type="varchar" MaxLength="1000" Nullable="false" />
     <Property Name="Observaciones" Type="varchar" MaxLength="1000" Nullable="false" />
+    <Property Name="Fecha_de_Registro" Type="date" />
+    <Property Name="Estado" Type="bit" />
   </EntityType>
   <EntityType Name="Aparato_Locomotor">
     <Key>
@@ -37,6 +41,8 @@
     <Property Name="ID_Atleta" Type="int" Nullable="false" />
     <Property Name="Preguntas" Type="varchar" MaxLength="500" Nullable="false" />
     <Property Name="Respuestas" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="Fecha_de_Registro" Type="date" />
+    <Property Name="Estado" Type="bit" />
   </EntityType>
   <EntityType Name="Apoyo_Economico">
     <Key>
@@ -47,6 +53,8 @@
     <Property Name="Preguntas" Type="varchar" MaxLength="500" Nullable="false" />
     <Property Name="Respuestas" Type="varchar" MaxLength="500" Nullable="false" />
     <Property Name="Detalles" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="Fecha_de_Registro" Type="date" />
+    <Property Name="Estado" Type="bit" />
   </EntityType>
   <EntityType Name="Atleta_Categoria">
     <Key>
@@ -55,6 +63,8 @@
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ID_Atleta" Type="int" Nullable="false" />
     <Property Name="ID_Categoria" Type="int" Nullable="false" />
+    <Property Name="Fecha_de_Registro" Type="date" />
+    <Property Name="Estado" Type="bit" />
   </EntityType>
   <EntityType Name="Carrera_Deportiva">
     <Key>
@@ -65,6 +75,8 @@
     <Property Name="Preguntas" Type="varchar" MaxLength="500" Nullable="false" />
     <Property Name="Respuestas" Type="varchar" MaxLength="500" Nullable="false" />
     <Property Name="Detalles" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="Fecha_de_Registro" Type="date" />
+    <Property Name="Estado" Type="bit" />
   </EntityType>
   <EntityType Name="Carrera_Deportiva_Evento">
     <Key>
@@ -76,6 +88,8 @@
     <Property Name="Resultado" Type="varchar" MaxLength="500" Nullable="false" />
     <Property Name="Fecha_Y_Lugar" Type="varchar" MaxLength="500" Nullable="false" />
     <Property Name="Evento" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="Fecha_de_Registro" Type="date" />
+    <Property Name="Estado" Type="bit" />
   </EntityType>
   <EntityType Name="Carrera_Deportiva_Familiar">
     <Key>
@@ -86,6 +100,8 @@
     <Property Name="Evento" Type="varchar" MaxLength="500" Nullable="false" />
     <Property Name="FechayLugar" Type="varchar" MaxLength="500" Nullable="false" />
     <Property Name="Resultado" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="Fecha_de_Registro" Type="date" />
+    <Property Name="Estado" Type="bit" />
   </EntityType>
   <EntityType Name="Categorias">
     <Key>
@@ -94,6 +110,8 @@
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ID_Deporte" Type="int" Nullable="false" />
     <Property Name="Categoria" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Fecha_de_Registro" Type="date" />
+    <Property Name="Estado" Type="bit" />
   </EntityType>
   <EntityType Name="Condiciones_Clinicas_Actuales">
     <Key>
@@ -111,6 +129,8 @@
     <Property Name="ID_Condiciones_Clinicas_Actuales" Type="int" Nullable="false" />
     <Property Name="Nombre" Type="varchar" MaxLength="200" Nullable="false" />
     <Property Name="Valor" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Fecha_de_Registro" Type="date" />
+    <Property Name="Estado" Type="bit" />
   </EntityType>
   <EntityType Name="Consiste_Apoyo">
     <Key>
@@ -120,6 +140,8 @@
     <Property Name="ID_Atleta" Type="int" Nullable="false" />
     <Property Name="Preguntas" Type="varchar" MaxLength="500" Nullable="false" />
     <Property Name="Respuestas" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="Fecha_de_Registro" Type="date" />
+    <Property Name="Estado" Type="bit" />
   </EntityType>
   <EntityType Name="Datos_Atleta">
     <Key>
@@ -134,12 +156,12 @@
     <Property Name="Nombre_Completo" Type="text" />
     <Property Name="Edad" Type="int" />
     <Property Name="Fecha_De_Registro" Type="date" />
-    <Property Name="Genero" Type="char" MaxLength="10" />
+    <Property Name="Genero" Type="varchar" MaxLength="10" />
     <Property Name="Numero_De_Cedula" Type="nvarchar" MaxLength="20" />
     <Property Name="Correo_Electronico" Type="nvarchar" MaxLength="100" />
     <Property Name="Telefono_Convencional" Type="nvarchar" MaxLength="14" />
     <Property Name="Telefono_Celular" Type="varchar" MaxLength="14" />
-    <Property Name="Tiene_Seguro" Type="char" MaxLength="7" />
+    <Property Name="Tiene_Seguro" Type="varchar" MaxLength="7" />
     <Property Name="Hospital" Type="int" Nullable="false" />
     <Property Name="Dirreccion" Type="varchar" MaxLength="500" />
     <Property Name="Municipio" Type="int" Nullable="false" />
@@ -149,7 +171,7 @@
     <Property Name="Telefono_Padre" Type="nvarchar" MaxLength="14" />
     <Property Name="Emergencia" Type="varchar" MaxLength="50" />
     <Property Name="Dirreccion_Emergencia" Type="varchar" MaxLength="200" />
-    <Property Name="Embarazo" Type="char" MaxLength="7" />
+    <Property Name="Embarazo" Type="varchar" MaxLength="7" />
     <Property Name="Activo" Type="bit" />
   </EntityType>
   <EntityType Name="Departamentos">
@@ -175,6 +197,8 @@
     <Property Name="Preguntas" Type="varchar" MaxLength="500" Nullable="false" />
     <Property Name="Respuestas" Type="varchar" MaxLength="500" Nullable="false" />
     <Property Name="Detalles" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="Fecha_de_Registro" Type="date" />
+    <Property Name="Estado" Type="bit" />
   </EntityType>
   <EntityType Name="Eventos">
     <Key>
@@ -183,6 +207,8 @@
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="Lugar" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Fecha_de_Registro" Type="date" />
+    <Property Name="Estado" Type="bit" />
   </EntityType>
   <EntityType Name="Examen_Fisico">
     <Key>
@@ -198,8 +224,10 @@
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ID_Atleta" Type="int" Nullable="false" />
     <Property Name="ID_Examen_Fisico" Type="int" Nullable="false" />
-    <Property Name="Normal" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="Normal" Type="varchar" MaxLength="5" Nullable="false" />
     <Property Name="Hallazgos_Anormales" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="Fecha_de_Registro" Type="date" />
+    <Property Name="Estado" Type="bit" />
   </EntityType>
   <EntityType Name="Examenes">
     <Key>
@@ -219,16 +247,18 @@
     <Property Name="Nombre_Y_Apellidos" Type="varchar" MaxLength="500" Nullable="false" />
     <Property Name="Evaluacion" Type="int" Nullable="false" />
     <Property Name="Fecha_De_Evaluacion" Type="date" Nullable="false" />
-    <Property Name="Sexo" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="Sexo" Type="varchar" MaxLength="10" Nullable="false" />
     <Property Name="Fecha_De_Nacimiento" Type="date" Nullable="false" />
-    <Property Name="Menstruacion" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="Menstruacion" Type="varchar" MaxLength="5" Nullable="false" />
     <Property Name="Antropometrista" Type="varchar" MaxLength="500" Nullable="false" />
     <Property Name="Anotador" Type="varchar" MaxLength="500" Nullable="false" />
-    <Property Name="ID_Ficha_Antropometrica" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="Txt_Ficha_Antropometrica" Type="varchar" MaxLength="500" Nullable="false" />
     <Property Name="Toma1" Type="decimal" Precision="5" Scale="2" Nullable="false" />
     <Property Name="Toma2" Type="decimal" Precision="5" Scale="2" Nullable="false" />
     <Property Name="Toma3" Type="decimal" Precision="5" Scale="2" Nullable="false" />
     <Property Name="Promedio_Mediana" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+    <Property Name="Fecha_de_Registro" Type="date" />
+    <Property Name="Estado" Type="bit" />
   </EntityType>
   <EntityType Name="Habitacion">
     <Key>
@@ -239,6 +269,8 @@
     <Property Name="Preguntas" Type="varchar" MaxLength="500" Nullable="false" />
     <Property Name="Respuestas" Type="varchar" MaxLength="500" Nullable="false" />
     <Property Name="Detalles" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="Fecha_de_Registro" Type="date" />
+    <Property Name="Estado" Type="bit" />
   </EntityType>
   <EntityType Name="Habitos">
     <Key>
@@ -249,6 +281,8 @@
     <Property Name="Preguntas" Type="varchar" MaxLength="500" Nullable="false" />
     <Property Name="Respuestas" Type="varchar" MaxLength="500" Nullable="false" />
     <Property Name="Detalles" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="Fecha_de_Registro" Type="date" />
+    <Property Name="Estado" Type="bit" />
   </EntityType>
   <EntityType Name="Historia_Familiar">
     <Key>
@@ -258,6 +292,8 @@
     <Property Name="ID_Atleta" Type="int" Nullable="false" />
     <Property Name="Preguntas" Type="varchar" MaxLength="500" Nullable="false" />
     <Property Name="Respuestas" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="Fecha_de_Registro" Type="date" />
+    <Property Name="Estado" Type="bit" />
   </EntityType>
   <EntityType Name="Historial_Medico">
     <Key>
@@ -268,6 +304,8 @@
     <Property Name="Preguntas" Type="varchar" MaxLength="500" Nullable="false" />
     <Property Name="Respuestas" Type="varchar" MaxLength="500" Nullable="false" />
     <Property Name="Detalles" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="Fecha_de_Registro" Type="date" />
+    <Property Name="Estado" Type="bit" />
   </EntityType>
   <EntityType Name="Hospital">
     <Key>
@@ -285,6 +323,8 @@
     <Property Name="Preguntas" Type="varchar" MaxLength="500" Nullable="false" />
     <Property Name="Respuestas" Type="varchar" MaxLength="500" Nullable="false" />
     <Property Name="Detalles" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="Fecha_de_Registro" Type="date" />
+    <Property Name="Estado" Type="bit" />
   </EntityType>
   <EntityType Name="Medicamentos">
     <Key>
@@ -294,6 +334,8 @@
     <Property Name="ID_Atleta" Type="int" Nullable="false" />
     <Property Name="Medicamentos" Type="varchar" MaxLength="500" Nullable="false" />
     <Property Name="Descripcion" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="Fecha_de_Registro" Type="date" />
+    <Property Name="Estado" Type="bit" />
   </EntityType>
   <EntityType Name="Medico">
     <Key>
@@ -328,6 +370,8 @@
     <Property Name="ID_Atleta" Type="int" Nullable="false" />
     <Property Name="Preguntas" Type="varchar" MaxLength="500" Nullable="false" />
     <Property Name="Respuestas" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="Fecha_de_Registro" Type="date" />
+    <Property Name="Estado" Type="bit" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>

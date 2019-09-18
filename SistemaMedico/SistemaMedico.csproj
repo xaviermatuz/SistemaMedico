@@ -4323,6 +4323,7 @@
     <Compile Include="Controllers\ExamenFisicoController.cs" />
     <Compile Include="Controllers\HistorialMedicoController.cs" />
     <Compile Include="Controllers\HomeAdminController.cs" />
+    <Compile Include="Controllers\LesionesController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -4472,6 +4473,7 @@
     <Content Include="Views\HistorialMedico\Actualizar.cshtml" />
     <Content Include="Views\HomeAdmin\Editar.cshtml" />
     <Content Include="Views\HomeAdmin\Nuevo.cshtml" />
+    <Content Include="Views\Lesiones\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

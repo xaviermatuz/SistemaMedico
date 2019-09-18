@@ -7,7 +7,8 @@
     {
         Response.Redirect("~/Login/Index");
     }
-   
+    IEnumerable<SistemaMedico.Models.Carrera_Deportiva_Evento> plox1 = (IEnumerable<SistemaMedico.Models.Carrera_Deportiva_Evento>)ViewBag.CDTABLITA1;
+    IEnumerable<SistemaMedico.Models.Carrera_Deportiva_Familiar> plox2 = (IEnumerable<SistemaMedico.Models.Carrera_Deportiva_Familiar>)ViewBag.CDTABLITA2;
 }
 <div class="row clearfix">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -1609,21 +1610,37 @@
                                                 <th><a href="javascript:void(0);" style="font-size:18px;" id="addMore" title="Add More Person"><span class="fa fa-plus"></span></a></th>
                                             </tr>
 
+                                            @foreach (var item in plox1)
+                                            {
                                             <tr>
-                                                <td>
-                                                    <input type="text" id="prueba" name="prueba[]" class="form-control" placeholder="Categoria/Prueba" />
-                                                </td>
-                                                <td>
-                                                    <input type="text" id="resultado" name="resultado[]" class="form-control" placeholder="Resultado/Marca">
-                                                </td>
-                                                <td>
-                                                    <input type="text" id="fechaYlugar" name="fechaYlugar[]" class="form-control" placeholder="Fecha y Lugar" />
-                                                </td>
-                                                <td>
-                                                    <input type="text" id="evento" name="evento[]" class="form-control" placeholder="Evento" />
-                                                </td>
+                                                @if (item.Prueba != null)
+                                                {
+                                                    <td>
+                                                        <input type="text" id="prueba" name="prueba[]" class="form-control" value="@item.Prueba" placeholder="Categoria/Prueba" />
+                                                    </td>
+                                                }
+                                                @if (item.Resultado != null)
+                                                {
+                                                    <td>
+                                                        <input type="text" id="prueba" name="resultado[]" class="form-control" value="@item.Resultado" placeholder="Categoria/Prueba" />
+                                                    </td>
+                                                }
+                                                @if (item.Fecha_Y_Lugar != null)
+                                                {
+                                                    <td>
+                                                        <input type="text" id="prueba" name="fechaYlugar[]" class="form-control" value="@item.Fecha_Y_Lugar" placeholder="Categoria/Prueba" />
+                                                    </td>
+                                                }
+                                                @if (item.Evento != null)
+                                                {
+                                                    <td>
+                                                        <input type="text" id="prueba" name="evento[]" class="form-control" value="@item.Evento" placeholder="Categoria/Prueba" />
+                                                    </td>
+                                                }
                                                 <td><a href='javascript:void(0);' class='remove'><span class='fa fa-remove'></span></a></td>
+
                                             </tr>
+                                            }
                                         </table>
                                     </div>
                                 </div>
@@ -1640,19 +1657,31 @@
                                                 <th> Fecha y Lugar </th>
                                                 <th><a href="javascript:void(0);" style="font-size:18px;" id="addMore2" title="Add More Person"><span class="fa fa-plus"></span></a></th>
                                             </tr>
+                                            @foreach (var item in plox2)
+                                            {
+                                                <tr>
+                                                    @if (item.Evento != null)
+                                                    {
+                                                        <td>
+                                                            <input type="text" name="evento_fam[]" class="form-control" value="@item.Evento" placeholder="Evento" />
+                                                        </td>
+                                                    }
+                                                    @if (item.Resultado != null)
+                                                    {
+                                                        <td>
+                                                            <input type="text" id="prueba" name="resultado[]" class="form-control" value="@item.Resultado" placeholder="Categoria/Prueba" />
+                                                        </td>
+                                                    }
+                                                    @if (item.FechayLugar != null)
+                                                    {
+                                                        <td>
+                                                            <input type="text" id="prueba" name="fechaYlugar[]" class="form-control" value="@item.FechayLugar" placeholder="Categoria/Prueba" />
+                                                        </td>
+                                                    }                                                    
+                                                        <td><a href='javascript:void(0);' class='remove2'><span class='fa fa-remove'></span></a></td>
 
-                                            <tr>
-                                                <td>
-                                                    <input type="text" name="evento_fam[]" class="form-control" placeholder="Evento" />
-                                                </td>
-                                                <td>
-                                                    <input type="text" name="resultado_fam[]" class="form-control" placeholder="Resultado/Marca" width="100%">
-                                                </td>
-                                                <td>
-                                                    <input type="text" name="fechaYlugarfam[]" class="form-control" placeholder="Fecha y Lugar" />
-                                                </td>
-                                                <td><a href='javascript:void(0);' class='remove2'><span class='fa fa-remove'></span></a></td>
-                                            </tr>
+                                                </tr>
+                                            }
                                         </table>
                                     </div>
                                 </div>
@@ -3730,13 +3759,13 @@
                                                                     <div class="form-group form-float">
                                                                         <label> Cantidad semanal</label>
                                                                         <div class="form-line">
-                                                                            <input type="text" class="form-control" value="@ViewBag.HABabd2" name="cerveza">
+                                                                            <input type="text" class="form-control" value="@ViewBag.HABabd21" name="cerveza">
                                                                             <label class="form-label">cervezas</label>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group form-float">
                                                                         <div class="form-line">
-                                                                            <input type="text" class="form-control" value="@ViewBag.HABabd2" name="licor">
+                                                                            <input type="text" class="form-control" value="@ViewBag.HABabd22" name="licor">
                                                                             <label class="form-label">licor</label>
                                                                         </div>
                                                                     </div>

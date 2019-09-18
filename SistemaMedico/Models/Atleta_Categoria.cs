@@ -17,6 +17,8 @@ namespace SistemaMedico.Models
         public int ID { get; set; }
         public int ID_Atleta { get; set; }
         public int ID_Categoria { get; set; }
+        public Nullable<System.DateTime> Fecha_de_Registro { get; set; }
+        public Nullable<bool> Estado { get; set; }
     
         public virtual Categorias Categorias { get; set; }
         public virtual Datos_Atleta Datos_Atleta { get; set; }

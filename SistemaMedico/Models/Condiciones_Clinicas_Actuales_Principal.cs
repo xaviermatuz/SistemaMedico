@@ -19,6 +19,8 @@ namespace SistemaMedico.Models
         public int ID_Condiciones_Clinicas_Actuales { get; set; }
         public string Nombre { get; set; }
         public string Valor { get; set; }
+        public Nullable<System.DateTime> Fecha_de_Registro { get; set; }
+        public Nullable<bool> Estado { get; set; }
     
         public virtual Condiciones_Clinicas_Actuales Condiciones_Clinicas_Actuales { get; set; }
         public virtual Datos_Atleta Datos_Atleta { get; set; }
