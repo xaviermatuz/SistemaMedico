@@ -128,10 +128,16 @@
                             <span>Listado de Atletas</span>
                         </a>
                     </li>
-                    <li style="display:none;" class="@Html.ActivePage("ExamenFisico", "Crear")">
+                   <li style="display:none;" class="@Html.ActivePage("ExamenFisico", "Crear")">
                         <a href="@Url.Action("Crear", "ExamenFisico")">
                             <i class="material-icons">account_box</i>
                             <span>Listado de Atletas</span>
+                        </a>
+                    </li>
+                    <li style="display:none;" class="@Html.ActivePage("Atleta", "Mostrar")">
+                        <a href="@Url.Action("Mostrar", "Atleta")">
+                            <i class="material-icons">account_box</i>
+                            <span>Mostrar</span>
                         </a>
                     </li>
                     <li style="display:none;" class="@Html.ActivePage("HistorialMedico", "Crear")">
@@ -144,6 +150,12 @@
                         <a href="@Url.Action("Actualizar", "HistorialMedico")">
                             <i class="material-icons">account_box</i>
                             <span>Listado de Atletas</span>
+                        </a>
+                    </li>
+                    <li style="display:none;" class="@Html.ActivePage("ExamenFisico", "Actualizar")">
+                        <a href="@Url.Action("Actualizar", "ExamenFisico")">
+                            <i class="material-icons">account_box</i>
+                            <span>Actualizar Examen</span>
                         </a>
                     </li>
                     <li class="@Html.ActivePage("Atleta", "Crear")">

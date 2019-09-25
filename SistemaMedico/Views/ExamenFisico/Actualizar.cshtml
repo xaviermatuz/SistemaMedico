@@ -1,7 +1,1854 @@
-﻿
+﻿@model SistemaMedico.Models.ViewModel.ExamenFisicoViewModel
+@*@using SistemaMedico.Helper*@
 @{
-    ViewBag.Title = "Actualizar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    if (Session["ID"] == null)
+    {
+        Response.Redirect("~/Login/Index");
+    }
+    IEnumerable<SistemaMedico.Models.Examen_Fisico_Principal> EFP = (IEnumerable<SistemaMedico.Models.Examen_Fisico_Principal>)ViewBag.efp;
+    IEnumerable<SistemaMedico.Models.Anexos> Anexos = (IEnumerable<SistemaMedico.Models.Anexos>)ViewBag.anex;
+   // IEnumerable<SistemaMedico.Models.Condiciones_Clinicas_Actuales_Principal> condiciones = (IEnumerable<SistemaMedico.Models.Condiciones_Clinicas_Actuales_Principal>)ViewBag.CCa;
+    IEnumerable<SistemaMedico.Models.Ficha_Antropometrica> Ficha = (IEnumerable<SistemaMedico.Models.Ficha_Antropometrica>)ViewBag.ficha;
+    int fo = 1;
+    string otroshallazgos = "";
+    string recomendaciones = "";
+    string observaciones = "";
+    var nombre = "";
+    var sexo = "";
+    var evaluacion = "";
+    var fe = "";
+    var fn = "";
+    var anotador = "";
+    var antropo = "";
+    var menstruacion = "";
+   
 }
 
-<h2>Actualizar</h2>
+@section CrearExamenFisicoCss
+{
+    <!-- Bootstrap Material Datetime Picker Css -->
+    <link href="../Recursos//plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet" />
 
+}
+
+
+<style>
+    input {
+        /*width: 400px;
+    border: none;*/
+        height: 31px;
+        width: 100%;
+        padding: 10px;
+        margin: 0px;
+        border: 1px solid #CCC;
+    }
+
+    textarea {
+        width: 100%;
+        height: 150px;
+        padding: 12px 20px;
+        box-sizing: border-box;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        background-color: #f8f8f8;
+        font-size: 16px;
+        resize: none;
+        margin: 0px;
+    }
+
+    th {
+        text-align: center;
+        background-color: #dddddd;
+    }
+
+    h4 {
+        color: black;
+    }
+</style>
+
+<!--Contenido-->
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header">
+                <h2 style="text-transform: uppercase;">REGISTRO DE @ViewBag.nombre </h2>
+            </div>
+            <div class="body">
+                <form action="" method="post" autocomplete="off" enctype="multipart/form-data">
+                    <div style="display:none;">
+                        @*@Html.TextBoxFor(model => model.ID_Atleta, new { @Value = ViewBag.id})*@
+                        <input type="text" value="@ViewBag.id" class="form-control" name="txt_atleta">
+                    </div>
+                    <div class="row clearfix">
+                        <div class="col-md-12">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#tab1" data-toggle="tab">Examen Fisico</a></li>
+                                <li><a href="#tab2" data-toggle="tab">Condiciones Clinicas Actuales</a></li>
+                                <li><a href="#tab3" data-toggle="tab">Ficha De Antropometria</a></li>
+                                <li><a href="#tab4" data-toggle="tab">Notas De Evaluacion</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row clearfix">
+                        <div class="col-md-12">
+                            <div class="tab-content">
+                                <!--                    PRIMER TAB  														-->
+                                <div class="tab-pane active" id="tab1">
+                                    <div class="col-md-12">
+                                        <fieldset>
+                                            <!--			 TABLA BORDEADA		 														-->
+                                            <div class="row clearfix">
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="body table-responsive">
+                                                        <table id="mainTable" class="table table-bordered">
+                                                            <tr>
+                                                                <th>N°</th>
+                                                                <th>Estructura anatomica</th>
+                                                                <th>Normal</th>
+                                                                <th>Hallazgos Anormales</th>
+                                                            </tr>
+                                                            @foreach (var item in EFP)
+                                                            {
+                                                                <tr>
+                                                                    <td align="center">@fo</td>
+
+                                                                    @if (item.ID_Examen_Fisico == 1)
+                                                                    {
+                                                                        <td>
+                                                                            Cuello
+                                                                        </td>
+                                                                        <td align="center">
+                                                                            @if (item.Normal == "Si")
+                                                                            {
+                                                                                <input type="checkbox" id="1" name="Si_Cuello" class="chk-col-green" checked onclick="Habilitar_DesabilitarTXT(this,HA_Cuello)">
+                                                                                <label for="1">Si</label>
+                                                                                @*<p>Si</p>*@
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                <input type="checkbox" id="1" name="Si_Cuello" class="chk-col-green" onclick="Habilitar_DesabilitarTXT(this,HA_Cuello)">
+                                                                                <label for="1">Si</label>
+                                                                            }
+                                                                        </td>
+                                                                        <td>
+                                                                            @if (item.Hallazgos_Anormales == "")
+                                                                            {
+                                                                                <input type="text" id="HA_Cuello" name="HA_Cuello" class="form-control">
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                <input type="text" id="HA_Cuello" value="@item.Hallazgos_Anormales" name="HA_Cuello" class="form-control">
+                                                                                @*<label>@item.Hallazgos_Anormales</label>*@
+                                                                            }
+
+                                                                        </td>
+                                                                    }
+                                                                    else if (item.ID_Examen_Fisico == 2)
+                                                                    {
+                                                                        <td>
+                                                                            Espalda
+                                                                        </td>
+                                                                        <td align="center">
+                                                                            @if (item.Normal == "Si")
+                                                                            {
+                                                                                <input type="checkbox" id="2" name="Si_Espalda" checked class="chk-col-green micheckbox" onclick="Habilitar_DesabilitarTXT(this,HA_espalda)">
+                                                                                <label for="2">Si</label>
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                <input type="checkbox" id="2" name="Si_Espalda" class="chk-col-green" onclick="Habilitar_DesabilitarTXT(this,HA_espalda)">
+                                                                                <label for="2">Si</label>
+                                                                            }
+
+                                                                        </td>
+                                                                        <td>
+                                                                            @if (item.Hallazgos_Anormales == "" || item.Hallazgos_Anormales == null)
+                                                                            {
+                                                                                <input type="text" name="HA_espalda" class="form-control">
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                <input type="text" id="HA_espalda" value="@item.Hallazgos_Anormales" name="HA_espalda" class="form-control">
+
+                                                                                @*<label>@item.Hallazgos_Anormales</label>*@
+                                                                            }
+
+                                                                        </td>
+                                                                    }
+                                                                    else if (item.ID_Examen_Fisico == 3)
+                                                                    {
+                                                                        <td>
+                                                                            Hombro/Brazo
+                                                                        </td>
+
+                                                                        <td align="center">
+                                                                            @if (item.Normal == "Si")
+                                                                            {
+                                                                                <input type="checkbox" id="3" name="Si_Hombro" class="chk-col-green" checked onclick="Habilitar_DesabilitarTXT(this,HA_hombro)">
+                                                                                <label for="3">Si</label>
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                <input type="checkbox" id="3" name="Si_Hombro" class="chk-col-green" onclick="Habilitar_DesabilitarTXT(this,HA_hombro)">
+                                                                                <label for="3">Si</label>
+                                                                            }
+
+                                                                        </td>
+                                                                        <td>
+                                                                            @if (item.Hallazgos_Anormales == "" || item.Hallazgos_Anormales == null)
+                                                                            {
+                                                                                <input type="text" name="HA_hombro" class="form-control">
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                <input type="text" name="HA_hombro" id="HA_hombro" value="@item.Hallazgos_Anormales" class="form-control">
+
+                                                                                @*<label>@item.Hallazgos_Anormales</label>*@
+                                                                            }
+
+                                                                        </td>
+                                                                    }
+                                                                    else if (item.ID_Examen_Fisico == 4)
+                                                                    {
+                                                                        <td>
+                                                                            Codo/Antebrazo
+                                                                        </td>
+                                                                        <td align="center">
+                                                                            @if (item.Normal == "Si")
+                                                                            {
+                                                                                <input type="checkbox" id="4" name="Si_Codo" checked class="chk-col-green" onclick="Habilitar_DesabilitarTXT(this,HA_codo)">
+                                                                                <label for="4">Si</label>
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                <input type="checkbox" id="4" name="Si_Codo" class="chk-col-green" onclick="Habilitar_DesabilitarTXT(this,HA_codo)">
+                                                                                <label for="4">Si</label>
+                                                                            }
+
+                                                                        </td>
+                                                                        <td>
+                                                                            @if (item.Hallazgos_Anormales == "" || item.Hallazgos_Anormales == null)
+                                                                            {
+                                                                                <input type="text" name="HA_codo" class="form-control">
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                <input type="text" name="HA_codo" value="@item.Hallazgos_Anormales" class="form-control">
+
+                                                                                @*<label>@item.Hallazgos_Anormales</label>*@
+                                                                            }
+
+                                                                        </td>
+                                                                    }
+                                                                    else if (item.ID_Examen_Fisico == 5)
+                                                                    {
+                                                                        <td>
+                                                                            Muñeca/Mano/Dedos
+                                                                        </td>
+                                                                        <td align="center">
+                                                                            @if (item.Normal == "Si")
+                                                                            {
+                                                                                <input type="checkbox" id="5" checked name="Si_Muñeca" class="chk-col-green" onclick="Habilitar_DesabilitarTXT(this,HA_muñeca)">
+                                                                                <label for="5">Si</label>
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                <input type="checkbox" id="5" name="Si_Muñeca" class="chk-col-green" onclick="Habilitar_DesabilitarTXT(this,HA_muñeca)">
+                                                                                <label for="5">Si</label>
+                                                                            }
+
+                                                                        </td>
+                                                                        <td>
+                                                                            @if (item.Hallazgos_Anormales == "" || item.Hallazgos_Anormales == null)
+                                                                            {
+                                                                                <input type="text" name="HA_muñeca" class="form-control">
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                <input type="text" name="HA_muñeca" value="@item.Hallazgos_Anormales" class="form-control">
+
+                                                                                @*<label>@item.Hallazgos_Anormales</label>*@
+                                                                            }
+
+                                                                        </td>
+
+                                                                    }
+                                                                    else if (item.ID_Examen_Fisico == 6)
+                                                                    {
+                                                                        <td>
+                                                                            Cadera/Muslo
+                                                                        </td>
+                                                                        <td align="center">
+                                                                            @if (item.Normal == "Si")
+                                                                            {
+                                                                                <input type="checkbox" id="6" name="Si_Cadera" checked class="chk-col-green" onclick="Habilitar_DesabilitarTXT(this,HA_cadera)">
+                                                                                <label for="6">Si</label>
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                <input type="checkbox" id="6" name="Si_Cadera" class="chk-col-green" onclick="Habilitar_DesabilitarTXT(this,HA_cadera)">
+                                                                                <label for="6">Si</label>
+                                                                            }
+
+                                                                        </td>
+                                                                        <td>
+                                                                            @if (item.Hallazgos_Anormales == "" || item.Hallazgos_Anormales == null)
+                                                                            {
+                                                                                <input type="text" name="HA_cadera" class="form-control">
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                <input type="text" name="HA_cadera" value="@item.Hallazgos_Anormales" class="form-control">
+
+                                                                                @*<label>@item.Hallazgos_Anormales</label>*@
+                                                                            }
+
+                                                                        </td>
+                                                                    }
+                                                                    else if (item.ID_Examen_Fisico == 7)
+                                                                    {
+                                                                        <td>
+                                                                            Rodilla
+                                                                        </td>
+                                                                        <td align="center">
+                                                                            @if (item.Normal == "Si")
+                                                                            {
+                                                                                <input type="checkbox" id="7" checked name="Si_Rodilla" class="chk-col-green" onclick="Habilitar_DesabilitarTXT(this,HA_rodilla)">
+                                                                                <label for="7">Si</label>
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                <input type="checkbox" id="7" name="Si_Rodilla" class="chk-col-green" onclick="Habilitar_DesabilitarTXT(this,HA_rodilla)">
+                                                                                <label for="7">Si</label>
+                                                                            }
+
+                                                                        </td>
+                                                                        <td>
+                                                                            @if (item.Hallazgos_Anormales == "" || item.Hallazgos_Anormales == null)
+                                                                            {
+                                                                                <input type="text" name="HA_rodilla" class="form-control">
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                <input type="text" name="HA_rodilla" value="@item.Hallazgos_Anormales" class="form-control">
+
+                                                                                @*<label>@item.Hallazgos_Anormales</label>*@
+                                                                            }
+
+                                                                        </td>
+                                                                    }
+                                                                    else if (item.ID_Examen_Fisico == 8)
+                                                                    {
+                                                                        <td>
+                                                                            Pierna/Tobillo
+                                                                        </td>
+                                                                        <td align="center">
+                                                                            @if (item.Normal == "Si")
+                                                                            {
+                                                                                <input type="checkbox" id="8" name="Si_Pierna" checked class="chk-col-green" onclick="Habilitar_DesabilitarTXT(this,HA_pierna)">
+                                                                                <label for="8">Si</label>
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                <input type="checkbox" id="8" name="Si_Pierna" class="chk-col-green" onclick="Habilitar_DesabilitarTXT(this,HA_pierna)">
+                                                                                <label for="8">Si</label>
+                                                                            }
+
+                                                                        </td>
+                                                                        <td>
+                                                                            @if (item.Hallazgos_Anormales == "" || item.Hallazgos_Anormales == null)
+                                                                            {
+                                                                                <input type="text" name="HA_pierna" class="form-control">
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                <input type="text" name="HA_pierna" value="@item.Hallazgos_Anormales" class="form-control">
+
+                                                                                @*<label>@item.Hallazgos_Anormales</label>*@
+                                                                            }
+
+                                                                        </td>
+                                                                    }
+                                                                    else if (item.ID_Examen_Fisico == 9)
+                                                                    {
+                                                                        <td>
+                                                                            Pie/Dedos
+                                                                        </td>
+                                                                        <td align="center">
+                                                                            @if (item.Normal == "Si")
+                                                                            {
+                                                                                <input type="checkbox" id="9" checked name="Si_dedos" class="chk-col-green" onclick="Habilitar_DesabilitarTXT(this,HA_dedos)">
+                                                                                <label for="9">Si</label>
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                <input type="checkbox" id="9" name="Si_dedos" class="chk-col-green" onclick="Habilitar_DesabilitarTXT(this,HA_dedos)">
+                                                                                <label for="9">Si</label>
+                                                                            }
+
+                                                                        </td>
+                                                                        <td>
+                                                                            @if (item.Hallazgos_Anormales == "" || item.Hallazgos_Anormales == null)
+                                                                            {
+                                                                                <input type="text" name="HA_dedos" class="form-control">
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                <input type="text" name="HA_dedos" value="@item.Hallazgos_Anormales" class="form-control">
+
+                                                                                @*<label>@item.Hallazgos_Anormales</label>*@
+                                                                            }
+
+                                                                        </td>
+                                                                    }
+                                                                </tr>
+                                                                fo++;
+                                                            }
+
+
+
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="header">
+                                                <!--       Otros hallazgos                                  -->
+                                                @foreach (var ohr in Anexos)
+                                                {
+                                                    if (ohr.Otros_Hallazgos != "" && ohr.Observaciones == "")
+                                                    {
+                                                        otroshallazgos = ohr.Otros_Hallazgos;
+                                                    }
+                                                    if (ohr.Recomendaciones != "" && ohr.Observaciones == "")
+                                                    {
+                                                        recomendaciones = ohr.Recomendaciones;
+                                                    }
+                                                }
+                                                <h4 class="card-inside-title">
+                                                    Otros Hallazgos
+                                                </h4>
+                                                @if (otroshallazgos == "" || otroshallazgos == null)
+                                                {
+                                                    <textarea name="otroshallazgos" rows="6" cols="40" @*value="@otroshallazgos"*@ placeholder="Detalles..."></textarea>
+                                                }
+                                                else
+                                                {
+                                                    <textarea name="otroshallazgos" rows="6" cols="40" @*value="@otroshallazgos"*@ placeholder="Detalles...">@otroshallazgos</textarea>
+
+                                                }
+                                                <!--                                    Recomendaciones                                                           -->
+                                                <h4 class="card-inside-title">
+                                                    Recomendaciones
+                                                </h4>
+                                                @if (recomendaciones == "" || recomendaciones == null)
+                                                {
+                                                    <textarea name="Recomendaciones" rows="6" cols="40" placeholder="Detalles..."></textarea>
+                                                }
+                                                else
+                                                {
+                                                    <textarea name="Recomendaciones" rows="6" cols="40" placeholder="Detalles...">@recomendaciones</textarea>
+
+                                                }
+                                            </div>
+                                            <!--                          FINAL TABLA BORDEADA        -->
+                                        </fieldset>
+                                    </div>
+                                    <div style="text-align: center;">
+                                        <div class="btn-group" role="group">
+                                            <button type="button" class="btn bg-indigo waves-effect btnNext">Siguiente</button>
+                                        </div>
+                                    </div>
+
+                                    @*<div class="col-md-12">
+                                            <div class="col-md-4"></div>
+                                            <div class="col-md-4">
+
+                                            </div>
+                                            <div class="col-md-4"></div>
+                                        </div>*@
+
+                                </div>
+                                <!--                        SEGUNDO TAB                                                     -->
+                                <div class="tab-pane" id="tab2">
+                                    <div class="col-md-12">
+                                        <fieldset>
+                                            <!--                                                                 -->
+                                            <div class="row clearfix">
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                    <!--#INICIO TABLA CONDICIONES CLINICAS ACTUALES#-->
+                                                    <div class="body table-responsive">
+
+                                                        <table id='mainTable' class='table table-bordered'>
+                                                            <tr>
+                                                                <th>Musculo esqueletico</th>
+                                                                <th>Neurologico</th>
+                                                                <th>General</th>
+                                                                <th>Respiratorio</th>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    @if (ViewBag.pd == "Practica Deportiva")
+                                                                    {
+                                                                        <input type="checkbox" checked name="PD" id="$11" class="chk-col-green">
+                                                                        <label for="$11">Practica Deportiva</label><br>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <input type="checkbox" name="PD" id="$11" class="chk-col-green">
+                                                                        <label for="$11">Practica Deportiva</label><br>
+                                                                    }
+                                                                    @if (ViewBag.ef == "Economia Familiar")
+                                                                    {
+                                                                        <input type="checkbox" checked name="EF" id="$12" class="chk-col-green">
+                                                                        <label for="$12">Economia Familiar</label><br>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <input type="checkbox" name="EF" id="$12" class="chk-col-green">
+                                                                        <label for="$12">Economia Familiar</label><br>
+                                                                    }
+                                                                    @if (ViewBag.educa == "Educacion")
+                                                                    {
+                                                                        <input type="checkbox" checked name="Educa" id="$13" class="chk-col-green">
+                                                                        <label for="$13">Educacion</label><br />
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <input type="checkbox" name="Educa" id="$13" class="chk-col-green">
+                                                                        <label for="$13">Educacion</label><br>
+                                                                    }
+                                                                    @if (ViewBag.da == "Dolor Articular")
+                                                                    {
+                                                                        <input type="checkbox" checked name="Da" id="$14" class="chk-col-green">
+                                                                        <label for="$14">Dolor articular</label><br>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <input type="checkbox" name="Da" id="$14" class="chk-col-green">
+                                                                        <label for="$14">Dolor articular</label><br>
+                                                                    }
+                                                                    @if (ViewBag.Ra == "Rigidez en Articulaciones")
+                                                                    {
+                                                                        <input type="checkbox" checked name="Ra" id="$15" class="chk-col-green">
+                                                                        <label for="$15">Rigidez en articulaciones</label><br>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <input type="checkbox" name="Ra" id="$15" class="chk-col-green">
+                                                                        <label for="$15">Rigidez en articulaciones</label><br>
+                                                                    }
+                                                                    @if (ViewBag.fractura == "Fracturas")
+                                                                    {
+                                                                        <input type="checkbox" checked name="Fracturas" id="$16" class="chk-col-green">
+                                                                        <label for="$16">Fracturas</label><br>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <input type="checkbox" name="Fracturas" id="$16" class="chk-col-green">
+                                                                        <label for="$16">Fracturas</label><br>
+                                                                    }
+                                                                    @if (ViewBag.dm == "Debilidad Muscular")
+                                                                    {
+                                                                        <input type="checkbox" checked name="DM" id="$17" class="chk-col-green">
+                                                                        <label for="$17">Debilidad Muscular</label><br>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <input type="checkbox" name="DM" id="$17" class="chk-col-green">
+                                                                        <label for="$17">Debilidad Muscular</label><br>
+                                                                    }
+                                                                    @if (ViewBag.ha == "Hinchazon articular")
+                                                                    {
+                                                                        <input type="checkbox" checked name="HA" id="$18" class="chk-col-green">
+                                                                        <label for="$18">Hinchazon articular</label>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <input type="checkbox" name="HA" id="$18" class="chk-col-green">
+                                                                        <label for="$18">Hinchazon articular</label>
+                                                                    }
+
+                                                                </td>
+                                                                <td>
+                                                                    @if (ViewBag.paralisis == "Paralisis")
+                                                                    {
+                                                                        <input type="checkbox" checked name="Paralisis" id="$21" class="chk-col-green">
+                                                                        <label for="$21">Paralisis</label><br>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <input type="checkbox" name="Paralisis" id="$21" class="chk-col-green">
+                                                                        <label for="$21">Paralisis</label><br>
+                                                                    }
+                                                                    @if (ViewBag.temblores == "Temblores")
+                                                                    {
+                                                                        <input type="checkbox" checked name="Temblores" id="$22" class="chk-col-green">
+                                                                        <label for="$22">Temblores</label><br>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <input type="checkbox" name="Temblores" id="$22" class="chk-col-green">
+                                                                        <label for="$22">Temblores</label><br>
+                                                                    }
+                                                                    @if (ViewBag.ac == "Alteraciones de la conciencia")
+                                                                    {
+                                                                        <input type="checkbox" checked name="Ac" id="$23" class="chk-col-green">
+                                                                        <label for="$23">Alteraciones de la conciencia</label>
+
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <input type="checkbox" name="Ac" id="$23" class="chk-col-green">
+                                                                        <label for="$23">Alteraciones de la conciencia</label>
+
+                                                                    }
+                                                                </td>
+                                                                <td>
+                                                                    @if (ViewBag.pp == "Perdida de peso")
+                                                                    {
+                                                                        <input type="checkbox" checked name="PP" id="$31" class="chk-col-green">
+                                                                        <label for="$31">Perdida de peso</label><br>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <input type="checkbox" name="PP" id="$31" class="chk-col-green">
+                                                                        <label for="$31">Perdida de peso</label><br>
+                                                                    }
+                                                                    @if (ViewBag.ap == "Aumento de peso")
+                                                                    {
+                                                                        <input type="checkbox" checked name="AP" id="$32" class="chk-col-green">
+                                                                        <label for="$32">Aumento de peso</label><br>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <input type="checkbox" name="AP" id="$32" class="chk-col-green">
+                                                                        <label for="$32">Aumento de peso</label><br>
+                                                                    }
+                                                                    @if (ViewBag.fiebre == "Fiebre")
+                                                                    {
+                                                                        <input type="checkbox" checked name="Fiebre" id="$33" class="chk-col-green">
+                                                                        <label for="$33">Fiebre</label><br>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <input type="checkbox" name="Fiebre" id="$33" class="chk-col-green">
+                                                                        <label for="$33">Fiebre</label><br>
+                                                                    }
+                                                                    @if (ViewBag.esc == "Escalofrios")
+                                                                    {
+                                                                        <input type="checkbox" checked name="Escalofrios" id="$34" class="chk-col-green">
+                                                                        <label for="$34">Escalofrios</label>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <input type="checkbox" name="Escalofrios" id="$34" class="chk-col-green">
+                                                                        <label for="$34">Escalofrios</label>
+                                                                    }
+                                                                </td>
+                                                                <td>
+                                                                    @if (ViewBag.silb == "Sibilancia")
+                                                                    {
+                                                                        <input type="checkbox" name="Sibilancia" checked id="$41" class="chk-col-green">
+                                                                        <label for="$41">Sibilancia</label><br>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <input type="checkbox" name="Sibilancia" id="$41" class="chk-col-green">
+                                                                        <label for="$41">Sibilancia</label><br>
+                                                                    }
+                                                                    @if (ViewBag.tos == "Tos")
+                                                                    {
+                                                                        <input type="checkbox" name="Tos" checked id="$42" class="chk-col-green">
+                                                                        <label for="$42">Tos</label><br>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <input type="checkbox" name="Tos" id="$42" class="chk-col-green">
+                                                                        <label for="$42">Tos</label><br>
+                                                                    }
+                                                                    @if (ViewBag.dar == "Dolor al respirar")
+                                                                    {
+                                                                        <input type="checkbox" checked name="DAR" id="$43" class="chk-col-green">
+                                                                        <label for="$43">Dolor al respirar</label><br>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <input type="checkbox" name="DAR" id="$43" class="chk-col-green">
+                                                                        <label for="$43">Dolor al respirar</label><br>
+                                                                    }
+                                                                    @if (ViewBag.tcs == "Toser coagulos de sangre")
+                                                                    {
+                                                                        <input type="checkbox" checked name="TCS" id="$44" class="chk-col-green">
+                                                                        <label for="$44">Toser coagulos de sangre</label>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <input type="checkbox" name="TCS" id="$44" class="chk-col-green">
+                                                                        <label for="$44">Toser coagulos de sangre</label>
+                                                                    }
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th align="center">Dermatologico</th>
+                                                                <th align="center">Cabeza</th>
+                                                                <th align="center">Ojos</th>
+                                                                <th align="center">Oidos,Nariz,Garganta</th>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    @if (ViewBag.e_p == "Erupciones/Purito")
+                                                                    {
+                                                                        <input type="checkbox" checked name="EP" id="$121" class="chk-col-green">
+                                                                        <label for="$121">Erupciones/Purito</label><br>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <input type="checkbox" name="EP" id="$121" class="chk-col-green">
+                                                                        <label for="$121">Erupciones/Purito</label><br>
+                                                                    }
+                                                                    @if (ViewBag.U_LL == "Ulceras/Llagas")
+                                                                    {
+                                                                        <input type="checkbox" checked name="Ulceras" id="$122" class="chk-col-green">
+                                                                        <label for="$122">Ulceras/Llagas</label><br>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <input type="checkbox" name="Ulceras" id="$122" class="chk-col-green">
+                                                                        <label for="$122">Ulceras/Llagas</label><br>
+                                                                    }
+                                                                    @if (ViewBag.hp == "Hongos en los pies")
+                                                                    {
+                                                                        <input type="checkbox" checked name="hongos" id="$123" class="chk-col-green">
+                                                                        <label for="$123">Hongos en los pies</label><br>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <input type="checkbox" name="hongos" id="$123" class="chk-col-green">
+                                                                        <label for="$123">Hongos en los pies</label><br>
+                                                                    }
+                                                                </td>
+                                                                <td>
+                                                                    @if (ViewBag.DC == "Dolores de Cabeza")
+                                                                    {
+                                                                        <input type="checkbox" checked name="Dc" id="$221" class="chk-col-green">
+                                                                        <label for="$221">Dolores de Cabeza</label><br>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <input type="checkbox" name="Dc" id="$221" class="chk-col-green">
+                                                                        <label for="$221">Dolores de Cabeza</label><br>
+                                                                    }
+                                                                    @if (ViewBag.convul == "Convulsiones")
+                                                                    {
+                                                                        <input type="checkbox" checked name="Convulsiones" id="$222" class="chk-col-green">
+                                                                        <label for="$222">Convulsiones</label><br>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <input type="checkbox" name="Convulsiones" id="$222" class="chk-col-green">
+                                                                        <label for="$222">Convulsiones</label><br>
+                                                                    }
+                                                                    @if (ViewBag.pc == "Perdida de la conciencia")
+                                                                    {
+                                                                        <input type="checkbox" checked name="PConciencia" id="$223" class="chk-col-green">
+                                                                        <label for="$223">Perdida de la conciencia</label>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <input type="checkbox" name="PConciencia" id="$223" class="chk-col-green">
+                                                                        <label for="$223">Perdida de la conciencia</label>
+                                                                    }
+                                                                </td>
+                                                                <td>
+                                                                    @if (ViewBag.cv == "Cambios en la vision")
+                                                                    {
+                                                                        <input type="checkbox" checked name="cambiosVision" id="$321" class="chk-col-green">
+                                                                        <label for="$321">Cambios en la vision</label><br>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <input type="checkbox" name="cambiosVision" id="$321" class="chk-col-green">
+                                                                        <label for="$321">Cambios en la vision</label><br>
+                                                                    }
+                                                                    @if (ViewBag.foto == "Fotofobia")
+                                                                    {
+                                                                        <input type="checkbox" checked name="fotofobia" id="$322" class="chk-col-green">
+                                                                        <label for="$322">Fotofobia</label><br>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <input type="checkbox" name="fotofobia" id="$322" class="chk-col-green">
+                                                                        <label for="$322">Fotofobia</label><br>
+                                                                    }
+                                                                    @if (ViewBag.de == "Dolor/enrojecimiento")
+                                                                    {
+                                                                        <input type="checkbox" checked name="DE" id="$323" class="chk-col-green">
+                                                                        <label for="$323">Dolor/enrojecimiento</label><br>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <input type="checkbox" name="DE" id="$323" class="chk-col-green">
+                                                                        <label for="$323">Dolor/enrojecimiento</label><br>
+                                                                    }
+                                                                    @if (ViewBag.le == "Lagrimeo excesivo")
+                                                                    {
+                                                                        <input type="checkbox" checked name="lagrimeoe" id="$324" class="chk-col-green">
+                                                                        <label for="$324">Lagrimeo excesivo</label>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <input type="checkbox" name="lagrimeoe" id="$324" class="chk-col-green">
+                                                                        <label for="$324">Lagrimeo excesivo</label>
+                                                                    }
+
+                                                                </td>
+                                                                <td>
+                                                                    @if (ViewBag.pa == "Perdida audicion")
+                                                                    {
+                                                                        <input type="checkbox" checked name="PA" id="$421" class="chk-col-green">
+                                                                        <label for="$421">Perdida audicion</label><br>
+                                                                    }
+                                                                    else
+                                                                    {
+
+                                                                        <input type="checkbox" name="PA" id="$421" class="chk-col-green">
+                                                                        <label for="$421">Perdida audicion</label><br>
+                                                                    }
+                                                                    @if (ViewBag.ver == "Vertigo")
+                                                                    {
+                                                                        <input type="checkbox" checked name="Vertigo" id="$422" class="chk-col-green">
+                                                                        <label for="$422">Vertigo</label><br>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <input type="checkbox" name="Vertigo" id="$422" class="chk-col-green">
+                                                                        <label for="$422">Vertigo</label><br>
+                                                                    }
+                                                                    @if (ViewBag.sn == "Sangrado de nariz")
+                                                                    {
+                                                                        <input type="checkbox" checked name="sangradoN" id="$423" class="chk-col-green">
+                                                                        <label for="$423">Sangrado de nariz</label><br>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <input type="checkbox" name="sangradoN" id="$423" class="chk-col-green">
+                                                                        <label for="$423">Sangrado de nariz</label><br>
+                                                                    }
+                                                                    @if (ViewBag.ron == "Ronquidos")
+                                                                    {
+                                                                        <input type="checkbox" checked name="Ronquidos" id="$424" class="chk-col-green">
+                                                                        <label for="$424">Ronquidos</label>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <input type="checkbox" name="Ronquidos" id="$424" class="chk-col-green">
+                                                                        <label for="$424">Ronquidos</label>
+                                                                    }
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th align="center">Genitourinario</th>
+                                                                <th align="center">Cardiovascular</th>
+                                                                <th align="center">Gastrointestinal</th>
+                                                                <th align="center">Otros</th>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    @if (ViewBag.pcv == "Perdida control de vejiga")
+                                                                    {
+                                                                        <input type="checkbox" checked name="PCVe" id="$131" class="chk-col-green">
+                                                                        <label for="$131">Perdida control de vejiga</label><br>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <input type="checkbox" name="PCVe" id="$131" class="chk-col-green">
+                                                                        <label for="$131">Perdida control de vejiga</label><br>
+                                                                    }
+                                                                    @if (ViewBag.mf == "Miccion frecuente")
+                                                                    {
+
+                                                                        <input type="checkbox" checked name="MiccionF" id="$132" class="chk-col-green">
+                                                                        <label for="$132">Miccion frecuente</label>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <input type="checkbox" name="MiccionF" id="$132" class="chk-col-green">
+                                                                        <label for="$132">Miccion frecuente</label>
+                                                                    }
+                                                                </td>
+                                                                <td>
+                                                                    @if (ViewBag.dp == "Dolor en el pecho")
+                                                                    {
+                                                                        <input type="checkbox" checked name="DolorP" id="$231" class="chk-col-green">
+                                                                        <label for="$231">Dolor en el pecho</label><br>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <input type="checkbox" name="DolorP" id="$231" class="chk-col-green">
+                                                                        <label for="$231">Dolor en el pecho</label><br>
+                                                                    }
+                                                                    @if (ViewBag.palpita == "Palpitaciones")
+                                                                    {
+                                                                        <input type="checkbox" checked name="Palpitaciones" id="$232" class="chk-col-green">
+                                                                        <label for="$232">Palpitaciones</label><br>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <input type="checkbox" name="Palpitaciones" id="$232" class="chk-col-green">
+                                                                        <label for="$232">Palpitaciones</label><br>
+                                                                    }
+                                                                    @if (ViewBag.fa == "Falta de aliento")
+                                                                    {
+                                                                        <input type="checkbox" checked name="FaltaAliento" id="$233" class="chk-col-green">
+                                                                        <label for="$233">Falta de aliento</label>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <input type="checkbox" name="FaltaAliento" id="$233" class="chk-col-green">
+                                                                        <label for="$233">Falta de aliento</label>
+                                                                    }
+                                                                </td>
+                                                                <td>
+                                                                    @if (ViewBag.dd == "Dificultad para deglutir")
+                                                                    {
+                                                                        <input type="checkbox" checked name="Dificultaddeglutir" id="$331" class="chk-col-green">
+                                                                        <label for="$331">Dificultad para deglutir</label><br>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <input type="checkbox" name="Dificultaddeglutir" id="$331" class="chk-col-green">
+                                                                        <label for="$331">Dificultad para deglutir</label><br>
+                                                                    }
+                                                                    @if (ViewBag.ae == "Ardor estomacal")
+                                                                    {
+                                                                        <input type="checkbox" checked name="ardorEstomacal" id="$332" class="chk-col-green">
+                                                                        <label for="$332">Ardor estomacal</label><br>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <input type="checkbox" name="ardorEstomacal" id="$332" class="chk-col-green">
+                                                                        <label for="$332">Ardor estomacal</label><br>
+                                                                    }
+                                                                    @if (ViewBag.nv == "Nauseas/Vomito")
+                                                                    {
+                                                                        <input type="checkbox" checked name="NV" id="$333" class="chk-col-green">
+                                                                        <label for="$333">Nauseas/Vomito</label><br>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <input type="checkbox" name="NV" id="$333" class="chk-col-green">
+                                                                        <label for="$333">Nauseas/Vomito</label><br>
+                                                                    }
+                                                                    @if (ViewBag.si == "Sangrado intestinal")
+                                                                    {
+                                                                        <input type="checkbox" checked name="Sangradointestinal" id="$334" class="chk-col-green">
+                                                                        <label for="$334">Sangrado intestinal</label>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <input type="checkbox" name="Sangradointestinal" id="$334" class="chk-col-green">
+                                                                        <label for="$334">Sangrado intestinal</label>
+                                                                    }
+                                                                </td>
+                                                                <td>
+                                                                    @if (ViewBag.otros != "")
+                                                                    {
+                                                                        <textarea name="otrosCCA" width="200px" placeholder="Detallar">@ViewBag.otros</textarea>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <textarea name="otrosCCA" width="200px" placeholder="Detallar"></textarea>
+                                                                    }
+
+                                                                </td>
+                                                               
+                                                            </tr>
+                                                        </table>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--#FINAL TABLA CONDICIONES CLINICAS ACTUALES#-->
+                                        </fieldset>
+                                        <div class="header">
+                                            <!--Observaciones-->
+                                            <h4 class="card-inside-title">
+                                                Observaciones
+                                            </h4>
+                                            @foreach (var item in Anexos)
+                                            {
+                                                if (item.Observaciones != "" && item.Otros_Hallazgos == "" && item.Recomendaciones == "")
+                                                {
+                                                    observaciones = item.Observaciones;
+                                                }
+                                            }
+                                            @if (observaciones != "")
+                                            {
+                                                <textarea name="observacioneCCA" rows="6" cols="40" placeholder="Detalles...">@observaciones</textarea>
+                                            }
+                                            else
+                                            {
+                                                <textarea name="observacioneCCA" rows="6" cols="40" placeholder="Detalles..."></textarea>
+                                            }
+                                        </div>
+                                    </div>
+                                    <div style="text-align: center;">
+                                        <div class="btn-group" role="group">
+                                            <button type="button" class="btn bg-indigo waves-effect btnPrevious">Anterior</button>
+                                            <button type="button" class="btn bg-indigo waves-effect btnNext">Siguiente</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--                TERCER  TAB                                                          -->
+                                <div class="tab-pane " id="tab3">
+                                    <div class="col-md-12">
+                                        <fieldset>
+                                            <div class="row clearfix">
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                    @foreach (var item in Ficha)
+                                                    {
+                                                        nombre = item.Nombre_Y_Apellidos;
+                                                        sexo = item.Sexo;
+                                                        evaluacion = item.Evaluacion.ToString();
+                                                        fe = Convert.ToDateTime(item.Fecha_De_Evaluacion).ToShortDateString();
+                                                        fn = Convert.ToDateTime(item.Fecha_De_Nacimiento).ToShortDateString();
+                                                        menstruacion = item.Menstruacion;
+                                                        anotador = item.Anotador;
+                                                        antropo = item.Antropometrista;
+
+                                                    }
+                                                    <div class="row clearfix">
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                <div class="form-line">
+                                                                    @if (nombre == "")
+                                                                    {
+                                                                        <input disable="true" class="form-control" type="text"  name="nombreAtleta" value="@ViewBag.nombre" />
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <input disable="true" class="form-control" type="text"  name="nombreAtleta" value="@nombre" />
+                                                                    }
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group form-float">
+                                                                <div class="form-line">
+                                                                    @if (sexo == "")
+                                                                    {
+                                                                        <input class="form-control" type="text" name="genero"  value="@ViewBag.genero" />
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <input class="form-control" type="text" name="genero"  value="@sexo" />
+                                                                    }
+                                                                    
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group form-float">
+                                                                <div class="form-line">
+                                                                    <input type="text" value="@evaluacion" name="numEvaluacion" class="form-control" />
+                                                                    <label class="form-label">Evaluacion Nº</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group form-float">
+                                                                <div class="form-line">
+                                                                    <input type="text" name="fechaEv" class="form-control" id="fecha" value="@fe">
+                                                                    <label class="form-label">Fecha de evaluacion</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group form-float">
+                                                                <div class="form-line">
+                                                                    <input type="text" class="form-control" name="Antropometrista" value="@antropo" />
+                                                                    <label class="form-label">Antropometrista/Evaluador</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group form-float">
+                                                                <div class="form-line">
+                                                                    <input type="text" class="form-control" name="Anotador" value="@anotador" />
+                                                                    <label class="form-label">Anotador </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <div class="demo-masked-input">
+                                                                <div class="input-group">
+                                                                    <div class="form-line">
+                                                                        <input type="text"  name="fechaNac" class="form-control date" placeholder="Fecha De Nacimiento Ejemplo: 30/07/2016" value="@fn">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group form-float">
+                                                                <div class="form-line">
+                                                                    @if (sexo == "" && ViewBag.genero == "Masculino" || sexo == "Masculino")
+                                                                    {
+                                                                        <input type="text" class="form-control"  value="No" name="menstruacion" />
+                                                                        <label class="form-label">Mentruacion </label>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <input type="text" class="form-control"   name="menstruacion" />
+                                                                        <label class="form-label">Mentruacion </label>
+                                                                    }
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+
+
+                                                    <!--INICIO TABLA FICHA ANTROPOMETRICA -->
+                                                    <div class="body table-responsive">
+                                                        @if (Ficha.Count() == 0)
+                                                        {
+                                                            <table id="mainTable" class="table table-bordered">
+                                                                <tr>
+                                                                    <th>#</th>
+                                                                    <th>Promedio/Mediana</th>
+                                                                    <th>TOMA 1</th>
+                                                                    <th>TOMA 2</th>
+                                                                    <th>TOMA 3</th>
+                                                                    <th>Promedio/Mediana</th>
+                                                                    </tr>
+                                                                <tr>
+                                                                    <td align="center">1</td>
+                                                                    <td>Peso corporal (kg)</td>
+                                                                    <td><input type="text" name="PCtoma1"></td>
+                                                                    <td><input type="text" name="PCtoma2"></td>
+                                                                    <td><input type="text" name="PCtoma3"></td>
+                                                                    <td><input type="text" name="PCpromed"></td>
+                                                                    </tr>
+                                                                <tr>
+                                                                    <td align="center">2</td>
+                                                                    <td>Talla (cm)</td>
+                                                                    <td><input type="text" name="Ttoma1"></td>
+                                                                    <td><input type="text" name="Ttoma2"></td>
+                                                                    <td><input type="text" name="Ttoma3"></td>
+                                                                    <td><input type="text" name="Tpromed"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align="center">3</td>
+                                                                    <td>Talla sentado (cm)</td>
+                                                                    <td><input type="text" name="Tstoma1"></td>
+                                                                    <td><input type="text" name="Tstoma2"></td>
+                                                                    <td><input type="text" name="Tstoma3"></td>
+                                                                    <td><input type="text" name="Tspromed"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align="center">4</td>
+                                                                    <td>Envergadura (mm)</td>
+                                                                    <td><input type="text" name="Etoma1"></td>
+                                                                    <td><input type="text" name="Etoma2"></td>
+                                                                    <td><input type="text" name="Etoma3"></td>
+                                                                    <td><input type="text" name="Epromed"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th colspan="6">Pliegues cutaneos (mm)</th>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align="center">5</td>
+                                                                    <td>Subescapular</td>
+                                                                    <td><input type="text" name="SCtoma1"></td>
+                                                                    <td><input type="text" name="SCtoma2"></td>
+                                                                    <td><input type="text" name="SCtoma3"></td>
+                                                                    <td><input type="text" name="SCpromed"></td>
+                                                                    </tr>
+                                                                <tr>
+                                                                    <td align="center">6</td>
+                                                                    <td>Tricipital</td>
+                                                                    <td><input type="text" name="TTtoma1"></td>
+                                                                    <td><input type="text" name="TTtoma2"></td>
+                                                                    <td><input type="text" name="TTtoma3"></td>
+                                                                    <td><input type="text" name="TTpromed"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align="center">7</td>
+                                                                    <td>Bicipital</td>
+                                                                    <td><input type="text" name="BCtoma1"></td>
+                                                                    <td><input type="text" name="BCtoma2"></td>
+                                                                    <td><input type="text" name="BCtoma3"></td>
+                                                                    <td><input type="text" name="BCpromed"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align="center">8</td>
+                                                                    <td>Supracrestal o cresta iliaca</td>
+                                                                    <td><input type="text" name="CItoma1"></td>
+                                                                    <td><input type="text" name="CItoma2"></td>
+                                                                    <td><input type="text" name="CItoma3"></td>
+                                                                    <td><input type="text" name="CIpromed"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align="center">9</td>
+                                                                    <td>Supracrestal o suprailiaco</td>
+                                                                    <td><input type="text" name="SCotoma1"></td>
+                                                                    <td><input type="text" name="SCotoma2"></td>
+                                                                    <td><input type="text" name="SCotoma3"></td>
+                                                                    <td><input type="text" name="SCopromed"></td>
+                                                                    </tr>
+                                                                <tr>
+                                                                    <td align="center">10</td>
+                                                                    <td>Abdominal</td>
+                                                                    <td><input type="text" name="ABtoma1"></td>
+                                                                    <td><input type="text" name="ABtoma2"></td>
+                                                                    <td><input type="text" name="ABtoma3"></td>
+                                                                    <td><input type="text" name="ABpromed"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align="center">11</td>
+                                                                    <td>Muslo anterior</td>
+                                                                    <td><input type="text" name="MAtoma1"></td>
+                                                                    <td><input type="text" name="MAtoma2"></td>
+                                                                    <td><input type="text" name="MAtoma3"></td>
+                                                                    <td><input type="text" name="MApromed"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align="center">12</td>
+                                                                    <td>Pierna medial</td>
+                                                                    <td><input type="text" name="PMtoma1"></td>
+                                                                    <td><input type="text" name="PMtoma2"></td>
+                                                                    <td><input type="text" name="PMtoma3"></td>
+                                                                    <td><input type="text" name="PMpromed"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td colspan="2"><input name="otros1" placeholder="Otros:"></td>
+                                                                    <td><input type="text" name="otros1toma1"></td>
+                                                                    <td><input type="text" name="otros1toma2"></td>
+                                                                    <td><input type="text" name="otros1toma3"></td>
+                                                                    <td><input type="text" name="otros1promed"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th colspan="6">Perimetros (cm)</th>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align="center">13</td>
+                                                                    <td>Brazo relajado</td>
+                                                                    <td><input type="text" name="BRtoma1"></td>
+                                                                    <td><input type="text" name="BRtoma2"></td>
+                                                                    <td><input type="text" name="BRtoma3"></td>
+                                                                    <td><input type="text" name="BRpromed"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align="center">14</td>
+                                                                    <td>Brazo flexionado y contraido</td>
+                                                                    <td><input type="text" name="BFCtoma1"></td>
+                                                                    <td><input type="text" name="BFCtoma2"></td>
+                                                                    <td><input type="text" name="BFCtoma3"></td>
+                                                                    <td><input type="text" name="BFCpromed"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align="center">15</td>
+                                                                    <td>Muslo medial</td>
+                                                                    <td><input type="text" name="MMtoma1"></td>
+                                                                    <td><input type="text" name="MMtoma2"></td>
+                                                                    <td><input type="text" name="MMtoma3"></td>
+                                                                    <td><input type="text" name="MMpromed"></td>
+                                                                    </tr>
+                                                                <tr>
+                                                                    <td align="center">16</td>
+                                                                    <td>Pantorilla</td>
+                                                                    <td><input type="text" name="PANtoma1"></td>
+                                                                    <td><input type="text" name="PANtoma2"></td>
+                                                                    <td><input type="text" name="PANtoma3"></td>
+                                                                    <td><input type="text" name="PANpromed"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align="center">17</td>
+                                                                    <td>Cintura</td>
+                                                                    <td><input type="text" name="CINtoma1"></td>
+                                                                    <td><input type="text" name="CINtoma2"></td>
+                                                                    <td><input type="text" name="CINtoma3"></td>
+                                                                    <td><input type="text" name="CINpromed"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align="center">18</td>
+                                                                    <td>Cadera</td>
+                                                                    <td><input type="text" name="CADtoma1"></td>
+                                                                    <td><input type="text" name="CADtoma2"></td>
+                                                                    <td><input type="text" name="CADtoma3"></td>
+                                                                    <td><input type="text" name="CADpromed"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td colspan="2"><input name="otros2" placeholder="Otros:"></td>
+                                                                    <td><input type="text" name="otros2toma1"></td>
+                                                                    <td><input type="text" name="otros2toma2"></td>
+                                                                    <td><input type="text" name="otros2toma3"></td>
+                                                                    <td><input type="text" name="otros2promed"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th colspan="6">Diametros (cm)</th>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align="center">20</td>
+                                                                    <td>Humero</td>
+                                                                    <td><input type="text" name="Humerotoma1"></td>
+                                                                    <td><input type="text" name="Humerotoma2"></td>
+                                                                    <td><input type="text" name="Humerotoma3"></td>
+                                                                    <td><input type="text" name="Humeropromed"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align="center">21</td>
+                                                                    <td>Muñeca</td>
+                                                                    <td><input type="text" name="Muñecatoma1"></td>
+                                                                    <td><input type="text" name="Muñecatoma2"></td>
+                                                                    <td><input type="text" name="Muñecatoma3"></td>
+                                                                    <td><input type="text" name="Muñecapromed"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align="center">22</td>
+                                                                    <td>Femur</td>
+                                                                    <td><input type="text" name="femurtoma1"></td>
+                                                                    <td><input type="text" name="femurtoma2"></td>
+                                                                    <td><input type="text" name="femurtoma3"></td>
+                                                                    <td><input type="text" name="femurpromed"></td>
+                                                                    </tr>
+                                                                
+                                                                <tr>
+                                                                    <td colspan="2"><input name="otros3" placeholder="Otros:"></td>
+                                                                    <td><input type="text" name="otros3toma1"></td>
+                                                                    <td><input type="text" name="otros3toma2"></td>
+                                                                    <td><input type="text" name="otros3toma3"></td>
+                                                                    <td><input type="text" name="otros3promed"></td>
+                                                                </tr>
+                                                            </table>
+                                                        }
+                                                        else
+                                                        {
+                                                            <table id="mainTable" class="table table-bordered">
+                                                                <tr>
+                                                                    <th>#</th>
+                                                                    <th>Promedio/Mediana</th>
+                                                                    <th>TOMA 1</th>
+                                                                    <th>TOMA 2</th>
+                                                                    <th>TOMA 3</th>
+                                                                    <th>Promedio/Mediana</th>
+                                                                </tr>
+                                                                <tr>
+
+                                                                    @foreach (var item in Ficha)
+                                                                    {
+                                                                        if (item.Txt_Ficha_Antropometrica == "01-Peso corporal (kg)")
+                                                                        {
+                                                                            <td align="center">1</td>
+                                                                            <td>Peso corporal (kg)</td>
+                                                                            <td><input type="text" name="PCtoma1" value="@item.Toma1"></td>
+                                                                            <td><input type="text" name="PCtoma2" value="@item.Toma2"></td>
+                                                                            <td><input type="text" name="PCtoma3" value="@item.Toma3"></td>
+                                                                            <td><input type="text" name="PCpromed" value="@item.Promedio_Mediana"></td>
+                                                                        }
+                                                                    }
+                                                                </tr>
+                                                                <tr>
+                                                                    @foreach (var item in Ficha)
+                                                                    {
+                                                                        if (item.Txt_Ficha_Antropometrica == "02-Talla (cm)")
+                                                                        {
+                                                                            <td align="center">2</td>
+                                                                            <td>Talla (cm)</td>
+                                                                            <td><input type="text" name="Ttoma1" value="@item.Toma1"></td>
+                                                                            <td><input type="text" name="Ttoma2" value="@item.Toma2"></td>
+                                                                            <td><input type="text" name="Ttoma3" value="@item.Toma3"></td>
+                                                                            <td><input type="text" name="Tpromed" value="@item.Promedio_Mediana"></td>
+                                                                        }
+                                                                    }
+
+                                                                </tr>
+                                                                <tr>
+                                                                    @foreach (var item in Ficha)
+                                                                    {
+                                                                        if (item.Txt_Ficha_Antropometrica == "03-Talla sentado (cm)")
+                                                                        {
+                                                                            <td align="center">3</td>
+                                                                            <td>Talla sentado (cm)</td>
+                                                                            <td><input type="text" name="Tstoma1" value="@item.Toma1"></td>
+                                                                            <td><input type="text" name="Tstoma2" value="@item.Toma2"></td>
+                                                                            <td><input type="text" name="Tstoma3" value="@item.Toma3"></td>
+                                                                            <td><input type="text" name="Tspromed" value="@item.Promedio_Mediana"></td>
+                                                                        }
+                                                                    }
+                                                                </tr>
+                                                                <tr>
+                                                                    @foreach (var item in Ficha)
+                                                                    {
+                                                                        if (item.Txt_Ficha_Antropometrica == "04-Envergadura (mm)")
+                                                                        {
+                                                                            <td align="center">4</td>
+                                                                            <td>Envergadura (mm)</td>
+                                                                            <td><input type="text" name="Etoma1" value="@item.Toma1"></td>
+                                                                            <td><input type="text" name="Etoma2" value="@item.Toma2"></td>
+                                                                            <td><input type="text" name="Etoma3" value="@item.Toma3"></td>
+                                                                            <td><input type="text" name="Epromed" value="@item.Promedio_Mediana"></td>
+                                                                        }
+                                                                    }
+
+                                                                </tr>
+                                                                <tr>
+                                                                    <th colspan="6">Pliegues cutaneos (mm)</th>
+                                                                </tr>
+                                                                <tr>
+                                                                    @foreach (var item in Ficha)
+                                                                    {
+                                                                        if (item.Txt_Ficha_Antropometrica == "05-Subescapular")
+                                                                        {
+                                                                            <td align="center">5</td>
+                                                                            <td>Subescapular</td>
+                                                                            <td><input type="text" name="SCtoma1" value="@item.Toma1"></td>
+                                                                            <td><input type="text" name="SCtoma2" value="@item.Toma2"></td>
+                                                                            <td><input type="text" name="SCtoma3" value="@item.Toma3"></td>
+                                                                            <td><input type="text" name="SCpromed" value="@item.Promedio_Mediana"></td>
+                                                                        }
+                                                                    }
+                                                                </tr>
+                                                                <tr>
+                                                                    @foreach (var item in Ficha)
+                                                                    {
+                                                                        if (item.Txt_Ficha_Antropometrica == "06-Tricipital")
+                                                                        {
+                                                                            <td align="center">6</td>
+                                                                            <td>Tricipital</td>
+                                                                            <td><input type="text" name="TTtoma1" value="@item.Toma1"></td>
+                                                                            <td><input type="text" name="TTtoma2" value="@item.Toma2"></td>
+                                                                            <td><input type="text" name="TTtoma3" value="@item.Toma3"></td>
+                                                                            <td><input type="text" name="TTpromed" value="@item.Promedio_Mediana"></td>
+                                                                        }
+                                                                    }
+                                                                </tr>
+                                                                <tr>
+                                                                    @foreach (var item in Ficha)
+                                                                    {
+                                                                        if (item.Txt_Ficha_Antropometrica == "07-Bicipital")
+                                                                        {
+                                                                            <td align="center">7</td>
+                                                                            <td>Bicipital</td>
+                                                                            <td><input type="text" name="BCtoma1" value="@item.Toma1"></td>
+                                                                            <td><input type="text" name="BCtoma2" value="@item.Toma2"></td>
+                                                                            <td><input type="text" name="BCtoma3" value="@item.Toma3"></td>
+                                                                            <td><input type="text" name="BCpromed" value="@item.Promedio_Mediana"></td>
+                                                                        }
+                                                                    }
+                                                                </tr>
+                                                                <tr>
+                                                                    @foreach (var item in Ficha)
+                                                                    {
+                                                                        if (item.Txt_Ficha_Antropometrica == "08-Supracrestal o cresta iliaca")
+                                                                        {
+                                                                            <td align="center">8</td>
+                                                                            <td>Supracrestal o cresta iliaca</td>
+                                                                            <td><input type="text" name="CItoma1" value="@item.Toma1"></td>
+                                                                            <td><input type="text" name="CItoma2" value="@item.Toma2"></td>
+                                                                            <td><input type="text" name="CItoma3" value="@item.Toma3"></td>
+                                                                            <td><input type="text" name="CIpromed" value="@item.Promedio_Mediana"></td>
+                                                                        }
+                                                                    }
+                                                                </tr>
+                                                                <tr>
+                                                                    @foreach (var item in Ficha)
+                                                                    {
+                                                                        if (item.Txt_Ficha_Antropometrica == "09-Supracrestal o suprailiaco")
+                                                                        {
+                                                                            <td align="center">9</td>
+                                                                            <td>Supracrestal o suprailiaco</td>
+                                                                            <td><input type="text" name="SCotoma1" value="@item.Toma1"></td>
+                                                                            <td><input type="text" name="SCotoma2" value="@item.Toma2"></td>
+                                                                            <td><input type="text" name="SCotoma3" value="@item.Toma3"></td>
+                                                                            <td><input type="text" name="SCopromed" value="@item.Promedio_Mediana"></td>
+                                                                        }
+                                                                    }
+                                                                </tr>
+                                                                <tr>
+                                                                    @foreach (var item in Ficha)
+                                                                    {
+                                                                        if (item.Txt_Ficha_Antropometrica == "10-Abdominal")
+                                                                        {
+                                                                            <td align="center">10</td>
+                                                                            <td>Abdominal</td>
+                                                                            <td><input type="text" name="ABtoma1" value="@item.Toma1"></td>
+                                                                            <td><input type="text" name="ABtoma2" value="@item.Toma2"></td>
+                                                                            <td><input type="text" name="ABtoma3" value="@item.Toma3"></td>
+                                                                            <td><input type="text" name="ABpromed" value="@item.Promedio_Mediana"></td>
+                                                                        }
+                                                                    }
+                                                                </tr>
+                                                                <tr>
+                                                                    @foreach (var item in Ficha)
+                                                                    {
+                                                                        if (item.Txt_Ficha_Antropometrica == "11-Muslo anterior")
+                                                                        {
+                                                                            <td align="center">11</td>
+                                                                            <td>Muslo anterior</td>
+                                                                            <td><input type="text" name="MAtoma1" value="@item.Toma1"></td>
+                                                                            <td><input type="text" name="MAtoma2" value="@item.Toma2"></td>
+                                                                            <td><input type="text" name="MAtoma3" value="@item.Toma3"></td>
+                                                                            <td><input type="text" name="MApromed" value="@item.Promedio_Mediana"></td>
+                                                                        }
+                                                                    }
+                                                                </tr>
+                                                                <tr>
+                                                                    @foreach (var item in Ficha)
+                                                                    {
+                                                                        if (item.Txt_Ficha_Antropometrica == "12-Pierna medial")
+                                                                        {
+                                                                            <td align="center">12</td>
+                                                                            <td>Pierna medial</td>
+                                                                            <td><input type="text" name="PMtoma1" value="@item.Toma1"></td>
+                                                                            <td><input type="text" name="PMtoma2" value="@item.Toma2"></td>
+                                                                            <td><input type="text" name="PMtoma3" value="@item.Toma3"></td>
+                                                                            <td><input type="text" name="PMpromed" value="@item.Promedio_Mediana"></td>
+                                                                        }
+                                                                    }
+                                                                </tr>
+                                                                <tr>
+                                                                    @foreach (var item in Ficha)
+                                                                    {
+                                                                        if (item.Txt_Ficha_Antropometrica.IndexOf("12.5").Equals(0))
+                                                                        {
+                                                                            //foreach (var item2 in item.Txt_Ficha_Antropometrica)
+                                                                            //{
+
+                                                                            //}
+                                                                            char[] MyChar = { '1', '2', '.', '5' };
+                                                                            //<td align="center">12</td>
+                                                                            //<td>@item.Txt_Ficha_Antropometrica.TrimStart(MyChar)</td>
+                                                                            <td colspan="2"><input name="otros1" placeholder="Otros:" value="@item.Txt_Ficha_Antropometrica.TrimStart(MyChar)"></td>
+                                                                            <td><input type="text" name="otros1toma1" value="@item.Toma1"></td>
+                                                                            <td><input type="text" name="otros1toma2" value="@item.Toma2"></td>
+                                                                            <td><input type="text" name="otros1toma3" value="@item.Toma3"></td>
+                                                                            <td><input type="text" name="otros1promed" value="@item.Promedio_Mediana"></td>
+                                                                        }
+
+                                                                    }
+                                                                </tr>
+                                                                <tr>
+                                                                    <th colspan="6">Perimetros (cm)</th>
+                                                                </tr>
+                                                                <tr>
+                                                                    @foreach (var item in Ficha)
+                                                                    {
+                                                                        if (item.Txt_Ficha_Antropometrica == "13-Brazo relajado")
+                                                                        {
+                                                                            <td align="center">13</td>
+                                                                            <td>Brazo relajado</td>
+                                                                            <td><input type="text" name="BRtoma1" value="@item.Toma1"></td>
+                                                                            <td><input type="text" name="BRtoma2" value="@item.Toma2"></td>
+                                                                            <td><input type="text" name="BRtoma3" value="@item.Toma3"></td>
+                                                                            <td><input type="text" name="BRpromed" value="@item.Promedio_Mediana"></td>
+                                                                        }
+                                                                    }
+                                                                </tr>
+                                                                <tr>
+                                                                    @foreach (var item in Ficha)
+                                                                    {
+                                                                        if (item.Txt_Ficha_Antropometrica == "14-Brazo flexionado y contraido")
+                                                                        {
+                                                                            <td align="center">14</td>
+                                                                            <td>Brazo flexionado y contraido</td>
+                                                                            <td><input type="text" name="BFCtoma1" value="@item.Toma1"></td>
+                                                                            <td><input type="text" name="BFCtoma1" value="@item.Toma2"></td>
+                                                                            <td><input type="text" name="BFCtoma3" value="@item.Toma3"></td>
+                                                                            <td><input type="text" name="BFCpromed" value="@item.Promedio_Mediana"></td>
+                                                                        }
+                                                                    }
+                                                                </tr>
+                                                                <tr>
+                                                                    @foreach (var item in Ficha)
+                                                                    {
+                                                                        if (item.Txt_Ficha_Antropometrica == "15-Muslo medial")
+                                                                        {
+                                                                            <td align="center">15</td>
+                                                                            <td>Muslo medial</td>
+                                                                            <td><input type="text" name="MMtoma1" value="@item.Toma1"></td>
+                                                                            <td><input type="text" name="MMtoma2" value="@item.Toma2"></td>
+                                                                            <td><input type="text" name="MMtoma3" value="@item.Toma3"></td>
+                                                                            <td><input type="text" name="MMpromed" value="@item.Promedio_Mediana"></td>
+                                                                        }
+                                                                    }
+                                                                </tr>
+                                                                <tr>
+                                                                    @foreach (var item in Ficha)
+                                                                    {
+                                                                        if (item.Txt_Ficha_Antropometrica == "16-Pantorilla")
+                                                                        {
+                                                                            <td align="center">16</td>
+                                                                            <td>Pantorilla</td>
+                                                                            <td><input type="text" name="PANtoma1" value="@item.Toma1"></td>
+                                                                            <td><input type="text" name="PANtoma2" value="@item.Toma2"></td>
+                                                                            <td><input type="text" name="PANtoma3" value="@item.Toma3"></td>
+                                                                            <td><input type="text" name="PANpromed" value="@item.Promedio_Mediana"></td>
+                                                                        }
+                                                                    }
+                                                                </tr>
+                                                                <tr>
+                                                                    @foreach (var item in Ficha)
+                                                                    {
+                                                                        if (item.Txt_Ficha_Antropometrica == "17-Cintura")
+                                                                        {
+                                                                            <td align="center">17</td>
+                                                                            <td>Cintura</td>
+                                                                            <td><input type="text" name="CINtoma1" value="@item.Toma1"></td>
+                                                                            <td><input type="text" name="CINtoma2" value="@item.Toma2"></td>
+                                                                            <td><input type="text" name="CINtoma3" value="@item.Toma3"></td>
+                                                                            <td><input type="text" name="CINpromed" value="@item.Promedio_Mediana"></td>
+                                                                        }
+                                                                    }
+                                                                <tr>
+                                                                    @foreach (var item in Ficha)
+                                                                    {
+                                                                        if (item.Txt_Ficha_Antropometrica == "18-Cadera")
+                                                                        {
+                                                                            <td align="center">18</td>
+                                                                            <td>Cadera</td>
+                                                                            <td><input type="text" name="CADtoma1" value="@item.Toma1"></td>
+                                                                            <td><input type="text" name="CADtoma2" value="@item.Toma2"></td>
+                                                                            <td><input type="text" name="CADtoma3" value="@item.Toma3"></td>
+                                                                            <td><input type="text" name="CADpromed" value="@item.Promedio_Mediana"></td>
+                                                                        }
+                                                                    }
+                                                                </tr>
+                                                                <tr>
+                                                                    @foreach (var item in Ficha)
+                                                                    {
+                                                                        if (item.Txt_Ficha_Antropometrica.IndexOf("19").Equals(0))
+                                                                        {
+                                                                            //foreach (var item2 in item.Txt_Ficha_Antropometrica)
+                                                                            //{
+
+                                                                            //}
+                                                                            char[] MyChar = { '1', '9' };
+                                                                            // <td align="center">12</td>
+                                                                            // <td>@item.Txt_Ficha_Antropometrica.TrimStart(MyChar)</td>
+                                                                            <td colspan="2"><input name="otros2" placeholder="Otros:" value="@item.Txt_Ficha_Antropometrica.TrimStart(MyChar)"></td>
+                                                                            <td><input type="text" name="otros2toma1" value="@item.Toma1"></td>
+                                                                            <td><input type="text" name="otros2toma2" value="@item.Toma2"></td>
+                                                                            <td><input type="text" name="otros2toma3" value="@item.Toma3"></td>
+                                                                            <td><input type="text" name="otros2promed" value="@item.Promedio_Mediana"></td>
+                                                                        }
+
+                                                                    }
+                                                                </tr>
+                                                                <tr>
+                                                                    <th colspan="6">Diametros (cm)</th>
+                                                                </tr>
+
+                                                                <tr>
+                                                                    @foreach (var item in Ficha)
+                                                                    {
+                                                                        if (item.Txt_Ficha_Antropometrica == "20-Humero")
+                                                                        {
+                                                                            <td align="center">20</td>
+                                                                            <td>Humero</td>
+                                                                            <td><input type="text" name="Humerotoma1" value="@item.Toma1"></td>
+                                                                            <td><input type="text" name="Humerotoma2" value="@item.Toma2"></td>
+                                                                            <td><input type="text" name="Humerotoma3" value="@item.Toma3" ></td>
+                                                                            <td><input type="text" name="Humeropromed" value="@item.Promedio_Mediana" ></td>
+                                                                        }
+                                                                    }
+                                                                </tr>
+                                                                <tr>
+                                                                    @foreach (var item in Ficha)
+                                                                    {
+                                                                        if (item.Txt_Ficha_Antropometrica == "21-Muñeca")
+                                                                        {
+                                                                            <td align="center">21</td>
+                                                                            <td>Muñeca</td>
+                                                                            <td><input type="text" name="Muñecatoma1" value="@item.Toma1"></td>
+                                                                            <td><input type="text" name="Muñecatoma2" value="@item.Toma2"></td>
+                                                                            <td><input type="text" name="Muñecatoma3" value="@item.Toma3"></td>
+                                                                            <td><input type="text" name="Muñecapromed" value="@item.Promedio_Mediana"></td>
+                                                                        }
+                                                                    }
+                                                                </tr>
+                                                                <tr>
+                                                                    @foreach (var item in Ficha)
+                                                                    {
+                                                                        if (item.Txt_Ficha_Antropometrica == "22-Femur")
+                                                                        {
+                                                                            <td align="center">22</td>
+                                                                            <td>Femur</td>
+                                                                            <td><input type="text" name="femurtoma1" value="@item.Toma1"></td>
+                                                                            <td><input type="text" name="femurtoma2" value="@item.Toma2"></td>
+                                                                            <td><input type="text" name="femurtoma3" value="@item.Toma3"></td>
+                                                                            <td><input type="text" name="femurpromed" value="@item.Promedio_Mediana"></td>
+                                                                        }
+                                                                    }
+                                                                </tr>
+                                                                <tr>
+                                                                    @foreach (var item in Ficha)
+                                                                    {
+                                                                        if (item.Txt_Ficha_Antropometrica.IndexOf("23").Equals(0))
+                                                                        {
+                                                                            //foreach (var item2 in item.Txt_Ficha_Antropometrica)
+                                                                            //{
+
+                                                                            //}
+                                                                            char[] MyChar = { '2', '3' };
+                                                                            // <td align="center">12</td>
+                                                                            <td colspan="2"><input name="otros3" placeholder="Otros:" value="@item.Txt_Ficha_Antropometrica.TrimStart(MyChar)"></td>
+                                                                            <td><input type="text" name="otros3toma1" value="@item.Toma1"></td>
+                                                                            <td><input type="text" name="otros3toma2" value="@item.Toma2"></td>
+                                                                            <td><input type="text" name="otros3toma3" value="@item.Toma3"></td>
+                                                                            <td><input type="text" name="otros3promed" value="@item.Promedio_Mediana"></td>
+                                                                        }
+
+                                                                    }
+                                                                </tr>
+                                                            </table>
+                                                        }
+
+                                                        <!--FINAL TABLA ANTROPOMETRIA -->
+                                                        <h4>
+                                                            <small> *Medidas de peril restringido (ISAK nivel 1)</small>
+                                                        </h4>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                    <div style="text-align: center;">
+                                        <div class="btn-group" role="group">
+                                            <button type="button" class="btn bg-indigo waves-effect btnPrevious">Anterior</button>
+                                            <button type="button" class="btn bg-indigo waves-effect btnNext">Siguiente</button>
+                                        </div>
+                                    </div>
+                                    @*<div class="col-md-12">
+                                            <div class="btn-group" role="group">
+                                                <button type="button" class="btn bg-indigo waves-effect btnNext">SIGUIENTE</button>
+                                                <button type="submit" class="btn bg-green waves-effect btnNext">Guardar</button>
+                                            </div>
+                                        </div>*@
+                                </div>
+                                <!--                CUARTO  TAB                                                          -->
+                                <div class="tab-pane" id="tab4">
+                                    <div class="col-md-12">
+                                        <fieldset>
+                                            <div class="row clearfix">
+                                                <div class="col-md-12">
+                                                    <table class="table table-hover small-text" id="tb">
+                                                        <tr class="tr-header">
+                                                            <th> Fecha </th>
+                                                            <th> Nota </th>
+                                                            <th> F. </th>
+                                                            <th><a href="javascript:void(0);" style="font-size:18px;" id="addfilaNE" title="Agrega otra fila"><span class="glyphicon glyphicon-plus"></span></a></th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <input type="text" id="Fecha" name="prueba[]" class="form-control" placeholder="Fecha" />
+                                                            </td>
+                                                            <td>
+                                                                <input type="text" id="Nota" name="resultado[]" class="form-control" placeholder="Nota">
+                                                            </td>
+                                                            <td>
+                                                                <input type="text" id="F" name="fechaYlugar[]" class="form-control" placeholder="F" />
+                                                            </td>
+                                                            <td><a href="javascript:void(0);" class="remove"><span class="glyphicon glyphicon-remove"></span></a></td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                    <div style="text-align: center;">
+                                        <div class="btn-group" role="group">
+                                            @*<button type="reset" class="btn btn-danger btn-rounded"><i class="fa fa-times"></i> Cancelar</button>*@
+
+                                            @* <button type="button" class="btn bg-indigo waves-effect btnPrevious"><i class="fa fa-backspace"></i>Anterior</button>*@
+                                            <button type="button" class="btn bg-indigo btn-rounded waves-effect  btnPrevious"><i class="fa fa-save"></i> Anterior</button>
+                                            <button type="submit" class="btn btn-primary waves-effect btn-rounded"><i class="fa fa-save"></i> Guardar</button>
+                                            @* <button type="submit" class="btn bg-green waves-effect btnNext">Guardar</button>*@
+                                        </div>
+                                    </div>
+                                    @*<div class="col-md-12">
+                                            <div class="btn-group" role="group">
+                                                <button type="button" class="btn bg-indigo waves-effect btnNext">SIGUIENTE</button>
+                                            </div>
+                                        </div>*@
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Final Contenido-->
+
+@section CrearExamenFisicoScript
+{
+
+    <script src="~/Recursos/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
+    <!-- Input Mask Plugin Js -->
+    <script src="~/Recursos/plugins/jquery-inputmask/jquery.inputmask.bundle.js"></script>
+    <script>
+        $('.btnNext').click(function () {
+            $('.nav-tabs > .active').next('li').find('a').trigger('click');
+        });
+        $('.btnPrevious').click(function () {
+            $('.nav-tabs > .active').prev('li').find('a').trigger('click');
+        });
+    </script>
+    <script>
+        $(function () {
+            $('#addfilaNE').on('click', function () {
+                var data = $("#tb tr:eq(1)").clone(true).appendTo("#tb");
+                data.find("input").val('');
+            });
+            $(document).on('click', '.remove', function () {
+                var trIndex = $(this).closest("tr").index();
+                if (trIndex > 1) {
+                    $(this).closest("tr").remove();
+                } else {
+                    alert("lo siento no se puede eliminar la primera fila ");
+                }
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+
+            var now = new Date();
+
+            var day = ("0" + now.getDate()).slice(-2);
+            var month = ("0" + (now.getMonth() + 1)).slice(-2);
+
+            var today = (day) + "/" + (month) + "/" + now.getFullYear();
+            $("#fecha").text = today;
+            $("#fecha").val(today);
+            console.log(today);
+        });
+    </script>
+    <script>
+        $(function () {
+            var $demoMaskedInput = $('.demo-masked-input');
+            $demoMaskedInput.find('.date').inputmask('dd/mm/yyyy', { placeholder: '__/__/____' });
+        });
+        // $demoMaskedInput.find('.date').inputmask('dd/mm/yyyy', { placeholder: '__/__/____' });
+        $(function () {
+            var $demoMaskedInput = $('.demo-masked-input');
+            $demoMaskedInput.find('.cedula').inputmask('[0-3]/mm/yyyy', { placeholder: '__/__/____' });
+        });
+    </script>
+    <script type="text/javascript">
+        function Habilitar_DesabilitarTXT(chkSI, txtID) {
+            txtID.disabled = chkSI.checked ? true : false;
+            if (chkSI.checked == true) {
+                if (txtID.value != "") {
+                    txtID.value = "";
+                }
+            }
+        }
+    </script>
+}   

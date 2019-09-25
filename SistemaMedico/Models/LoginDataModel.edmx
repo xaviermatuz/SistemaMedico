@@ -24,6 +24,7 @@
           <Property Name="Alergia" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Descripcion" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Fecha_de_Registro" Type="date" Nullable="false" />
+          <Property Name="Fecha_de_Actualizacion" Type="date" />
           <Property Name="Estado" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Anexos">
@@ -36,6 +37,7 @@
           <Property Name="Recomendaciones" Type="varchar" MaxLength="1000" Nullable="false" />
           <Property Name="Observaciones" Type="varchar" MaxLength="1000" Nullable="false" />
           <Property Name="Fecha_de_Registro" Type="date" />
+          <Property Name="Fecha_de_Actualizacion" Type="date" />
           <Property Name="Estado" Type="bit" />
         </EntityType>
         <EntityType Name="Aparato_Locomotor">
@@ -47,6 +49,7 @@
           <Property Name="Preguntas" Type="varchar" MaxLength="500" Nullable="false" />
           <Property Name="Respuestas" Type="varchar" MaxLength="500" Nullable="false" />
           <Property Name="Fecha_de_Registro" Type="date" />
+          <Property Name="Fecha_de_Actualizacion" Type="date" />
           <Property Name="Estado" Type="bit" />
         </EntityType>
         <EntityType Name="Apoyo_Economico">
@@ -59,6 +62,7 @@
           <Property Name="Respuestas" Type="varchar" MaxLength="500" Nullable="false" />
           <Property Name="Detalles" Type="varchar" MaxLength="500" Nullable="false" />
           <Property Name="Fecha_de_Registro" Type="date" />
+          <Property Name="Fecha_de_Actualizacion" Type="date" />
           <Property Name="Estado" Type="bit" />
         </EntityType>
         <EntityType Name="Atleta_Categoria">
@@ -69,6 +73,7 @@
           <Property Name="ID_Atleta" Type="int" Nullable="false" />
           <Property Name="ID_Categoria" Type="int" Nullable="false" />
           <Property Name="Fecha_de_Registro" Type="date" />
+          <Property Name="Fecha_de_Actualizacion" Type="date" />
           <Property Name="Estado" Type="bit" />
         </EntityType>
         <EntityType Name="Carrera_Deportiva">
@@ -81,6 +86,7 @@
           <Property Name="Respuestas" Type="varchar" MaxLength="500" Nullable="false" />
           <Property Name="Detalles" Type="varchar" MaxLength="500" Nullable="false" />
           <Property Name="Fecha_de_Registro" Type="date" />
+          <Property Name="Fecha_de_Actualizacion" Type="date" />
           <Property Name="Estado" Type="bit" />
         </EntityType>
         <EntityType Name="Carrera_Deportiva_Evento">
@@ -94,6 +100,7 @@
           <Property Name="Fecha_Y_Lugar" Type="varchar" MaxLength="500" Nullable="false" />
           <Property Name="Evento" Type="varchar" MaxLength="500" Nullable="false" />
           <Property Name="Fecha_de_Registro" Type="date" />
+          <Property Name="Fecha_de_Actualizacion" Type="date" />
           <Property Name="Estado" Type="bit" />
         </EntityType>
         <EntityType Name="Carrera_Deportiva_Familiar">
@@ -106,6 +113,7 @@
           <Property Name="FechayLugar" Type="varchar" MaxLength="500" Nullable="false" />
           <Property Name="Resultado" Type="varchar" MaxLength="500" Nullable="false" />
           <Property Name="Fecha_de_Registro" Type="date" />
+          <Property Name="Fecha_de_Actualizacion" Type="date" />
           <Property Name="Estado" Type="bit" />
         </EntityType>
         <EntityType Name="Categorias">
@@ -116,6 +124,7 @@
           <Property Name="ID_Deporte" Type="int" Nullable="false" />
           <Property Name="Categoria" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Fecha_de_Registro" Type="date" />
+          <Property Name="Fecha_de_Actualizacion" Type="date" />
           <Property Name="Estado" Type="bit" />
         </EntityType>
         <EntityType Name="Condiciones_Clinicas_Actuales">
@@ -135,6 +144,7 @@
           <Property Name="Nombre" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="Valor" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="Fecha_de_Registro" Type="date" />
+          <Property Name="Fecha_de_Actualizacion" Type="date" />
           <Property Name="Estado" Type="bit" />
         </EntityType>
         <EntityType Name="Consiste_Apoyo">
@@ -146,6 +156,7 @@
           <Property Name="Preguntas" Type="varchar" MaxLength="500" Nullable="false" />
           <Property Name="Respuestas" Type="varchar" MaxLength="500" Nullable="false" />
           <Property Name="Fecha_de_Registro" Type="date" />
+          <Property Name="Fecha_de_Actualizacion" Type="date" />
           <Property Name="Estado" Type="bit" />
         </EntityType>
         <EntityType Name="Datos_Atleta">
@@ -177,6 +188,7 @@
           <Property Name="Emergencia" Type="varchar" MaxLength="50" />
           <Property Name="Dirreccion_Emergencia" Type="varchar" MaxLength="200" />
           <Property Name="Embarazo" Type="varchar" MaxLength="7" />
+          <Property Name="Fecha_de_Actualizacion" Type="date" />
           <Property Name="Activo" Type="bit" />
         </EntityType>
         <EntityType Name="Departamentos">
@@ -203,6 +215,7 @@
           <Property Name="Respuestas" Type="varchar" MaxLength="500" Nullable="false" />
           <Property Name="Detalles" Type="varchar" MaxLength="500" Nullable="false" />
           <Property Name="Fecha_de_Registro" Type="date" />
+          <Property Name="Fecha_de_Actualizacion" Type="date" />
           <Property Name="Estado" Type="bit" />
         </EntityType>
         <EntityType Name="Eventos">
@@ -213,6 +226,7 @@
           <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Lugar" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Fecha_de_Registro" Type="date" />
+          <Property Name="Fecha_de_Actualizacion" Type="date" />
           <Property Name="Estado" Type="bit" />
         </EntityType>
         <EntityType Name="Examen_Fisico">
@@ -232,6 +246,7 @@
           <Property Name="Normal" Type="varchar" MaxLength="5" Nullable="false" />
           <Property Name="Hallazgos_Anormales" Type="varchar" MaxLength="500" Nullable="false" />
           <Property Name="Fecha_de_Registro" Type="date" />
+          <Property Name="Fecha_de_Actualizacion" Type="date" />
           <Property Name="Estado" Type="bit" />
         </EntityType>
         <EntityType Name="Examenes">
@@ -263,6 +278,7 @@
           <Property Name="Toma3" Type="decimal" Precision="5" Scale="2" Nullable="false" />
           <Property Name="Promedio_Mediana" Type="decimal" Precision="5" Scale="2" Nullable="false" />
           <Property Name="Fecha_de_Registro" Type="date" />
+          <Property Name="Fecha_de_Actualizacion" Type="date" />
           <Property Name="Estado" Type="bit" />
         </EntityType>
         <EntityType Name="Habitacion">
@@ -275,6 +291,7 @@
           <Property Name="Respuestas" Type="varchar" MaxLength="500" Nullable="false" />
           <Property Name="Detalles" Type="varchar" MaxLength="500" Nullable="false" />
           <Property Name="Fecha_de_Registro" Type="date" />
+          <Property Name="Fecha_de_Actualizacion" Type="date" />
           <Property Name="Estado" Type="bit" />
         </EntityType>
         <EntityType Name="Habitos">
@@ -287,6 +304,7 @@
           <Property Name="Respuestas" Type="varchar" MaxLength="500" Nullable="false" />
           <Property Name="Detalles" Type="varchar" MaxLength="500" Nullable="false" />
           <Property Name="Fecha_de_Registro" Type="date" />
+          <Property Name="Fecha_de_Actualizacion" Type="date" />
           <Property Name="Estado" Type="bit" />
         </EntityType>
         <EntityType Name="Historia_Familiar">
@@ -298,6 +316,7 @@
           <Property Name="Preguntas" Type="varchar" MaxLength="500" Nullable="false" />
           <Property Name="Respuestas" Type="varchar" MaxLength="500" Nullable="false" />
           <Property Name="Fecha_de_Registro" Type="date" />
+          <Property Name="Fecha_de_Actualizacion" Type="date" />
           <Property Name="Estado" Type="bit" />
         </EntityType>
         <EntityType Name="Historial_Medico">
@@ -310,6 +329,7 @@
           <Property Name="Respuestas" Type="varchar" MaxLength="500" Nullable="false" />
           <Property Name="Detalles" Type="varchar" MaxLength="500" Nullable="false" />
           <Property Name="Fecha_de_Registro" Type="date" />
+          <Property Name="Fecha_de_Actualizacion" Type="date" />
           <Property Name="Estado" Type="bit" />
         </EntityType>
         <EntityType Name="Hospital">
@@ -329,6 +349,7 @@
           <Property Name="Respuestas" Type="varchar" MaxLength="500" Nullable="false" />
           <Property Name="Detalles" Type="varchar" MaxLength="500" Nullable="false" />
           <Property Name="Fecha_de_Registro" Type="date" />
+          <Property Name="Fecha_de_Actualizacion" Type="date" />
           <Property Name="Estado" Type="bit" />
         </EntityType>
         <EntityType Name="Medicamentos">
@@ -340,6 +361,7 @@
           <Property Name="Medicamentos" Type="varchar" MaxLength="500" Nullable="false" />
           <Property Name="Descripcion" Type="varchar" MaxLength="500" Nullable="false" />
           <Property Name="Fecha_de_Registro" Type="date" />
+          <Property Name="Fecha_de_Actualizacion" Type="date" />
           <Property Name="Estado" Type="bit" />
         </EntityType>
         <EntityType Name="Medico">
@@ -376,6 +398,7 @@
           <Property Name="Preguntas" Type="varchar" MaxLength="500" Nullable="false" />
           <Property Name="Respuestas" Type="varchar" MaxLength="500" Nullable="false" />
           <Property Name="Fecha_de_Registro" Type="date" />
+          <Property Name="Fecha_de_Actualizacion" Type="date" />
           <Property Name="Estado" Type="bit" />
         </EntityType>
         <EntityType Name="sysdiagrams">
@@ -959,6 +982,7 @@
           <NavigationProperty Name="Datos_Atleta" Relationship="Self.FK_Alergias_Datos_Atleta" FromRole="Alergias" ToRole="Datos_Atleta" />
           <Property Name="Fecha_de_Registro" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <Property Name="Fecha_de_Actualizacion" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="Anexos">
           <Key>
@@ -972,6 +996,7 @@
           <NavigationProperty Name="Datos_Atleta" Relationship="Self.FK_Anexos_Datos_Atleta" FromRole="Anexos" ToRole="Datos_Atleta" />
           <Property Name="Fecha_de_Registro" Type="DateTime" Precision="0" />
           <Property Name="Estado" Type="Boolean" />
+          <Property Name="Fecha_de_Actualizacion" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="Aparato_Locomotor">
           <Key>
@@ -984,6 +1009,7 @@
           <NavigationProperty Name="Datos_Atleta" Relationship="Self.FK_Aparato_Locomotor_Datos_Atleta" FromRole="Aparato_Locomotor" ToRole="Datos_Atleta" />
           <Property Name="Fecha_de_Registro" Type="DateTime" Precision="0" />
           <Property Name="Estado" Type="Boolean" />
+          <Property Name="Fecha_de_Actualizacion" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="Apoyo_Economico">
           <Key>
@@ -997,6 +1023,7 @@
           <NavigationProperty Name="Datos_Atleta" Relationship="Self.FK_Apoyo_Economico_Datos_Atleta" FromRole="Apoyo_Economico" ToRole="Datos_Atleta" />
           <Property Name="Fecha_de_Registro" Type="DateTime" Precision="0" />
           <Property Name="Estado" Type="Boolean" />
+          <Property Name="Fecha_de_Actualizacion" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="Atleta_Categoria">
           <Key>
@@ -1009,6 +1036,7 @@
           <NavigationProperty Name="Datos_Atleta" Relationship="Self.FK_Atleta_Categoria_Datos_Atleta" FromRole="Atleta_Categoria" ToRole="Datos_Atleta" />
           <Property Name="Fecha_de_Registro" Type="DateTime" Precision="0" />
           <Property Name="Estado" Type="Boolean" />
+          <Property Name="Fecha_de_Actualizacion" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="Carrera_Deportiva">
           <Key>
@@ -1022,6 +1050,7 @@
           <NavigationProperty Name="Datos_Atleta" Relationship="Self.FK_Carrera_Deportiva_Datos_Atleta" FromRole="Carrera_Deportiva" ToRole="Datos_Atleta" />
           <Property Name="Fecha_de_Registro" Type="DateTime" Precision="0" />
           <Property Name="Estado" Type="Boolean" />
+          <Property Name="Fecha_de_Actualizacion" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="Carrera_Deportiva_Evento">
           <Key>
@@ -1036,6 +1065,7 @@
           <NavigationProperty Name="Datos_Atleta" Relationship="Self.FK_Carrera_Deportiva_Evento_Datos_Atleta" FromRole="Carrera_Deportiva_Evento" ToRole="Datos_Atleta" />
           <Property Name="Fecha_de_Registro" Type="DateTime" Precision="0" />
           <Property Name="Estado" Type="Boolean" />
+          <Property Name="Fecha_de_Actualizacion" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="Carrera_Deportiva_Familiar">
           <Key>
@@ -1049,6 +1079,7 @@
           <NavigationProperty Name="Datos_Atleta" Relationship="Self.FK_Carrera_Deportiva_Familiar_Datos_Atleta" FromRole="Carrera_Deportiva_Familiar" ToRole="Datos_Atleta" />
           <Property Name="Fecha_de_Registro" Type="DateTime" Precision="0" />
           <Property Name="Estado" Type="Boolean" />
+          <Property Name="Fecha_de_Actualizacion" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="Categorias">
           <Key>
@@ -1061,6 +1092,7 @@
           <NavigationProperty Name="Deporte" Relationship="Self.FK_Categorias_Deporte" FromRole="Categorias" ToRole="Deporte" />
           <Property Name="Fecha_de_Registro" Type="DateTime" Precision="0" />
           <Property Name="Estado" Type="Boolean" />
+          <Property Name="Fecha_de_Actualizacion" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="Condiciones_Clinicas_Actuales">
           <Key>
@@ -1083,6 +1115,7 @@
           <NavigationProperty Name="Datos_Atleta" Relationship="Self.FK_Condiciones_Clinicas_Actuales_Principal_Datos_Atleta" FromRole="Condiciones_Clinicas_Actuales_Principal" ToRole="Datos_Atleta" />
           <Property Name="Fecha_de_Registro" Type="DateTime" Precision="0" />
           <Property Name="Estado" Type="Boolean" />
+          <Property Name="Fecha_de_Actualizacion" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="Consiste_Apoyo">
           <Key>
@@ -1095,6 +1128,7 @@
           <NavigationProperty Name="Datos_Atleta" Relationship="Self.FK_Consiste_Apoyo_Datos_Atleta" FromRole="Consiste_Apoyo" ToRole="Datos_Atleta" />
           <Property Name="Fecha_de_Registro" Type="DateTime" Precision="0" />
           <Property Name="Estado" Type="Boolean" />
+          <Property Name="Fecha_de_Actualizacion" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="Datos_Atleta">
           <Key>
@@ -1148,6 +1182,7 @@
           <NavigationProperty Name="Informacion_Familiar" Relationship="Self.FK_Informacion_Familiar_Datos_Atleta" FromRole="Datos_Atleta" ToRole="Informacion_Familiar" />
           <NavigationProperty Name="Medicamentos" Relationship="Self.FK_Medicamentos_Datos_Atleta" FromRole="Datos_Atleta" ToRole="Medicamentos" />
           <NavigationProperty Name="Situacion_Laboral" Relationship="Self.FK_Situacion_Laboral_Datos_Atleta" FromRole="Datos_Atleta" ToRole="Situacion_Laboral" />
+          <Property Name="Fecha_de_Actualizacion" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="Departamentos">
           <Key>
@@ -1177,6 +1212,7 @@
           <NavigationProperty Name="Datos_Atleta" Relationship="Self.FK_Educacion_Datos_Atleta" FromRole="Educacion" ToRole="Datos_Atleta" />
           <Property Name="Fecha_de_Registro" Type="DateTime" Precision="0" />
           <Property Name="Estado" Type="Boolean" />
+          <Property Name="Fecha_de_Actualizacion" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="Eventos">
           <Key>
@@ -1187,6 +1223,7 @@
           <Property Name="Lugar" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Fecha_de_Registro" Type="DateTime" Precision="0" />
           <Property Name="Estado" Type="Boolean" />
+          <Property Name="Fecha_de_Actualizacion" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="Examen_Fisico">
           <Key>
@@ -1209,6 +1246,7 @@
           <NavigationProperty Name="Examen_Fisico" Relationship="Self.FK_Examen_Fisico_Principal_Examen_Fisico" FromRole="Examen_Fisico_Principal" ToRole="Examen_Fisico" />
           <Property Name="Fecha_de_Registro" Type="DateTime" Precision="0" />
           <Property Name="Estado" Type="Boolean" />
+          <Property Name="Fecha_de_Actualizacion" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="Examenes">
           <Key>
@@ -1241,6 +1279,7 @@
           <Property Name="Txt_Ficha_Antropometrica" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="Fecha_de_Registro" Type="DateTime" Precision="0" />
           <Property Name="Estado" Type="Boolean" />
+          <Property Name="Fecha_de_Actualizacion" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="Habitacion">
           <Key>
@@ -1254,6 +1293,7 @@
           <NavigationProperty Name="Datos_Atleta" Relationship="Self.FK_Habitacion_Datos_Atleta" FromRole="Habitacion" ToRole="Datos_Atleta" />
           <Property Name="Fecha_de_Registro" Type="DateTime" Precision="0" />
           <Property Name="Estado" Type="Boolean" />
+          <Property Name="Fecha_de_Actualizacion" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="Habitos">
           <Key>
@@ -1267,6 +1307,7 @@
           <NavigationProperty Name="Datos_Atleta" Relationship="Self.FK_Habitos_Datos_Atleta" FromRole="Habitos" ToRole="Datos_Atleta" />
           <Property Name="Fecha_de_Registro" Type="DateTime" Precision="0" />
           <Property Name="Estado" Type="Boolean" />
+          <Property Name="Fecha_de_Actualizacion" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="Historia_Familiar">
           <Key>
@@ -1279,6 +1320,7 @@
           <NavigationProperty Name="Datos_Atleta" Relationship="Self.FK_Historia_Familiar_Datos_Atleta" FromRole="Historia_Familiar" ToRole="Datos_Atleta" />
           <Property Name="Fecha_de_Registro" Type="DateTime" Precision="0" />
           <Property Name="Estado" Type="Boolean" />
+          <Property Name="Fecha_de_Actualizacion" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="Historial_Medico">
           <Key>
@@ -1292,6 +1334,7 @@
           <NavigationProperty Name="Datos_Atleta" Relationship="Self.FK_Historial_Medico_Datos_Atleta" FromRole="Historial_Medico" ToRole="Datos_Atleta" />
           <Property Name="Fecha_de_Registro" Type="DateTime" Precision="0" />
           <Property Name="Estado" Type="Boolean" />
+          <Property Name="Fecha_de_Actualizacion" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="Hospital">
           <Key>
@@ -1313,6 +1356,7 @@
           <NavigationProperty Name="Datos_Atleta" Relationship="Self.FK_Informacion_Familiar_Datos_Atleta" FromRole="Informacion_Familiar" ToRole="Datos_Atleta" />
           <Property Name="Fecha_de_Registro" Type="DateTime" Precision="0" />
           <Property Name="Estado" Type="Boolean" />
+          <Property Name="Fecha_de_Actualizacion" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="Medicamentos">
           <Key>
@@ -1325,6 +1369,7 @@
           <NavigationProperty Name="Datos_Atleta" Relationship="Self.FK_Medicamentos_Datos_Atleta" FromRole="Medicamentos" ToRole="Datos_Atleta" />
           <Property Name="Fecha_de_Registro" Type="DateTime" Precision="0" />
           <Property Name="Estado" Type="Boolean" />
+          <Property Name="Fecha_de_Actualizacion" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="Medico">
           <Key>
@@ -1365,6 +1410,7 @@
           <NavigationProperty Name="Datos_Atleta" Relationship="Self.FK_Situacion_Laboral_Datos_Atleta" FromRole="Situacion_Laboral" ToRole="Datos_Atleta" />
           <Property Name="Fecha_de_Registro" Type="DateTime" Precision="0" />
           <Property Name="Estado" Type="Boolean" />
+          <Property Name="Fecha_de_Actualizacion" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -1942,6 +1988,7 @@
           <EntitySetMapping Name="Alergias">
             <EntityTypeMapping TypeName="MeSysModel.Alergias">
               <MappingFragment StoreEntitySet="Alergias">
+                <ScalarProperty Name="Fecha_de_Actualizacion" ColumnName="Fecha_de_Actualizacion" />
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="Fecha_de_Registro" ColumnName="Fecha_de_Registro" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
@@ -1954,6 +2001,7 @@
           <EntitySetMapping Name="Anexos">
             <EntityTypeMapping TypeName="MeSysModel.Anexos">
               <MappingFragment StoreEntitySet="Anexos">
+                <ScalarProperty Name="Fecha_de_Actualizacion" ColumnName="Fecha_de_Actualizacion" />
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="Fecha_de_Registro" ColumnName="Fecha_de_Registro" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
@@ -1967,6 +2015,7 @@
           <EntitySetMapping Name="Aparato_Locomotor">
             <EntityTypeMapping TypeName="MeSysModel.Aparato_Locomotor">
               <MappingFragment StoreEntitySet="Aparato_Locomotor">
+                <ScalarProperty Name="Fecha_de_Actualizacion" ColumnName="Fecha_de_Actualizacion" />
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="Fecha_de_Registro" ColumnName="Fecha_de_Registro" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
@@ -1979,6 +2028,7 @@
           <EntitySetMapping Name="Apoyo_Economico">
             <EntityTypeMapping TypeName="MeSysModel.Apoyo_Economico">
               <MappingFragment StoreEntitySet="Apoyo_Economico">
+                <ScalarProperty Name="Fecha_de_Actualizacion" ColumnName="Fecha_de_Actualizacion" />
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="Fecha_de_Registro" ColumnName="Fecha_de_Registro" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
@@ -1992,6 +2042,7 @@
           <EntitySetMapping Name="Atleta_Categoria">
             <EntityTypeMapping TypeName="MeSysModel.Atleta_Categoria">
               <MappingFragment StoreEntitySet="Atleta_Categoria">
+                <ScalarProperty Name="Fecha_de_Actualizacion" ColumnName="Fecha_de_Actualizacion" />
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="Fecha_de_Registro" ColumnName="Fecha_de_Registro" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
@@ -2003,6 +2054,7 @@
           <EntitySetMapping Name="Carrera_Deportiva">
             <EntityTypeMapping TypeName="MeSysModel.Carrera_Deportiva">
               <MappingFragment StoreEntitySet="Carrera_Deportiva">
+                <ScalarProperty Name="Fecha_de_Actualizacion" ColumnName="Fecha_de_Actualizacion" />
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="Fecha_de_Registro" ColumnName="Fecha_de_Registro" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
@@ -2016,6 +2068,7 @@
           <EntitySetMapping Name="Carrera_Deportiva_Evento">
             <EntityTypeMapping TypeName="MeSysModel.Carrera_Deportiva_Evento">
               <MappingFragment StoreEntitySet="Carrera_Deportiva_Evento">
+                <ScalarProperty Name="Fecha_de_Actualizacion" ColumnName="Fecha_de_Actualizacion" />
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="Fecha_de_Registro" ColumnName="Fecha_de_Registro" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
@@ -2030,6 +2083,7 @@
           <EntitySetMapping Name="Carrera_Deportiva_Familiar">
             <EntityTypeMapping TypeName="MeSysModel.Carrera_Deportiva_Familiar">
               <MappingFragment StoreEntitySet="Carrera_Deportiva_Familiar">
+                <ScalarProperty Name="Fecha_de_Actualizacion" ColumnName="Fecha_de_Actualizacion" />
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="Fecha_de_Registro" ColumnName="Fecha_de_Registro" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
@@ -2043,6 +2097,7 @@
           <EntitySetMapping Name="Categorias">
             <EntityTypeMapping TypeName="MeSysModel.Categorias">
               <MappingFragment StoreEntitySet="Categorias">
+                <ScalarProperty Name="Fecha_de_Actualizacion" ColumnName="Fecha_de_Actualizacion" />
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="Fecha_de_Registro" ColumnName="Fecha_de_Registro" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
@@ -2062,6 +2117,7 @@
           <EntitySetMapping Name="Condiciones_Clinicas_Actuales_Principal">
             <EntityTypeMapping TypeName="MeSysModel.Condiciones_Clinicas_Actuales_Principal">
               <MappingFragment StoreEntitySet="Condiciones_Clinicas_Actuales_Principal">
+                <ScalarProperty Name="Fecha_de_Actualizacion" ColumnName="Fecha_de_Actualizacion" />
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="Fecha_de_Registro" ColumnName="Fecha_de_Registro" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
@@ -2075,6 +2131,7 @@
           <EntitySetMapping Name="Consiste_Apoyo">
             <EntityTypeMapping TypeName="MeSysModel.Consiste_Apoyo">
               <MappingFragment StoreEntitySet="Consiste_Apoyo">
+                <ScalarProperty Name="Fecha_de_Actualizacion" ColumnName="Fecha_de_Actualizacion" />
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="Fecha_de_Registro" ColumnName="Fecha_de_Registro" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
@@ -2087,6 +2144,7 @@
           <EntitySetMapping Name="Datos_Atleta">
             <EntityTypeMapping TypeName="MeSysModel.Datos_Atleta">
               <MappingFragment StoreEntitySet="Datos_Atleta">
+                <ScalarProperty Name="Fecha_de_Actualizacion" ColumnName="Fecha_de_Actualizacion" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Foto" ColumnName="Foto" />
                 <ScalarProperty Name="Primer_Nombre" ColumnName="Primer_Nombre" />
@@ -2135,6 +2193,7 @@
           <EntitySetMapping Name="Educacion">
             <EntityTypeMapping TypeName="MeSysModel.Educacion">
               <MappingFragment StoreEntitySet="Educacion">
+                <ScalarProperty Name="Fecha_de_Actualizacion" ColumnName="Fecha_de_Actualizacion" />
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="Fecha_de_Registro" ColumnName="Fecha_de_Registro" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
@@ -2148,6 +2207,7 @@
           <EntitySetMapping Name="Eventos">
             <EntityTypeMapping TypeName="MeSysModel.Eventos">
               <MappingFragment StoreEntitySet="Eventos">
+                <ScalarProperty Name="Fecha_de_Actualizacion" ColumnName="Fecha_de_Actualizacion" />
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="Fecha_de_Registro" ColumnName="Fecha_de_Registro" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
@@ -2167,6 +2227,7 @@
           <EntitySetMapping Name="Examen_Fisico_Principal">
             <EntityTypeMapping TypeName="MeSysModel.Examen_Fisico_Principal">
               <MappingFragment StoreEntitySet="Examen_Fisico_Principal">
+                <ScalarProperty Name="Fecha_de_Actualizacion" ColumnName="Fecha_de_Actualizacion" />
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="Fecha_de_Registro" ColumnName="Fecha_de_Registro" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
@@ -2190,6 +2251,7 @@
           <EntitySetMapping Name="Ficha_Antropometrica">
             <EntityTypeMapping TypeName="MeSysModel.Ficha_Antropometrica">
               <MappingFragment StoreEntitySet="Ficha_Antropometrica">
+                <ScalarProperty Name="Fecha_de_Actualizacion" ColumnName="Fecha_de_Actualizacion" />
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="Fecha_de_Registro" ColumnName="Fecha_de_Registro" />
                 <ScalarProperty Name="Txt_Ficha_Antropometrica" ColumnName="Txt_Ficha_Antropometrica" />
@@ -2213,6 +2275,7 @@
           <EntitySetMapping Name="Habitacion">
             <EntityTypeMapping TypeName="MeSysModel.Habitacion">
               <MappingFragment StoreEntitySet="Habitacion">
+                <ScalarProperty Name="Fecha_de_Actualizacion" ColumnName="Fecha_de_Actualizacion" />
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="Fecha_de_Registro" ColumnName="Fecha_de_Registro" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
@@ -2226,6 +2289,7 @@
           <EntitySetMapping Name="Habitos">
             <EntityTypeMapping TypeName="MeSysModel.Habitos">
               <MappingFragment StoreEntitySet="Habitos">
+                <ScalarProperty Name="Fecha_de_Actualizacion" ColumnName="Fecha_de_Actualizacion" />
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="Fecha_de_Registro" ColumnName="Fecha_de_Registro" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
@@ -2239,6 +2303,7 @@
           <EntitySetMapping Name="Historia_Familiar">
             <EntityTypeMapping TypeName="MeSysModel.Historia_Familiar">
               <MappingFragment StoreEntitySet="Historia_Familiar">
+                <ScalarProperty Name="Fecha_de_Actualizacion" ColumnName="Fecha_de_Actualizacion" />
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="Fecha_de_Registro" ColumnName="Fecha_de_Registro" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
@@ -2251,6 +2316,7 @@
           <EntitySetMapping Name="Historial_Medico">
             <EntityTypeMapping TypeName="MeSysModel.Historial_Medico">
               <MappingFragment StoreEntitySet="Historial_Medico">
+                <ScalarProperty Name="Fecha_de_Actualizacion" ColumnName="Fecha_de_Actualizacion" />
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="Fecha_de_Registro" ColumnName="Fecha_de_Registro" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
@@ -2272,6 +2338,7 @@
           <EntitySetMapping Name="Informacion_Familiar">
             <EntityTypeMapping TypeName="MeSysModel.Informacion_Familiar">
               <MappingFragment StoreEntitySet="Informacion_Familiar">
+                <ScalarProperty Name="Fecha_de_Actualizacion" ColumnName="Fecha_de_Actualizacion" />
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="Fecha_de_Registro" ColumnName="Fecha_de_Registro" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
@@ -2285,6 +2352,7 @@
           <EntitySetMapping Name="Medicamentos">
             <EntityTypeMapping TypeName="MeSysModel.Medicamentos">
               <MappingFragment StoreEntitySet="Medicamentos">
+                <ScalarProperty Name="Fecha_de_Actualizacion" ColumnName="Fecha_de_Actualizacion" />
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="Fecha_de_Registro" ColumnName="Fecha_de_Registro" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
@@ -2325,6 +2393,7 @@
           <EntitySetMapping Name="Situacion_Laboral">
             <EntityTypeMapping TypeName="MeSysModel.Situacion_Laboral">
               <MappingFragment StoreEntitySet="Situacion_Laboral">
+                <ScalarProperty Name="Fecha_de_Actualizacion" ColumnName="Fecha_de_Actualizacion" />
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="Fecha_de_Registro" ColumnName="Fecha_de_Registro" />
                 <ScalarProperty Name="ID" ColumnName="ID" />

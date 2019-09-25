@@ -65,6 +65,7 @@ namespace SistemaMedico.Models
         public string Dirreccion_Emergencia { get; set; }
         public string Embarazo { get; set; }
         public Nullable<bool> Activo { get; set; }
+        public Nullable<System.DateTime> Fecha_de_Actualizacion { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Alergias> Alergias { get; set; }

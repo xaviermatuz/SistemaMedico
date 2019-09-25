@@ -45,6 +45,10 @@
         text-align: center;
         background-color: #dddddd;
     }
+
+    h4 {
+        color: black;
+    }
 </style>
 
 <!--Contenido-->
@@ -57,16 +61,16 @@
             <div class="body">
                 <form action="" method="post" autocomplete="off" enctype="multipart/form-data">
                     <div style="display:none;">
-                        @Html.TextBoxFor(model => model.ID_Atleta, new { @Value = ViewBag.id})
+                        @*@Html.TextBoxFor(model => model.ID_Atleta, new { @Value = ViewBag.id})*@
                         <input type="text" value="@ViewBag.id" class="form-control" name="txt_atleta">
                     </div>
                     <div class="row clearfix">
                         <div class="col-md-12">
                             <ul class="nav nav-tabs">
-                                <li class="active"><a href="#tab1" data-toggle="tab">EXAMEN FISICO</a></li>
-                                <li><a href="#tab2" data-toggle="tab">CONDICIONES CLINICAS ACTUALES</a></li>
-                                <li><a href="#tab3" data-toggle="tab">FICHA DE ANTROPOMETRIA</a></li>
-                                <li><a href="#tab4" data-toggle="tab">NOTAS DE EVALUACION</a></li>
+                                <li class="active"><a href="#tab1" data-toggle="tab">Examen Fisico</a></li>
+                                <li><a href="#tab2" data-toggle="tab">Condiciones Clinicas Actuales</a></li>
+                                <li><a href="#tab3" data-toggle="tab">Ficha De Antropometria</a></li>
+                                <li><a href="#tab4" data-toggle="tab">Notas De Evaluacion</a></li>
                             </ul>
                         </div>
                     </div>
@@ -88,46 +92,45 @@
                                                                 <th>Normal</th>
                                                                 <th>Hallazgos Anormales</th>
                                                                 <!--Output Data for each row-->
+                                                            </tr>
 
                                                             <tr>
                                                                 <td align="center">1</td>
                                                                 <td>Cuello</td>
                                                                 <td align="center">
-                                                                    @Html.CheckBoxFor(model => model.Normal, new { @class = "chk-col-green" })
-                                                                    <label for="Normal">Si</label>
-                                                                   @* @Html.CheckBox("Si", new { @value = "SI" })*@
-                                                                    @*@Html.CheckBoxFor(m => m.Normal, new { @id = "Si_CUE",@class= "chk-col-green" })
-                                                                    @Html.Label("Si_CUE", "Si")*@
-                                                                    @*<input type="checkbox" id="1" name="Si_Cuello" class="chk-col-green">
-                                                                    <label for="1">Si</label>*@
+                                                                    <input type="checkbox" id="1" name="Si_Cuello" class="chk-col-green" onclick="Habilitar_DesabilitarTXT(this,HA_Cuello)">
+                                                                    <label for="1">Si</label>
                                                                 </td>
-                                                                <td><input type="text" name="HA_Cuello" class="form-control"></td>
+                                                                <td>
+                                                                    <input type="text" id="HA_Cuello" name="HA_Cuello" class="form-control">
+                                                                    @*@Html.TextBoxFor(d => d.Hallazgos_Anormales, "", new { @class = "form-control" })*@
+                                                                </td>
                                                             </tr>
                                                             <tr>
                                                                 <td align="center">2</td>
                                                                 <td>Espalda</td>
                                                                 <td align="center">
-                                                                    <input type="checkbox" id="2" name="Si_Espalda" class="chk-col-green">
+                                                                    <input type="checkbox" id="2" name="Si_Espalda" class="chk-col-green" onclick="Habilitar_DesabilitarTXT(this,HA_espalda)">
                                                                     <label for="2">Si</label>
                                                                 </td>
-                                                                <td><input type="text" name="HA_espalda" class="form-control"></td>
+                                                                <td><input type="text" id="HA_espalda" name="HA_espalda" class="form-control"></td>
                                                             </tr>
 
                                                             <tr>
                                                                 <td align="center">3</td>
                                                                 <td>Hombro/Brazo</td>
                                                                 <td align="center">
-                                                                    <input type="checkbox" id="3" name="Si_Hombro" class="chk-col-green">
+                                                                    <input type="checkbox" id="3" name="Si_Hombro" class="chk-col-green" onclick="Habilitar_DesabilitarTXT(this,HA_hombro)">
                                                                     <label for="3">Si</label>
                                                                 </td>
-                                                                <td><input type="text" name="HA_hombro" class="form-control"></td>
+                                                                <td><input type="text" name="HA_hombro" id="HA_hombro" class="form-control"></td>
                                                             </tr>
 
                                                             <tr>
                                                                 <td align="center">4</td>
                                                                 <td>Codo/Antebrazo  </td>
                                                                 <td align="center">
-                                                                    <input type="checkbox" id="4" name="Si_Codo" class="chk-col-green">
+                                                                    <input type="checkbox" id="4" name="Si_Codo" class="chk-col-green" onclick="Habilitar_DesabilitarTXT(this,HA_codo)">
                                                                     <label for="4">Si</label>
                                                                 </td>
                                                                 <td><input type="text" name="HA_codo" class="form-control"></td>
@@ -137,7 +140,7 @@
                                                                 <td align="center">5</td>
                                                                 <td>Muñeca/Mano/Dedos</td>
                                                                 <td align="center">
-                                                                    <input type="checkbox" id="5" name="Si_Muñeca" class="chk-col-green">
+                                                                    <input type="checkbox" id="5" name="Si_Muñeca" class="chk-col-green" onclick="Habilitar_DesabilitarTXT(this,HA_muñeca)">
                                                                     <label for="5">Si</label>
                                                                 </td>
                                                                 <td><input type="text" name="HA_muñeca" class="form-control"></td>
@@ -147,7 +150,7 @@
                                                                 <td align="center">6</td>
                                                                 <td>Cadera/Muslo</td>
                                                                 <td align="center">
-                                                                    <input type="checkbox" id="6" name="Si_Cadera" class="chk-col-green">
+                                                                    <input type="checkbox" id="6" name="Si_Cadera" class="chk-col-green" onclick="Habilitar_DesabilitarTXT(this,HA_cadera)">
                                                                     <label for="6">Si</label>
                                                                 </td>
                                                                 <td><input type="text" name="HA_cadera" class="form-control"></td>
@@ -157,7 +160,7 @@
                                                                 <td align="center">7</td>
                                                                 <td>Rodilla</td>
                                                                 <td align="center">
-                                                                    <input type="checkbox" id="7" name="Si_Rodilla" class="chk-col-green">
+                                                                    <input type="checkbox" id="7" name="Si_Rodilla" class="chk-col-green" onclick="Habilitar_DesabilitarTXT(this,HA_rodilla)">
                                                                     <label for="7">Si</label>
                                                                 </td>
                                                                 <td><input type="text" name="HA_rodilla" class="form-control"></td>
@@ -167,7 +170,7 @@
                                                                 <td align="center">8</td>
                                                                 <td>Pierna/Tobillo</td>
                                                                 <td align="center">
-                                                                    <input type="checkbox" id="8" name="Si_Pierna" class="chk-col-green">
+                                                                    <input type="checkbox" id="8" name="Si_Pierna" class="chk-col-green" onclick="Habilitar_DesabilitarTXT(this,HA_pierna)">
                                                                     <label for="8">Si</label>
                                                                 </td>
                                                                 <td><input type="text" name="HA_pierna" class="form-control"></td>
@@ -177,7 +180,7 @@
                                                                 <td align="center">9</td>
                                                                 <td>Pie/Dedos</td>
                                                                 <td align="center">
-                                                                    <input type="checkbox" id="9" name="Si_dedos" class="chk-col-green">
+                                                                    <input type="checkbox" id="9" name="Si_dedos" class="chk-col-green" onclick="Habilitar_DesabilitarTXT(this,HA_dedos)">
                                                                     <label for="9">Si</label>
                                                                 </td>
                                                                 <td><input type="text" name="HA_dedos" class="form-control"></td>
@@ -203,6 +206,20 @@
                                             <textarea name="Recomendaciones" rows="6" cols="40" placeholder="Detalles..."></textarea>
                                         </div>
                                     </div>
+                                    <div style="text-align: center;">
+                                        <div class="btn-group" role="group">
+                                            <button type="button" class="btn bg-indigo waves-effect btnNext">Siguiente</button>
+                                        </div>
+                                    </div>
+
+                                    @*<div class="col-md-12">
+                                            <div class="col-md-4"></div>
+                                            <div class="col-md-4">
+
+                                            </div>
+                                            <div class="col-md-4"></div>
+                                        </div>*@
+
                                 </div>
                                 <!--                        SEGUNDO TAB                                                     -->
                                 <div class="tab-pane" id="tab2">
@@ -220,6 +237,7 @@
                                                                 <th>Neurologico</th>
                                                                 <th>General</th>
                                                                 <th>Respiratorio</th>
+                                                             </tr>
                                                             <tr>
                                                                 <td>
                                                                     <input type="checkbox" name="PD" id="$11" class="chk-col-green">
@@ -273,11 +291,12 @@
                                                                 <th align="center">Cabeza</th>
                                                                 <th align="center">Ojos</th>
                                                                 <th align="center">Oidos,Nariz,Garganta</th>
+                                                            </tr>
                                                             <tr>
                                                                 <td>
                                                                     <input type="checkbox" name="EP" id="$121" class="chk-col-green">
                                                                     <label for="$121">Erupciones/Purito</label><br>
-                                                                    <input type="checkbox" name="Ulseras" id="$122" class="chk-col-green">
+                                                                    <input type="checkbox" name="Ulceras" id="$122" class="chk-col-green">
                                                                     <label for="$122">Ulceras/Llagas</label><br>
                                                                     <input type="checkbox" name="hongos" id="$123" class="chk-col-green">
                                                                     <label for="$123">Hongos en los pies</label><br>
@@ -316,6 +335,7 @@
                                                                 <th align="center">Cardiovascular</th>
                                                                 <th align="center">Gastrointestinal</th>
                                                                 <th align="center">Otros</th>
+                                                            </tr>
                                                             <tr>
                                                                 <td>
                                                                     <input type="checkbox" name="PCVe" id="$131" class="chk-col-green">
@@ -359,7 +379,12 @@
                                             <textarea name="observacioneCCA" rows="6" cols="40" placeholder="Detalles..."></textarea>
                                         </div>
                                     </div>
-
+                                    <div style="text-align: center;">
+                                        <div class="btn-group" role="group">
+                                            <button type="button" class="btn bg-indigo waves-effect btnPrevious">Anterior</button>
+                                            <button type="button" class="btn bg-indigo waves-effect btnNext">Siguiente</button>
+                                        </div>
+                                    </div>
                                 </div>
                                 <!--                TERCER  TAB                                                          -->
                                 <div class="tab-pane " id="tab3">
@@ -372,14 +397,14 @@
                                                         <div class="col-sm-6">
                                                             <div class="form-group">
                                                                 <div class="form-line">
-                                                                    <input disable="true" class="form-control" type="text" name="nombre" value="" />
+                                                                    <input disable="true"  class="form-control" type="text" name="nombreAtleta" value="@ViewBag.nombre" />
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-6">
                                                             <div class="form-group form-float">
                                                                 <div class="form-line">
-                                                                    <input class="form-control" type="text" disable="true" name="genero" value="" />
+                                                                    <input class="form-control" type="text" disable="true" name="genero" value="@ViewBag.genero" />
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -394,7 +419,7 @@
                                                         <div class="col-sm-6">
                                                             <div class="form-group form-float">
                                                                 <div class="form-line">
-                                                                    <input type="text" name="fechaEx" class="form-control" id="fecha" value="   ">
+                                                                    <input type="text" name="fechaEv" class="form-control" id="fecha" value="   ">
                                                                     <label class="form-label">Fecha de evaluacion</label>
                                                                 </div>
                                                             </div>
@@ -403,7 +428,7 @@
                                                         <div class="col-sm-6">
                                                             <div class="form-group form-float">
                                                                 <div class="form-line">
-                                                                    <input type="text" name="Antropometrista" class="form-control" name="Antropometrista" />
+                                                                    <input type="text" class="form-control" name="Antropometrista" />
                                                                     <label class="form-label">Antropometrista/Evaluador</label>
                                                                 </div>
                                                             </div>
@@ -411,7 +436,7 @@
                                                         <div class="col-sm-6">
                                                             <div class="form-group form-float">
                                                                 <div class="form-line">
-                                                                    <input type="text" name="anotador" class="form-control" name="Anotador" />
+                                                                    <input type="text" class="form-control" name="Anotador" />
                                                                     <label class="form-label">Anotador </label>
                                                                 </div>
                                                             </div>
@@ -420,22 +445,38 @@
                                                             <div class="demo-masked-input">
                                                                 <div class="input-group">
                                                                     <div class="form-line">
-                                                                        <input type="text" name="fechaNac" class="form-control date" placeholder="Ex: 30/07/2016">
+                                                                        <input type="text" name="fechaNac" class="form-control date" placeholder="Fecha De Nacimiento Ejemplo: 30/07/2016">
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
 
 
-                                                        <div class="col-sm-6">
-                                                            <div class="form-group form-float">
-                                                                <div class="form-line">
-                                                                    <input type="text" class="form-control" name="menstruacion" />
-                                                                    <label class="form-label">Mentruacion </label>
+                                                        @if (ViewBag.genero == "Masculino")
+                                                        {
+                                                            <div class="col-sm-6">
+                                                                <div class="form-group form-float">
+                                                                    <div class="form-line">
+                                                                        <input type="text" disabled class="form-control" value="No" name="menstruacion" />
+                                                                        <label class="form-label">Mentruacion </label>
+                                                                    </div>
                                                                 </div>
-                                                            </div>
 
-                                                        </div>
+                                                            </div>
+                                                        }
+                                                        else
+                                                        {
+                                                            <div class="col-sm-6">
+                                                                <div class="form-group form-float">
+                                                                    <div class="form-line">
+                                                                        <input type="text" class="form-control" name="menstruacion" />
+                                                                        <label class="form-label">Mentruacion </label>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        }
+
                                                     </div>
 
 
@@ -565,7 +606,7 @@
                                                             </tr>
                                                             <tr>
                                                                 <td align="center">14</td>
-                                                                <td>Brazo flexionado y contaido</td>
+                                                                <td>Brazo flexionado y contraido</td>
                                                                 <td><input type="text" name="BFCtoma1"></td>
                                                                 <td><input type="text" name="BFCtoma2"></td>
                                                                 <td><input type="text" name="BFCtoma3"></td>
@@ -645,20 +686,27 @@
                                                             </tr>
                                                         </table>
                                                         <!--FINAL TABLA ANTROPOMETRIA-->
+                                                        <h4>
+                                                            <small> *Medidas de peril restringido (ISAK nivel 1)</small>
+                                                        </h4>
                                                     </div>
-                                                    <h4>
-                                                        *Medidas de peril restringido (ISAK nivel 1)
-                                                    </h4>
+
                                                 </div>
                                             </div>
                                         </fieldset>
                                     </div>
-                                    <div class="col-md-12">
+                                    <div style="text-align: center;">
                                         <div class="btn-group" role="group">
-                                            <button type="button" class="btn bg-indigo waves-effect btnNext">SIGUIENTE</button>
-                                            <button type="submit" class="btn bg-green waves-effect btnNext">Guardar</button>
+                                            <button type="button" class="btn bg-indigo waves-effect btnPrevious">Anterior</button>
+                                            <button type="button" class="btn bg-indigo waves-effect btnNext">Siguiente</button>
                                         </div>
                                     </div>
+                                    @*<div class="col-md-12">
+                                            <div class="btn-group" role="group">
+                                                <button type="button" class="btn bg-indigo waves-effect btnNext">SIGUIENTE</button>
+                                                <button type="submit" class="btn bg-green waves-effect btnNext">Guardar</button>
+                                            </div>
+                                        </div>*@
                                 </div>
                                 <!--                CUARTO  TAB                                                          -->
                                 <div class="tab-pane" id="tab4">
@@ -671,14 +719,14 @@
                                                             <th> Fecha </th>
                                                             <th> Nota </th>
                                                             <th> F. </th>
-                                                            <th><a href="javascript:void(0);" style="font-size:18px;" id="addMore" title="Agrega otra fila"><span class="glyphicon glyphicon-plus"></span></a></th>
+                                                            <th><a href="javascript:void(0);" style="font-size:18px;" id="addfilaNE" title="Agrega otra fila"><span class="glyphicon glyphicon-plus"></span></a></th>
                                                         </tr>
                                                         <tr>
                                                             <td>
                                                                 <input type="text" id="Fecha" name="prueba[]" class="form-control" placeholder="Fecha" />
                                                             </td>
                                                             <td>
-                                                                <input type="text" id="Nota" name="resultado[]" class="form-control" placeholder="Nota" width="100%">
+                                                                <input type="text" id="Nota" name="resultado[]" class="form-control" placeholder="Nota">
                                                             </td>
                                                             <td>
                                                                 <input type="text" id="F" name="fechaYlugar[]" class="form-control" placeholder="F" />
@@ -690,11 +738,21 @@
                                             </div>
                                         </fieldset>
                                     </div>
-                                    <div class="col-md-12">
+                                    <div style="text-align: center;">
                                         <div class="btn-group" role="group">
-                                            <button type="button" class="btn bg-indigo waves-effect btnNext">SIGUIENTE</button>
+                                            @*<button type="reset" class="btn btn-danger btn-rounded"><i class="fa fa-times"></i> Cancelar</button>*@
+
+                                            @* <button type="button" class="btn bg-indigo waves-effect btnPrevious"><i class="fa fa-backspace"></i>Anterior</button>*@
+                                            <button type="button" class="btn bg-indigo btn-rounded waves-effect  btnPrevious"><i class="fa fa-save"></i> Anterior</button>
+                                            <button type="submit" class="btn btn-primary waves-effect btn-rounded"><i class="fa fa-save"></i> Guardar</button>
+                                            @* <button type="submit" class="btn bg-green waves-effect btnNext">Guardar</button>*@
                                         </div>
                                     </div>
+                                    @*<div class="col-md-12">
+                                            <div class="btn-group" role="group">
+                                                <button type="button" class="btn bg-indigo waves-effect btnNext">SIGUIENTE</button>
+                                            </div>
+                                        </div>*@
                                 </div>
                             </div>
                         </div>
@@ -712,6 +770,30 @@
     <script src="~/Recursos/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
     <!-- Input Mask Plugin Js -->
     <script src="~/Recursos/plugins/jquery-inputmask/jquery.inputmask.bundle.js"></script>
+    <script>
+        $(function () {
+            $('#addfilaNE').on('click', function () {
+                var data = $("#tb tr:eq(1)").clone(true).appendTo("#tb");
+                data.find("input").val('');
+            });
+            $(document).on('click', '.remove', function () {
+                var trIndex = $(this).closest("tr").index();
+                if (trIndex > 1) {
+                    $(this).closest("tr").remove();
+                } else {
+                    alert("lo siento no se puede eliminar la primera fila ");
+                }
+            });
+        });
+    </script>
+    <script>
+        $('.btnNext').click(function () {
+            $('.nav-tabs > .active').next('li').find('a').trigger('click');
+        });
+        $('.btnPrevious').click(function () {
+            $('.nav-tabs > .active').prev('li').find('a').trigger('click');
+        });
+    </script>
     <script>
         $(document).ready(function () {
 
@@ -737,5 +819,49 @@
             $demoMaskedInput.find('.cedula').inputmask('[0-3]/mm/yyyy', { placeholder: '__/__/____' });
         });
     </script>
+    <script type="text/javascript">
+        function Habilitar_DesabilitarTXT(chkSI, txtID) {
+            txtID.disabled = chkSI.checked ? true : false;
+            if (chkSI.checked == true) {
+                if (txtID.value != "") {
+                    txtID.value = "";
+                }
+            }
+        }
+    </script>
+    <script>    
+        $(document).ready(function () {
+            //Siempre que salgamos de un campo de texto, se chequeará esta función
+            $("#form input").keyup(function () {
+                var form = $(this).parents("#form");
+                var check = checkCampos(form);
+                if (check) {
+                    $("#user-data-next-button").prop("disabled", false);
+                }
+                else {
+                    $("#user-data-next-button").prop("disabled", true);
+                }
+            });
+        });
 
+        //Función para comprobar los campos de texto
+        function checkCampos(obj) {
+            var camposRellenados = true;
+            obj.find("input").each(function () {
+                var $this = $(this);
+                if ($this.val().length <= 0) {
+                    camposRellenados = false;
+                    return false;
+                }
+            });
+            if (camposRellenados == false) {
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+    </script>
+          
+    
 }

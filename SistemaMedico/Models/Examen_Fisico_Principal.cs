@@ -21,6 +21,7 @@ namespace SistemaMedico.Models
         public string Hallazgos_Anormales { get; set; }
         public Nullable<System.DateTime> Fecha_de_Registro { get; set; }
         public Nullable<bool> Estado { get; set; }
+        public Nullable<System.DateTime> Fecha_de_Actualizacion { get; set; }
     
         public virtual Datos_Atleta Datos_Atleta { get; set; }
         public virtual Examen_Fisico Examen_Fisico { get; set; }

@@ -14,6 +14,7 @@
     <EntitySetMapping Name="Alergias">
       <EntityTypeMapping TypeName="MeSysModel.Alergias">
         <MappingFragment StoreEntitySet="Alergias">
+          <ScalarProperty Name="Fecha_de_Actualizacion" ColumnName="Fecha_de_Actualizacion" />
           <ScalarProperty Name="Estado" ColumnName="Estado" />
           <ScalarProperty Name="Fecha_de_Registro" ColumnName="Fecha_de_Registro" />
           <ScalarProperty Name="ID" ColumnName="ID" />
@@ -26,6 +27,7 @@
     <EntitySetMapping Name="Anexos">
       <EntityTypeMapping TypeName="MeSysModel.Anexos">
         <MappingFragment StoreEntitySet="Anexos">
+          <ScalarProperty Name="Fecha_de_Actualizacion" ColumnName="Fecha_de_Actualizacion" />
           <ScalarProperty Name="Estado" ColumnName="Estado" />
           <ScalarProperty Name="Fecha_de_Registro" ColumnName="Fecha_de_Registro" />
           <ScalarProperty Name="ID" ColumnName="ID" />
@@ -39,6 +41,7 @@
     <EntitySetMapping Name="Aparato_Locomotor">
       <EntityTypeMapping TypeName="MeSysModel.Aparato_Locomotor">
         <MappingFragment StoreEntitySet="Aparato_Locomotor">
+          <ScalarProperty Name="Fecha_de_Actualizacion" ColumnName="Fecha_de_Actualizacion" />
           <ScalarProperty Name="Estado" ColumnName="Estado" />
           <ScalarProperty Name="Fecha_de_Registro" ColumnName="Fecha_de_Registro" />
           <ScalarProperty Name="ID" ColumnName="ID" />
@@ -51,6 +54,7 @@
     <EntitySetMapping Name="Apoyo_Economico">
       <EntityTypeMapping TypeName="MeSysModel.Apoyo_Economico">
         <MappingFragment StoreEntitySet="Apoyo_Economico">
+          <ScalarProperty Name="Fecha_de_Actualizacion" ColumnName="Fecha_de_Actualizacion" />
           <ScalarProperty Name="Estado" ColumnName="Estado" />
           <ScalarProperty Name="Fecha_de_Registro" ColumnName="Fecha_de_Registro" />
           <ScalarProperty Name="ID" ColumnName="ID" />
@@ -64,6 +68,7 @@
     <EntitySetMapping Name="Atleta_Categoria">
       <EntityTypeMapping TypeName="MeSysModel.Atleta_Categoria">
         <MappingFragment StoreEntitySet="Atleta_Categoria">
+          <ScalarProperty Name="Fecha_de_Actualizacion" ColumnName="Fecha_de_Actualizacion" />
           <ScalarProperty Name="Estado" ColumnName="Estado" />
           <ScalarProperty Name="Fecha_de_Registro" ColumnName="Fecha_de_Registro" />
           <ScalarProperty Name="ID" ColumnName="ID" />
@@ -75,6 +80,7 @@
     <EntitySetMapping Name="Carrera_Deportiva">
       <EntityTypeMapping TypeName="MeSysModel.Carrera_Deportiva">
         <MappingFragment StoreEntitySet="Carrera_Deportiva">
+          <ScalarProperty Name="Fecha_de_Actualizacion" ColumnName="Fecha_de_Actualizacion" />
           <ScalarProperty Name="Estado" ColumnName="Estado" />
           <ScalarProperty Name="Fecha_de_Registro" ColumnName="Fecha_de_Registro" />
           <ScalarProperty Name="ID" ColumnName="ID" />
@@ -88,6 +94,7 @@
     <EntitySetMapping Name="Carrera_Deportiva_Evento">
       <EntityTypeMapping TypeName="MeSysModel.Carrera_Deportiva_Evento">
         <MappingFragment StoreEntitySet="Carrera_Deportiva_Evento">
+          <ScalarProperty Name="Fecha_de_Actualizacion" ColumnName="Fecha_de_Actualizacion" />
           <ScalarProperty Name="Estado" ColumnName="Estado" />
           <ScalarProperty Name="Fecha_de_Registro" ColumnName="Fecha_de_Registro" />
           <ScalarProperty Name="ID" ColumnName="ID" />
@@ -102,6 +109,7 @@
     <EntitySetMapping Name="Carrera_Deportiva_Familiar">
       <EntityTypeMapping TypeName="MeSysModel.Carrera_Deportiva_Familiar">
         <MappingFragment StoreEntitySet="Carrera_Deportiva_Familiar">
+          <ScalarProperty Name="Fecha_de_Actualizacion" ColumnName="Fecha_de_Actualizacion" />
           <ScalarProperty Name="Estado" ColumnName="Estado" />
           <ScalarProperty Name="Fecha_de_Registro" ColumnName="Fecha_de_Registro" />
           <ScalarProperty Name="ID" ColumnName="ID" />
@@ -115,6 +123,7 @@
     <EntitySetMapping Name="Categorias">
       <EntityTypeMapping TypeName="MeSysModel.Categorias">
         <MappingFragment StoreEntitySet="Categorias">
+          <ScalarProperty Name="Fecha_de_Actualizacion" ColumnName="Fecha_de_Actualizacion" />
           <ScalarProperty Name="Estado" ColumnName="Estado" />
           <ScalarProperty Name="Fecha_de_Registro" ColumnName="Fecha_de_Registro" />
           <ScalarProperty Name="ID" ColumnName="ID" />
@@ -134,6 +143,7 @@
     <EntitySetMapping Name="Condiciones_Clinicas_Actuales_Principal">
       <EntityTypeMapping TypeName="MeSysModel.Condiciones_Clinicas_Actuales_Principal">
         <MappingFragment StoreEntitySet="Condiciones_Clinicas_Actuales_Principal">
+          <ScalarProperty Name="Fecha_de_Actualizacion" ColumnName="Fecha_de_Actualizacion" />
           <ScalarProperty Name="Estado" ColumnName="Estado" />
           <ScalarProperty Name="Fecha_de_Registro" ColumnName="Fecha_de_Registro" />
           <ScalarProperty Name="ID" ColumnName="ID" />
@@ -147,6 +157,7 @@
     <EntitySetMapping Name="Consiste_Apoyo">
       <EntityTypeMapping TypeName="MeSysModel.Consiste_Apoyo">
         <MappingFragment StoreEntitySet="Consiste_Apoyo">
+          <ScalarProperty Name="Fecha_de_Actualizacion" ColumnName="Fecha_de_Actualizacion" />
           <ScalarProperty Name="Estado" ColumnName="Estado" />
           <ScalarProperty Name="Fecha_de_Registro" ColumnName="Fecha_de_Registro" />
           <ScalarProperty Name="ID" ColumnName="ID" />
@@ -159,6 +170,7 @@
     <EntitySetMapping Name="Datos_Atleta">
       <EntityTypeMapping TypeName="MeSysModel.Datos_Atleta">
         <MappingFragment StoreEntitySet="Datos_Atleta">
+          <ScalarProperty Name="Fecha_de_Actualizacion" ColumnName="Fecha_de_Actualizacion" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Foto" ColumnName="Foto" />
           <ScalarProperty Name="Primer_Nombre" ColumnName="Primer_Nombre" />
@@ -207,6 +219,7 @@
     <EntitySetMapping Name="Educacion">
       <EntityTypeMapping TypeName="MeSysModel.Educacion">
         <MappingFragment StoreEntitySet="Educacion">
+          <ScalarProperty Name="Fecha_de_Actualizacion" ColumnName="Fecha_de_Actualizacion" />
           <ScalarProperty Name="Estado" ColumnName="Estado" />
           <ScalarProperty Name="Fecha_de_Registro" ColumnName="Fecha_de_Registro" />
           <ScalarProperty Name="ID" ColumnName="ID" />
@@ -220,6 +233,7 @@
     <EntitySetMapping Name="Eventos">
       <EntityTypeMapping TypeName="MeSysModel.Eventos">
         <MappingFragment StoreEntitySet="Eventos">
+          <ScalarProperty Name="Fecha_de_Actualizacion" ColumnName="Fecha_de_Actualizacion" />
           <ScalarProperty Name="Estado" ColumnName="Estado" />
           <ScalarProperty Name="Fecha_de_Registro" ColumnName="Fecha_de_Registro" />
           <ScalarProperty Name="ID" ColumnName="ID" />
@@ -239,6 +253,7 @@
     <EntitySetMapping Name="Examen_Fisico_Principal">
       <EntityTypeMapping TypeName="MeSysModel.Examen_Fisico_Principal">
         <MappingFragment StoreEntitySet="Examen_Fisico_Principal">
+          <ScalarProperty Name="Fecha_de_Actualizacion" ColumnName="Fecha_de_Actualizacion" />
           <ScalarProperty Name="Estado" ColumnName="Estado" />
           <ScalarProperty Name="Fecha_de_Registro" ColumnName="Fecha_de_Registro" />
           <ScalarProperty Name="ID" ColumnName="ID" />
@@ -262,6 +277,7 @@
     <EntitySetMapping Name="Ficha_Antropometrica">
       <EntityTypeMapping TypeName="MeSysModel.Ficha_Antropometrica">
         <MappingFragment StoreEntitySet="Ficha_Antropometrica">
+          <ScalarProperty Name="Fecha_de_Actualizacion" ColumnName="Fecha_de_Actualizacion" />
           <ScalarProperty Name="Estado" ColumnName="Estado" />
           <ScalarProperty Name="Fecha_de_Registro" ColumnName="Fecha_de_Registro" />
           <ScalarProperty Name="Txt_Ficha_Antropometrica" ColumnName="Txt_Ficha_Antropometrica" />
@@ -285,6 +301,7 @@
     <EntitySetMapping Name="Habitacion">
       <EntityTypeMapping TypeName="MeSysModel.Habitacion">
         <MappingFragment StoreEntitySet="Habitacion">
+          <ScalarProperty Name="Fecha_de_Actualizacion" ColumnName="Fecha_de_Actualizacion" />
           <ScalarProperty Name="Estado" ColumnName="Estado" />
           <ScalarProperty Name="Fecha_de_Registro" ColumnName="Fecha_de_Registro" />
           <ScalarProperty Name="ID" ColumnName="ID" />
@@ -298,6 +315,7 @@
     <EntitySetMapping Name="Habitos">
       <EntityTypeMapping TypeName="MeSysModel.Habitos">
         <MappingFragment StoreEntitySet="Habitos">
+          <ScalarProperty Name="Fecha_de_Actualizacion" ColumnName="Fecha_de_Actualizacion" />
           <ScalarProperty Name="Estado" ColumnName="Estado" />
           <ScalarProperty Name="Fecha_de_Registro" ColumnName="Fecha_de_Registro" />
           <ScalarProperty Name="ID" ColumnName="ID" />
@@ -311,6 +329,7 @@
     <EntitySetMapping Name="Historia_Familiar">
       <EntityTypeMapping TypeName="MeSysModel.Historia_Familiar">
         <MappingFragment StoreEntitySet="Historia_Familiar">
+          <ScalarProperty Name="Fecha_de_Actualizacion" ColumnName="Fecha_de_Actualizacion" />
           <ScalarProperty Name="Estado" ColumnName="Estado" />
           <ScalarProperty Name="Fecha_de_Registro" ColumnName="Fecha_de_Registro" />
           <ScalarProperty Name="ID" ColumnName="ID" />
@@ -323,6 +342,7 @@
     <EntitySetMapping Name="Historial_Medico">
       <EntityTypeMapping TypeName="MeSysModel.Historial_Medico">
         <MappingFragment StoreEntitySet="Historial_Medico">
+          <ScalarProperty Name="Fecha_de_Actualizacion" ColumnName="Fecha_de_Actualizacion" />
           <ScalarProperty Name="Estado" ColumnName="Estado" />
           <ScalarProperty Name="Fecha_de_Registro" ColumnName="Fecha_de_Registro" />
           <ScalarProperty Name="ID" ColumnName="ID" />
@@ -344,6 +364,7 @@
     <EntitySetMapping Name="Informacion_Familiar">
       <EntityTypeMapping TypeName="MeSysModel.Informacion_Familiar">
         <MappingFragment StoreEntitySet="Informacion_Familiar">
+          <ScalarProperty Name="Fecha_de_Actualizacion" ColumnName="Fecha_de_Actualizacion" />
           <ScalarProperty Name="Estado" ColumnName="Estado" />
           <ScalarProperty Name="Fecha_de_Registro" ColumnName="Fecha_de_Registro" />
           <ScalarProperty Name="ID" ColumnName="ID" />
@@ -357,6 +378,7 @@
     <EntitySetMapping Name="Medicamentos">
       <EntityTypeMapping TypeName="MeSysModel.Medicamentos">
         <MappingFragment StoreEntitySet="Medicamentos">
+          <ScalarProperty Name="Fecha_de_Actualizacion" ColumnName="Fecha_de_Actualizacion" />
           <ScalarProperty Name="Estado" ColumnName="Estado" />
           <ScalarProperty Name="Fecha_de_Registro" ColumnName="Fecha_de_Registro" />
           <ScalarProperty Name="ID" ColumnName="ID" />
@@ -397,6 +419,7 @@
     <EntitySetMapping Name="Situacion_Laboral">
       <EntityTypeMapping TypeName="MeSysModel.Situacion_Laboral">
         <MappingFragment StoreEntitySet="Situacion_Laboral">
+          <ScalarProperty Name="Fecha_de_Actualizacion" ColumnName="Fecha_de_Actualizacion" />
           <ScalarProperty Name="Estado" ColumnName="Estado" />
           <ScalarProperty Name="Fecha_de_Registro" ColumnName="Fecha_de_Registro" />
           <ScalarProperty Name="ID" ColumnName="ID" />
