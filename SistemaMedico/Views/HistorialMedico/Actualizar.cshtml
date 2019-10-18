@@ -20,8 +20,8 @@
                 @using (Html.BeginForm("Actualizar", "HistorialMedico", FormMethod.Post))
                 {
                     @*<form action="" method="post" autocomplete="off" enctype="multipart/form-data">*@
-                    <div style="display:none;">                        
-                        <input type="text" value="@ViewBag.id" class="form-control" name="txt_atleta">
+                    <div style="display:none;">
+                        <input type="text" id="atleta" value="@ViewBag.id" class="form-control" name="txt_atleta">
                     </div>
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs customtab" role="tablist">
@@ -1601,46 +1601,100 @@
                                         <label for="">Antecedentes Deportivos: a continuacion, mencione sus logros y medallas mas importantes en competencias como seleccionado (a) o en eventos olimpicos</label>
                                     </div>
                                     <div class="col-md-12 m-t-10 table-responsive">
-                                        <table class="table table-hover small-text" id="tb">
-                                            <tr class="tr-header">
-                                                <th> Categoria/Prueba </th>
-                                                <th> Resultado/Marca </th>
-                                                <th> Fecha y Lugar </th>
-                                                <th> Evento  </th>
-                                                <th><a href="javascript:void(0);" style="font-size:18px;" id="addMore" title="Add More Person"><span class="fa fa-plus"></span></a></th>
-                                            </tr>
-
-                                            @foreach (var item in plox1)
-                                            {
-                                            <tr>
-                                                @if (item.Prueba != null)
+                                        <table class="table table-hover small-text" id="tblCDE">
+                                            <thead class="thead-dark">
+                                                <tr>
+                                                    <th style="text-align:center; width:100px">Categoria/Prueba </th>
+                                                    <th style="text-align:center; width:150px">Resultado/Marca </th>
+                                                    <th style="text-align:center; width:150px">Fecha y Lugar </th>
+                                                    <th style="text-align:center; width:150px">Evento  </th>
+                                                    <th style="text-align:center; width:150px">Acción</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var CDET in plox1)
                                                 {
-                                                    <td>
-                                                        <input type="text" id="prueba" name="prueba[]" class="form-control" value="@item.Prueba" placeholder="Categoria/Prueba" />
-                                                    </td>
+                                                    <tr>
+                                                        <td class="cdeid" style="display:none">
+                                                            <span>@CDET.ID</span>
+                                                            <input type="text" id="idcde" value="@CDET.ID" style="display:none" />
+                                                        </td>
+                                                        <td class="atletaid" style="display:none">
+                                                            <span>@CDET.ID_Atleta</span>
+                                                            <input type="text" id="idcde" value="@CDET.ID_Atleta" style="display:none" />
+                                                        </td>
+                                                        @if (CDET.Prueba != null)
+                                                        {
+                                                            <td class="prueba" style="text-align:center;">
+                                                                <span>@CDET.Prueba</span>
+                                                                <input type="text" id="idprueba" value="@CDET.Prueba" style="display:none" />
+                                                                @*<input type="text" id="" name="prueba[]" class="form-control" value="@CDET.Prueba" placeholder="Categoria/Prueba" />*@
+                                                            </td>
+                                                        }
+                                                        @if (CDET.Resultado != null)
+                                                        {
+                                                            <td class="resultado" style="text-align:center;">
+                                                                <span>@CDET.Resultado</span>
+                                                                <input type="text" value="@CDET.Resultado" style="display:none" />
+                                                                @*<input type="text" id="" name="resultado[]" class="form-control" value="@CDET.Resultado" placeholder="Resultado/Marca" />*@
+                                                            </td>
+                                                        }
+                                                        @if (CDET.Fecha_Y_Lugar != null)
+                                                        {
+                                                            <td class="fyl" style="text-align:center;">
+                                                                <span>@CDET.Fecha_Y_Lugar</span>
+                                                                <input type="text" value="@CDET.Fecha_Y_Lugar" style="display:none" />
+                                                                @*<input type="text" id="" name="fechaYlugar[]" class="form-control" value="@CDET.Fecha_Y_Lugar" placeholder="Fecha y Lugar" />*@
+                                                            </td>
+                                                        }
+                                                        @if (CDET.Evento != null)
+                                                        {
+                                                            <td class="evento" style="text-align:center;">
+                                                                <span>@CDET.Evento</span>
+                                                                <input type="text" value="@CDET.Evento" style="display:none" />
+                                                                @*<input type="text" id="" name="evento[]" class="form-control" value="@CDET.Evento" placeholder="Evento" />*@
+                                                            </td>
+                                                        }
+                                                            <td style="text-align:center;">
+                                                                <button class="btn bg-orange btn-circle waves-effect waves-circle waves-float edit" type="button"><i class="fa fa-edit fa-md"></i></button>
+                                                                @*<a class="edit" href="javascript:;">Edit</a>*@
+                                                                <a class="actualizar" href="javascript:;" style="display:none">Update</a>
+                                                                <a class="cancel" href="javascript:;" style="display:none">Cancel</a>
+                                                                <button class="btn btn-danger btn-circle waves-effect waves-circle waves-float elimina" type="button"><i class="fa fa-trash fa-md"></i></button>
+                                                            </td>
+                                                    </tr>
                                                 }
-                                                @if (item.Resultado != null)
-                                                {
-                                                    <td>
-                                                        <input type="text" id="prueba" name="resultado[]" class="form-control" value="@item.Resultado" placeholder="Categoria/Prueba" />
+                                            </tbody>
+                                        </table>
+                                        <table class="table table-striped table-bordered table-hover">
+                                            <thead class="thead-dark">
+                                                <tr>
+                                                    <th style="text-align:center; width:100px">Prueba</th>
+                                                    <th style="text-align:center; width:150px">Resultados</th>
+                                                    <th style="text-align:center; width:150px">Fecha y Lugar</th>
+                                                    <th style="text-align:center; width:150px">Evento</th>
+                                                    <th style="text-align:center; width:150px">Acción</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td style="text-align:center; width: 150px">
+                                                        <input type="text" id="txtpruebaac" style="width:140px" />
                                                     </td>
-                                                }
-                                                @if (item.Fecha_Y_Lugar != null)
-                                                {
-                                                    <td>
-                                                        <input type="text" id="prueba" name="fechaYlugar[]" class="form-control" value="@item.Fecha_Y_Lugar" placeholder="Categoria/Prueba" />
+                                                    <td style="text-align:center; width: 150px">
+                                                        <input type="text" id="txtresultadoac" style="width:140px" />
                                                     </td>
-                                                }
-                                                @if (item.Evento != null)
-                                                {
-                                                    <td>
-                                                        <input type="text" id="prueba" name="evento[]" class="form-control" value="@item.Evento" placeholder="Categoria/Prueba" />
+                                                    <td style="text-align:center; width: 150px">
+                                                        <input type="text" id="txtfylac" style="width:140px" />
                                                     </td>
-                                                }
-                                                <td><a href='javascript:void(0);' class='remove'><span class='fa fa-remove'></span></a></td>
-
-                                            </tr>
-                                            }
+                                                    <td style="text-align:center; width: 150px">
+                                                        <input type="text" id="txteventoac" style="width:140px" />
+                                                    </td>
+                                                    <td style="text-align:center; width: 200px">
+                                                        <button class="btn bg-teal waves-effect" type="button" id="btnagregar"><i class="material-icons">check_circle</i><span>Agregar</span></button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
                                         </table>
                                     </div>
                                 </div>
@@ -1649,39 +1703,83 @@
                                     <div class="col-md-12 m-b-40">
                                         <label for="">Especifique si algun familiar ha participado en eventos deportivos de alto rendimiento o de seleccion nacional.</label>
                                     </div>
-                                    <div class="col-md-12 m-t-10">
-                                        <table class="table table-hover small-text" id="tb2">
-                                            <tr class="tr-header">
-                                                <th> Evento  </th>
-                                                <th> Resultado obtenido </th>
-                                                <th> Fecha y Lugar </th>
-                                                <th><a href="javascript:void(0);" style="font-size:18px;" id="addMore2" title="Add More Person"><span class="fa fa-plus"></span></a></th>
-                                            </tr>
-                                            @foreach (var item in plox2)
-                                            {
+                                    <div class="col-md-12 m-t-10 table-responsive">
+                                        <table class="table table-hover small-text" id="tblCDF">
+                                            <thead class="thead-dark">
                                                 <tr>
-                                                    @if (item.Evento != null)
-                                                    {
-                                                        <td>
-                                                            <input type="text" name="evento_fam[]" class="form-control" value="@item.Evento" placeholder="Evento" />
-                                                        </td>
-                                                    }
-                                                    @if (item.Resultado != null)
-                                                    {
-                                                        <td>
-                                                            <input type="text" id="prueba" name="resultado[]" class="form-control" value="@item.Resultado" placeholder="Categoria/Prueba" />
-                                                        </td>
-                                                    }
-                                                    @if (item.FechayLugar != null)
-                                                    {
-                                                        <td>
-                                                            <input type="text" id="prueba" name="fechaYlugar[]" class="form-control" value="@item.FechayLugar" placeholder="Categoria/Prueba" />
-                                                        </td>
-                                                    }                                                    
-                                                        <td><a href='javascript:void(0);' class='remove2'><span class='fa fa-remove'></span></a></td>
-
+                                                    <th style="text-align:center; width:150px">Evento </th>
+                                                    <th style="text-align:center; width:150px">Resultado obtenido </th>
+                                                    <th style="text-align:center; width:150px">Fecha y Lugar  </th>
+                                                    <th style="text-align:center; width:150px">Acción</th>
                                                 </tr>
-                                            }
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var item in plox2)
+                                                {
+                                                    <tr>
+                                                        <td class="ID" style="display:none">
+                                                            <span>@item.ID</span>
+                                                            <input type="text" id="idcde" value="@item.ID" style="display:none" />
+                                                        </td>
+                                                        <td class="atletaid" style="display:none">
+                                                            <span>@item.ID_Atleta</span>
+                                                        </td>
+                                                        @if (item.Evento != null)
+                                                        {
+                                                            <td class="evento" style="text-align:center;">
+                                                                <span>@item.Evento</span>
+                                                                <input type="text" value="@item.Evento" style="display:none" />
+                                                                @*<input type="text" name="evento_fam[]" class="form-control" value="@item.Evento" placeholder="Evento" />*@
+                                                            </td>
+                                                        }
+                                                        @if (item.FechayLugar != null)
+                                                        {
+                                                            <td class="fyl" style="text-align:center;">
+                                                                <span>@item.FechayLugar</span>
+                                                                <input type="text" value="@item.FechayLugar" style="display:none" />
+                                                                @*<input type="text" id="prueba" name="fechaYlugar[]" class="form-control" value="@item.FechayLugar" placeholder="Categoria/Prueba" />*@
+                                                            </td>
+                                                        }
+                                                        @if (item.Resultado != null)
+                                                        {
+                                                            <td class="resultado" style="text-align:center;">
+                                                                <span>@item.Resultado</span>
+                                                                <input type="text" value="@item.Resultado" style="display:none" />
+                                                                @*<input type="text" id="prueba" name="resultado[]" class="form-control" value="@item.Resultado" placeholder="Categoria/Prueba" />*@
+                                                            </td>
+                                                        }
+                                                        <td style="text-align:center;">
+                                                            <button class="btn btn-danger btn-circle waves-effect waves-circle waves-float elimina" type="button"><i class="fa fa-trash fa-md"></i></button>
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                        <table class="table table-striped table-bordered table-hover">
+                                            <thead class="thead-dark">
+                                                <tr>
+                                                    <th style="text-align:center; width:150px">Evento</th>
+                                                    <th style="text-align:center; width:150px">Fecha y Lugar</th>
+                                                    <th style="text-align:center; width:150px">Resultados</th>
+                                                    <th style="text-align:center; width:150px">Acción</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td style="text-align:center; width: 150px">
+                                                        <input type="text" id="txtevento2" style="width:140px" />
+                                                    </td>
+                                                    <td style="text-align:center; width: 150px">
+                                                        <input type="text" id="txtfyl2" style="width:140px" />
+                                                    </td>
+                                                    <td style="text-align:center; width: 150px">
+                                                        <input type="text" id="txtresultado2" style="width:140px" />
+                                                    </td>
+                                                    <td style="text-align:center; width: 200px">
+                                                        <button class="btn bg-teal waves-effect" type="button" id="btnaddcdf"><i class="material-icons">check_circle</i><span>Agregar</span></button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
                                         </table>
                                     </div>
                                 </div>
@@ -2451,7 +2549,7 @@
                                             </div>
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <input id="trabaja_si" value="Si"  name="trabaja" type="radio" />
+                                                    <input id="trabaja_si" value="Si" name="trabaja" type="radio" />
                                                     <label for="trabaja_si"> Si</label>
                                                     <input type="radio" id="trabaja_no" value="No" name="trabaja" />
                                                     <label for="trabaja_no"> No</label>
@@ -2482,7 +2580,7 @@
                                             </div>
                                             <div class="col-md-8">
                                                 <div class="form-group">
-                                                    <input id="persona_si" value="Si"  name="personas" type="radio" />
+                                                    <input id="persona_si" value="Si" name="personas" type="radio" />
                                                     <label for="persona_si"> Si</label>
                                                     <input type="radio" id="persona_no" value="No" checked name="personas" />
                                                     <label for="persona_no"> No</label>
@@ -2498,7 +2596,7 @@
                                                 <div class="form-group">
                                                     <input id="persona_si" value="Si" name="personas" type="radio" />
                                                     <label for="persona_si"> Si</label>
-                                                    <input type="radio" id="persona_no" value="No"  name="personas" />
+                                                    <input type="radio" id="persona_no" value="No" name="personas" />
                                                     <label for="persona_no"> No</label>
                                                 </div>
                                             </div>
@@ -2573,7 +2671,7 @@
                                                     <div class="col-md-12">
                                                         <input type="checkbox" id="otmf" class="filled-in" name="NEOMF" value="Otros Familiares" checked onchange="javascript:mostrarcontenido(this.id,otros_familiares)" />
                                                         <label for="otmf">Otros Miembros de la familia</label>
-                                                        <div class="col-md-12" id="otros_familiares" >
+                                                        <div class="col-md-12" id="otros_familiares">
                                                             <div class="form-group form-float">
                                                                 <div class="form-line">
                                                                     <input type="text" class="form-control" value="@ViewBag.AEcd5" name="txt_otrosmiembros">
@@ -2711,7 +2809,7 @@
                                                     <div class="col-md-12">
                                                         <input type="checkbox" id="Otros_apoyos" class="filled-in" name="NEOA" value="Otros apoyos" checked onchange="javascript:mostrarcontenido(this.id,otrosApoyos)" />
                                                         <label for="Otros_apoyos">Otros apoyos</label>
-                                                        <div class="col-md-12" id="otrosApoyos" >
+                                                        <div class="col-md-12" id="otrosApoyos">
                                                             <div class="form-group form-float ">
                                                                 <div class="form-line">
                                                                     <input type="text" class="form-control" value="@ViewBag.AEcd10" name="txt_otrosapoyos1">
@@ -2782,50 +2880,50 @@
                                     <div class="row col-sm-12">
                                         <div class="col-md-12 m-b-40">
                                             <label>En que consiste el apoyo que recibe:</label>
-                                        </div>                                                                              
+                                        </div>
                                         <div class="col-sm-6">
-                                                @if (ViewBag.CAcr1 == "Monetario")
-                                                {
-                                                    <div class="col-md-12">
-                                                        <input type="checkbox" id="monetario" class="filled-in" name="CAM" value="Monetario" checked />
-                                                        <label for="monetario">Monetario</label>
-                                                    </div>
-                                                }
-                                                else
-                                                {
-                                                    <div class="col-md-12">
-                                                        <input type="checkbox" id="monetario" class="filled-in" name="CAM" value="Monetario" />
-                                                        <label for="monetario">Monetario</label>
-                                                    </div>
-                                                }
-                                                @if (ViewBag.CAcr2 == "Equipo ciencias del deporte")
-                                                {
-                                                    <div class="col-md-12">
-                                                        <input type="checkbox" id="ecp" class="filled-in" name="CAECD" value="Equipo ciencias del deporte" checked />
-                                                        <label for="ecp">Equipo ciencias del deporte</label>
-                                                    </div>
-                                                }
-                                                else
-                                                {
-                                                    <div class="col-md-12">
-                                                        <input type="checkbox" id="ecp" class="filled-in" name="CAECD" value="Equipo ciencias del deporte" />
-                                                        <label for="ecp">Equipo ciencias del deporte</label>
-                                                    </div>
-                                                }
-                                                @if (ViewBag.CAcr3 == "Educativo")
-                                                {
-                                                    <div class="col-md-12">
-                                                        <input type="checkbox" id="Educativo" class="filled-in" name="CAE" value="Educativo" checked />
-                                                        <label for="Educativo">Educativo</label>
-                                                    </div>
-                                                }
-                                                else
-                                                {
-                                                    <div class="col-md-12">
-                                                        <input type="checkbox" id="Educativo" class="filled-in" name="CAE" value="Educativo" />
-                                                        <label for="Educativo">Educativo</label>
-                                                    </div>
-                                                }                                            
+                                            @if (ViewBag.CAcr1 == "Monetario")
+                                            {
+                                                <div class="col-md-12">
+                                                    <input type="checkbox" id="monetario" class="filled-in" name="CAM" value="Monetario" checked />
+                                                    <label for="monetario">Monetario</label>
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <div class="col-md-12">
+                                                    <input type="checkbox" id="monetario" class="filled-in" name="CAM" value="Monetario" />
+                                                    <label for="monetario">Monetario</label>
+                                                </div>
+                                            }
+                                            @if (ViewBag.CAcr2 == "Equipo ciencias del deporte")
+                                            {
+                                                <div class="col-md-12">
+                                                    <input type="checkbox" id="ecp" class="filled-in" name="CAECD" value="Equipo ciencias del deporte" checked />
+                                                    <label for="ecp">Equipo ciencias del deporte</label>
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <div class="col-md-12">
+                                                    <input type="checkbox" id="ecp" class="filled-in" name="CAECD" value="Equipo ciencias del deporte" />
+                                                    <label for="ecp">Equipo ciencias del deporte</label>
+                                                </div>
+                                            }
+                                            @if (ViewBag.CAcr3 == "Educativo")
+                                            {
+                                                <div class="col-md-12">
+                                                    <input type="checkbox" id="Educativo" class="filled-in" name="CAE" value="Educativo" checked />
+                                                    <label for="Educativo">Educativo</label>
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <div class="col-md-12">
+                                                    <input type="checkbox" id="Educativo" class="filled-in" name="CAE" value="Educativo" />
+                                                    <label for="Educativo">Educativo</label>
+                                                </div>
+                                            }
                                         </div>
                                         <div class="col-sm-6">
                                             @if (ViewBag.CAcr4 == "Alojamiento")
@@ -2909,7 +3007,7 @@
                                             @if (ViewBag.AEcr13 == "Educacion")
                                             {
                                                 <div class="col-md-12">
-                                                    <input type="checkbox" id="Educacion" class="filled-in" name="IAME" value="Educacion" checked/>
+                                                    <input type="checkbox" id="Educacion" class="filled-in" name="IAME" value="Educacion" checked />
                                                     <label for="Educacion">Educacion</label>
                                                 </div>
                                             }
@@ -2919,7 +3017,7 @@
                                                     <input type="checkbox" id="Educacion" class="filled-in" name="IAME" value="Educacion" />
                                                     <label for="Educacion">Educacion</label>
                                                 </div>
-                                            }                                            
+                                            }
                                         </div>
                                     </div>
                                 </div>
@@ -3085,7 +3183,7 @@
                                                 }
                                                 @if (ViewBag.IFcr9 == "Alojamiento Deportivo")
                                                 {
-                                                    <input type="checkbox" id="aldep" class="filled-in" name="CQVAD" value="Alojamiento Deportivo" checked/>
+                                                    <input type="checkbox" id="aldep" class="filled-in" name="CQVAD" value="Alojamiento Deportivo" checked />
                                                     <label for="aldep">Alojamiento Deportivo</label>
                                                 }
                                                 else
@@ -3152,7 +3250,7 @@
                                                     <div class="form-group">
                                                         <input id="rdsi_mhijos" value="Si" name="pmhijos" type="radio" />
                                                         <label for="rdsi_mhijos"> Si</label><br>
-                                                        <input type="radio" id="rdno_mhijos" value="No"  name="pmhijos" />
+                                                        <input type="radio" id="rdno_mhijos" value="No" name="pmhijos" />
                                                         <label for="rdno_mhijos"> No</label><br>
                                                         <input type="radio" id="rdnose_mhijos" value="No se" checked name="pmhijos" />
                                                         <label for="rdnose_mhijos"> No se</label>
@@ -3249,9 +3347,9 @@
                                                     </div>
                                                     <input type="radio" id="4a7" class="filled-in" name="numvive" value="De 4 a 7" />
                                                     <label for="4a7">De 4 a 7</label><br>
-                                                    <input type="radio" id="masde7" class="filled-in" name="numvive" value="Mas de 7"  />
+                                                    <input type="radio" id="masde7" class="filled-in" name="numvive" value="Mas de 7" />
                                                     <label for="masde7">Mas de 7</label><br>
-                                                    <input type="radio" id="compañerosdeportivo" class="filled-in" name="numvive" value="Con Compañeros en alojamiento deportivo" checked/>
+                                                    <input type="radio" id="compañerosdeportivo" class="filled-in" name="numvive" value="Con Compañeros en alojamiento deportivo" checked />
                                                     <label for="compañerosdeportivo">Con Compañeros en alojamiento deportivo</label>
                                                 }
                                                 else
@@ -3324,7 +3422,7 @@
                                                         <label for="rdsi_Estudia"> Si</label><br>
                                                         <input type="radio" id="rdno_Estudia" value="No" name="Est" />
                                                         <label for="rdno_Estudia"> No</label><br>
-                                                        <input type="radio" id="rdnose_Estudia" value="Nunca ha estudiado"  name="Est" />
+                                                        <input type="radio" id="rdnose_Estudia" value="Nunca ha estudiado" name="Est" />
                                                         <label for="rdnose_Estudia"> Nunca ha estudiado</label>
                                                     </div>
                                                 }
@@ -3425,7 +3523,7 @@
                                                     <label for="bachillerato"> Bachillerato</label><br>
                                                     <input type="radio" id="tecnico" value="Tecnico-Tecnologico" name="nivelaca" />
                                                     <label for="tecnico">Tecnico-Tecnologico</label><br>
-                                                    <input id="universitario" value="Universitario"  name="nivelaca" type="radio" />
+                                                    <input id="universitario" value="Universitario" name="nivelaca" type="radio" />
                                                     <label for="universitario"> Universitario</label><br>
                                                     <input id="especializacion" value="Especializacion/Maestria" checked name="nivelaca" type="radio" />
                                                     <label for="especializacion"> Especializacion/Maestria</label><br>
@@ -3576,11 +3674,11 @@
                                                         <label for="r"> Regular</label><br>
                                                         <input type="radio" class="filled-in" id="ba" value="Bajo" name="barrio" />
                                                         <label for="ba">Bajo</label><br>
-                                                        <input id="ha" value="Ha tenido abandonos frecuentes"  class="filled-in" name="barrio" type="radio" />
+                                                        <input id="ha" value="Ha tenido abandonos frecuentes" class="filled-in" name="barrio" type="radio" />
                                                         <label for="ha"> Ha tenido abandonos frecuentes</label><br>
                                                         <input id="ot" value="Otros" checked class="filled-in" name="barrio" type="radio" onchange="javascript:mostrarcontenido(this.id,otrosbarrios1)" />
                                                         <label for="ot"> Otros</label><br>
-                                                        <div class="col-md-12" id="otrosbarrios1" >
+                                                        <div class="col-md-12" id="otrosbarrios1">
                                                             <div class="form-group form-float">
                                                                 <div class="form-line">
                                                                     <input type="text" class="form-control" value="@ViewBag.HAabd1" name="txtotrosbarrios">
@@ -3755,7 +3853,7 @@
                                                             <div class="col-md-12">
                                                                 <input type="radio" id="rdsi_toma" value="Si" checked name="toma" />
                                                                 <label for="rdsi_toma"> Si</label>
-                                                                <div class="col-md-12" id="si_toma" >
+                                                                <div class="col-md-12" id="si_toma">
                                                                     <div class="form-group form-float">
                                                                         <label> Cantidad semanal</label>
                                                                         <div class="form-line">
@@ -3924,22 +4022,7 @@
             });
         });
     </script>
-    <script>
-        $(function () {
-            $('#addMore').on('click', function () {
-                var data = $("#tb tr:eq(1)").clone(true).appendTo("#tb");
-                data.find("input").val('');
-            });
-            $(document).on('click', '.remove', function () {
-                var trIndex = $(this).closest("tr").index();
-                if (trIndex > 1) {
-                    $(this).closest("tr").remove();
-                } else {
-                    alert("Lo siento no es posible eliminar la primera fila ");
-                }
-            });
-        });
-    </script>
+
     <script>
         $(document).ready(function () {
             $("#rdno_fuma").click(function () {
@@ -3976,20 +4059,8 @@
             });
         });
     </script>
-    <script>
-        $(function () {
-            $('#addMore2').on('click', function () {
-                var data = $("#tb2 tr:eq(1)").clone(true).appendTo("#tb2");
-                data.find("input").val('');
-            });
-            $(document).on('click', '.remove2', function () {
-                var trIndex2 = $(this).closest("tr").index();
-                if (trIndex2 > 1) {
-                    $(this).closest("tr").remove();
-                } else {
-                    alert("Lo siento no es posible eliminar la primera fila ");
-                }
-            });
-        });
-    </script>
+
+
+    <script src="~/Recursos/js/Tabla1 - Actualizar.js"></script>
+    <script src="~/Recursos/js/TablaCDF.js"></script>
 }

@@ -3,14 +3,8 @@ using SistemaMedico.Models.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Diagnostics;
 using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Web;
 using System.Web.Mvc;
-using System.Web.Script.Serialization;
-using System.Web.Security;
 
 namespace SistemaMedico.Controllers
 {
@@ -22,13 +16,6 @@ namespace SistemaMedico.Controllers
         {
             return View();
         }
-        public ActionResult Crear(int ID)
-        {
-            var nom = db.Datos_Atleta.Find(ID);
-            ViewBag.id = ID;
-            ViewBag.nombre = nom.Nombre_Completo;
-            return View();
-        }
         public Datos_Atleta GetDA(int ID)
         {
             Datos_Atleta model = new Datos_Atleta();
@@ -38,13 +25,26 @@ namespace SistemaMedico.Controllers
             ViewBag.Nombre = model.Nombre_Completo;
             return model;
         }
+        public ActionResult Crear(int ID)
+        {
+            var nom = db.Datos_Atleta.Find(ID);
+            ViewBag.id = ID;
+            ViewBag.nombre = nom.Nombre_Completo;
+            IEnumerable<Carrera_Deportiva_Evento> cde = db.Carrera_Deportiva_Evento.Where(s => s.ID_Atleta == ID).ToList();
+            ViewBag.cdetabla = cde;
+            IEnumerable<Carrera_Deportiva_Familiar> cdf = db.Carrera_Deportiva_Familiar.Where(s => s.ID_Atleta == ID).ToList();
+            ViewBag.cdftabla = cdf;
+            return View();
+        }        
         public ActionResult Actualizar(int ID)
         {
             Actualizar BCVM = new Actualizar();
             ViewBag.randoma = GetDA(ID);
             ViewBag.id = ID;
+            //Lo de la tablita                        
+            //
             //Aqui va medicamentos
-            var MEIE = db.Medicamentos.Where(s => s.ID_Atleta == ID);/*hm = db.Historial_Medico.Where(s => s.ID_Atleta == ID);*/
+            var MEIE = db.Medicamentos.Where(s => s.ID_Atleta == ID && s.Estado==true);
             foreach (var i in MEIE.ToList())
             {
                 if (i.Medicamentos1 == "Relajante Musculares")
@@ -69,7 +69,7 @@ namespace SistemaMedico.Controllers
                 }
             }
             //Aqui va Alergias
-            var ALIE = db.Alergias.Where(s => s.ID_Atleta == ID);
+            var ALIE = db.Alergias.Where(s => s.ID_Atleta == ID && s.Estado == true);
             foreach (var i in ALIE.ToList())
             {
                 if (i.Alergia == null)
@@ -103,7 +103,7 @@ namespace SistemaMedico.Controllers
                 }
             }
             //Aqui va Historial Medico
-            var HMIE = db.Historial_Medico.Where(s => s.ID_Atleta == ID);
+            var HMIE = db.Historial_Medico.Where(s => s.ID_Atleta == ID && s.Estado == true);
             foreach (var i in HMIE.ToList())
             {
                 //Pregunta A
@@ -189,7 +189,7 @@ namespace SistemaMedico.Controllers
                 }
             }            
             //Aqui va Historial Familiar
-            var HFIE = db.Historia_Familiar.Where(s => s.ID_Atleta == ID);
+            var HFIE = db.Historia_Familiar.Where(s => s.ID_Atleta == ID && s.Estado == true);
             foreach (var i in HFIE.ToList())
             {
                 //Pregunta M
@@ -219,7 +219,7 @@ namespace SistemaMedico.Controllers
                 }
             }
             //Aqui va Aparato Locomotor
-            var APLIE = db.Aparato_Locomotor.Where(s => s.ID_Atleta == ID);
+            var APLIE = db.Aparato_Locomotor.Where(s => s.ID_Atleta == ID && s.Estado == true);
             foreach (var i in APLIE.ToList())
             {
                 //Pregunta Q
@@ -264,7 +264,7 @@ namespace SistemaMedico.Controllers
                 }
             }
             //Aqui va Carrera Deportiva
-            var CDIE = db.Carrera_Deportiva.Where(s => s.ID_Atleta == ID);
+            var CDIE = db.Carrera_Deportiva.Where(s => s.ID_Atleta == ID && s.Estado == true);
             foreach (var i in CDIE.ToList())
             {
                 //Cuanto Tiempo lleva Compitiendo
@@ -309,14 +309,14 @@ namespace SistemaMedico.Controllers
                 }
             }
             //Aqui va Carrera Deportiva evento
-            IEnumerable<Carrera_Deportiva_Evento> CDEIEI = db.Carrera_Deportiva_Evento.Where(s => s.ID_Atleta == ID).ToList();
+            IEnumerable<Carrera_Deportiva_Evento> CDEIEI = db.Carrera_Deportiva_Evento.Where(s => s.ID_Atleta == ID && s.Estado == true).ToList();
             ViewBag.CDTABLITA1 = CDEIEI;
             //Aqui va Carrera Deportiva familiar
-            IEnumerable<Carrera_Deportiva_Familiar> CDEFIEI = db.Carrera_Deportiva_Familiar.Where(s => s.ID_Atleta == ID).ToList();
+            IEnumerable<Carrera_Deportiva_Familiar> CDEFIEI = db.Carrera_Deportiva_Familiar.Where(s => s.ID_Atleta == ID && s.Estado == true).ToList();
             ViewBag.CDTABLITA2 = CDEFIEI;
             //Aqui va Informacion Laboral Economica
             //Situacion Laboral
-            var SLIE = db.Situacion_Laboral.Where(s => s.ID_Atleta == ID);
+            var SLIE = db.Situacion_Laboral.Where(s => s.ID_Atleta == ID && s.Estado == true);
             foreach (var i in SLIE.ToList())
             {
                 //Trabaja Actualmente
@@ -331,7 +331,7 @@ namespace SistemaMedico.Controllers
                 }
             }
             //Apoyo Economico
-            var AECIE = db.Apoyo_Economico.Where(s => s.ID_Atleta == ID);
+            var AECIE = db.Apoyo_Economico.Where(s => s.ID_Atleta == ID && s.Estado == true);
             foreach (var i in AECIE.ToList())
             {
                 if (i.Preguntas == "Las necesidades economicas del atleta para su practica deportiva son asumidas por:")
@@ -397,7 +397,7 @@ namespace SistemaMedico.Controllers
                 }
             }
             //Consiste Apoyo
-            var CAIE = db.Consiste_Apoyo.Where(s => s.ID_Atleta == ID);
+            var CAIE = db.Consiste_Apoyo.Where(s => s.ID_Atleta == ID && s.Estado == true);
             foreach (var i in CAIE.ToList())
             {
                 if (i.Preguntas == "En que consiste el apoyo que recibe:")
@@ -429,7 +429,7 @@ namespace SistemaMedico.Controllers
                 }
             }
             //Infomacion Familiar
-            var IFCIE = db.Informacion_Familiar.Where(s => s.ID_Atleta == ID);
+            var IFCIE = db.Informacion_Familiar.Where(s => s.ID_Atleta == ID && s.Estado == true);
             foreach (var i in IFCIE.ToList())
             {
                 if (i.Preguntas == "Con quien vive")
@@ -505,7 +505,7 @@ namespace SistemaMedico.Controllers
                 }
             }
             //Educacion
-            var EDIE = db.Educacion.Where(s => s.ID_Atleta == ID);
+            var EDIE = db.Educacion.Where(s => s.ID_Atleta == ID && s.Estado == true);
             foreach (var i in EDIE.ToList())
             {
                 //Estudia Actualmente
@@ -526,7 +526,7 @@ namespace SistemaMedico.Controllers
                 }
             }
             //Habitacion
-            var HABIE = db.Habitacion.Where(s => s.ID_Atleta == ID);
+            var HABIE = db.Habitacion.Where(s => s.ID_Atleta == ID && s.Estado == true);
             foreach (var i in HABIE.ToList())
             {
                 //Cómo calificaría su barrio
@@ -542,7 +542,7 @@ namespace SistemaMedico.Controllers
                 }
             }
             //Habitos
-            var HABSIE = db.Habitos.Where(s => s.ID_Atleta == ID);
+            var HABSIE = db.Habitos.Where(s => s.ID_Atleta == ID && s.Estado == true);
             foreach (var i in HABSIE.ToList())
             {
                 //¿Usted Fuma?
@@ -2281,19 +2281,23 @@ namespace SistemaMedico.Controllers
         public ActionResult Actualizar(int ID, FormCollection collection)
         {
             var fdr = DateTime.Today;
+            var fda = DateTime.Today;
             bool state = true;
             char[] caractdelimita = { ',' };
             //MEDICAMENTOS
             //Relajantes Musculares
             if (!string.IsNullOrEmpty(collection["btnrelajantes"]))
             {
-                Medicamentos M = db.Medicamentos.FirstOrDefault(s => s.ID_Atleta == ID && s.Medicamentos1 == "Relajante Musculares");
+                Medicamentos M = db.Medicamentos.FirstOrDefault(s => s.ID_Atleta == ID && s.Medicamentos1 == "Relajante Musculares" && s.Estado == true);
                 if (M == null)
                 {
                     Medicamentos Medica1 = new Medicamentos();
                     Medica1.ID_Atleta = Convert.ToInt32(collection["txt_atleta"]);
                     Medica1.Medicamentos1 = "Relajante Musculares";
                     Medica1.Descripcion = collection["txt_medicamentos"];
+                    Medica1.Fecha_de_Registro = fdr;
+                    Medica1.Fecha_de_Actualizacion = fda;
+                    Medica1.Estado = state;                                        
                     db.Medicamentos.Add(Medica1);
                     db.SaveChanges();
                 }
@@ -2303,6 +2307,7 @@ namespace SistemaMedico.Controllers
                     M.ID_Atleta = ID;
                     M.Medicamentos1 = collection["btnrelajantes"];
                     M.Descripcion = collection["txt_medicamentos"];
+                    M.Fecha_de_Actualizacion = fda;
                     db.Entry(M).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -2326,13 +2331,16 @@ namespace SistemaMedico.Controllers
             //Antiinflamatorios
             if (!string.IsNullOrEmpty(collection["antiflamatorio"]))
             {
-                Medicamentos M = db.Medicamentos.FirstOrDefault(s => s.ID_Atleta == ID && s.Medicamentos1 == "Antiinflamatorios");
+                Medicamentos M = db.Medicamentos.FirstOrDefault(s => s.ID_Atleta == ID && s.Medicamentos1 == "Antiinflamatorios" && s.Estado == true);
                 if (M == null)
                 {
                     Medicamentos Medica2 = new Medicamentos();
                     Medica2.ID_Atleta = Convert.ToInt32(collection["txt_atleta"]);
                     Medica2.Medicamentos1 = "Antiinflamatorios";
                     Medica2.Descripcion = collection["txt_antiinflamatorios"];
+                    Medica2.Fecha_de_Registro = fdr;
+                    Medica2.Fecha_de_Actualizacion = fda;
+                    Medica2.Estado = state;
                     db.Medicamentos.Add(Medica2);
                     db.SaveChanges();
                 }
@@ -2341,6 +2349,7 @@ namespace SistemaMedico.Controllers
                     M.ID_Atleta = ID;
                     M.Medicamentos1 = collection["antiflamatorio"];
                     M.Descripcion = collection["txt_antiinflamatorios"];
+                    M.Fecha_de_Actualizacion = fda;
                     db.Entry(M).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -2364,13 +2373,16 @@ namespace SistemaMedico.Controllers
             //Analgesico
             if (!string.IsNullOrEmpty(collection["analgesico"]))
             {
-                Medicamentos M = db.Medicamentos.FirstOrDefault(s => s.ID_Atleta == ID && s.Medicamentos1 == "Analgesicos");
+                Medicamentos M = db.Medicamentos.FirstOrDefault(s => s.ID_Atleta == ID && s.Medicamentos1 == "Analgesicos" && s.Estado == true);
                 if (M == null)
                 {
                     Medicamentos Medica3 = new Medicamentos();
                     Medica3.ID_Atleta = Convert.ToInt32(collection["txt_atleta"]);
                     Medica3.Medicamentos1 = "Analgesicos";
                     Medica3.Descripcion = collection["txt_analgesicos"];
+                    Medica3.Fecha_de_Registro = fdr;
+                    Medica3.Fecha_de_Actualizacion = fda;
+                    Medica3.Estado = state;
                     db.Medicamentos.Add(Medica3);
                     db.SaveChanges();
                 }
@@ -2379,6 +2391,7 @@ namespace SistemaMedico.Controllers
                     M.ID_Atleta = ID;
                     M.Medicamentos1 = collection["analgesico"];
                     M.Descripcion = collection["txt_analgesicos"];
+                    M.Fecha_de_Actualizacion = fda;
                     db.Entry(M).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -2402,13 +2415,16 @@ namespace SistemaMedico.Controllers
             //Otros
             if (!string.IsNullOrEmpty(collection["btn_otros"]))
             {
-                Medicamentos M = db.Medicamentos.FirstOrDefault(s => s.ID_Atleta == ID && s.Medicamentos1 == "Otros Medicamentos");
+                Medicamentos M = db.Medicamentos.FirstOrDefault(s => s.ID_Atleta == ID && s.Medicamentos1 == "Otros Medicamentos" && s.Estado == true);
                 if (M == null)
                 {
                     Medicamentos Medica3 = new Medicamentos();
                     Medica3.ID_Atleta = Convert.ToInt32(collection["txt_atleta"]);
                     Medica3.Medicamentos1 = "Otros Medicamentos";
                     Medica3.Descripcion = collection["txt_medicamentos_otros"];
+                    Medica3.Fecha_de_Registro = fdr;
+                    Medica3.Fecha_de_Actualizacion = fda;
+                    Medica3.Estado = state;
                     db.Medicamentos.Add(Medica3);
                     db.SaveChanges();
                 }
@@ -2417,6 +2433,7 @@ namespace SistemaMedico.Controllers
                     M.ID_Atleta = ID;
                     M.Medicamentos1 = collection["btn_otros"];
                     M.Descripcion = collection["txt_medicamentos_otros"];
+                    M.Fecha_de_Actualizacion = fda;
                     db.Entry(M).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -2441,13 +2458,16 @@ namespace SistemaMedico.Controllers
             //Medicamentos
             if (!string.IsNullOrEmpty(collection["medicamento_alergia"]))
             {
-                Alergias A = db.Alergias.FirstOrDefault(s => s.ID_Atleta == ID && s.Alergia == "Medicamentos");
+                Alergias A = db.Alergias.FirstOrDefault(s => s.ID_Atleta == ID && s.Alergia == "Medicamentos" && s.Estado == true);
                 if (A == null)
                 {
                     Alergias Alergia1 = new Alergias();
                     Alergia1.ID_Atleta = Convert.ToInt32(collection["txt_atleta"]);
                     Alergia1.Alergia = "Medicamentos";
                     Alergia1.Descripcion = collection["txt_medicamentos_alergicos"];
+                    Alergia1.Fecha_de_Registro = fdr;
+                    Alergia1.Fecha_de_Actualizacion = fda;
+                    Alergia1.Estado = state;
                     db.Alergias.Add(Alergia1);
                     db.SaveChanges();
                 }
@@ -2456,6 +2476,7 @@ namespace SistemaMedico.Controllers
                     A.ID_Atleta = ID;
                     A.Alergia = collection["medicamento_alergia"];
                     A.Descripcion = collection["txt_medicamentos_alergicos"];
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -2479,13 +2500,16 @@ namespace SistemaMedico.Controllers
             //Polen
             if (!string.IsNullOrEmpty(collection["polen"]))
             {
-                Alergias A = db.Alergias.FirstOrDefault(s => s.ID_Atleta == ID && s.Alergia == "Polen");
+                Alergias A = db.Alergias.FirstOrDefault(s => s.ID_Atleta == ID && s.Alergia == "Polen" && s.Estado == true);
                 if (A == null)
                 {
                     Alergias Alergia2 = new Alergias();
                     Alergia2.ID_Atleta = Convert.ToInt32(collection["txt_atleta"]);
                     Alergia2.Alergia = "Polen";
                     Alergia2.Descripcion = collection["txt_alergia_polen"];
+                    Alergia2.Fecha_de_Registro = fdr;
+                    Alergia2.Fecha_de_Actualizacion = fda;
+                    Alergia2.Estado = state;
                     db.Alergias.Add(Alergia2);
                     db.SaveChanges();
                 }
@@ -2494,6 +2518,7 @@ namespace SistemaMedico.Controllers
                     A.ID_Atleta = ID;
                     A.Alergia = collection["polen"];
                     A.Descripcion = collection["txt_alergia_polen"];
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -2517,13 +2542,16 @@ namespace SistemaMedico.Controllers
             //Comida
             if (!string.IsNullOrEmpty(collection["comida"]))
             {
-                Alergias A = db.Alergias.FirstOrDefault(s => s.ID_Atleta == ID && s.Alergia == "Comida");
+                Alergias A = db.Alergias.FirstOrDefault(s => s.ID_Atleta == ID && s.Alergia == "Comida" && s.Estado == true);
                 if (A == null)
                 {
                     Alergias Alergia3 = new Alergias();
                     Alergia3.ID_Atleta = Convert.ToInt32(collection["txt_atleta"]);
                     Alergia3.Alergia = "Comida";
                     Alergia3.Descripcion = collection["txtalergiacomida"];
+                    Alergia3.Fecha_de_Registro = fdr;
+                    Alergia3.Fecha_de_Actualizacion = fda;
+                    Alergia3.Estado = state;
                     db.Alergias.Add(Alergia3);
                     db.SaveChanges();
                 }
@@ -2532,6 +2560,7 @@ namespace SistemaMedico.Controllers
                     A.ID_Atleta = ID;
                     A.Alergia = collection["comida"];
                     A.Descripcion = collection["txtalergiacomida"];
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -2555,13 +2584,16 @@ namespace SistemaMedico.Controllers
             //Piquetes de Insectos
             if (!string.IsNullOrEmpty(collection["piquetesdeinsectos"]))
             {
-                Alergias A = db.Alergias.FirstOrDefault(s => s.ID_Atleta == ID && s.Alergia == "Piquetes de insectos");
+                Alergias A = db.Alergias.FirstOrDefault(s => s.ID_Atleta == ID && s.Alergia == "Piquetes de insectos" && s.Estado == true);
                 if (A == null)
                 {
                     Alergias Alergia4 = new Alergias();
                     Alergia4.ID_Atleta = Convert.ToInt32(collection["txt_atleta"]);
                     Alergia4.Alergia = "Piquetes de insectos";
                     Alergia4.Descripcion = collection["txtpiquete"];
+                    Alergia4.Fecha_de_Registro = fdr;
+                    Alergia4.Fecha_de_Actualizacion = fda;
+                    Alergia4.Estado = state;
                     db.Alergias.Add(Alergia4);
                     db.SaveChanges();
                 }
@@ -2570,6 +2602,7 @@ namespace SistemaMedico.Controllers
                     A.ID_Atleta = ID;
                     A.Alergia = collection["piquetesdeinsectos"];
                     A.Descripcion = collection["txtpiquete"];
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -2593,13 +2626,16 @@ namespace SistemaMedico.Controllers
             //Otros
             if (!string.IsNullOrEmpty(collection["otrosalergias"]))
             {
-                Alergias A = db.Alergias.FirstOrDefault(s => s.ID_Atleta == ID && s.Alergia == "Otros");
+                Alergias A = db.Alergias.FirstOrDefault(s => s.ID_Atleta == ID && s.Alergia == "Otros" && s.Estado == true);
                 if (A == null)
                 {
                     Alergias Alergia5 = new Alergias();
                     Alergia5.ID_Atleta = Convert.ToInt32(collection["txt_atleta"]);
                     Alergia5.Alergia = "Otros";
                     Alergia5.Descripcion = collection["txtotra_alergia"];
+                    Alergia5.Fecha_de_Registro = fdr;
+                    Alergia5.Fecha_de_Actualizacion = fda;
+                    Alergia5.Estado = state;
                     db.Alergias.Add(Alergia5);
                     db.SaveChanges();
                 }
@@ -2608,6 +2644,7 @@ namespace SistemaMedico.Controllers
                     A.ID_Atleta = ID;
                     A.Alergia = collection["otrosalergias"];
                     A.Descripcion = collection["txtotra_alergia"];
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -2633,7 +2670,7 @@ namespace SistemaMedico.Controllers
             //Pregunta A
             if (!string.IsNullOrEmpty(collection["pregunta_A"]))
             {
-                Historial_Medico A = db.Historial_Medico.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "¿Alguna vez un doctor te ha prohibido limitado tu participacion en deportes por alguna razon?");
+                Historial_Medico A = db.Historial_Medico.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "¿Alguna vez un doctor te ha prohibido limitado tu participacion en deportes por alguna razon?" && s.Estado == true);
                 if (A == null)
                 {
                     Historial_Medico HM1 = new Historial_Medico();
@@ -2641,6 +2678,9 @@ namespace SistemaMedico.Controllers
                     HM1.Preguntas = "¿Alguna vez un doctor te ha prohibido limitado tu participacion en deportes por alguna razon?";
                     HM1.Respuestas = collection["pregunta_A"];
                     HM1.Detalles = "";
+                    HM1.Fecha_de_Registro = fdr;
+                    HM1.Fecha_de_Actualizacion = fda;
+                    HM1.Estado = state;
                     db.Historial_Medico.Add(HM1);
                     db.SaveChanges();
                 }
@@ -2650,6 +2690,7 @@ namespace SistemaMedico.Controllers
                     A.Preguntas = "¿Alguna vez un doctor te ha prohibido limitado tu participacion en deportes por alguna razon?";
                     A.Respuestas = collection["pregunta_A"];
                     A.Detalles = "";
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -2673,7 +2714,7 @@ namespace SistemaMedico.Controllers
             //Pregunta B
             if (!string.IsNullOrEmpty(collection["pregunta_B"]))
             {
-                Historial_Medico A = db.Historial_Medico.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "¿Has sido ingresado alguna vez en el hospital?");
+                Historial_Medico A = db.Historial_Medico.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "¿Has sido ingresado alguna vez en el hospital?" && s.Estado == true);
                 if (A == null)
                 {
                     Historial_Medico HM2 = new Historial_Medico();
@@ -2681,6 +2722,9 @@ namespace SistemaMedico.Controllers
                     HM2.Preguntas = "¿Has sido ingresado alguna vez en el hospital?";
                     HM2.Respuestas = collection["pregunta_B"];
                     HM2.Detalles = "";
+                    HM2.Fecha_de_Registro = fdr;
+                    HM2.Fecha_de_Actualizacion = fda;
+                    HM2.Estado = state;
                     db.Historial_Medico.Add(HM2);
                     db.SaveChanges();
                 }
@@ -2690,6 +2734,7 @@ namespace SistemaMedico.Controllers
                     A.Preguntas = "¿Has sido ingresado alguna vez en el hospital?";
                     A.Respuestas = collection["pregunta_B"];
                     A.Detalles = "";
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -2713,7 +2758,7 @@ namespace SistemaMedico.Controllers
             //Pregunta C
             if (!string.IsNullOrEmpty(collection["pregunta_C"]))
             {
-                Historial_Medico A = db.Historial_Medico.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "¿Has tenido cirugia alguna vez?");
+                Historial_Medico A = db.Historial_Medico.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "¿Has tenido cirugia alguna vez?" && s.Estado == true);
                 if (A == null)
                 {
                     Historial_Medico HM3 = new Historial_Medico();
@@ -2721,6 +2766,9 @@ namespace SistemaMedico.Controllers
                     HM3.Preguntas = "¿Has tenido cirugia alguna vez?";
                     HM3.Respuestas = collection["pregunta_C"];
                     HM3.Detalles = "";
+                    HM3.Fecha_de_Registro = fdr;
+                    HM3.Fecha_de_Actualizacion = fda;
+                    HM3.Estado = state;
                     db.Historial_Medico.Add(HM3);
                     db.SaveChanges();
                 }
@@ -2730,6 +2778,7 @@ namespace SistemaMedico.Controllers
                     A.Preguntas = "¿Has tenido cirugia alguna vez?";
                     A.Respuestas = collection["pregunta_C"];
                     A.Detalles = "";
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -2753,7 +2802,7 @@ namespace SistemaMedico.Controllers
             //Pregunta D
             if (!string.IsNullOrEmpty(collection["pregunta_D"]))
             {
-                Historial_Medico A = db.Historial_Medico.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "¿Usas lentes o lentes de contacto?");
+                Historial_Medico A = db.Historial_Medico.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "¿Usas lentes o lentes de contacto?" && s.Estado == true);
                 if (A == null)
                 {
                     Historial_Medico HM4 = new Historial_Medico();
@@ -2761,6 +2810,9 @@ namespace SistemaMedico.Controllers
                     HM4.Preguntas = "¿Usas lentes o lentes de contacto?";
                     HM4.Respuestas = collection["pregunta_D"];
                     HM4.Detalles = "";
+                    HM4.Fecha_de_Registro = fdr;
+                    HM4.Fecha_de_Actualizacion = fda;
+                    HM4.Estado = state;
                     db.Historial_Medico.Add(HM4);
                     db.SaveChanges();
                 }
@@ -2770,6 +2822,7 @@ namespace SistemaMedico.Controllers
                     A.Preguntas = "¿Usas lentes o lentes de contacto?";
                     A.Respuestas = collection["pregunta_D"];
                     A.Detalles = "";
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -2793,7 +2846,7 @@ namespace SistemaMedico.Controllers
             //Pregunta E
             if (!string.IsNullOrEmpty(collection["pregunta_E"]))
             {
-                Historial_Medico A = db.Historial_Medico.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "¿Naciste o te falta un riñon,un ojo,un testiculo u algun otro órgano?");
+                Historial_Medico A = db.Historial_Medico.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "¿Naciste o te falta un riñon,un ojo,un testiculo u algun otro órgano?" && s.Estado == true);
                 if (A == null)
                 {
                     Historial_Medico HM5 = new Historial_Medico();
@@ -2801,6 +2854,9 @@ namespace SistemaMedico.Controllers
                     HM5.Preguntas = "¿Naciste o te falta un riñon,un ojo,un testiculo u algun otro órgano?";
                     HM5.Respuestas = collection["pregunta_E"];
                     HM5.Detalles = "";
+                    HM5.Fecha_de_Registro = fdr;
+                    HM5.Fecha_de_Actualizacion = fda;
+                    HM5.Estado = state;
                     db.Historial_Medico.Add(HM5);
                     db.SaveChanges();
                 }
@@ -2810,6 +2866,7 @@ namespace SistemaMedico.Controllers
                     A.Preguntas = "¿Naciste o te falta un riñon,un ojo,un testiculo u algun otro órgano?";
                     A.Respuestas = collection["pregunta_E"];
                     A.Detalles = "";
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -2833,7 +2890,7 @@ namespace SistemaMedico.Controllers
             //Pregunta F
             if (!string.IsNullOrEmpty(collection["pregunta_F"]))
             {
-                Historial_Medico A = db.Historial_Medico.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "¿Te has desmayado durante o despues de hacer ejercicios?");
+                Historial_Medico A = db.Historial_Medico.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "¿Te has desmayado durante o despues de hacer ejercicios?" && s.Estado == true);
                 if (A == null)
                 {
                     Historial_Medico HM6 = new Historial_Medico();
@@ -2841,6 +2898,9 @@ namespace SistemaMedico.Controllers
                     HM6.Preguntas = "¿Te has desmayado durante o despues de hacer ejercicios?";
                     HM6.Respuestas = collection["pregunta_F"];
                     HM6.Detalles = "";
+                    HM6.Fecha_de_Registro = fdr;
+                    HM6.Fecha_de_Actualizacion = fda;
+                    HM6.Estado = state;
                     db.Historial_Medico.Add(HM6);
                     db.SaveChanges();
                 }
@@ -2850,6 +2910,7 @@ namespace SistemaMedico.Controllers
                     A.Preguntas = "¿Te has desmayado durante o despues de hacer ejercicios?";
                     A.Respuestas = collection["pregunta_F"];
                     A.Detalles = "";
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -2873,7 +2934,7 @@ namespace SistemaMedico.Controllers
             //Pregunta G
             if (!string.IsNullOrEmpty(collection["pregunta_G"]))
             {
-                Historial_Medico A = db.Historial_Medico.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "¿Has tenido alguna vez molestias dolor o presion en el pecho cuando haces ejercicios?");
+                Historial_Medico A = db.Historial_Medico.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "¿Has tenido alguna vez molestias dolor o presion en el pecho cuando haces ejercicios?" && s.Estado == true);
                 if (A == null)
                 {
                     Historial_Medico HM7 = new Historial_Medico();
@@ -2881,6 +2942,9 @@ namespace SistemaMedico.Controllers
                     HM7.Preguntas = "¿Has tenido alguna vez molestias dolor o presion en el pecho cuando haces ejercicios?";
                     HM7.Respuestas = collection["pregunta_G"];
                     HM7.Detalles = "";
+                    HM7.Fecha_de_Registro = fdr;
+                    HM7.Fecha_de_Actualizacion = fda;
+                    HM7.Estado = state;
                     db.Historial_Medico.Add(HM7);
                     db.SaveChanges();
                 }
@@ -2890,6 +2954,7 @@ namespace SistemaMedico.Controllers
                     A.Preguntas = "¿Has tenido alguna vez molestias dolor o presion en el pecho cuando haces ejercicios?";
                     A.Respuestas = collection["pregunta_G"];
                     A.Detalles = "";
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -2913,7 +2978,7 @@ namespace SistemaMedico.Controllers
             //Pregunta H
             if (!string.IsNullOrEmpty(collection["pregunta_H"]))
             {
-                Historial_Medico A = db.Historial_Medico.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "¿Alguna vez has tenido palpitaciones o latidos irregulares cuando haces ejercicios?");
+                Historial_Medico A = db.Historial_Medico.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "¿Alguna vez has tenido palpitaciones o latidos irregulares cuando haces ejercicios?" && s.Estado == true);
                 if (A == null)
                 {
                     Historial_Medico HM8 = new Historial_Medico();
@@ -2921,6 +2986,9 @@ namespace SistemaMedico.Controllers
                     HM8.Preguntas = "¿Alguna vez has tenido palpitaciones o latidos irregulares cuando haces ejercicios?";
                     HM8.Respuestas = collection["pregunta_H"];
                     HM8.Detalles = "";
+                    HM8.Fecha_de_Registro = fdr;
+                    HM8.Fecha_de_Actualizacion = fda;
+                    HM8.Estado = state;
                     db.Historial_Medico.Add(HM8);
                     db.SaveChanges();
                 }
@@ -2930,6 +2998,7 @@ namespace SistemaMedico.Controllers
                     A.Preguntas = "¿Alguna vez has tenido palpitaciones o latidos irregulares cuando haces ejercicios?";
                     A.Respuestas = collection["pregunta_H"];
                     A.Detalles = "";
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -2953,11 +3022,11 @@ namespace SistemaMedico.Controllers
             //Pregunta I
             if (!string.IsNullOrEmpty(collection["pregunta_I"]))
             {
-                Historial_Medico A = db.Historial_Medico.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "¿Te ha dicho un doctor que tienes un problema del Corazón?");
-                Historial_Medico B = db.Historial_Medico.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "I.A Presion Alta");
-                Historial_Medico C = db.Historial_Medico.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "I.B Soplo en el Corazón");
-                Historial_Medico D = db.Historial_Medico.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "I.C Nivel alto de Colesterol");
-                Historial_Medico E = db.Historial_Medico.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "I.D Otro");
+                Historial_Medico A = db.Historial_Medico.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "¿Te ha dicho un doctor que tienes un problema del Corazón?" && s.Estado == true);
+                Historial_Medico B = db.Historial_Medico.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "I.A Presion Alta" && s.Estado == true);
+                Historial_Medico C = db.Historial_Medico.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "I.B Soplo en el Corazón" && s.Estado == true);
+                Historial_Medico D = db.Historial_Medico.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "I.C Nivel alto de Colesterol" && s.Estado == true);
+                Historial_Medico E = db.Historial_Medico.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "I.D Otro" && s.Estado == true);
                 if (A == null)
                 {
                     Historial_Medico HM9 = new Historial_Medico();
@@ -2965,6 +3034,9 @@ namespace SistemaMedico.Controllers
                     HM9.Preguntas = "¿Te ha dicho un doctor que tienes un problema del Corazón?";
                     HM9.Respuestas = collection["pregunta_I"];
                     HM9.Detalles = "";
+                    HM9.Fecha_de_Registro = fdr;
+                    HM9.Fecha_de_Actualizacion = fda;
+                    HM9.Estado = state;
                     db.Historial_Medico.Add(HM9);
                     db.SaveChanges();
                     //Pregunta I Anexo A
@@ -2975,6 +3047,9 @@ namespace SistemaMedico.Controllers
                         HM10.Preguntas = "I.A Presion Alta";
                         HM10.Respuestas = collection["presion_alta"];
                         HM10.Detalles = "";
+                        HM10.Fecha_de_Registro = fdr;
+                        HM10.Fecha_de_Actualizacion = fda;
+                        HM10.Estado = state;
                         db.Historial_Medico.Add(HM10);
                         db.SaveChanges();
                     }
@@ -2990,6 +3065,10 @@ namespace SistemaMedico.Controllers
                         HM11.Preguntas = "I.B Soplo en el Corazón";
                         HM11.Respuestas = collection["Soplo"];
                         HM11.Detalles = "";
+                        HM11.Fecha_de_Registro = fdr;
+                        HM11.Fecha_de_Actualizacion = fda;
+                        HM11.Estado = state;
+                        A.Fecha_de_Actualizacion = fda;
                         db.Historial_Medico.Add(HM11);
                         db.SaveChanges();
                     }
@@ -3005,6 +3084,9 @@ namespace SistemaMedico.Controllers
                         HM12.Preguntas = "I.C Nivel alto de Colesterol";
                         HM12.Respuestas = collection["colesterol"];
                         HM12.Detalles = "";
+                        HM12.Fecha_de_Registro = fdr;
+                        HM12.Fecha_de_Actualizacion = fda;
+                        HM12.Estado = state;
                         db.Historial_Medico.Add(HM12);
                         db.SaveChanges();
                     }
@@ -3020,6 +3102,9 @@ namespace SistemaMedico.Controllers
                         HM13.Preguntas = "I.D Otro";
                         HM13.Respuestas = collection["otroenfer"];
                         HM13.Detalles = collection["txt_especificacion_otros"];
+                        HM13.Fecha_de_Registro = fdr;
+                        HM13.Fecha_de_Actualizacion = fda;
+                        HM13.Estado = state;
                         db.Historial_Medico.Add(HM13);
                         db.SaveChanges();
                     }
@@ -3217,7 +3302,7 @@ namespace SistemaMedico.Controllers
             //Pregunta J
             if (!string.IsNullOrEmpty(collection["pregunta_J"]))
             {
-                Historial_Medico A = db.Historial_Medico.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "¿Alguna vez un doctor te ha pedido que te hagas una prueba del corazon¿Ej:Electrocardiograma?");
+                Historial_Medico A = db.Historial_Medico.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "¿Alguna vez un doctor te ha pedido que te hagas una prueba del corazon¿Ej:Electrocardiograma?" && s.Estado == true);
                 if (A == null)
                 {
                     Historial_Medico HM8 = new Historial_Medico();
@@ -3225,6 +3310,9 @@ namespace SistemaMedico.Controllers
                     HM8.Preguntas = "¿Alguna vez un doctor te ha pedido que te hagas una prueba del corazon¿Ej:Electrocardiograma?";
                     HM8.Respuestas = collection["pregunta_J"];
                     HM8.Detalles = "";
+                    HM8.Fecha_de_Registro = fdr;
+                    HM8.Fecha_de_Actualizacion = fda;
+                    HM8.Estado = state;
                     db.Historial_Medico.Add(HM8);
                     db.SaveChanges();
                 }
@@ -3234,6 +3322,7 @@ namespace SistemaMedico.Controllers
                     A.Preguntas = "¿Alguna vez un doctor te ha pedido que te hagas una prueba del corazon¿Ej:Electrocardiograma?";
                     A.Respuestas = collection["pregunta_J"];
                     A.Detalles = "";
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -3257,7 +3346,7 @@ namespace SistemaMedico.Controllers
             //Pregunta K
             if (!string.IsNullOrEmpty(collection["pregunta_K"]))
             {
-                Historial_Medico A = db.Historial_Medico.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "¿Te sientes mareado o te falta el aire mas de lo esperado cuando haces ejercicios?");
+                Historial_Medico A = db.Historial_Medico.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "¿Te sientes mareado o te falta el aire mas de lo esperado cuando haces ejercicios?" && s.Estado == true);
                 if (A == null)
                 {
                     Historial_Medico HM8 = new Historial_Medico();
@@ -3265,6 +3354,9 @@ namespace SistemaMedico.Controllers
                     HM8.Preguntas = "¿Te sientes mareado o te falta el aire mas de lo esperado cuando haces ejercicios?";
                     HM8.Respuestas = collection["pregunta_K"];
                     HM8.Detalles = "";
+                    HM8.Fecha_de_Registro = fdr;
+                    HM8.Fecha_de_Actualizacion = fda;
+                    HM8.Estado = state;
                     db.Historial_Medico.Add(HM8);
                     db.SaveChanges();
                 }
@@ -3274,6 +3366,7 @@ namespace SistemaMedico.Controllers
                     A.Preguntas = "¿Te sientes mareado o te falta el aire mas de lo esperado cuando haces ejercicios?";
                     A.Respuestas = collection["pregunta_K"];
                     A.Detalles = "";
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -3297,7 +3390,7 @@ namespace SistemaMedico.Controllers
             //Pregunta L
             if (!string.IsNullOrEmpty(collection["pregunta_L"]))
             {
-                Historial_Medico A = db.Historial_Medico.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "¿Has tenido una convulsion inexplicable?");
+                Historial_Medico A = db.Historial_Medico.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "¿Has tenido una convulsion inexplicable?" && s.Estado == true);
                 if (A == null)
                 {
                     Historial_Medico HM8 = new Historial_Medico();
@@ -3305,6 +3398,9 @@ namespace SistemaMedico.Controllers
                     HM8.Preguntas = "¿Has tenido una convulsion inexplicable?";
                     HM8.Respuestas = collection["pregunta_L"];
                     HM8.Detalles = "";
+                    HM8.Fecha_de_Registro = fdr;
+                    HM8.Fecha_de_Actualizacion = fda;
+                    HM8.Estado = state;
                     db.Historial_Medico.Add(HM8);
                     db.SaveChanges();
                 }
@@ -3314,6 +3410,7 @@ namespace SistemaMedico.Controllers
                     A.Preguntas = "¿Has tenido una convulsion inexplicable?";
                     A.Respuestas = collection["pregunta_L"];
                     A.Detalles = "";
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -3334,16 +3431,19 @@ namespace SistemaMedico.Controllers
                     db.SaveChanges();
                 }
             }
-            //M
+            //Pregunta M
             if (!string.IsNullOrEmpty(collection["pregunta_fam_1"]))
             {
-                Historia_Familiar A = db.Historia_Familiar.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "¿Has tenido algun familiar que haya fallecido a causa de problemas de corazon, o bien que haya fallecido de forma inexplicable antes de los 50 años?");
+                Historia_Familiar A = db.Historia_Familiar.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "¿Has tenido algun familiar que haya fallecido a causa de problemas de corazon, o bien que haya fallecido de forma inexplicable antes de los 50 años?" && s.Estado == true);
                 if (A == null)
                 {
                     Historia_Familiar HF1 = new Historia_Familiar();
                     HF1.ID_Atleta = Convert.ToInt32(collection["txt_atleta"]);
                     HF1.Preguntas = "¿Has tenido algun familiar que haya fallecido a causa de problemas de corazon, o bien que haya fallecido de forma inexplicable antes de los 50 años?";
                     HF1.Respuestas = collection["pregunta_fam_1"];
+                    HF1.Fecha_de_Registro = fdr;
+                    HF1.Fecha_de_Actualizacion = fda;
+                    HF1.Estado = state;
                     db.Historia_Familiar.Add(HF1);
                     db.SaveChanges();
                 }
@@ -3352,6 +3452,7 @@ namespace SistemaMedico.Controllers
                     A.ID_Atleta = ID;
                     A.Preguntas = "¿Has tenido algun familiar que haya fallecido a causa de problemas de corazon, o bien que haya fallecido de forma inexplicable antes de los 50 años?";
                     A.Respuestas = collection["pregunta_fam_1"];
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -3372,16 +3473,19 @@ namespace SistemaMedico.Controllers
                     db.SaveChanges();
                 }
             }
-            //N
+            //Pregunta N
             if (!string.IsNullOrEmpty(collection["pregunta_fam_2"]))
             {
-                Historia_Familiar A = db.Historia_Familiar.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "¿Alguien de tu familia tiene problemas del corazon, un marcapaso o un desfibrilador en su corazon?");
+                Historia_Familiar A = db.Historia_Familiar.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "¿Alguien de tu familia tiene problemas del corazon, un marcapaso o un desfibrilador en su corazon?" && s.Estado == true);
                 if (A == null)
                 {
                     Historia_Familiar HF2 = new Historia_Familiar();
                     HF2.ID_Atleta = Convert.ToInt32(collection["txt_atleta"]);
                     HF2.Preguntas = "¿Alguien de tu familia tiene problemas del corazon, un marcapaso o un desfibrilador en su corazon?";
                     HF2.Respuestas = collection["pregunta_fam_2"];
+                    HF2.Fecha_de_Registro = fdr;
+                    HF2.Fecha_de_Actualizacion = fda;
+                    HF2.Estado = state;
                     db.Historia_Familiar.Add(HF2);
                     db.SaveChanges();
                 }
@@ -3390,6 +3494,7 @@ namespace SistemaMedico.Controllers
                     A.ID_Atleta = ID;
                     A.Preguntas = "¿Alguien de tu familia tiene problemas del corazon, un marcapaso o un desfibrilador en su corazon?";
                     A.Respuestas = collection["pregunta_fam_2"];
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -3410,16 +3515,19 @@ namespace SistemaMedico.Controllers
                     db.SaveChanges();
                 }
             }
-            //Ñ
+            //Pregunta Ñ
             if (!string.IsNullOrEmpty(collection["pregunta_fam_3"]))
             {
-                Historia_Familiar A = db.Historia_Familiar.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "¿Ha sufrido algun familiar un desmayo inexplicable o convulsiones?");
+                Historia_Familiar A = db.Historia_Familiar.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "¿Ha sufrido algun familiar un desmayo inexplicable o convulsiones?" && s.Estado == true);
                 if (A == null)
                 {
                     Historia_Familiar HF3 = new Historia_Familiar();
                     HF3.ID_Atleta = Convert.ToInt32(collection["txt_atleta"]);
                     HF3.Preguntas = "¿Ha sufrido algun familiar un desmayo inexplicable o convulsiones?";
                     HF3.Respuestas = collection["pregunta_fam_3"];
+                    HF3.Fecha_de_Registro = fdr;
+                    HF3.Fecha_de_Actualizacion = fda;
+                    HF3.Estado = state;
                     db.Historia_Familiar.Add(HF3);
                     db.SaveChanges();
                 }
@@ -3428,6 +3536,7 @@ namespace SistemaMedico.Controllers
                     A.ID_Atleta = ID;
                     A.Preguntas = "¿Ha sufrido algun familiar un desmayo inexplicable o convulsiones?";
                     A.Respuestas = collection["pregunta_fam_3"];
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -3448,16 +3557,19 @@ namespace SistemaMedico.Controllers
                     db.SaveChanges();
                 }
             }
-            //O
+            //Pregunta O
             if (!string.IsNullOrEmpty(collection["pregunta_fam_4"]))
             {
-                Historia_Familiar A = db.Historia_Familiar.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "¿Alguien de su familia padece de Diabetes?");
+                Historia_Familiar A = db.Historia_Familiar.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "¿Alguien de su familia padece de Diabetes?" && s.Estado == true);
                 if (A == null)
                 {
                     Historia_Familiar HF4 = new Historia_Familiar();
                     HF4.ID_Atleta = Convert.ToInt32(collection["txt_atleta"]);
                     HF4.Preguntas = "¿Alguien de su familia padece de Diabetes?";
                     HF4.Respuestas = collection["pregunta_fam_4"];
+                    HF4.Fecha_de_Registro = fdr;
+                    HF4.Fecha_de_Actualizacion = fda;
+                    HF4.Estado = state;
                     db.Historia_Familiar.Add(HF4);
                     db.SaveChanges();
                 }
@@ -3466,6 +3578,7 @@ namespace SistemaMedico.Controllers
                     A.ID_Atleta = ID;
                     A.Preguntas = "¿Alguien de su familia padece de Diabetes?";
                     A.Respuestas = collection["pregunta_fam_4"];
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -3486,16 +3599,19 @@ namespace SistemaMedico.Controllers
                     db.SaveChanges();
                 }
             }
-            //P
+            //Pregunta P
             if (!string.IsNullOrEmpty(collection["pregunta_fam_5"]))
             {
-                Historia_Familiar A = db.Historia_Familiar.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "¿Alguien de su familia padece de asma?");
+                Historia_Familiar A = db.Historia_Familiar.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "¿Alguien de su familia padece de asma?" && s.Estado == true);
                 if (A == null)
                 {
                     Historia_Familiar HF5 = new Historia_Familiar();
                     HF5.ID_Atleta = Convert.ToInt32(collection["txt_atleta"]);
                     HF5.Preguntas = "¿Alguien de su familia padece de asma?";
                     HF5.Respuestas = collection["pregunta_fam_5"];
+                    HF5.Fecha_de_Registro = fdr;
+                    HF5.Fecha_de_Actualizacion = fda;
+                    HF5.Estado = state;
                     db.Historia_Familiar.Add(HF5);
                     db.SaveChanges();
                 }
@@ -3504,6 +3620,7 @@ namespace SistemaMedico.Controllers
                     A.ID_Atleta = ID;
                     A.Preguntas = "¿Alguien de su familia padece de asma?";
                     A.Respuestas = collection["pregunta_fam_5"];
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -3524,16 +3641,19 @@ namespace SistemaMedico.Controllers
                     db.SaveChanges();
                 }
             }
-            //Q
+            //Pregunta Q
             if (!string.IsNullOrEmpty(collection["pregunta_locomotor_1"]))
             {
-                Aparato_Locomotor A = db.Aparato_Locomotor.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "¿Alguna vez ha perdido un entrenamiento o evento por haber sufrido lesion en el hueso, tendon o musculo?");
+                Aparato_Locomotor A = db.Aparato_Locomotor.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "¿Alguna vez ha perdido un entrenamiento o evento por haber sufrido lesion en el hueso, tendon o musculo?" && s.Estado == true);
                 if (A == null)
                 {
                     Aparato_Locomotor AL1 = new Aparato_Locomotor();
                     AL1.ID_Atleta = Convert.ToInt32(collection["txt_atleta"]);
                     AL1.Preguntas = "¿Alguna vez ha perdido un entrenamiento o evento por haber sufrido lesion en el hueso, tendon o musculo?";
                     AL1.Respuestas = collection["pregunta_locomotor_1"];
+                    AL1.Fecha_de_Registro = fdr;
+                    AL1.Fecha_de_Actualizacion = fda;
+                    AL1.Estado = state;
                     db.Aparato_Locomotor.Add(AL1);
                     db.SaveChanges();
                 }
@@ -3542,6 +3662,7 @@ namespace SistemaMedico.Controllers
                     A.ID_Atleta = ID;
                     A.Preguntas = "¿Alguna vez ha perdido un entrenamiento o evento por haber sufrido lesion en el hueso, tendon o musculo?";
                     A.Respuestas = collection["pregunta_locomotor_1"];
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -3562,16 +3683,19 @@ namespace SistemaMedico.Controllers
                     db.SaveChanges();
                 }
             }
-            //R
+            //Pregunta R
             if (!string.IsNullOrEmpty(collection["pregunta_locomotor_2"]))
             {
-                Aparato_Locomotor A = db.Aparato_Locomotor.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "¿Te has fracturado alguna vez un hueso o dislocado una articulacion?");
+                Aparato_Locomotor A = db.Aparato_Locomotor.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "¿Te has fracturado alguna vez un hueso o dislocado una articulacion?" && s.Estado == true);
                 if (A == null)
                 {
                     Aparato_Locomotor AL2 = new Aparato_Locomotor();
                     AL2.ID_Atleta = Convert.ToInt32(collection["txt_atleta"]);
                     AL2.Preguntas = "¿Te has fracturado alguna vez un hueso o dislocado una articulacion?";
                     AL2.Respuestas = collection["pregunta_locomotor_2"];
+                    AL2.Fecha_de_Registro = fdr;
+                    AL2.Fecha_de_Actualizacion = fda;
+                    AL2.Estado = state;
                     db.Aparato_Locomotor.Add(AL2);
                     db.SaveChanges();
                 }
@@ -3580,6 +3704,7 @@ namespace SistemaMedico.Controllers
                     A.ID_Atleta = ID;
                     A.Preguntas = "¿Te has fracturado alguna vez un hueso o dislocado una articulacion?";
                     A.Respuestas = collection["pregunta_locomotor_2"];
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -3600,16 +3725,19 @@ namespace SistemaMedico.Controllers
                     db.SaveChanges();
                 }
             }
-            //S
+            //Pregunta S
             if (!string.IsNullOrEmpty(collection["pregunta_locomotor_3"]))
             {
-                Aparato_Locomotor A = db.Aparato_Locomotor.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "¿Has sufrido alguna lesion que haya requerido radiografias,tomografias, o resonancia magnetica, soporte ortopedico,como yeso o tablilla?");
+                Aparato_Locomotor A = db.Aparato_Locomotor.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "¿Has sufrido alguna lesion que haya requerido radiografias,tomografias, o resonancia magnetica, soporte ortopedico,como yeso o tablilla?" && s.Estado == true);
                 if (A == null)
                 {
                     Aparato_Locomotor AL3 = new Aparato_Locomotor();
                     AL3.ID_Atleta = Convert.ToInt32(collection["txt_atleta"]);
                     AL3.Preguntas = "¿Has sufrido alguna lesion que haya requerido radiografias,tomografias, o resonancia magnetica, soporte ortopedico,como yeso o tablilla?";
                     AL3.Respuestas = collection["pregunta_locomotor_3"];
+                    AL3.Fecha_de_Registro = fdr;
+                    AL3.Fecha_de_Actualizacion = fda;
+                    AL3.Estado = state;
                     db.Aparato_Locomotor.Add(AL3);
                     db.SaveChanges();
                 }
@@ -3618,6 +3746,7 @@ namespace SistemaMedico.Controllers
                     A.ID_Atleta = ID;
                     A.Preguntas = "¿Has sufrido alguna lesion que haya requerido radiografias,tomografias, o resonancia magnetica, soporte ortopedico,como yeso o tablilla?";
                     A.Respuestas = collection["pregunta_locomotor_3"];
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -3638,16 +3767,19 @@ namespace SistemaMedico.Controllers
                     db.SaveChanges();
                 }
             }
-            //T
+            //Pregunta T
             if (!string.IsNullOrEmpty(collection["pregunta_locomotor_4"]))
             {
-                Aparato_Locomotor A = db.Aparato_Locomotor.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "¿Usas regularmente una tablilla/soporte ortopedico u otro dispositivo de asistencia?");
+                Aparato_Locomotor A = db.Aparato_Locomotor.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "¿Usas regularmente una tablilla/soporte ortopedico u otro dispositivo de asistencia?" && s.Estado == true);
                 if (A == null)
                 {
                     Aparato_Locomotor AL4 = new Aparato_Locomotor();
                     AL4.ID_Atleta = Convert.ToInt32(collection["txt_atleta"]);
                     AL4.Preguntas = "¿Usas regularmente una tablilla/soporte ortopedico u otro dispositivo de asistencia?";
                     AL4.Respuestas = collection["pregunta_locomotor_4"];
+                    AL4.Fecha_de_Registro = fdr;
+                    AL4.Fecha_de_Actualizacion = fda;
+                    AL4.Estado = state;
                     db.Aparato_Locomotor.Add(AL4);
                     db.SaveChanges();
                 }
@@ -3656,6 +3788,7 @@ namespace SistemaMedico.Controllers
                     A.ID_Atleta = ID;
                     A.Preguntas = "¿Usas regularmente una tablilla/soporte ortopedico u otro dispositivo de asistencia?";
                     A.Respuestas = collection["pregunta_locomotor_4"];
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -3676,16 +3809,19 @@ namespace SistemaMedico.Controllers
                     db.SaveChanges();
                 }
             }
-            //U
+            //Pregunta U
             if (!string.IsNullOrEmpty(collection["pregunta_locomotor_5"]))
             {
-                Aparato_Locomotor A = db.Aparato_Locomotor.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "¿Tienes calambres frecuentes en los musculos cuando haces ejercicios?");
+                Aparato_Locomotor A = db.Aparato_Locomotor.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "¿Tienes calambres frecuentes en los musculos cuando haces ejercicios?" && s.Estado == true);
                 if (A == null)
                 {
                     Aparato_Locomotor AL5 = new Aparato_Locomotor();
                     AL5.ID_Atleta = Convert.ToInt32(collection["txt_atleta"]);
                     AL5.Preguntas = "¿Tienes calambres frecuentes en los musculos cuando haces ejercicios?";
                     AL5.Respuestas = collection["pregunta_locomotor_5"];
+                    AL5.Fecha_de_Registro = fdr;
+                    AL5.Fecha_de_Actualizacion = fda;
+                    AL5.Estado = state;
                     db.Aparato_Locomotor.Add(AL5);
                     db.SaveChanges();
                 }
@@ -3694,6 +3830,7 @@ namespace SistemaMedico.Controllers
                     A.ID_Atleta = ID;
                     A.Preguntas = "¿Tienes calambres frecuentes en los musculos cuando haces ejercicios?";
                     A.Respuestas = collection["pregunta_locomotor_5"];
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -3714,16 +3851,19 @@ namespace SistemaMedico.Controllers
                     db.SaveChanges();
                 }
             }
-            //V
+            //Pregunta V
             if (!string.IsNullOrEmpty(collection["pregunta_locomotor_6"]))
             {
-                Aparato_Locomotor A = db.Aparato_Locomotor.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "¿Has tenido Hinchazon en alguna de tus articulaciones?");
+                Aparato_Locomotor A = db.Aparato_Locomotor.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "¿Has tenido Hinchazon en alguna de tus articulaciones?" && s.Estado == true);
                 if (A == null)
                 {
                     Aparato_Locomotor AL6 = new Aparato_Locomotor();
                     AL6.ID_Atleta = Convert.ToInt32(collection["txt_atleta"]);
                     AL6.Preguntas = "¿Has tenido Hinchazon en alguna de tus articulaciones?";
                     AL6.Respuestas = collection["pregunta_locomotor_6"];
+                    AL6.Fecha_de_Registro = fdr;
+                    AL6.Fecha_de_Actualizacion = fda;
+                    AL6.Estado = state;
                     db.Aparato_Locomotor.Add(AL6);
                     db.SaveChanges();
                 }
@@ -3732,6 +3872,7 @@ namespace SistemaMedico.Controllers
                     A.ID_Atleta = ID;
                     A.Preguntas = "¿Has tenido Hinchazon en alguna de tus articulaciones?";
                     A.Respuestas = collection["pregunta_locomotor_6"];
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -3755,13 +3896,16 @@ namespace SistemaMedico.Controllers
             //CIRUGIAS
             if (!string.IsNullOrEmpty(collection["cirugias"]))
             {
-                Aparato_Locomotor A = db.Aparato_Locomotor.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "Cirugias(especifique que tipo de cirugias y cuando fue realizada)");
+                Aparato_Locomotor A = db.Aparato_Locomotor.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "Cirugias(especifique que tipo de cirugias y cuando fue realizada)" && s.Estado == true);
                 if (A == null)
                 {
                     Aparato_Locomotor AL7 = new Aparato_Locomotor();
                     AL7.ID_Atleta = Convert.ToInt32(collection["txt_atleta"]);
                     AL7.Preguntas = "Cirugias(especifique que tipo de cirugias y cuando fue realizada)";
                     AL7.Respuestas = collection["cirugias"];
+                    AL7.Fecha_de_Registro = fdr;
+                    AL7.Fecha_de_Actualizacion = fda;
+                    AL7.Estado = state;
                     db.Aparato_Locomotor.Add(AL7);
                     db.SaveChanges();
                 }
@@ -3770,6 +3914,7 @@ namespace SistemaMedico.Controllers
                     A.ID_Atleta = ID;
                     A.Preguntas = "Cirugias(especifique que tipo de cirugias y cuando fue realizada)";
                     A.Respuestas = collection["cirugias"];
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -3793,13 +3938,16 @@ namespace SistemaMedico.Controllers
             //HOSPITALIZACIONES
             if (!string.IsNullOrEmpty(collection["hospitalizaciones"]))
             {
-                Aparato_Locomotor A = db.Aparato_Locomotor.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "Hospitalizaciones(Especifique si ha sido hospitalizado,las fechas y las causas)");
+                Aparato_Locomotor A = db.Aparato_Locomotor.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "Hospitalizaciones(Especifique si ha sido hospitalizado,las fechas y las causas)" && s.Estado == true);
                 if (A == null)
                 {
                     Aparato_Locomotor AL8 = new Aparato_Locomotor();
                     AL8.ID_Atleta = Convert.ToInt32(collection["txt_atleta"]);
                     AL8.Preguntas = "Hospitalizaciones(Especifique si ha sido hospitalizado,las fechas y las causas)";
                     AL8.Respuestas = collection["hospitalizaciones"];
+                    AL8.Fecha_de_Registro = fdr;
+                    AL8.Fecha_de_Actualizacion = fda;
+                    AL8.Estado = state;
                     db.Aparato_Locomotor.Add(AL8);
                     db.SaveChanges();
                 }
@@ -3808,6 +3956,7 @@ namespace SistemaMedico.Controllers
                     A.ID_Atleta = ID;
                     A.Preguntas = "Hospitalizaciones(Especifique si ha sido hospitalizado,las fechas y las causas)";
                     A.Respuestas = collection["hospitalizaciones"];
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -3832,7 +3981,7 @@ namespace SistemaMedico.Controllers
             //Cuanto Tiempo lleva Compitiendo
             if (!string.IsNullOrEmpty(collection["compitiendo"]))
             {
-                Carrera_Deportiva A = db.Carrera_Deportiva.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "Cuanto Tiempo lleva Compitiendo");
+                Carrera_Deportiva A = db.Carrera_Deportiva.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "Cuanto Tiempo lleva Compitiendo" && s.Estado == true);
                 if (A == null)
                 {
                     Carrera_Deportiva CD1 = new Carrera_Deportiva();
@@ -3840,6 +3989,9 @@ namespace SistemaMedico.Controllers
                     CD1.Preguntas = "Cuanto Tiempo lleva Compitiendo";
                     CD1.Respuestas = collection["compitiendo"];
                     CD1.Detalles = "";
+                    CD1.Fecha_de_Registro = fdr;
+                    CD1.Fecha_de_Actualizacion = fda;
+                    CD1.Estado = state;
                     db.Carrera_Deportiva.Add(CD1);
                     db.SaveChanges();
                 }
@@ -3848,6 +4000,7 @@ namespace SistemaMedico.Controllers
                     A.ID_Atleta = ID;
                     A.Preguntas = "Cuanto Tiempo lleva Compitiendo";
                     A.Respuestas = collection["compitiendo"];
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -3861,173 +4014,70 @@ namespace SistemaMedico.Controllers
                 }
             }
             //Antecedentes Deportivos. Carrera deportiva
-            if (!string.IsNullOrEmpty(collection["prueba[]"]) || !string.IsNullOrEmpty(collection["resultado[]"]) || !string.IsNullOrEmpty(collection["fechaYlugar[]"]) || !string.IsNullOrEmpty(collection["evento[]"]))
-            {
-                ////Devuleve la tabla
-                //var CDET1 = db.Carrera_Deportiva_Evento.Where(s => s.ID_Atleta == ID);
-                ////Imprime de la vista
-                //var prueba = collection["prueba[]"];
-                //var pruebafin = "";
-                //var resul = collection["resultado[]"];
-                //var resulfin = "";
-                //var fyl = collection["fechaYlugar[]"];
-                //var fylfin = "";
-                //var eve = collection["evento[]"];
-                //var evefin = "";
-                ////Prueba
-                //foreach (var i in prueba)
-                //{
-                //    pruebafin = pruebafin + i.ToString();
-                //}
-                ////resultado
-                //foreach (var i in resul)
-                //{
-                //    resulfin = resulfin + i.ToString();
-                //}
-                ////fecha y lugar
-                //foreach (var i in fyl)
-                //{
-                //    fylfin = fylfin + i.ToString();
-                //}
-                ////evento
-                //foreach (var i in eve)
-                //{
-                //    evefin = evefin + i.ToString();
-                //}
-                //string[] sincoma = pruebafin.Split(caractdelimita);
-                //string[] sincoma2 = resulfin.Split(caractdelimita);
-                //string[] sincoma3 = fylfin.Split(caractdelimita);
-                //string[] sincoma4 = evefin.Split(caractdelimita);
-                //string[] finalsincoma1 = new string[sincoma.Rank];
-                //string mh1 = "";
-                //string mh2 = "";
-                //string mh3 = "";
-                //string mh4 = "";
-                ////Debug.WriteLine(sincoma.Length);
-                //int nosecomolequerasponer = 0, h = 0;
-                //foreach (var i in CDET1)
-                //{
-                //    nosecomolequerasponer++;
-                //    if (nosecomolequerasponer <= sincoma.Length)
-                //    {
-                //        if (i.Prueba != sincoma[nosecomolequerasponer - 1])
-                //        {
-                //            mh1 = i.Prueba;
-                //            mh2 = i.Resultado;
-                //            mh3 = i.Fecha_Y_Lugar;
-                //            mh4 = i.Evento;
-                //            h = nosecomolequerasponer;
-                //            break;
-                //        }
-                //        else
-                //        {
-                //            //No entra
-                //        }
-                //    }
-                //    else if (h == 0)
-                //    {
-                //        mh1 = i.Prueba;
-                //        mh2 = i.Resultado;
-                //        mh3 = i.Fecha_Y_Lugar;
-                //        mh4 = i.Evento;
-                //    }
-                //}
-                //if (mh1 != "")
-                //{
-                //    //Carrera_Deportiva_Evento cde = db.Carrera_Deportiva_Evento.FirstOrDefault(s => s.ID_Atleta == ID && s.Prueba == mh1);
-                //    //cde.Prueba = mh1;
-                //    //cde.Resultado = mh2;
-                //    //cde.Fecha_Y_Lugar = mh3;
-                //    //cde.Evento = mh4;
-                //    //cde.Fecha_de_Registro = fdr;
-                //    //cde.Estado = state;
-                //    //db.Carrera_Deportiva_Evento.Remove(cde);
-                //    //db.SaveChanges();
-                //    foreach (var item in CDET1)
-                //    {
-                //        for (int i = 0; i < sincoma.Length; i++)
-                //        {
-                //            if (item.Prueba != sincoma[i])
-                //            {
-                //                mh1 = item.Prueba;
-                //                mh2 = item.Resultado;
-                //                mh3 = item.Fecha_Y_Lugar;
-                //                mh4 = item.Evento;
-                                
-                //            }
-                //            else if (item.Prueba == sincoma[i])
-                //            {
-                //                Debug.WriteLine("funciona por favor");
-                //            }
-                //        }
-                //    }
-                //    Debug.WriteLine(mh1);
-                //}
-                //else
-                //{
-                //    Carrera_Deportiva_Evento cde = db.Carrera_Deportiva_Evento.FirstOrDefault(s => s.ID_Atleta == ID && s.Prueba == mh1);
-                //    cde.Prueba = mh1;
-                //    cde.Resultado = mh2;
-                //    cde.Fecha_Y_Lugar = mh3;
-                //    cde.Evento = mh4;
-                //    cde.Fecha_de_Registro = fdr;
-                //    cde.Estado = state;
-                //    db.Entry(cde).State = System.Data.Entity.EntityState.Modified;
-                //    db.SaveChanges();
-                //}
-                //Debug.WriteLine("Antecedentes Deportivos: a continuacion, mencione sus logros y medallas mas importantes en competencias como seleccionado (a) o en eventos olimpicos");
-                //Debug.WriteLine(collection["prueba[]"]);
-                //Debug.WriteLine(collection["resultado[]"]);
-                //Debug.WriteLine(collection["fechaYlugar[]"]);
-                //Debug.WriteLine(collection["evento[]"]);
-            }
+            //if (!string.IsNullOrEmpty(collection["prueba[]"]) || !string.IsNullOrEmpty(collection["resultado[]"]) || !string.IsNullOrEmpty(collection["fechaYlugar[]"]) || !string.IsNullOrEmpty(collection["evento[]"]))
+            //{
+            //    //Devuleve la tabla
+            //    var CDET1 = db.Carrera_Deportiva_Evento.Where(s => s.ID_Atleta == ID && s.Estado == true);                
+            //    if ()
+            //    {
+            //        //Crea
+            //    }
+            //    else
+            //    {
+            //        //Modifica
+            //    }
+            //}
+            //else
+            //{
+            //    //Elimina
+            //}
             //Antecedentes Deportivos. Carrera deportiva Familiar
-            if (!string.IsNullOrEmpty(collection["evento_fam[]"]) || !string.IsNullOrEmpty(collection["resultado_fam[]"]) || !string.IsNullOrEmpty(collection["fechaYlugarfam[]"]))
-            {
-                //var pruebafam = collection["evento_fam[]"];
-                //var pruebafamfin = "";
-                //var fylfam = collection["fechaYlugarfam[]"];
-                //var fylfamfin = "";
-                //var resulfam = collection["resultado_fam[]"];
-                //var resulfamfin = "";
+            //if (!string.IsNullOrEmpty(collection["evento_fam[]"]) || !string.IsNullOrEmpty(collection["resultado_fam[]"]) || !string.IsNullOrEmpty(collection["fechaYlugarfam[]"]))
+            //{
+            //    //var pruebafam = collection["evento_fam[]"];
+            //    //var pruebafamfin = "";
+            //    //var fylfam = collection["fechaYlugarfam[]"];
+            //    //var fylfamfin = "";
+            //    //var resulfam = collection["resultado_fam[]"];
+            //    //var resulfamfin = "";
 
-                ////Pruebafam
-                //foreach (var i in pruebafam)
-                //{
-                //    pruebafamfin = pruebafamfin + i.ToString();
-                //}
-                ////resulfam
-                //foreach (var i in resulfam)
-                //{
-                //    resulfamfin = resulfamfin + i.ToString();
-                //}
-                ////fylfam
-                //foreach (var i in fylfam)
-                //{
-                //    fylfamfin = fylfamfin + i.ToString();
-                //}
+            //    ////Pruebafam
+            //    //foreach (var i in pruebafam)
+            //    //{
+            //    //    pruebafamfin = pruebafamfin + i.ToString();
+            //    //}
+            //    ////resulfam
+            //    //foreach (var i in resulfam)
+            //    //{
+            //    //    resulfamfin = resulfamfin + i.ToString();
+            //    //}
+            //    ////fylfam
+            //    //foreach (var i in fylfam)
+            //    //{
+            //    //    fylfamfin = fylfamfin + i.ToString();
+            //    //}
 
-                //string[] sincoma = pruebafamfin.Split(caractdelimita);
-                //string[] sincoma3 = fylfamfin.Split(caractdelimita);
-                //string[] sincoma2 = resulfamfin.Split(caractdelimita);
-                ////guardado
-                //for (int i = 0; i < sincoma.Length; i++)
-                //{
-                //    Carrera_Deportiva_Familiar CDF1 = new Carrera_Deportiva_Familiar();
-                //    CDF1.ID_Atleta = Convert.ToInt32(collection["txt_atleta"]);
-                //    CDF1.Evento = sincoma[i];
-                //    CDF1.FechayLugar = sincoma3[i];
-                //    CDF1.Resultado = sincoma2[i];
-                //    CDF1.Fecha_de_Registro = fdr;
-                //    CDF1.Estado = state;
-                //    db.Carrera_Deportiva_Familiar.Add(CDF1);
-                //    db.SaveChanges();
-                //}
-            }
+            //    //string[] sincoma = pruebafamfin.Split(caractdelimita);
+            //    //string[] sincoma3 = fylfamfin.Split(caractdelimita);
+            //    //string[] sincoma2 = resulfamfin.Split(caractdelimita);
+            //    ////guardado
+            //    //for (int i = 0; i < sincoma.Length; i++)
+            //    //{
+            //    //    Carrera_Deportiva_Familiar CDF1 = new Carrera_Deportiva_Familiar();
+            //    //    CDF1.ID_Atleta = Convert.ToInt32(collection["txt_atleta"]);
+            //    //    CDF1.Evento = sincoma[i];
+            //    //    CDF1.FechayLugar = sincoma3[i];
+            //    //    CDF1.Resultado = sincoma2[i];
+            //    //    CDF1.Fecha_de_Registro = fdr;
+            //    //    CDF1.Estado = state;
+            //    //    db.Carrera_Deportiva_Familiar.Add(CDF1);
+            //    //    db.SaveChanges();
+            //    //}
+            //}
             //Entrenamientos
             if (!string.IsNullOrEmpty(collection["entrenamiento"]))
             {
-                Carrera_Deportiva A = db.Carrera_Deportiva.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "Entreno(dias por semana)");
+                Carrera_Deportiva A = db.Carrera_Deportiva.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "Entreno(dias por semana)" && s.Estado == true);
                 if (A == null)
                 {
                     Carrera_Deportiva CD2 = new Carrera_Deportiva();
@@ -4035,6 +4085,9 @@ namespace SistemaMedico.Controllers
                     CD2.Preguntas = "Entreno(dias por semana)";
                     CD2.Respuestas = collection["entrenamiento"];
                     CD2.Detalles = collection["sesiones"];
+                    CD2.Fecha_de_Registro = fdr;
+                    CD2.Fecha_de_Actualizacion = fda;
+                    CD2.Estado = state;
                     db.Carrera_Deportiva.Add(CD2);
                     db.SaveChanges();
                 }
@@ -4044,6 +4097,7 @@ namespace SistemaMedico.Controllers
                     A.Preguntas = "Entreno(dias por semana)";
                     A.Respuestas = collection["entrenamiento"];
                     A.Detalles = collection["sesiones"];
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -4059,7 +4113,7 @@ namespace SistemaMedico.Controllers
             //Horas de entrenamiento por sesion
             if (!string.IsNullOrEmpty(collection["por_sesion"]))
             {
-                Carrera_Deportiva A = db.Carrera_Deportiva.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "Horas de entrenamiento por sesion");
+                Carrera_Deportiva A = db.Carrera_Deportiva.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "Horas de entrenamiento por sesion" && s.Estado == true);
                 if (A == null)
                 {
                     Carrera_Deportiva CD3 = new Carrera_Deportiva();
@@ -4067,6 +4121,9 @@ namespace SistemaMedico.Controllers
                     CD3.Preguntas = "Horas de entrenamiento por sesion";
                     CD3.Respuestas = collection["por_sesion"];
                     CD3.Detalles = "";
+                    CD3.Fecha_de_Registro = fdr;
+                    CD3.Fecha_de_Actualizacion = fda;
+                    CD3.Estado = state;
                     db.Carrera_Deportiva.Add(CD3);
                     db.SaveChanges();
                 }
@@ -4075,6 +4132,7 @@ namespace SistemaMedico.Controllers
                     A.ID_Atleta = ID;
                     A.Preguntas = "Horas de entrenamiento por sesion";
                     A.Respuestas = collection["por_sesion"];
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -4090,7 +4148,7 @@ namespace SistemaMedico.Controllers
             //Modalidad de entrenamiento
             if (!string.IsNullOrEmpty(collection["modalidad_entrenamiento"]))
             {
-                Carrera_Deportiva A = db.Carrera_Deportiva.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "Modalidad de entrenamiento");
+                Carrera_Deportiva A = db.Carrera_Deportiva.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "Modalidad de entrenamiento" && s.Estado == true);
                 if (A == null)
                 {
                     Carrera_Deportiva CD4 = new Carrera_Deportiva();
@@ -4098,6 +4156,9 @@ namespace SistemaMedico.Controllers
                     CD4.Preguntas = "Modalidad de entrenamiento";
                     CD4.Respuestas = collection["modalidad_entrenamiento"];
                     CD4.Detalles = "";
+                    CD4.Fecha_de_Registro = fdr;
+                    CD4.Fecha_de_Actualizacion = fda;
+                    CD4.Estado = state;
                     db.Carrera_Deportiva.Add(CD4);
                     db.SaveChanges();
                 }
@@ -4106,6 +4167,7 @@ namespace SistemaMedico.Controllers
                     A.ID_Atleta = ID;
                     A.Preguntas = "Modalidad de entrenamiento";
                     A.Respuestas = collection["modalidad_entrenamiento"];
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -4121,7 +4183,7 @@ namespace SistemaMedico.Controllers
             //Cuento con un plan de entrenamiento que:
             if (!string.IsNullOrEmpty(collection["plan"]))
             {
-                Carrera_Deportiva A = db.Carrera_Deportiva.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "Cuento con un plan de entrenamiento que:");
+                Carrera_Deportiva A = db.Carrera_Deportiva.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "Cuento con un plan de entrenamiento que:" && s.Estado == true);
                 if (A == null)
                 {
                     Carrera_Deportiva CD5 = new Carrera_Deportiva();
@@ -4129,6 +4191,9 @@ namespace SistemaMedico.Controllers
                     CD5.Preguntas = "Cuento con un plan de entrenamiento que:";
                     CD5.Respuestas = collection["plan"];
                     CD5.Detalles = "";
+                    CD5.Fecha_de_Registro = fdr;
+                    CD5.Fecha_de_Actualizacion = fda;
+                    CD5.Estado = state;
                     db.Carrera_Deportiva.Add(CD5);
                     db.SaveChanges();
                 }
@@ -4137,6 +4202,7 @@ namespace SistemaMedico.Controllers
                     A.ID_Atleta = ID;
                     A.Preguntas = "Cuento con un plan de entrenamiento que:";
                     A.Respuestas = collection["plan"];
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -4152,7 +4218,7 @@ namespace SistemaMedico.Controllers
             //Sus actividades se adaptan a sus horararios y sesiones de entrenamiento
             if (!string.IsNullOrEmpty(collection["acti"]))
             {
-                Carrera_Deportiva A = db.Carrera_Deportiva.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "Sus actividades se adaptan a sus horararios y sesiones de entrenamiento");
+                Carrera_Deportiva A = db.Carrera_Deportiva.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "Sus actividades se adaptan a sus horararios y sesiones de entrenamiento" && s.Estado == true);
                 if (A == null)
                 {
                     Carrera_Deportiva CD6 = new Carrera_Deportiva();
@@ -4172,6 +4238,9 @@ namespace SistemaMedico.Controllers
                     {
                         CD6.Detalles = "";
                     }
+                    CD6.Fecha_de_Registro = fdr;
+                    CD6.Fecha_de_Actualizacion = fda;
+                    CD6.Estado = state;
                     db.Carrera_Deportiva.Add(CD6);
                     db.SaveChanges();
                 }
@@ -4193,6 +4262,7 @@ namespace SistemaMedico.Controllers
                     {
                         A.Detalles = "";
                     }
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -4208,7 +4278,7 @@ namespace SistemaMedico.Controllers
             //Su sitio de entrenamiento es:            
             if (!string.IsNullOrEmpty(collection["sitio"]))
             {
-                Carrera_Deportiva A = db.Carrera_Deportiva.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "Su sitio de entrenamiento es:");
+                Carrera_Deportiva A = db.Carrera_Deportiva.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "Su sitio de entrenamiento es:" && s.Estado == true);
                 if (A == null)
                 {
                     Carrera_Deportiva CD7 = new Carrera_Deportiva();
@@ -4223,6 +4293,9 @@ namespace SistemaMedico.Controllers
                     {
                         CD7.Detalles = "";
                     }
+                    CD7.Fecha_de_Registro = fdr;
+                    CD7.Fecha_de_Actualizacion = fda;
+                    CD7.Estado = state;
                     db.Carrera_Deportiva.Add(CD7);
                     db.SaveChanges();
                 }
@@ -4239,6 +4312,7 @@ namespace SistemaMedico.Controllers
                     {
                         A.Detalles = "";
                     }
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -4255,13 +4329,16 @@ namespace SistemaMedico.Controllers
             //Trabaja Actualmente            
             if (!string.IsNullOrEmpty(collection["trabaja"]))
             {
-                Situacion_Laboral A = db.Situacion_Laboral.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "Trabaja Actualmente");
+                Situacion_Laboral A = db.Situacion_Laboral.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "Trabaja Actualmente" && s.Estado == true);
                 if (A == null)
                 {
                     Situacion_Laboral SL1 = new Situacion_Laboral();
                     SL1.ID_Atleta = Convert.ToInt32(collection["txt_atleta"]);
                     SL1.Preguntas = "Trabaja Actualmente";
                     SL1.Respuestas = collection["trabaja"];
+                    SL1.Fecha_de_Registro = fdr;
+                    SL1.Fecha_de_Actualizacion = fda;
+                    SL1.Estado = state;
                     db.Situacion_Laboral.Add(SL1);
                     db.SaveChanges();
                 }
@@ -4270,6 +4347,7 @@ namespace SistemaMedico.Controllers
                     A.ID_Atleta = ID;
                     A.Preguntas = "Trabaja Actualmente";
                     A.Respuestas = collection["trabaja"];
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -4285,13 +4363,16 @@ namespace SistemaMedico.Controllers
             //Tiene personas a cargo
             if (!string.IsNullOrEmpty(collection["personas"]))
             {
-                Situacion_Laboral A = db.Situacion_Laboral.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "Tiene personas a cargo");
+                Situacion_Laboral A = db.Situacion_Laboral.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "Tiene personas a cargo" && s.Estado == true);
                 if (A == null)
                 {
                     Situacion_Laboral SL2 = new Situacion_Laboral();
                     SL2.ID_Atleta = Convert.ToInt32(collection["txt_atleta"]);
                     SL2.Preguntas = "Tiene personas a cargo";
                     SL2.Respuestas = collection["personas"];
+                    SL2.Fecha_de_Registro = fdr;
+                    SL2.Fecha_de_Actualizacion = fda;
+                    SL2.Estado = state;
                     db.Situacion_Laboral.Add(SL2);
                     db.SaveChanges();
                 }
@@ -4300,6 +4381,7 @@ namespace SistemaMedico.Controllers
                     A.ID_Atleta = ID;
                     A.Preguntas = "Tiene personas a cargo";
                     A.Respuestas = collection["personas"];
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -4317,7 +4399,7 @@ namespace SistemaMedico.Controllers
             //Atleta
             if (!string.IsNullOrEmpty(collection["NEA"]))
             {
-                Apoyo_Economico A = db.Apoyo_Economico.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "Las necesidades economicas del atleta para su practica deportiva son asumidas por:" && s.Respuestas == "Atleta");
+                Apoyo_Economico A = db.Apoyo_Economico.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "Las necesidades economicas del atleta para su practica deportiva son asumidas por:" && s.Respuestas == "Atleta" && s.Estado == true);
                 if (A == null)
                 {
                     Apoyo_Economico AE1 = new Apoyo_Economico();
@@ -4325,6 +4407,9 @@ namespace SistemaMedico.Controllers
                     AE1.Preguntas = "Las necesidades economicas del atleta para su practica deportiva son asumidas por:";
                     AE1.Respuestas = collection["NEA"];
                     AE1.Detalles = "";
+                    AE1.Fecha_de_Registro = fdr;
+                    AE1.Fecha_de_Actualizacion = fda;
+                    AE1.Estado = state;
                     db.Apoyo_Economico.Add(AE1);
                     db.SaveChanges();
                 }
@@ -4333,6 +4418,7 @@ namespace SistemaMedico.Controllers
                     A.ID_Atleta = ID;
                     A.Preguntas = "Las necesidades economicas del atleta para su practica deportiva son asumidas por:";
                     A.Respuestas = collection["NEA"];
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -4357,7 +4443,7 @@ namespace SistemaMedico.Controllers
             //Padre
             if (!string.IsNullOrEmpty(collection["NEP"]))
             {
-                Apoyo_Economico A = db.Apoyo_Economico.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "Las necesidades economicas del atleta para su practica deportiva son asumidas por:" && s.Respuestas == "Padre");
+                Apoyo_Economico A = db.Apoyo_Economico.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "Las necesidades economicas del atleta para su practica deportiva son asumidas por:" && s.Respuestas == "Padre" && s.Estado == true);
                 if (A == null)
                 {
                     Apoyo_Economico AE2 = new Apoyo_Economico();
@@ -4365,6 +4451,9 @@ namespace SistemaMedico.Controllers
                     AE2.Preguntas = "Las necesidades economicas del atleta para su practica deportiva son asumidas por:";
                     AE2.Respuestas = collection["NEP"];
                     AE2.Detalles = "";
+                    AE2.Fecha_de_Registro = fdr;
+                    AE2.Fecha_de_Actualizacion = fda;
+                    AE2.Estado = state;
                     db.Apoyo_Economico.Add(AE2);
                     db.SaveChanges();
                 }
@@ -4373,6 +4462,7 @@ namespace SistemaMedico.Controllers
                     A.ID_Atleta = ID;
                     A.Preguntas = "Las necesidades economicas del atleta para su practica deportiva son asumidas por:";
                     A.Respuestas = collection["NEP"];
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -4397,7 +4487,7 @@ namespace SistemaMedico.Controllers
             //Madre            
             if (!string.IsNullOrEmpty(collection["NEM"]))
             {
-                Apoyo_Economico A = db.Apoyo_Economico.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "Las necesidades economicas del atleta para su practica deportiva son asumidas por:" && s.Respuestas == "Madre");
+                Apoyo_Economico A = db.Apoyo_Economico.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "Las necesidades economicas del atleta para su practica deportiva son asumidas por:" && s.Respuestas == "Madre" && s.Estado == true);
                 if (A == null)
                 {
                     Apoyo_Economico AE3 = new Apoyo_Economico();
@@ -4405,6 +4495,9 @@ namespace SistemaMedico.Controllers
                     AE3.Preguntas = "Las necesidades economicas del atleta para su practica deportiva son asumidas por:";
                     AE3.Respuestas = collection["NEM"];
                     AE3.Detalles = "";
+                    AE3.Fecha_de_Registro = fdr;
+                    AE3.Fecha_de_Actualizacion = fda;
+                    AE3.Estado = state;
                     db.Apoyo_Economico.Add(AE3);
                     db.SaveChanges();
                 }
@@ -4413,6 +4506,7 @@ namespace SistemaMedico.Controllers
                     A.ID_Atleta = ID;
                     A.Preguntas = "Las necesidades economicas del atleta para su practica deportiva son asumidas por:";
                     A.Respuestas = collection["NEM"];
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -4437,7 +4531,7 @@ namespace SistemaMedico.Controllers
             //Pareja
             if (!string.IsNullOrEmpty(collection["NEPA"]))
             {
-                Apoyo_Economico A = db.Apoyo_Economico.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "Las necesidades economicas del atleta para su practica deportiva son asumidas por:" && s.Respuestas == "Pareja");
+                Apoyo_Economico A = db.Apoyo_Economico.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "Las necesidades economicas del atleta para su practica deportiva son asumidas por:" && s.Respuestas == "Pareja" && s.Estado == true);
                 if (A == null)
                 {
                     Apoyo_Economico AE4 = new Apoyo_Economico();
@@ -4445,6 +4539,9 @@ namespace SistemaMedico.Controllers
                     AE4.Preguntas = "Las necesidades economicas del atleta para su practica deportiva son asumidas por:";
                     AE4.Respuestas = collection["NEPA"];
                     AE4.Detalles = "";
+                    AE4.Fecha_de_Registro = fdr;
+                    AE4.Fecha_de_Actualizacion = fda;
+                    AE4.Estado = state;
                     db.Apoyo_Economico.Add(AE4);
                     db.SaveChanges();
                 }
@@ -4453,6 +4550,7 @@ namespace SistemaMedico.Controllers
                     A.ID_Atleta = ID;
                     A.Preguntas = "Las necesidades economicas del atleta para su practica deportiva son asumidas por:";
                     A.Respuestas = collection["NEPA"];
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -4477,7 +4575,7 @@ namespace SistemaMedico.Controllers
             //Otros Miembros de la Familia        
             if (!string.IsNullOrEmpty(collection["NEOMF"]))
             {
-                Apoyo_Economico A = db.Apoyo_Economico.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "Las necesidades economicas del atleta para su practica deportiva son asumidas por:" && s.Respuestas == "Otros Familiares");
+                Apoyo_Economico A = db.Apoyo_Economico.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "Las necesidades economicas del atleta para su practica deportiva son asumidas por:" && s.Respuestas == "Otros Familiares" && s.Estado == true);
                 if (A == null)
                 {
                     Apoyo_Economico AE5 = new Apoyo_Economico();
@@ -4485,6 +4583,9 @@ namespace SistemaMedico.Controllers
                     AE5.Preguntas = "Las necesidades economicas del atleta para su practica deportiva son asumidas por:";
                     AE5.Respuestas = collection["NEOMF"];
                     AE5.Detalles = collection["txt_otrosmiembros"];
+                    AE5.Fecha_de_Registro = fdr;
+                    AE5.Fecha_de_Actualizacion = fda;
+                    AE5.Estado = state;
                     db.Apoyo_Economico.Add(AE5);
                     db.SaveChanges();
                 }
@@ -4494,6 +4595,7 @@ namespace SistemaMedico.Controllers
                     A.Preguntas = "Las necesidades economicas del atleta para su practica deportiva son asumidas por:";
                     A.Respuestas = collection["NEOMF"];
                     A.Detalles = collection["txt_otrosmiembros"];
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -4518,7 +4620,7 @@ namespace SistemaMedico.Controllers
             //Otros Miembros Cuales        
             if (!string.IsNullOrEmpty(collection["NEOMC"]))
             {
-                Apoyo_Economico A = db.Apoyo_Economico.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "Las necesidades economicas del atleta para su practica deportiva son asumidas por:" && s.Respuestas == "Otros");
+                Apoyo_Economico A = db.Apoyo_Economico.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "Las necesidades economicas del atleta para su practica deportiva son asumidas por:" && s.Respuestas == "Otros" && s.Estado == true);
                 if (A == null)
                 {
                     Apoyo_Economico AE6 = new Apoyo_Economico();
@@ -4526,6 +4628,9 @@ namespace SistemaMedico.Controllers
                     AE6.Preguntas = "Las necesidades economicas del atleta para su practica deportiva son asumidas por:";
                     AE6.Respuestas = collection["NEOMC"];
                     AE6.Detalles = collection["txt_otrospersonas"];
+                    AE6.Fecha_de_Registro = fdr;
+                    AE6.Fecha_de_Actualizacion = fda;
+                    AE6.Estado = state;
                     db.Apoyo_Economico.Add(AE6);
                     db.SaveChanges();
                 }
@@ -4535,6 +4640,7 @@ namespace SistemaMedico.Controllers
                     A.Preguntas = "Las necesidades economicas del atleta para su practica deportiva son asumidas por:";
                     A.Respuestas = collection["NEOMC"];
                     A.Detalles = collection["txt_otrospersonas"];
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -4559,7 +4665,7 @@ namespace SistemaMedico.Controllers
             //No Recibe apoyo Monetario        
             if (!string.IsNullOrEmpty(collection["NENRAM"]))
             {
-                Apoyo_Economico A = db.Apoyo_Economico.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "Las necesidades economicas del atleta para su practica deportiva son asumidas por:" && s.Respuestas == "No recibe apoyo Monetario");
+                Apoyo_Economico A = db.Apoyo_Economico.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "Las necesidades economicas del atleta para su practica deportiva son asumidas por:" && s.Respuestas == "No recibe apoyo Monetario" && s.Estado == true);
                 if (A == null)
                 {
                     Apoyo_Economico AE7 = new Apoyo_Economico();
@@ -4567,6 +4673,9 @@ namespace SistemaMedico.Controllers
                     AE7.Preguntas = "Las necesidades economicas del atleta para su practica deportiva son asumidas por:";
                     AE7.Respuestas = collection["NENRAM"];
                     AE7.Detalles = "";
+                    AE7.Fecha_de_Registro = fdr;
+                    AE7.Fecha_de_Actualizacion = fda;
+                    AE7.Estado = state;
                     db.Apoyo_Economico.Add(AE7);
                     db.SaveChanges();
                 }
@@ -4575,6 +4684,7 @@ namespace SistemaMedico.Controllers
                     A.ID_Atleta = ID;
                     A.Preguntas = "Las necesidades economicas del atleta para su practica deportiva son asumidas por:";
                     A.Respuestas = collection["NENRAM"];
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -4599,7 +4709,7 @@ namespace SistemaMedico.Controllers
             //Apoyo Monetario de Programa Deportivo        
             if (!string.IsNullOrEmpty(collection["NEAMPD"]))
             {
-                Apoyo_Economico A = db.Apoyo_Economico.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "Las necesidades economicas del atleta para su practica deportiva son asumidas por:" && s.Respuestas == "Apoyo monetario de programa deportivo");
+                Apoyo_Economico A = db.Apoyo_Economico.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "Las necesidades economicas del atleta para su practica deportiva son asumidas por:" && s.Respuestas == "Apoyo monetario de programa deportivo" && s.Estado == true);
                 if (A == null)
                 {
                     Apoyo_Economico AE8 = new Apoyo_Economico();
@@ -4607,6 +4717,9 @@ namespace SistemaMedico.Controllers
                     AE8.Preguntas = "Las necesidades economicas del atleta para su practica deportiva son asumidas por:";
                     AE8.Respuestas = collection["NEAMPD"];
                     AE8.Detalles = "";
+                    AE8.Fecha_de_Registro = fdr;
+                    AE8.Fecha_de_Actualizacion = fda;
+                    AE8.Estado = state;
                     db.Apoyo_Economico.Add(AE8);
                     db.SaveChanges();
                 }
@@ -4615,6 +4728,7 @@ namespace SistemaMedico.Controllers
                     A.ID_Atleta = ID;
                     A.Preguntas = "Las necesidades economicas del atleta para su practica deportiva son asumidas por:";
                     A.Respuestas = collection["NEAMPD"];
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -4639,7 +4753,7 @@ namespace SistemaMedico.Controllers
             //Federacion        
             if (!string.IsNullOrEmpty(collection["NEF"]))
             {
-                Apoyo_Economico A = db.Apoyo_Economico.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "Las necesidades economicas del atleta para su practica deportiva son asumidas por:" && s.Respuestas == "Federación");
+                Apoyo_Economico A = db.Apoyo_Economico.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "Las necesidades economicas del atleta para su practica deportiva son asumidas por:" && s.Respuestas == "Federación" && s.Estado == true);
                 if (A == null)
                 {
                     Apoyo_Economico AE9 = new Apoyo_Economico();
@@ -4647,6 +4761,9 @@ namespace SistemaMedico.Controllers
                     AE9.Preguntas = "Las necesidades economicas del atleta para su practica deportiva son asumidas por:";
                     AE9.Respuestas = collection["NEF"];
                     AE9.Detalles = "";
+                    AE9.Fecha_de_Registro = fdr;
+                    AE9.Fecha_de_Actualizacion = fda;
+                    AE9.Estado = state;
                     db.Apoyo_Economico.Add(AE9);
                     db.SaveChanges();
                 }
@@ -4655,6 +4772,7 @@ namespace SistemaMedico.Controllers
                     A.ID_Atleta = ID;
                     A.Preguntas = "Las necesidades economicas del atleta para su practica deportiva son asumidas por:";
                     A.Respuestas = collection["NEF"];
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -4679,7 +4797,7 @@ namespace SistemaMedico.Controllers
             //Otros Apoyos        
             if (!string.IsNullOrEmpty(collection["NEOA"]))
             {
-                Apoyo_Economico A = db.Apoyo_Economico.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "Las necesidades economicas del atleta para su practica deportiva son asumidas por:" && s.Respuestas == "Otros apoyos");
+                Apoyo_Economico A = db.Apoyo_Economico.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "Las necesidades economicas del atleta para su practica deportiva son asumidas por:" && s.Respuestas == "Otros apoyos" && s.Estado == true);
                 if (A == null)
                 {
                     Apoyo_Economico AE10 = new Apoyo_Economico();
@@ -4687,6 +4805,9 @@ namespace SistemaMedico.Controllers
                     AE10.Preguntas = "Las necesidades economicas del atleta para su practica deportiva son asumidas por:";
                     AE10.Respuestas = collection["NEOA"];
                     AE10.Detalles = collection["txt_otrosapoyos1"];
+                    AE10.Fecha_de_Registro = fdr;
+                    AE10.Fecha_de_Actualizacion = fda;
+                    AE10.Estado = state;
                     db.Apoyo_Economico.Add(AE10);
                     db.SaveChanges();
                 }
@@ -4696,6 +4817,7 @@ namespace SistemaMedico.Controllers
                     A.Preguntas = "Las necesidades economicas del atleta para su practica deportiva son asumidas por:";
                     A.Respuestas = collection["NEOA"];
                     A.Detalles = collection["txt_otrosapoyos1"];
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -4722,13 +4844,16 @@ namespace SistemaMedico.Controllers
             //Monetario
             if (!string.IsNullOrEmpty(collection["CAM"]))
             {
-                Consiste_Apoyo A = db.Consiste_Apoyo.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "En que consiste el apoyo que recibe:" && s.Respuestas == "Monetario");
+                Consiste_Apoyo A = db.Consiste_Apoyo.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "En que consiste el apoyo que recibe:" && s.Respuestas == "Monetario" && s.Estado == true);
                 if (A == null)
                 {
                     Consiste_Apoyo CA1 = new Consiste_Apoyo();
                     CA1.ID_Atleta = Convert.ToInt32(collection["txt_atleta"]);
                     CA1.Preguntas = "En que consiste el apoyo que recibe:";
                     CA1.Respuestas = collection["CAM"];
+                    CA1.Fecha_de_Registro = fdr;
+                    CA1.Fecha_de_Actualizacion = fda;
+                    CA1.Estado = state;
                     db.Consiste_Apoyo.Add(CA1);
                     db.SaveChanges();
                 }
@@ -4737,6 +4862,7 @@ namespace SistemaMedico.Controllers
                     A.ID_Atleta = ID;
                     A.Preguntas = "En que consiste el apoyo que recibe:";
                     A.Respuestas = collection["CAM"];
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -4760,13 +4886,16 @@ namespace SistemaMedico.Controllers
             //Equipo Ciencias del Deporte
             if (!string.IsNullOrEmpty(collection["CAECD"]))
             {
-                Consiste_Apoyo A = db.Consiste_Apoyo.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "En que consiste el apoyo que recibe:" && s.Respuestas == "Equipo ciencias del deporte");
+                Consiste_Apoyo A = db.Consiste_Apoyo.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "En que consiste el apoyo que recibe:" && s.Respuestas == "Equipo ciencias del deporte" && s.Estado == true);
                 if (A == null)
                 {
                     Consiste_Apoyo CA2 = new Consiste_Apoyo();
                     CA2.ID_Atleta = Convert.ToInt32(collection["txt_atleta"]);
                     CA2.Preguntas = "En que consiste el apoyo que recibe:";
                     CA2.Respuestas = collection["CAECD"];
+                    CA2.Fecha_de_Registro = fdr;
+                    CA2.Fecha_de_Actualizacion = fda;
+                    CA2.Estado = state;
                     db.Consiste_Apoyo.Add(CA2);
                     db.SaveChanges();
                 }
@@ -4775,6 +4904,7 @@ namespace SistemaMedico.Controllers
                     A.ID_Atleta = ID;
                     A.Preguntas = "En que consiste el apoyo que recibe:";
                     A.Respuestas = collection["CAECD"];
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -4798,13 +4928,16 @@ namespace SistemaMedico.Controllers
             //Educativo
             if (!string.IsNullOrEmpty(collection["CAE"]))
             {
-                Consiste_Apoyo A = db.Consiste_Apoyo.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "En que consiste el apoyo que recibe:" && s.Respuestas == "Educativo");
+                Consiste_Apoyo A = db.Consiste_Apoyo.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "En que consiste el apoyo que recibe:" && s.Respuestas == "Educativo" && s.Estado == true);
                 if (A == null)
                 {
                     Consiste_Apoyo CA3 = new Consiste_Apoyo();
                     CA3.ID_Atleta = Convert.ToInt32(collection["txt_atleta"]);
                     CA3.Preguntas = "En que consiste el apoyo que recibe:";
                     CA3.Respuestas = collection["CAE"];
+                    CA3.Fecha_de_Registro = fdr;
+                    CA3.Fecha_de_Actualizacion = fda;
+                    CA3.Estado = state;
                     db.Consiste_Apoyo.Add(CA3);
                     db.SaveChanges();
                 }
@@ -4813,6 +4946,7 @@ namespace SistemaMedico.Controllers
                     A.ID_Atleta = ID;
                     A.Preguntas = "En que consiste el apoyo que recibe:";
                     A.Respuestas = collection["CAE"];
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -4836,13 +4970,16 @@ namespace SistemaMedico.Controllers
             //Alojamiento
             if (!string.IsNullOrEmpty(collection["CAA"]))
             {
-                Consiste_Apoyo A = db.Consiste_Apoyo.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "En que consiste el apoyo que recibe:" && s.Respuestas == "Alojamiento");
+                Consiste_Apoyo A = db.Consiste_Apoyo.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "En que consiste el apoyo que recibe:" && s.Respuestas == "Alojamiento" && s.Estado == true);
                 if (A == null)
                 {
                     Consiste_Apoyo CA4 = new Consiste_Apoyo();
                     CA4.ID_Atleta = Convert.ToInt32(collection["txt_atleta"]);
                     CA4.Preguntas = "En que consiste el apoyo que recibe:";
                     CA4.Respuestas = collection["CAA"];
+                    CA4.Fecha_de_Registro = fdr;
+                    CA4.Fecha_de_Actualizacion = fda;
+                    CA4.Estado = state;
                     db.Consiste_Apoyo.Add(CA4);
                     db.SaveChanges();
                 }
@@ -4851,6 +4988,7 @@ namespace SistemaMedico.Controllers
                     A.ID_Atleta = ID;
                     A.Preguntas = "En que consiste el apoyo que recibe:";
                     A.Respuestas = collection["CAA"];
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -4874,13 +5012,16 @@ namespace SistemaMedico.Controllers
             //Transporte
             if (!string.IsNullOrEmpty(collection["CAT"]))
             {
-                Consiste_Apoyo A = db.Consiste_Apoyo.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "En que consiste el apoyo que recibe:" && s.Respuestas == "Transporte");
+                Consiste_Apoyo A = db.Consiste_Apoyo.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "En que consiste el apoyo que recibe:" && s.Respuestas == "Transporte" && s.Estado == true);
                 if (A == null)
                 {
                     Consiste_Apoyo CA5 = new Consiste_Apoyo();
                     CA5.ID_Atleta = Convert.ToInt32(collection["txt_atleta"]);
                     CA5.Preguntas = "En que consiste el apoyo que recibe:";
                     CA5.Respuestas = collection["CAT"];
+                    CA5.Fecha_de_Registro = fdr;
+                    CA5.Fecha_de_Actualizacion = fda;
+                    CA5.Estado = state;
                     db.Consiste_Apoyo.Add(CA5);
                     db.SaveChanges();
                 }
@@ -4889,6 +5030,7 @@ namespace SistemaMedico.Controllers
                     A.ID_Atleta = ID;
                     A.Preguntas = "En que consiste el apoyo que recibe:";
                     A.Respuestas = collection["CAT"];
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -4912,13 +5054,16 @@ namespace SistemaMedico.Controllers
             //Alimentacion
             if (!string.IsNullOrEmpty(collection["CAAL"]))
             {
-                Consiste_Apoyo A = db.Consiste_Apoyo.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "En que consiste el apoyo que recibe:" && s.Respuestas == "Alimentacion");
+                Consiste_Apoyo A = db.Consiste_Apoyo.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "En que consiste el apoyo que recibe:" && s.Respuestas == "Alimentacion" && s.Estado == true);
                 if (A == null)
                 {
                     Consiste_Apoyo CA6 = new Consiste_Apoyo();
                     CA6.ID_Atleta = Convert.ToInt32(collection["txt_atleta"]);
                     CA6.Preguntas = "En que consiste el apoyo que recibe:";
                     CA6.Respuestas = collection["CAAL"];
+                    CA6.Fecha_de_Registro = fdr;
+                    CA6.Fecha_de_Actualizacion = fda;
+                    CA6.Estado = state;
                     db.Consiste_Apoyo.Add(CA6);
                     db.SaveChanges();
                 }
@@ -4927,6 +5072,7 @@ namespace SistemaMedico.Controllers
                     A.ID_Atleta = ID;
                     A.Preguntas = "En que consiste el apoyo que recibe:";
                     A.Respuestas = collection["CAAL"];
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -4951,7 +5097,7 @@ namespace SistemaMedico.Controllers
             //Practica Deportiva
             if (!string.IsNullOrEmpty(collection["IAMPD"]))
             {
-                Apoyo_Economico A = db.Apoyo_Economico.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "En que invierte su apoyo monetario" && s.Respuestas == "Practica deportiva");
+                Apoyo_Economico A = db.Apoyo_Economico.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "En que invierte su apoyo monetario" && s.Respuestas == "Practica deportiva" && s.Estado == true);
                 if (A == null)
                 {
                     Apoyo_Economico AE17 = new Apoyo_Economico();
@@ -4959,6 +5105,9 @@ namespace SistemaMedico.Controllers
                     AE17.Preguntas = "En que invierte su apoyo monetario";
                     AE17.Respuestas = collection["IAMPD"];
                     AE17.Detalles = "";
+                    AE17.Fecha_de_Registro = fdr;
+                    AE17.Fecha_de_Actualizacion = fda;
+                    AE17.Estado = state;
                     db.Apoyo_Economico.Add(AE17);
                     db.SaveChanges();
                 }
@@ -4967,6 +5116,7 @@ namespace SistemaMedico.Controllers
                     A.ID_Atleta = ID;
                     A.Preguntas = "En que invierte su apoyo monetario";
                     A.Respuestas = collection["IAMPD"];
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -4991,7 +5141,7 @@ namespace SistemaMedico.Controllers
             //Economia Familiar
             if (!string.IsNullOrEmpty(collection["IAMEF"]))
             {
-                Apoyo_Economico A = db.Apoyo_Economico.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "En que invierte su apoyo monetario" && s.Respuestas == "Economia Familiar");
+                Apoyo_Economico A = db.Apoyo_Economico.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "En que invierte su apoyo monetario" && s.Respuestas == "Economia Familiar" && s.Estado == true);
                 if (A == null)
                 {
                     Apoyo_Economico AE18 = new Apoyo_Economico();
@@ -4999,6 +5149,9 @@ namespace SistemaMedico.Controllers
                     AE18.Preguntas = "En que invierte su apoyo monetario";
                     AE18.Respuestas = collection["IAMEF"];
                     AE18.Detalles = "";
+                    AE18.Fecha_de_Registro = fdr;
+                    AE18.Fecha_de_Actualizacion = fda;
+                    AE18.Estado = state;
                     db.Apoyo_Economico.Add(AE18);
                     db.SaveChanges();
                 }
@@ -5007,6 +5160,7 @@ namespace SistemaMedico.Controllers
                     A.ID_Atleta = ID;
                     A.Preguntas = "En que invierte su apoyo monetario";
                     A.Respuestas = collection["IAMEF"];
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -5031,7 +5185,7 @@ namespace SistemaMedico.Controllers
             //Educacion
             if (!string.IsNullOrEmpty(collection["IAME"]))
             {
-                Apoyo_Economico A = db.Apoyo_Economico.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "En que invierte su apoyo monetario" && s.Respuestas == "Educacion");
+                Apoyo_Economico A = db.Apoyo_Economico.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "En que invierte su apoyo monetario" && s.Respuestas == "Educacion" && s.Estado == true);
                 if (A == null)
                 {
                     Apoyo_Economico AE19 = new Apoyo_Economico();
@@ -5039,6 +5193,9 @@ namespace SistemaMedico.Controllers
                     AE19.Preguntas = "En que invierte su apoyo monetario";
                     AE19.Respuestas = collection["IAME"];
                     AE19.Detalles = "";
+                    AE19.Fecha_de_Registro = fdr;
+                    AE19.Fecha_de_Actualizacion = fda;
+                    AE19.Estado = state;
                     db.Apoyo_Economico.Add(AE19);
                     db.SaveChanges();
                 }
@@ -5047,6 +5204,7 @@ namespace SistemaMedico.Controllers
                     A.ID_Atleta = ID;
                     A.Preguntas = "En que invierte su apoyo monetario";
                     A.Respuestas = collection["IAME"];
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -5075,7 +5233,7 @@ namespace SistemaMedico.Controllers
             //Soltero
             if (!string.IsNullOrEmpty(collection["CQVS"]))
             {
-                Informacion_Familiar A = db.Informacion_Familiar.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "Con quien vive" && s.Respuestas == "Soltero(a)");
+                Informacion_Familiar A = db.Informacion_Familiar.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "Con quien vive" && s.Respuestas == "Soltero(a)" && s.Estado == true);
                 if (A == null)
                 {
                     Informacion_Familiar IF1 = new Informacion_Familiar();
@@ -5083,6 +5241,9 @@ namespace SistemaMedico.Controllers
                     IF1.Preguntas = "Con quien vive";
                     IF1.Respuestas = collection["CQVS"];
                     IF1.Detalles = "";
+                    IF1.Fecha_de_Registro = fdr;
+                    IF1.Fecha_de_Actualizacion = fda;
+                    IF1.Estado = state;
                     db.Informacion_Familiar.Add(IF1);
                     db.SaveChanges();
                 }
@@ -5091,6 +5252,7 @@ namespace SistemaMedico.Controllers
                     A.ID_Atleta = ID;
                     A.Preguntas = "Con quien vive";
                     A.Respuestas = collection["CQVS"];
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -5115,7 +5277,7 @@ namespace SistemaMedico.Controllers
             //Acompañado
             if (!string.IsNullOrEmpty(collection["CQVA"]))
             {
-                Informacion_Familiar A = db.Informacion_Familiar.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "Con quien vive" && s.Respuestas == "Acompañado");
+                Informacion_Familiar A = db.Informacion_Familiar.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "Con quien vive" && s.Respuestas == "Acompañado" && s.Estado == true);
                 if (A == null)
                 {
                     Informacion_Familiar IF2 = new Informacion_Familiar();
@@ -5123,6 +5285,9 @@ namespace SistemaMedico.Controllers
                     IF2.Preguntas = "Con quien vive";
                     IF2.Respuestas = collection["CQVA"];
                     IF2.Detalles = "";
+                    IF2.Fecha_de_Registro = fdr;
+                    IF2.Fecha_de_Actualizacion = fda;
+                    IF2.Estado = state;
                     db.Informacion_Familiar.Add(IF2);
                     db.SaveChanges();
                 }
@@ -5131,6 +5296,7 @@ namespace SistemaMedico.Controllers
                     A.ID_Atleta = ID;
                     A.Preguntas = "Con quien vive";
                     A.Respuestas = collection["CQVA"];
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -5155,7 +5321,7 @@ namespace SistemaMedico.Controllers
             //Padre
             if (!string.IsNullOrEmpty(collection["CQVPA"]))
             {
-                Informacion_Familiar A = db.Informacion_Familiar.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "Con quien vive" && s.Respuestas == "Padre");
+                Informacion_Familiar A = db.Informacion_Familiar.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "Con quien vive" && s.Respuestas == "Padre" && s.Estado == true);
                 if (A == null)
                 {
                     Informacion_Familiar IF3 = new Informacion_Familiar();
@@ -5163,6 +5329,9 @@ namespace SistemaMedico.Controllers
                     IF3.Preguntas = "Con quien vive";
                     IF3.Respuestas = collection["CQVPA"];
                     IF3.Detalles = "";
+                    IF3.Fecha_de_Registro = fdr;
+                    IF3.Fecha_de_Actualizacion = fda;
+                    IF3.Estado = state;
                     db.Informacion_Familiar.Add(IF3);
                     db.SaveChanges();
                 }
@@ -5171,6 +5340,7 @@ namespace SistemaMedico.Controllers
                     A.ID_Atleta = ID;
                     A.Preguntas = "Con quien vive";
                     A.Respuestas = collection["CQVPA"];
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -5195,7 +5365,7 @@ namespace SistemaMedico.Controllers
             //Madre
             if (!string.IsNullOrEmpty(collection["CQVMA"]))
             {
-                Informacion_Familiar A = db.Informacion_Familiar.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "Con quien vive" && s.Respuestas == "Madre");
+                Informacion_Familiar A = db.Informacion_Familiar.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "Con quien vive" && s.Respuestas == "Madre" && s.Estado == true);
                 if (A == null)
                 {
                     Informacion_Familiar IF4 = new Informacion_Familiar();
@@ -5203,6 +5373,9 @@ namespace SistemaMedico.Controllers
                     IF4.Preguntas = "Con quien vive";
                     IF4.Respuestas = collection["CQVMA"];
                     IF4.Detalles = "";
+                    IF4.Fecha_de_Registro = fdr;
+                    IF4.Fecha_de_Actualizacion = fda;
+                    IF4.Estado = state;
                     db.Informacion_Familiar.Add(IF4);
                     db.SaveChanges();
                 }
@@ -5211,6 +5384,7 @@ namespace SistemaMedico.Controllers
                     A.ID_Atleta = ID;
                     A.Preguntas = "Con quien vive";
                     A.Respuestas = collection["CQVMA"];
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -5235,7 +5409,7 @@ namespace SistemaMedico.Controllers
             //Hermanos
             if (!string.IsNullOrEmpty(collection["CQVHE"]))
             {
-                Informacion_Familiar A = db.Informacion_Familiar.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "Con quien vive" && s.Respuestas == "Hermanos");
+                Informacion_Familiar A = db.Informacion_Familiar.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "Con quien vive" && s.Respuestas == "Hermanos" && s.Estado == true);
                 if (A == null)
                 {
                     Informacion_Familiar IF5 = new Informacion_Familiar();
@@ -5250,6 +5424,9 @@ namespace SistemaMedico.Controllers
                     {
                         IF5.Detalles = "";
                     }
+                    IF5.Fecha_de_Registro = fdr;
+                    IF5.Fecha_de_Actualizacion = fda;
+                    IF5.Estado = state;
                     db.Informacion_Familiar.Add(IF5);
                     db.SaveChanges();
                 }
@@ -5266,6 +5443,7 @@ namespace SistemaMedico.Controllers
                     {
                         A.Detalles = "";
                     }
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -5290,7 +5468,7 @@ namespace SistemaMedico.Controllers
             //Hijos
             if (!string.IsNullOrEmpty(collection["CQVHI"]))
             {
-                Informacion_Familiar A = db.Informacion_Familiar.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "Con quien vive" && s.Respuestas == "Hijos");
+                Informacion_Familiar A = db.Informacion_Familiar.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "Con quien vive" && s.Respuestas == "Hijos" && s.Estado == true);
                 if (A == null)
                 {
                     Informacion_Familiar IF6 = new Informacion_Familiar();
@@ -5305,6 +5483,9 @@ namespace SistemaMedico.Controllers
                     {
                         IF6.Detalles = "";
                     }
+                    IF6.Fecha_de_Registro = fdr;
+                    IF6.Fecha_de_Actualizacion = fda;
+                    IF6.Estado = state;
                     db.Informacion_Familiar.Add(IF6);
                     db.SaveChanges();
                 }
@@ -5321,6 +5502,7 @@ namespace SistemaMedico.Controllers
                     {
                         A.Detalles = "";
                     }
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -5345,7 +5527,7 @@ namespace SistemaMedico.Controllers
             //Otros Familiares
             if (!string.IsNullOrEmpty(collection["CQVOF"]))
             {
-                Informacion_Familiar A = db.Informacion_Familiar.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "Con quien vive" && s.Respuestas == "Otros Familiares");
+                Informacion_Familiar A = db.Informacion_Familiar.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "Con quien vive" && s.Respuestas == "Otros Familiares" && s.Estado == true);
                 if (A == null)
                 {
                     Informacion_Familiar IF7 = new Informacion_Familiar();
@@ -5360,6 +5542,9 @@ namespace SistemaMedico.Controllers
                     {
                         IF7.Detalles = "";
                     }
+                    IF7.Fecha_de_Registro = fdr;
+                    IF7.Fecha_de_Actualizacion = fda;
+                    IF7.Estado = state;
                     db.Informacion_Familiar.Add(IF7);
                     db.SaveChanges();
                 }
@@ -5376,6 +5561,7 @@ namespace SistemaMedico.Controllers
                     {
                         A.Detalles = "";
                     }
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -5400,7 +5586,7 @@ namespace SistemaMedico.Controllers
             //Otro
             if (!string.IsNullOrEmpty(collection["CQVO"]))
             {
-                Informacion_Familiar A = db.Informacion_Familiar.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "Con quien vive" && s.Respuestas == "Otros");
+                Informacion_Familiar A = db.Informacion_Familiar.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "Con quien vive" && s.Respuestas == "Otros" && s.Estado == true);
                 if (A == null)
                 {
                     Informacion_Familiar IF8 = new Informacion_Familiar();
@@ -5415,6 +5601,9 @@ namespace SistemaMedico.Controllers
                     {
                         IF8.Detalles = "";
                     }
+                    IF8.Fecha_de_Registro = fdr;
+                    IF8.Fecha_de_Actualizacion = fda;
+                    IF8.Estado = state;
                     db.Informacion_Familiar.Add(IF8);
                     db.SaveChanges();
                 }
@@ -5431,6 +5620,7 @@ namespace SistemaMedico.Controllers
                     {
                         A.Detalles = "";
                     }
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -5455,7 +5645,7 @@ namespace SistemaMedico.Controllers
             //Alojamiento Deportivo
             if (!string.IsNullOrEmpty(collection["CQVAD"]))
             {
-                Informacion_Familiar A = db.Informacion_Familiar.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "Con quien vive" && s.Respuestas == "Alojamiento Deportivo");
+                Informacion_Familiar A = db.Informacion_Familiar.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "Con quien vive" && s.Respuestas == "Alojamiento Deportivo" && s.Estado == true);
                 if (A == null)
                 {
                     Informacion_Familiar IF9 = new Informacion_Familiar();
@@ -5463,6 +5653,9 @@ namespace SistemaMedico.Controllers
                     IF9.Preguntas = "Con quien vive";
                     IF9.Respuestas = collection["CQVAD"];
                     IF9.Detalles = "";
+                    IF9.Fecha_de_Registro = fdr;
+                    IF9.Fecha_de_Actualizacion = fda;
+                    IF9.Estado = state;
                     db.Informacion_Familiar.Add(IF9);
                     db.SaveChanges();
                 }
@@ -5471,6 +5664,7 @@ namespace SistemaMedico.Controllers
                     A.ID_Atleta = ID;
                     A.Preguntas = "Con quien vive";
                     A.Respuestas = collection["CQVAD"];
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -5496,7 +5690,7 @@ namespace SistemaMedico.Controllers
             //¿Tiene Hijos?
             if (!string.IsNullOrEmpty(collection["btnhijos"]))
             {
-                Informacion_Familiar A = db.Informacion_Familiar.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "¿Tiene Hijos?");
+                Informacion_Familiar A = db.Informacion_Familiar.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "¿Tiene Hijos?" && s.Estado == true);
                 if (A == null)
                 {
                     Informacion_Familiar IF10 = new Informacion_Familiar();
@@ -5504,6 +5698,9 @@ namespace SistemaMedico.Controllers
                     IF10.Preguntas = "¿Tiene Hijos?";
                     IF10.Respuestas = collection["btnhijos"];
                     IF10.Detalles = "";
+                    IF10.Fecha_de_Registro = fdr;
+                    IF10.Fecha_de_Actualizacion = fda;
+                    IF10.Estado = state;
                     db.Informacion_Familiar.Add(IF10);
                     db.SaveChanges();
                 }
@@ -5512,6 +5709,7 @@ namespace SistemaMedico.Controllers
                     A.ID_Atleta = ID;
                     A.Preguntas = "¿Tiene Hijos?";
                     A.Respuestas = collection["btnhijos"];
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -5537,7 +5735,7 @@ namespace SistemaMedico.Controllers
             //¿Proyecta Tener Hijos?
             if (!string.IsNullOrEmpty(collection["pmhijos"]))
             {
-                Informacion_Familiar A = db.Informacion_Familiar.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "¿Proyecta Tener Hijos?");
+                Informacion_Familiar A = db.Informacion_Familiar.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "¿Proyecta Tener Hijos?" && s.Estado == true);
                 if (A == null)
                 {
                     Informacion_Familiar IF11 = new Informacion_Familiar();
@@ -5545,6 +5743,9 @@ namespace SistemaMedico.Controllers
                     IF11.Preguntas = "¿Proyecta Tener Hijos?";
                     IF11.Respuestas = collection["pmhijos"];
                     IF11.Detalles = "";
+                    IF11.Fecha_de_Registro = fdr;
+                    IF11.Fecha_de_Actualizacion = fda;
+                    IF11.Estado = state;
                     db.Informacion_Familiar.Add(IF11);
                     db.SaveChanges();
                 }
@@ -5553,6 +5754,7 @@ namespace SistemaMedico.Controllers
                     A.ID_Atleta = ID;
                     A.Preguntas = "¿Proyecta Tener Hijos?";
                     A.Respuestas = collection["pmhijos"];
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -5577,7 +5779,7 @@ namespace SistemaMedico.Controllers
             //Números de personas con las que Vive
             if (!string.IsNullOrEmpty(collection["numvive"]))
             {
-                Informacion_Familiar A = db.Informacion_Familiar.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "Números de personas con las que Vive");
+                Informacion_Familiar A = db.Informacion_Familiar.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "Números de personas con las que Vive" && s.Estado == true);
                 if (A == null)
                 {
                     Informacion_Familiar IF12 = new Informacion_Familiar();
@@ -5592,6 +5794,9 @@ namespace SistemaMedico.Controllers
                     {
                         IF12.Detalles = "";
                     }
+                    IF12.Fecha_de_Registro = fdr;
+                    IF12.Fecha_de_Actualizacion = fda;
+                    IF12.Estado = state;
                     db.Informacion_Familiar.Add(IF12);
                     db.SaveChanges();
                 }
@@ -5608,6 +5813,7 @@ namespace SistemaMedico.Controllers
                     {
                         A.Detalles = "";
                     }
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -5633,7 +5839,7 @@ namespace SistemaMedico.Controllers
             //Situacion Academica
             if (!string.IsNullOrEmpty(collection["Est"]))
             {
-                Educacion A = db.Educacion.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "Estudia Actualmente");
+                Educacion A = db.Educacion.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "Estudia Actualmente" && s.Estado == true);
                 if (A == null)
                 {
                     Educacion E1 = new Educacion();
@@ -5641,6 +5847,9 @@ namespace SistemaMedico.Controllers
                     E1.Preguntas = "Estudia Actualmente";
                     E1.Respuestas = collection["Est"];
                     E1.Detalles = "";
+                    E1.Fecha_de_Registro = fdr;
+                    E1.Fecha_de_Actualizacion = fda;
+                    E1.Estado = state;
                     db.Educacion.Add(E1);
                     db.SaveChanges();
                 }
@@ -5649,6 +5858,7 @@ namespace SistemaMedico.Controllers
                     A.ID_Atleta = ID;
                     A.Preguntas = "Estudia Actualmente";
                     A.Respuestas = collection["Est"];
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -5673,7 +5883,7 @@ namespace SistemaMedico.Controllers
             //Ultimo nivel academico terminado
             if (!string.IsNullOrEmpty(collection["nivelaca"]))
             {
-                Educacion A = db.Educacion.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "Ultimo nivel academico terminado");
+                Educacion A = db.Educacion.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "Ultimo nivel academico terminado" && s.Estado == true);
                 if (A == null)
                 {
                     Educacion E2 = new Educacion();
@@ -5688,6 +5898,9 @@ namespace SistemaMedico.Controllers
                     {
                         E2.Detalles = "";
                     }
+                    E2.Fecha_de_Registro = fdr;
+                    E2.Fecha_de_Actualizacion = fda;
+                    E2.Estado = state;
                     db.Educacion.Add(E2);
                     db.SaveChanges();
                 }
@@ -5704,6 +5917,7 @@ namespace SistemaMedico.Controllers
                     {
                         A.Detalles = "";
                     }
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -5728,7 +5942,7 @@ namespace SistemaMedico.Controllers
             // Donde Estudia
             if (!string.IsNullOrEmpty(collection["txt_donde_Estudia"]))
             {
-                Educacion A = db.Educacion.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "¿Donde Estudia?");
+                Educacion A = db.Educacion.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "¿Donde Estudia?" && s.Estado == true);
                 if (A == null)
                 {
                     Educacion E3 = new Educacion();
@@ -5736,6 +5950,9 @@ namespace SistemaMedico.Controllers
                     E3.Preguntas = "¿Donde Estudia?";
                     E3.Respuestas = collection["txt_donde_Estudia"];
                     E3.Detalles = "";
+                    E3.Fecha_de_Registro = fdr;
+                    E3.Fecha_de_Actualizacion = fda;
+                    E3.Estado = state;
                     db.Educacion.Add(E3);
                     db.SaveChanges();
                 }
@@ -5744,6 +5961,7 @@ namespace SistemaMedico.Controllers
                     A.ID_Atleta = ID;
                     A.Preguntas = "¿Donde Estudia?";
                     A.Respuestas = collection["txt_donde_Estudia"];
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -5768,7 +5986,7 @@ namespace SistemaMedico.Controllers
             //Lugar de Habitacion
             if (!string.IsNullOrEmpty(collection["barrio"]))
             {
-                Habitacion A = db.Habitacion.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "Cómo calificaría su barrio");
+                Habitacion A = db.Habitacion.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "Cómo calificaría su barrio" && s.Estado == true);
                 if (A == null)
                 {
                     Habitacion habitacion1 = new Habitacion();
@@ -5783,6 +6001,9 @@ namespace SistemaMedico.Controllers
                     {
                         habitacion1.Detalles = "";
                     }
+                    habitacion1.Fecha_de_Registro = fdr;
+                    habitacion1.Fecha_de_Actualizacion = fda;
+                    habitacion1.Estado = state;
                     db.Habitacion.Add(habitacion1);
                     db.SaveChanges();
                 }
@@ -5791,6 +6012,7 @@ namespace SistemaMedico.Controllers
                     A.ID_Atleta = ID;
                     A.Preguntas = "Cómo calificaría su barrio";
                     A.Respuestas = collection["barrio"];
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -5815,7 +6037,7 @@ namespace SistemaMedico.Controllers
             //Como describiria el estado de la vivienda en que reside actualmente
             if (!string.IsNullOrEmpty(collection["vivienda"]))
             {
-                Habitacion A = db.Habitacion.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "Como describiria el estado de la vivienda en que reside actualmente");
+                Habitacion A = db.Habitacion.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "Como describiria el estado de la vivienda en que reside actualmente" && s.Estado == true);
                 if (A == null)
                 {
                     Habitacion habitacion2 = new Habitacion();
@@ -5823,6 +6045,9 @@ namespace SistemaMedico.Controllers
                     habitacion2.Preguntas = "Como describiria el estado de la vivienda en que reside actualmente";
                     habitacion2.Respuestas = collection["vivienda"];
                     habitacion2.Detalles = "";
+                    habitacion2.Fecha_de_Registro = fdr;
+                    habitacion2.Fecha_de_Actualizacion = fda;
+                    habitacion2.Estado = state;
                     db.Habitacion.Add(habitacion2);
                     db.SaveChanges();
                 }
@@ -5831,6 +6056,7 @@ namespace SistemaMedico.Controllers
                     A.ID_Atleta = ID;
                     A.Preguntas = "Como describiria el estado de la vivienda en que reside actualmente";
                     A.Respuestas = collection["vivienda"];
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -5856,7 +6082,7 @@ namespace SistemaMedico.Controllers
             //¿Usted Fuma?
             if (!string.IsNullOrEmpty(collection["fuma"]))
             {
-                Habitos A = db.Habitos.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "¿Usted Fuma?");
+                Habitos A = db.Habitos.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "¿Usted Fuma?" && s.Estado == true);
                 if (A == null)
                 {
                     Habitos habitos1 = new Habitos();
@@ -5871,6 +6097,9 @@ namespace SistemaMedico.Controllers
                     {
                         habitos1.Detalles = "";
                     }
+                    habitos1.Fecha_de_Registro = fdr;
+                    habitos1.Fecha_de_Actualizacion = fda;
+                    habitos1.Estado = state;
                     db.Habitos.Add(habitos1);
                     db.SaveChanges();
                 }
@@ -5887,6 +6116,7 @@ namespace SistemaMedico.Controllers
                     {
                         A.Detalles = "";
                     }
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -5911,7 +6141,7 @@ namespace SistemaMedico.Controllers
             //¿Usted toma?
             if (!string.IsNullOrEmpty(collection["toma"]))
             {
-                Habitos A = db.Habitos.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "¿Usted Toma?");
+                Habitos A = db.Habitos.FirstOrDefault(s => s.ID_Atleta == ID && s.Preguntas == "¿Usted Toma?" && s.Estado == true);
                 if (A == null)
                 {
                     Habitos habitos2 = new Habitos();
@@ -5934,6 +6164,9 @@ namespace SistemaMedico.Controllers
                     {
                         habitos2.Detalles = "";
                     }
+                    habitos2.Fecha_de_Registro = fdr;
+                    habitos2.Fecha_de_Actualizacion = fda;
+                    habitos2.Estado = state;
                     db.Habitos.Add(habitos2);
                     db.SaveChanges();
                 }
@@ -5958,6 +6191,7 @@ namespace SistemaMedico.Controllers
                     {
                         A.Detalles = "";
                     }
+                    A.Fecha_de_Actualizacion = fda;
                     db.Entry(A).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                 }
@@ -5981,5 +6215,95 @@ namespace SistemaMedico.Controllers
             }
             return Redirect("~/HomeAdmin");
         }
+        //AQUI VA LOGICA TABLA 1
+        [HttpPost]
+        public JsonResult InsertarCDE(Carrera_Deportiva_Evento CDE)
+        {
+            using (MeSysEntities entities = new MeSysEntities())
+            {
+                entities.Carrera_Deportiva_Evento.Add(CDE);
+                entities.SaveChanges();
+            }
+            return Json(CDE);
+        }
+
+        [HttpPost]
+        public ActionResult ActualizarCDE(Carrera_Deportiva_Evento CDE)
+        {
+            var mh = "mis huevos ";
+            using (MeSysEntities entities = new MeSysEntities())
+            {
+                Carrera_Deportiva_Evento Actualizarcde = (from c in entities.Carrera_Deportiva_Evento where c.ID == CDE.ID select c).FirstOrDefault();
+                if (Actualizarcde != null)
+                {
+                    Actualizarcde.ID_Atleta = CDE.ID_Atleta;
+                    Actualizarcde.Prueba = CDE.Prueba;
+                    Actualizarcde.Resultado = CDE.Resultado;
+                    Actualizarcde.Fecha_Y_Lugar = CDE.Fecha_Y_Lugar;
+                    Actualizarcde.Evento = CDE.Evento;
+                    Actualizarcde.Fecha_de_Actualizacion = CDE.Fecha_de_Actualizacion;
+                    entities.SaveChanges();
+                }
+                else
+                {
+                    mh = CDE.ID.ToString();
+
+                }
+               
+
+            }
+            //return new EmptyResult();
+            return Json(new { success = true, responseText = mh }, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public ActionResult DeleteCDE(int id)
+        {
+            try
+            {
+                using (MeSysEntities db = new MeSysEntities())
+                {
+                    Carrera_Deportiva_Evento cdet = db.Carrera_Deportiva_Evento.Where(x => x.ID == id).FirstOrDefault<Carrera_Deportiva_Evento>();
+                    db.Carrera_Deportiva_Evento.Remove(cdet);
+                    db.SaveChanges();
+                }
+                // return Json(new { success = true, html = GlobalClass.RenderRazorViewToString(this, "Crear", GetAllEmployee()), message = "Deleted Successfully" }, JsonRequestBehavior.AllowGet);
+                return new EmptyResult();
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = ex.Message }, JsonRequestBehavior.AllowGet);
+            }
+        }
+        //AQUI VA LOGICA TABLA 2
+        [HttpPost]
+        public JsonResult InsertarCDF(Carrera_Deportiva_Familiar CDF)
+        {
+            using (MeSysEntities entities = new MeSysEntities())
+            {
+                entities.Carrera_Deportiva_Familiar.Add(CDF);
+                entities.SaveChanges();
+            }
+            return Json(CDF);
+        }
+        [HttpPost]
+        public ActionResult DeleteCDF(int id)
+        {
+            try
+            {
+                using (MeSysEntities db = new MeSysEntities())
+                {
+                    Carrera_Deportiva_Familiar cdft = db.Carrera_Deportiva_Familiar.Where(x => x.ID == id).FirstOrDefault<Carrera_Deportiva_Familiar>();
+                    db.Carrera_Deportiva_Familiar.Remove(cdft);
+                    db.SaveChanges();
+                }
+                // return Json(new { success = true, html = GlobalClass.RenderRazorViewToString(this, "Crear", GetAllEmployee()), message = "Deleted Successfully" }, JsonRequestBehavior.AllowGet);
+                return new EmptyResult();
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = ex.Message }, JsonRequestBehavior.AllowGet);
+            }
+        }
+        
     }
 }
