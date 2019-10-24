@@ -6,13 +6,15 @@
     {
         Response.Redirect("~/Login/Index");
     }
+     IEnumerable<SistemaMedico.Models.Notas_Evaluacion> tablaEva = (IEnumerable<SistemaMedico.Models.Notas_Evaluacion>)ViewBag.nte;
 
 }
 
 @section CrearExamenFisicoCss
 {
     <!-- Bootstrap Material Datetime Picker Css -->
-    <link href="../Recursos//plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet" />
+    <link href="/Recursos/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet" />
+   
 
 }
 
@@ -62,7 +64,7 @@
                 <form action="" method="post" autocomplete="off" enctype="multipart/form-data">
                     <div style="display:none;">
                         @*@Html.TextBoxFor(model => model.ID_Atleta, new { @Value = ViewBag.id})*@
-                        <input type="text" value="@ViewBag.id" class="form-control" name="txt_atleta">
+                        <input type="text" value="@ViewBag.id" class="form-control" name="txt_atleta" id="atleta">
                     </div>
                     <div class="row clearfix">
                         <div class="col-md-12">
@@ -237,7 +239,7 @@
                                                                 <th>Neurologico</th>
                                                                 <th>General</th>
                                                                 <th>Respiratorio</th>
-                                                             </tr>
+                                                            </tr>
                                                             <tr>
                                                                 <td>
                                                                     <input type="checkbox" name="PD" id="$11" class="chk-col-green">
@@ -397,7 +399,7 @@
                                                         <div class="col-sm-6">
                                                             <div class="form-group">
                                                                 <div class="form-line">
-                                                                    <input disable="true"  class="form-control" type="text" name="nombreAtleta" value="@ViewBag.nombre" />
+                                                                    <input disable="true" class="form-control" type="text" name="nombreAtleta" value="@ViewBag.nombre" />
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -713,26 +715,71 @@
                                     <div class="col-md-12">
                                         <fieldset>
                                             <div class="row clearfix">
-                                                <div class="col-md-12">
-                                                    <table class="table table-hover small-text" id="tb">
-                                                        <tr class="tr-header">
-                                                            <th> Fecha </th>
-                                                            <th> Nota </th>
-                                                            <th> F. </th>
-                                                            <th><a href="javascript:void(0);" style="font-size:18px;" id="addfilaNE" title="Agrega otra fila"><span class="glyphicon glyphicon-plus"></span></a></th>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <input type="text" id="Fecha" name="prueba[]" class="form-control" placeholder="Fecha" />
-                                                            </td>
-                                                            <td>
-                                                                <input type="text" id="Nota" name="resultado[]" class="form-control" placeholder="Nota">
-                                                            </td>
-                                                            <td>
-                                                                <input type="text" id="F" name="fechaYlugar[]" class="form-control" placeholder="F" />
-                                                            </td>
-                                                            <td><a href="javascript:void(0);" class="remove"><span class="glyphicon glyphicon-remove"></span></a></td>
-                                                        </tr>
+                                                <div class="col-md-12 m-t-10 table-responsive">
+                                                    <table id="tblNdE" class="table table-striped table-bordered table-hover table-responsive-md responsive-table" cellpadding="0" cellspacing="0">
+                                                        <thead class="thead-dark">
+                                                            <tr>
+                                                                <th style="text-align:center; width:100px">Fecha</th>
+                                                                <th style="text-align:center; width:150px">Notas</th>
+                                                                <th style="text-align:center; width:150px">F.</th>
+                                                                <th style="text-align:center; width:150px">Acción</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            @foreach (var CDET in tablaEva)
+                                                            {
+                                                                <tr>
+                                                                    <td class="ID" style="display:none">
+                                                                        <span>@CDET.ID</span>
+                                                                        <input type="text" id="idcde" value="@CDET.ID" style="display:none" />
+                                                                    </td>
+                                                                    <td class="atletaid" style="display:none">
+                                                                        <span>@CDET.ID_Atleta</span>
+                                                                    </td>
+                                                                    <td class="prueba" style="text-align:center;">
+                                                                        <span>@CDET.Fecha</span>
+                                                                        <input type="text" id="idprueba" value="@CDET.Fecha" style="display:none" />
+                                                                    </td>
+                                                                    <td class="resultado" style="text-align:center;">
+                                                                        <span>@CDET.Notas</span>
+                                                                        <input type="text" value="@CDET.Notas" style="display:none" />
+                                                                    </td>
+                                                                    <td class="fyl" style="text-align:center;">
+                                                                        <span>@CDET.F</span>
+                                                                        <input type="text" value="@CDET.F" style="display:none" />
+                                                                    </td>
+                                                                    <td style="text-align:center;">
+                                                                        <button class="btn btn-danger btn-circle waves-effect waves-circle waves-float elimina" type="button"><i class="fa fa-trash fa-md"></i></button>
+                                                                    </td>
+                                                                </tr>
+                                                            }
+                                                        </tbody>
+                                                    </table>
+                                                    <table class="table table-striped table-bordered table-hover">
+                                                        <thead class="thead-dark">
+                                                            <tr>
+                                                                <th style="text-align:center; width:100px">Fecha</th>
+                                                                <th style="text-align:center; width:150px">Notas</th>
+                                                                <th style="text-align:center; width:150px">F.</th>
+                                                                <th style="text-align:center; width:150px">Acción</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td style="text-align:center; width: 150px">
+                                                                    <input type="text" id="txtFechant" style="width:140px" />
+                                                                </td>
+                                                                <td style="text-align:center; width: 150px">
+                                                                    <input type="text" id="txtNotas" style="width:140px" />
+                                                                </td>
+                                                                <td style="text-align:center; width: 150px">
+                                                                    <input type="text" id="txtF" style="width:140px" />
+                                                                </td>
+                                                                <td style="text-align:center; width: 200px">
+                                                                    <button class="btn bg-teal waves-effect" type="button" id="btnAddtblEv"><i class="material-icons">check_circle</i><span>Agregar</span></button>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
                                                     </table>
                                                 </div>
                                             </div>
@@ -767,9 +814,9 @@
 @section CrearExamenFisicoScript
 {
 
-    <script src="~/Recursos/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
+    <!-- <script src="/Recursos/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>-->
     <!-- Input Mask Plugin Js -->
-    <script src="~/Recursos/plugins/jquery-inputmask/jquery.inputmask.bundle.js"></script>
+    <script src="/Recursos/plugins/jquery-inputmask/jquery.inputmask.bundle.js"></script>
     <script>
         $(function () {
             $('#addfilaNE').on('click', function () {
@@ -805,7 +852,7 @@
             var today = (day) + "/" + (month) + "/" + now.getFullYear();
             $("#fecha").text = today;
             $("#fecha").val(today);
-            console.log(today);
+            //console.log(today);
         });
     </script>
     <script>
@@ -829,7 +876,7 @@
             }
         }
     </script>
-    <script>    
+    <script>
         $(document).ready(function () {
             //Siempre que salgamos de un campo de texto, se chequeará esta función
             $("#form input").keyup(function () {
@@ -862,6 +909,6 @@
             }
         }
     </script>
-          
-    
+
+    <script src="~/Recursos/js/tablaNEvaluacionCrear.js"></script>
 }

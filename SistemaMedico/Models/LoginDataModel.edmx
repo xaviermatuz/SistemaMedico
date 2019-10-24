@@ -352,6 +352,18 @@
           <Property Name="Fecha_de_Actualizacion" Type="date" />
           <Property Name="Estado" Type="bit" />
         </EntityType>
+        <EntityType Name="Lesiones">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Atleta" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Tipo" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Fecha_de_Registro" Type="date" />
+          <Property Name="Fecha_de_Actualizacion" Type="date" />
+          <Property Name="Estado" Type="bit" />
+        </EntityType>
         <EntityType Name="Medicamentos">
           <Key>
             <PropertyRef Name="ID" />
@@ -380,6 +392,19 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ID_Departamento" Type="int" Nullable="false" />
           <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Notas_Evaluacion">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Atleta" Type="int" Nullable="false" />
+          <Property Name="Fecha" Type="nvarchar" MaxLength="50" />
+          <Property Name="Notas" Type="nvarchar(max)" />
+          <Property Name="F" Type="nvarchar(max)" />
+          <Property Name="Fecha_de_Registro" Type="date" />
+          <Property Name="Fecha_de_Actualizacion" Type="date" />
+          <Property Name="Estado" Type="bit" />
         </EntityType>
         <EntityType Name="Roles">
           <Key>
@@ -780,6 +805,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Notas_Evaluacion_Datos_Atleta">
+          <End Role="Datos_Atleta" Type="Self.Datos_Atleta" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Notas_Evaluacion" Type="Self.Notas_Evaluacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Datos_Atleta">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Notas_Evaluacion">
+              <PropertyRef Name="ID_Atleta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Situacion_Laboral_Datos_Atleta">
           <End Role="Datos_Atleta" Type="Self.Datos_Atleta" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -837,9 +876,11 @@
           <EntitySet Name="Historial_Medico" EntityType="Self.Historial_Medico" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Hospital" EntityType="Self.Hospital" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Informacion_Familiar" EntityType="Self.Informacion_Familiar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Lesiones" EntityType="Self.Lesiones" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Medicamentos" EntityType="Self.Medicamentos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Medico" EntityType="Self.Medico" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Municipio" EntityType="Self.Municipio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Notas_Evaluacion" EntityType="Self.Notas_Evaluacion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Situacion_Laboral" EntityType="Self.Situacion_Laboral" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
@@ -947,6 +988,10 @@
           <AssociationSet Name="FK_Municipio_Departamentos" Association="Self.FK_Municipio_Departamentos">
             <End Role="Departamentos" EntitySet="Departamentos" />
             <End Role="Municipio" EntitySet="Municipio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Notas_Evaluacion_Datos_Atleta" Association="Self.FK_Notas_Evaluacion_Datos_Atleta">
+            <End Role="Datos_Atleta" EntitySet="Datos_Atleta" />
+            <End Role="Notas_Evaluacion" EntitySet="Notas_Evaluacion" />
           </AssociationSet>
           <AssociationSet Name="FK_Situacion_Laboral_Datos_Atleta" Association="Self.FK_Situacion_Laboral_Datos_Atleta">
             <End Role="Datos_Atleta" EntitySet="Datos_Atleta" />
@@ -1183,6 +1228,7 @@
           <NavigationProperty Name="Medicamentos" Relationship="Self.FK_Medicamentos_Datos_Atleta" FromRole="Datos_Atleta" ToRole="Medicamentos" />
           <NavigationProperty Name="Situacion_Laboral" Relationship="Self.FK_Situacion_Laboral_Datos_Atleta" FromRole="Datos_Atleta" ToRole="Situacion_Laboral" />
           <Property Name="Fecha_de_Actualizacion" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Notas_Evaluacion" Relationship="MeSysModel.FK_Notas_Evaluacion_Datos_Atleta" FromRole="Datos_Atleta" ToRole="Notas_Evaluacion" />
         </EntityType>
         <EntityType Name="Departamentos">
           <Key>
@@ -1968,7 +2014,53 @@
             <End Role="Roles" EntitySet="Roles" />
             <End Role="Usuarios" EntitySet="Usuarios" />
           </AssociationSet>
+          <EntitySet Name="Lesiones" EntityType="MeSysModel.Lesiones" />
+          <EntitySet Name="Notas_Evaluacion" EntityType="MeSysModel.Notas_Evaluacion" />
+          <AssociationSet Name="FK_Notas_Evaluacion_Datos_Atleta" Association="MeSysModel.FK_Notas_Evaluacion_Datos_Atleta">
+            <End Role="Datos_Atleta" EntitySet="Datos_Atleta" />
+            <End Role="Notas_Evaluacion" EntitySet="Notas_Evaluacion" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Lesiones">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Atleta" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Tipo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha_de_Registro" Type="DateTime" Precision="0" />
+          <Property Name="Fecha_de_Actualizacion" Type="DateTime" Precision="0" />
+          <Property Name="Estado" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Notas_Evaluacion">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Atleta" Type="Int32" Nullable="false" />
+          <Property Name="Fecha" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Notas" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="F" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Fecha_de_Registro" Type="DateTime" Precision="0" />
+          <Property Name="Fecha_de_Actualizacion" Type="DateTime" Precision="0" />
+          <Property Name="Estado" Type="Boolean" />
+          <NavigationProperty Name="Datos_Atleta" Relationship="MeSysModel.FK_Notas_Evaluacion_Datos_Atleta" FromRole="Notas_Evaluacion" ToRole="Datos_Atleta" />
+        </EntityType>
+        <Association Name="FK_Notas_Evaluacion_Datos_Atleta">
+          <End Type="MeSysModel.Datos_Atleta" Role="Datos_Atleta" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="MeSysModel.Notas_Evaluacion" Role="Notas_Evaluacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Datos_Atleta">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Notas_Evaluacion">
+              <PropertyRef Name="ID_Atleta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2423,6 +2515,33 @@
                 <ScalarProperty Name="Correo" ColumnName="Correo" />
                 <ScalarProperty Name="ID_Rol" ColumnName="ID_Rol" />
                 <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Lesiones">
+            <EntityTypeMapping TypeName="MeSysModel.Lesiones">
+              <MappingFragment StoreEntitySet="Lesiones">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Fecha_de_Actualizacion" ColumnName="Fecha_de_Actualizacion" />
+                <ScalarProperty Name="Fecha_de_Registro" ColumnName="Fecha_de_Registro" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="ID_Atleta" ColumnName="ID_Atleta" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Notas_Evaluacion">
+            <EntityTypeMapping TypeName="MeSysModel.Notas_Evaluacion">
+              <MappingFragment StoreEntitySet="Notas_Evaluacion">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Fecha_de_Actualizacion" ColumnName="Fecha_de_Actualizacion" />
+                <ScalarProperty Name="Fecha_de_Registro" ColumnName="Fecha_de_Registro" />
+                <ScalarProperty Name="F" ColumnName="F" />
+                <ScalarProperty Name="Notas" ColumnName="Notas" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="ID_Atleta" ColumnName="ID_Atleta" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

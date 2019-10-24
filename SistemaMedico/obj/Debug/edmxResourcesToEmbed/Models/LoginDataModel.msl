@@ -452,5 +452,32 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Lesiones">
+      <EntityTypeMapping TypeName="MeSysModel.Lesiones">
+        <MappingFragment StoreEntitySet="Lesiones">
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Fecha_de_Actualizacion" ColumnName="Fecha_de_Actualizacion" />
+          <ScalarProperty Name="Fecha_de_Registro" ColumnName="Fecha_de_Registro" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="ID_Atleta" ColumnName="ID_Atleta" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Notas_Evaluacion">
+      <EntityTypeMapping TypeName="MeSysModel.Notas_Evaluacion">
+        <MappingFragment StoreEntitySet="Notas_Evaluacion">
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Fecha_de_Actualizacion" ColumnName="Fecha_de_Actualizacion" />
+          <ScalarProperty Name="Fecha_de_Registro" ColumnName="Fecha_de_Registro" />
+          <ScalarProperty Name="F" ColumnName="F" />
+          <ScalarProperty Name="Notas" ColumnName="Notas" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="ID_Atleta" ColumnName="ID_Atleta" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

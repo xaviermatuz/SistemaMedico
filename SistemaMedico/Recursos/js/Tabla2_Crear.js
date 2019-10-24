@@ -26,7 +26,10 @@ $("body").on("click", "#btnaddcdf", function () {
 });
 
 function addrow2(id, idatleta, resultado, fyl, evento) {
-    campo = '<tr><td style="display:none;"> <span> ' + id + '</span> <input type="text" style="display:none;" value="' + id + '" id="idcde"  /></td><td style="display:none;">' + idatleta + '</td><td style="text-align:center;">' + evento + '</td><td style="text-align:center;">' + fyl + '</td><td style="text-align:center;">' + resultado + '</td><td style="text-align:center;"><button class="btn btn-danger btn-circle waves-effect waves-circle waves-float elimina" type="button"><i class="fa fa-trash fa-md"></i></button></td></tr>';
+    campo = '<tr><td style="display:none;"> <span> ' + id + '</span> <input type="text" style="display:none;" value="' + id + '" id="idcde"  /></td>' +
+        '<td style="display:none;">' + idatleta + '</td> <td style="text-align:center;">' + evento + '</td> ' +
+        '<td style="text-align:center;">' + fyl + '</td> <td style="text-align:center;">' + resultado + '</td>' +
+        '<td style="text-align:center;"><button class="btn btn-danger btn-circle waves-effect waves-circle waves-float elimina" type="button"><i class="fa fa-trash fa-md"></i></button></td></tr > ';
     $("#tblCDF").append(campo);
 }
 

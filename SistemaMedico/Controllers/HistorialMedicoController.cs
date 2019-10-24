@@ -6230,7 +6230,7 @@ namespace SistemaMedico.Controllers
         [HttpPost]
         public ActionResult ActualizarCDE(Carrera_Deportiva_Evento CDE)
         {
-            var mh = "mis huevos ";
+          
             using (MeSysEntities entities = new MeSysEntities())
             {
                 Carrera_Deportiva_Evento Actualizarcde = (from c in entities.Carrera_Deportiva_Evento where c.ID == CDE.ID select c).FirstOrDefault();
@@ -6246,14 +6246,14 @@ namespace SistemaMedico.Controllers
                 }
                 else
                 {
-                    mh = CDE.ID.ToString();
+                    
 
                 }
                
 
             }
-            //return new EmptyResult();
-            return Json(new { success = true, responseText = mh }, JsonRequestBehavior.AllowGet);
+            return new EmptyResult();
+            
         }
         [HttpPost]
         public ActionResult DeleteCDE(int id)
@@ -6284,6 +6284,34 @@ namespace SistemaMedico.Controllers
                 entities.SaveChanges();
             }
             return Json(CDF);
+        }
+        [HttpPost]
+        public ActionResult ActualizarCDF(Carrera_Deportiva_Familiar CDF)
+        {
+            var mh = "mis huevps";
+            using (MeSysEntities entities = new MeSysEntities())
+            {
+                Carrera_Deportiva_Familiar Actualizarcde = (from c in entities.Carrera_Deportiva_Familiar where c.ID == CDF.ID select c).FirstOrDefault();
+                if (Actualizarcde != null)
+                {
+                    Actualizarcde.ID_Atleta = CDF.ID_Atleta;
+                    Actualizarcde.Resultado = CDF.Resultado;
+                    Actualizarcde.FechayLugar = CDF.FechayLugar;
+                    Actualizarcde.Evento = CDF.Evento;
+                    Actualizarcde.Fecha_de_Actualizacion = CDF.Fecha_de_Actualizacion;
+                    entities.SaveChanges();
+                }
+                else
+                {
+                    mh = CDF.ID.ToString(); ;
+
+                }
+
+
+            }
+            //return new EmptyResult();
+            return Json(new { success = true, responseText = mh }, JsonRequestBehavior.AllowGet);
+
         }
         [HttpPost]
         public ActionResult DeleteCDF(int id)

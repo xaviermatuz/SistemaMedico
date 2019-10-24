@@ -1655,13 +1655,15 @@
                                                                 @*<input type="text" id="" name="evento[]" class="form-control" value="@CDET.Evento" placeholder="Evento" />*@
                                                             </td>
                                                         }
-                                                            <td style="text-align:center;">
-                                                                <button class="btn bg-orange btn-circle waves-effect waves-circle waves-float edit" type="button"><i class="fa fa-edit fa-md"></i></button>
-                                                                @*<a class="edit" href="javascript:;">Edit</a>*@
-                                                                <a class="actualizar" href="javascript:;" style="display:none">Update</a>
-                                                                <a class="cancel" href="javascript:;" style="display:none">Cancel</a>
-                                                                <button class="btn btn-danger btn-circle waves-effect waves-circle waves-float elimina" type="button"><i class="fa fa-trash fa-md"></i></button>
-                                                            </td>
+                                                        <td style="text-align:center;">
+                                                            <button class="btn bg-orange btn-circle waves-effect waves-circle waves-float edit" type="button"><i class="fa fa-edit fa-md"></i></button>
+                                                            <button style="display:none" class="btn bg-green btn-circle waves-effect waves-circle waves-float actualizar" type="button"><i class="fa fa-check fa-sm"></i></button>
+                                                            <button style="display:none" class="btn bg-red btn-circle waves-effect waves-circle waves-float cancelar" type="button"><i class="fa fa-times fa-sm"></i></button>
+                                                            @*<a class="edit" href="javascript:;">Edit</a>*@
+                                                            @*<a class="actualizar" href="javascript:;" style="display:none">Update</a>*@
+                                                            @*<a class="cancelar" href="javascript:;" style="display:none">Cancel</a>*@
+                                                            <button class="btn btn-danger btn-circle waves-effect waves-circle waves-float elimina" type="button"><i class="fa fa-trash fa-md"></i></button>
+                                                        </td>
                                                     </tr>
                                                 }
                                             </tbody>
@@ -1749,6 +1751,9 @@
                                                             </td>
                                                         }
                                                         <td style="text-align:center;">
+                                                            <button class="btn bg-orange btn-circle waves-effect waves-circle waves-float edit" type="button"><i class="fa fa-edit fa-md"></i></button>
+                                                            <button style="display:none" class="btn bg-green btn-circle waves-effect waves-circle waves-float actualizar" type="button"><i class="fa fa-check fa-sm"></i></button>
+                                                            <button style="display:none" class="btn bg-red btn-circle waves-effect waves-circle waves-float cancelar" type="button"><i class="fa fa-times fa-sm"></i></button>
                                                             <button class="btn btn-danger btn-circle waves-effect waves-circle waves-float elimina" type="button"><i class="fa fa-trash fa-md"></i></button>
                                                         </td>
                                                     </tr>
@@ -1759,8 +1764,8 @@
                                             <thead class="thead-dark">
                                                 <tr>
                                                     <th style="text-align:center; width:150px">Evento</th>
-                                                    <th style="text-align:center; width:150px">Fecha y Lugar</th>
                                                     <th style="text-align:center; width:150px">Resultados</th>
+                                                    <th style="text-align:center; width:150px">Fecha y Lugar</th>
                                                     <th style="text-align:center; width:150px">Acción</th>
                                                 </tr>
                                             </thead>
@@ -1770,10 +1775,10 @@
                                                         <input type="text" id="txtevento2" style="width:140px" />
                                                     </td>
                                                     <td style="text-align:center; width: 150px">
-                                                        <input type="text" id="txtfyl2" style="width:140px" />
+                                                        <input type="text" id="txtresultado2" style="width:140px" />
                                                     </td>
                                                     <td style="text-align:center; width: 150px">
-                                                        <input type="text" id="txtresultado2" style="width:140px" />
+                                                        <input type="text" id="txtfyl2" style="width:140px" />
                                                     </td>
                                                     <td style="text-align:center; width: 200px">
                                                         <button class="btn bg-teal waves-effect" type="button" id="btnaddcdf"><i class="material-icons">check_circle</i><span>Agregar</span></button>
@@ -4062,5 +4067,6 @@
 
 
     <script src="~/Recursos/js/Tabla1 - Actualizar.js"></script>
-    <script src="~/Recursos/js/TablaCDF.js"></script>
+    <script src="~/Recursos/js/Tabla2_Actualizar.js"></script>
+    @*<script src="~/Recursos/js/TablaCDF.js"></script>*@
 }

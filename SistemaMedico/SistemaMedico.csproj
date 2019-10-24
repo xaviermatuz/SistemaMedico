@@ -127,6 +127,12 @@
     </Content>
     <Content Include="Recursos\css\notificacion.css" />
     <Content Include="Recursos\js\notificacion.js" />
+    <Content Include="Recursos\js\Tabla1 - Actualizar.js" />
+    <Content Include="Recursos\js\Tabla1 - Crear.js" />
+    <Content Include="Recursos\js\Tabla2_Actualizar.js" />
+    <Content Include="Recursos\js\Tabla2_Crear.js" />
+    <Content Include="Recursos\js\tablaNEvaluacionActualizar.js" />
+    <Content Include="Recursos\js\tablaNEvaluacionCrear.js" />
     <Content Include="Recursos\plugins\dropify\.gitignore" />
     <Content Include="Recursos\plugins\dropify\dist\css\demo.css" />
     <Content Include="Recursos\plugins\dropify\dist\css\dropify.css" />
@@ -4413,6 +4419,9 @@
     <Compile Include="Models\Informacion_Familiar.cs">
       <DependentUpon>LoginDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Lesiones.cs">
+      <DependentUpon>LoginDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\LoginDataModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -4435,6 +4444,9 @@
       <DependentUpon>LoginDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Municipio.cs">
+      <DependentUpon>LoginDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Notas_Evaluacion.cs">
       <DependentUpon>LoginDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Roles.cs">

@@ -23,7 +23,10 @@ namespace SistemaMedico.Controllers
             ViewBag.id = ID;
             ViewBag.nombre = nom.Nombre_Completo;
             ViewBag.genero = nom.Genero;
+            IEnumerable<Notas_Evaluacion> tbne = db.Notas_Evaluacion.Where(s => s.ID_Atleta == ID).ToList();
+            ViewBag.nte = tbne;
             return View();
+
         }
         [HttpPost]
         public ActionResult Crear(ExamenFisicoViewModel model, FormCollection collection)
@@ -2179,6 +2182,8 @@ namespace SistemaMedico.Controllers
             //ViewBag.CCA = cca;
             IEnumerable<Ficha_Antropometrica> ficha_Antropometricas = db.Ficha_Antropometrica.Where(s => s.ID_Atleta == id).ToList();
             ViewBag.ficha = ficha_Antropometricas;
+            IEnumerable<Notas_Evaluacion> tbne = db.Notas_Evaluacion.Where(s => s.ID_Atleta == id).ToList();
+            ViewBag.nte = tbne;
             return View();
         }
         [HttpPost]
@@ -4788,6 +4793,62 @@ namespace SistemaMedico.Controllers
                 }
             }
             return Redirect("~/HomeAdmin/");
+        }
+        //Tabla Notas de Evaluacion
+        [HttpPost]
+        public JsonResult InsertarNdE(Notas_Evaluacion NdE)
+        {
+            using (MeSysEntities entities = new MeSysEntities())
+            {
+                entities.Notas_Evaluacion.Add(NdE);
+                entities.SaveChanges();
+            }
+            return Json(NdE);
+        }
+
+        [HttpPost]
+        public ActionResult ActualizarNdE(Notas_Evaluacion nte)
+        {
+
+            using (MeSysEntities entities = new MeSysEntities())
+            {
+                Notas_Evaluacion Actualizarcde = (from c in entities.Notas_Evaluacion where c.ID == nte.ID select c).FirstOrDefault();
+                if (Actualizarcde != null)
+                {
+                    Actualizarcde.ID_Atleta = nte.ID_Atleta;
+                    Actualizarcde.Fecha = nte.Fecha;
+                    Actualizarcde.Notas = nte.Notas;
+                    Actualizarcde.F = nte.F;
+                    Actualizarcde.Fecha_de_Actualizacion = nte.Fecha_de_Actualizacion;
+                    entities.SaveChanges();
+                }
+                else
+                {
+
+
+                }
+            }
+            return new EmptyResult();
+
+        }
+        [HttpPost]
+        public ActionResult DeleteNdE(int id)
+        {
+            try
+            {
+                using (MeSysEntities db = new MeSysEntities())
+                {
+                    Notas_Evaluacion tblNdE = db.Notas_Evaluacion.Where(x => x.ID == id).FirstOrDefault<Notas_Evaluacion>();
+                    db.Notas_Evaluacion.Remove(tblNdE);
+                    db.SaveChanges();
+                }
+                // return Json(new { success = true, html = GlobalClass.RenderRazorViewToString(this, "Crear", GetAllEmployee()), message = "Deleted Successfully" }, JsonRequestBehavior.AllowGet);
+                return new EmptyResult();
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = ex.Message }, JsonRequestBehavior.AllowGet);
+            }
         }
     }
 }

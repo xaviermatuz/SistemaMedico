@@ -26,57 +26,49 @@
     // $("#tblCDE").append(row);
 };
 //Add event handler.
-$("body").on("click", "#btnagregar", function () {
-    var txtprueba = $("#txtpruebaac");
-    var txtresultado = $("#txtresultadoac");
-    var txtfyl = $("#txtfylac");
-    var txtevento = $("#txteventoac");
+$("body").on("click", "#btnAddtblEv", function () {
+    var txtfecha = $("#txtFechant");
+    var txtNotas = $("#txtNotas");
+    var txtf = $("#txtF");
     var txtatleta = $('#atleta').val();
     var f = new Date();
     var fecha = f.getDate() + "/" + (f.getMonth() + 1) + "/" + f.getFullYear();
     $.ajax({
         type: "POST",
-        url: "/HistorialMedico/InsertarCDE",
-        data: '{Prueba: "' + txtprueba.val() + '", Fecha_Y_Lugar: "' + txtfyl.val() + '", Resultado: "' + txtresultado.val() + '", Evento: "' + txtevento.val() + '", ID_Atleta: "' + txtatleta + '", Fecha_de_Registro: "' + fecha + '", Fecha_de_Actualizacion: "' + fecha + '", Estado: "' + true + '"}',
+        url: "/ExamenFisico/InsertarNdE",
+        data: '{ Fecha: "' + txtfecha.val() + '", Notas: "' + txtNotas.val() + '", F: "' + txtf.val() + '", ID_Atleta: "' + txtatleta + '", Fecha_de_Registro: "' + fecha + '", Fecha_de_Actualizacion: "' + fecha + '", Estado: "' + true + '"}',
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (r) {
-            var row = $("#tblCDE tr:last-child");
-            if ($("#tblCDE tr:last-child span").eq(0).html() != "&nbsp;") {
+            var row = $("#tblNdE tr:last-child");
+            if ($("#tblNdE tr:last-child span").eq(0).html() != "&nbsp;") {
                 row = row.clone();
             }
-            addrow3(r.ID, r.ID_Atleta, r.Prueba, r.Resultado, r.Fecha_Y_Lugar, r.Evento);
-            // AppendRow(row,r.ID, r.ID_Atleta, r.Prueba, r.Resultado, r.Fecha_Y_Lugar, r.Evento);
-            txtprueba.val("");
-            txtresultado.val("");
-            txtfyl.val("");
-            txtevento.val("");
+            addrow6(r.ID, r.ID_Atleta, r.Fecha, r.Notas, r.F);
+            txtfecha.val("");
+            txtNotas.val("");
+            txtf.val("");
         }
     });
 });
 
 
-
-
-function addrow3(id, idatleta, prueba, resultado, fyl, evento) {
+function addrow6(id, idatleta, Fecha, Notas, F) {
     //campo = '<tr><td style="display:none;"> <span> ' + id + '</span> <input type="text" style="display:none;" value="' + id + '" id="idcde"  /></td><td style="display:none;"><span>' + idatleta + '</span></td><td style="text-align:center;"><span>' + prueba + '</span><input type="text" style="display:none;" value="' + prueba + '" /></td><td style="text-align:center;"><span>' + resultado + '</span><input type="text" style="display:none;" value="' + resultado + '"/></td><td style="text-align:center;"><span>' + fyl + '</span><input type="text" style="display:none;" value="' + fyl + '"/></td><td style="text-align:center;"><span>' + evento + '</span><input type="text" style="display:none;" value="' + evento + '" id="idcde"  /></td><td style="text-align:center;"><button class="btn bg-orange btn-circle waves-effect waves-circle waves-float edit" type="button"><i class="fa fa-edit fa-md"></i></button><a class="actualizar" style="display:none">Update</a><a class="cancel" href = "javascript:;" style = "display:none" > Cancel</a ><button class="btn btn-danger btn-circle waves-effect waves-circle waves-float elimina" type="button"><i class="fa fa-trash fa-md"></i></button></td></tr>';
     campo = '<tr><td style="display:none;"> <span> ' + id + '</span> <input type="text" style="display:none;" value="' + id + '" id="idcde"  /></td>' +
         '<td style="display:none;"><span>' + idatleta + '</span></td>' +
-        '<td style="text-align:center;"><span>' + prueba + '</span><input type="text" style="display:none;" value="' + prueba + '" /></td>' +
-        '<td style="text-align:center;"><span>' + resultado + '</span><input type="text" style="display:none;" value="' + resultado + '"/></td>' +
-        '<td style="text-align:center;"><span>' + fyl + '</span><input type="text" style="display:none;" value="' + fyl + '"/></td>' +
-        '<td style="text-align:center;"><span>' + evento + '</span><input type="text" style="display:none;" value="' + evento + '" id="idcde"  /></td>' +
+        '<td style="text-align:center;"><span>' + Fecha + '</span><input type="text" style="display:none;" value="' + Fecha + '" id="idcde"  /></td>' +
+        '<td style="text-align:center;"><span>' + Notas + '</span><input type="text" style="display:none;" value="' + Notas + '"/></td>' +
+        '<td style="text-align:center;"><span>' + F + '</span><input type="text" style="display:none;" value="' + F + '"/></td>' +
         '<td style="text-align:center;">' +
         '<button class="btn bg-orange btn-circle waves-effect waves-circle waves-float edit" type="button"><i class="fa fa-edit fa-md"></i></button>' +
-        //'<a class="Update" style="display:none">Update</a>' +
-        ' <button style="display:none" class="btn bg-green btn-circle waves-effect waves-circle waves-float actualizar" type="button"><i class="fa fa-check fa-sm"></i></button>'+
-       // '<a class="cancelar" href = "javascript:;" style = "display:none"> Cancel</a>' +
-        '<button style="display:none" class="btn bg-red btn-circle waves-effect waves-circle waves-float cancelar" type="button"><i class="fa fa-times fa-sm"></i></button>'+
+        ' <button style="display:none" class="btn bg-green btn-circle waves-effect waves-circle waves-float actualizar" type="button"><i class="fa fa-check fa-sm"></i></button>' +
+        '<button style="display:none" class="btn bg-red btn-circle waves-effect waves-circle waves-float cancelar" type="button"><i class="fa fa-times fa-sm"></i></button>' +
         '<button class="btn btn-danger btn-circle waves-effect waves-circle waves-float elimina" type="button"><i class="fa fa-trash fa-md"></i></button></td ></tr > ';
-    $("#tblCDE").append(campo);
+    $("#tblNdE").append(campo);
 }
 
-$("body").on("click", "#tblCDE .elimina", function () {
+$("body").on("click", "#tblNdE .elimina", function () {
     id = $(this).parents("tr").find("td").eq(0).html();
     cde = $(this).parents("tr").find("input").val();
     var row = $(this).closest("tr");
@@ -87,12 +79,12 @@ $("body").on("click", "#tblCDE .elimina", function () {
         $(this).parents("tr").fadeOut("normal", function () {
             $.ajax({
                 type: "POST",
-                url: "/HistorialMedico/DeleteCDE",
+                url: "/ExamenFisico/DeleteNdE",
                 data: '{id: ' + ID + '}',
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (response) {
-                    if ($("#tblCDE tr").length > 2) {
+                    if ($("#tblNdE tr").length > 2) {
                         id.remove();
                     } else {
                         row.find(".Delete").hide();
@@ -105,7 +97,7 @@ $("body").on("click", "#tblCDE .elimina", function () {
 });
 
 //funcion editar
-$("body").on("click", "#tblCDE .edit", function () {
+$("body").on("click", "#tblNdE .edit", function () {
     var row = $(this).closest("tr");
     $("td", row).each(function () {
         if ($(this).find("input").length > 0) {
@@ -119,7 +111,7 @@ $("body").on("click", "#tblCDE .edit", function () {
     $(this).hide();
 });
 //funcion actualizar
-$("body").on("click", "#tblCDE .actualizar", function () {
+$("body").on("click", "#tblNdE .actualizar", function () {
     var row = $(this).closest("tr");
     var f = new Date();
     var fecha = f.getDate() + "/" + (f.getMonth() + 1) + "/" + f.getFullYear();
@@ -133,37 +125,34 @@ $("body").on("click", "#tblCDE .actualizar", function () {
         }
     });
     var ID = row.find("span").html();
-    var mel = $(this).parents("tr").find("input").val();
     //
     _row = $(this).parents("tr");
     var cols = _row.children("td");
     //
-    var cde = {};
-    cde.ID = ID;
-    cde.ID_Atleta = $(cols[1]).text().trim();
-    cde.Prueba = $(cols[2]).text().trim();
-    cde.Resultado = $(cols[3]).text().trim();
-    cde.Fecha_Y_Lugar = $(cols[4]).text().trim();
-    cde.Evento = $(cols[5]).text().trim();
-    cde.Fecha_de_Actualizacion = fecha;
 
-
+    var cdf = {};
+    cdf.ID = ID;
+    cdf.ID_Atleta = $(cols[1]).text().trim();
+    cdf.Fecha = $(cols[2]).text().trim();
+    cdf.Notas = $(cols[3]).text().trim();
+    cdf.F = $(cols[4]).text().trim();
+    cdf.Fecha_de_Actualizacion = fecha;
     row.find(".edit").show();
     row.find(".elimina").show();
     row.find(".cancelar").hide();
     $(this).hide();
     $.ajax({
         type: "POST",
-        url: '/HistorialMedico/ActualizarCDE',
-        data: '{CDE:' + JSON.stringify(cde) + '}',
+        url: '/ExamenFisico/ActualizarNdE',
+        data: '{nte:' + JSON.stringify(cdf) + '}',
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (response) {
             if (response.success) {
-                console.log("Exito!!")
+                alert(response.responseText);
             }
             else {
-                console.log("Error!!!");
+                alert(response.responseText + "else");
             }
 
         }//function
@@ -172,7 +161,7 @@ $("body").on("click", "#tblCDE .actualizar", function () {
 });
 
 //evento cancelar
-$("body").on("click", "#tblCDE .cancelar", function () {
+$("body").on("click", "#tblNdE .cancelar", function () {
     var row = $(this).closest("tr");
     $("td", row).each(function () {
         if ($(this).find("input").length > 0) {

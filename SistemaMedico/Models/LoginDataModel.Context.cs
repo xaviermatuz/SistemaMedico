@@ -60,5 +60,7 @@ namespace SistemaMedico.Models
         public virtual DbSet<Situacion_Laboral> Situacion_Laboral { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Usuarios> Usuarios { get; set; }
+        public virtual DbSet<Lesiones> Lesiones { get; set; }
+        public virtual DbSet<Notas_Evaluacion> Notas_Evaluacion { get; set; }
     }
 }
