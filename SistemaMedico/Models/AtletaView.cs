@@ -15,10 +15,10 @@ namespace SistemaMedico.Models
 
         [Display(Name = "Foto Atleta")]
         public HttpPostedFileBase ImageFile { get; set; }
-    
-       
 
-       // public List<Atleta_Categoria> categorias { get; set; }
+
+
+        // public List<Atleta_Categoria> categorias { get; set; }
         public virtual Equipo_Deportivo equip { get; set; }
     }
 }

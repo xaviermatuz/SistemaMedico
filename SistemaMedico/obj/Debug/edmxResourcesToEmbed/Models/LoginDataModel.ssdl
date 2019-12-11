@@ -18,6 +18,9 @@
     <Property Name="ID_Atleta" Type="int" Nullable="false" />
     <Property Name="Alergia" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="Descripcion" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Fecha_de_Registro" Type="date" Nullable="false" />
+    <Property Name="Fecha_de_Actualizacion" Type="date" />
+    <Property Name="Estado" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="Anexos">
     <Key>
@@ -25,9 +28,12 @@
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ID_Atleta" Type="int" Nullable="false" />
-    <Property Name="Otros_Hallazgos" Type="varchar" MaxLength="1000" Nullable="false" />
-    <Property Name="Recomendaciones" Type="varchar" MaxLength="1000" Nullable="false" />
-    <Property Name="Observaciones" Type="varchar" MaxLength="1000" Nullable="false" />
+    <Property Name="Otros_Hallazgos" Type="nvarchar" MaxLength="1000" Nullable="false" />
+    <Property Name="Recomendaciones" Type="nvarchar" MaxLength="1000" Nullable="false" />
+    <Property Name="Observaciones" Type="nvarchar" MaxLength="1000" Nullable="false" />
+    <Property Name="Fecha_de_Registro" Type="date" />
+    <Property Name="Fecha_de_Actualizacion" Type="date" />
+    <Property Name="Estado" Type="bit" />
   </EntityType>
   <EntityType Name="Aparato_Locomotor">
     <Key>
@@ -35,8 +41,11 @@
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ID_Atleta" Type="int" Nullable="false" />
-    <Property Name="Preguntas" Type="varchar" MaxLength="500" Nullable="false" />
-    <Property Name="Respuestas" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="Preguntas" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Respuestas" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Fecha_de_Registro" Type="date" />
+    <Property Name="Fecha_de_Actualizacion" Type="date" />
+    <Property Name="Estado" Type="bit" />
   </EntityType>
   <EntityType Name="Apoyo_Economico">
     <Key>
@@ -44,9 +53,63 @@
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ID_Atleta" Type="int" Nullable="false" />
-    <Property Name="Preguntas" Type="varchar" MaxLength="500" Nullable="false" />
-    <Property Name="Respuestas" Type="varchar" MaxLength="500" Nullable="false" />
-    <Property Name="Detalles" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="Preguntas" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Respuestas" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Detalles" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Fecha_de_Registro" Type="date" />
+    <Property Name="Fecha_de_Actualizacion" Type="date" />
+    <Property Name="Estado" Type="bit" />
+  </EntityType>
+  <EntityType Name="AspNetRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaims">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ClaimType" Type="nvarchar(max)" />
+    <Property Name="ClaimValue" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogins">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUserRoles">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AspNetUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="256" />
+    <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+    <Property Name="PasswordHash" Type="nvarchar(max)" />
+    <Property Name="SecurityStamp" Type="nvarchar(max)" />
+    <Property Name="PhoneNumber" Type="nvarchar(max)" />
+    <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="datetime" />
+    <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
   </EntityType>
   <EntityType Name="Atleta_Categoria">
     <Key>
@@ -55,7 +118,9 @@
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ID_Atleta" Type="int" Nullable="false" />
     <Property Name="ID_Categoria" Type="int" Nullable="false" />
-    <Property Name="activo" Type="bit" />
+    <Property Name="Fecha_de_Registro" Type="date" />
+    <Property Name="Fecha_de_Actualizacion" Type="date" />
+    <Property Name="Estado" Type="bit" />
   </EntityType>
   <EntityType Name="Carrera_Deportiva">
     <Key>
@@ -63,9 +128,12 @@
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ID_Atleta" Type="int" Nullable="false" />
-    <Property Name="Preguntas" Type="varchar" MaxLength="500" Nullable="false" />
-    <Property Name="Respuestas" Type="varchar" MaxLength="500" Nullable="false" />
-    <Property Name="Detalles" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="Preguntas" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Respuestas" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Detalles" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Fecha_de_Registro" Type="date" />
+    <Property Name="Fecha_de_Actualizacion" Type="date" />
+    <Property Name="Estado" Type="bit" />
   </EntityType>
   <EntityType Name="Carrera_Deportiva_Evento">
     <Key>
@@ -73,10 +141,13 @@
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ID_Atleta" Type="int" Nullable="false" />
-    <Property Name="Prueba" Type="varchar" MaxLength="500" Nullable="false" />
-    <Property Name="Resultado" Type="varchar" MaxLength="500" Nullable="false" />
-    <Property Name="Fecha_Y_Lugar" Type="varchar" MaxLength="500" Nullable="false" />
-    <Property Name="Evento" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="Prueba" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Resultado" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Fecha_Y_Lugar" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Evento" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Fecha_de_Registro" Type="date" />
+    <Property Name="Fecha_de_Actualizacion" Type="date" />
+    <Property Name="Estado" Type="bit" />
   </EntityType>
   <EntityType Name="Carrera_Deportiva_Familiar">
     <Key>
@@ -84,9 +155,12 @@
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ID_Atleta" Type="int" Nullable="false" />
-    <Property Name="Evento" Type="varchar" MaxLength="500" Nullable="false" />
-    <Property Name="FechayLugar" Type="varchar" MaxLength="500" Nullable="false" />
-    <Property Name="Resultado" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="Evento" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="FechayLugar" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Resultado" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Fecha_de_Registro" Type="date" />
+    <Property Name="Fecha_de_Actualizacion" Type="date" />
+    <Property Name="Estado" Type="bit" />
   </EntityType>
   <EntityType Name="Categorias">
     <Key>
@@ -94,14 +168,17 @@
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ID_Deporte" Type="int" Nullable="false" />
-    <Property Name="Categoria" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Categoria" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Fecha_de_Registro" Type="date" />
+    <Property Name="Fecha_de_Actualizacion" Type="date" />
+    <Property Name="Estado" Type="bit" />
   </EntityType>
   <EntityType Name="Condiciones_Clinicas_Actuales">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
   </EntityType>
   <EntityType Name="Condiciones_Clinicas_Actuales_Principal">
     <Key>
@@ -110,8 +187,11 @@
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ID_Atleta" Type="int" Nullable="false" />
     <Property Name="ID_Condiciones_Clinicas_Actuales" Type="int" Nullable="false" />
-    <Property Name="Nombre" Type="varchar" MaxLength="200" Nullable="false" />
-    <Property Name="Valor" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="Valor" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="Fecha_de_Registro" Type="date" />
+    <Property Name="Fecha_de_Actualizacion" Type="date" />
+    <Property Name="Estado" Type="bit" />
   </EntityType>
   <EntityType Name="Consiste_Apoyo">
     <Key>
@@ -119,15 +199,18 @@
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ID_Atleta" Type="int" Nullable="false" />
-    <Property Name="Preguntas" Type="varchar" MaxLength="500" Nullable="false" />
-    <Property Name="Respuestas" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="Preguntas" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Respuestas" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Fecha_de_Registro" Type="date" />
+    <Property Name="Fecha_de_Actualizacion" Type="date" />
+    <Property Name="Estado" Type="bit" />
   </EntityType>
   <EntityType Name="Datos_Atleta">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Foto" Type="varchar(max)" />
+    <Property Name="Foto" Type="nvarchar(max)" />
     <Property Name="Primer_Nombre" Type="text" />
     <Property Name="Segundo_Nombre" Type="text" />
     <Property Name="Primer_Apellido" Type="text" />
@@ -135,22 +218,23 @@
     <Property Name="Nombre_Completo" Type="text" />
     <Property Name="Edad" Type="int" />
     <Property Name="Fecha_De_Registro" Type="date" />
-    <Property Name="Genero" Type="varchar" MaxLength="10" />
+    <Property Name="Genero" Type="nvarchar" MaxLength="50" />
     <Property Name="Numero_De_Cedula" Type="nvarchar" MaxLength="20" />
     <Property Name="Correo_Electronico" Type="nvarchar" MaxLength="100" />
     <Property Name="Telefono_Convencional" Type="nvarchar" MaxLength="14" />
-    <Property Name="Telefono_Celular" Type="varchar" MaxLength="14" />
-    <Property Name="Tiene_Seguro" Type="varchar" MaxLength="7" />
+    <Property Name="Telefono_Celular" Type="nvarchar" MaxLength="14" />
+    <Property Name="Tiene_Seguro" Type="nvarchar" MaxLength="4" />
     <Property Name="Hospital" Type="int" Nullable="false" />
-    <Property Name="Dirreccion" Type="varchar" MaxLength="500" />
+    <Property Name="Dirreccion" Type="nvarchar" MaxLength="500" />
     <Property Name="Municipio" Type="int" Nullable="false" />
-    <Property Name="Nombre_Madre" Type="varchar" MaxLength="50" />
+    <Property Name="Nombre_Madre" Type="nvarchar" MaxLength="50" />
     <Property Name="Telefono_Madre" Type="nvarchar" MaxLength="14" />
-    <Property Name="Nombre_Padre" Type="varchar" MaxLength="50" />
+    <Property Name="Nombre_Padre" Type="nvarchar" MaxLength="50" />
     <Property Name="Telefono_Padre" Type="nvarchar" MaxLength="14" />
-    <Property Name="Emergencia" Type="varchar" MaxLength="50" />
-    <Property Name="Dirreccion_Emergencia" Type="varchar" MaxLength="200" />
-    <Property Name="Embarazo" Type="varchar" MaxLength="7" />
+    <Property Name="Emergencia" Type="nvarchar" MaxLength="50" />
+    <Property Name="Dirreccion_Emergencia" Type="nvarchar" MaxLength="200" />
+    <Property Name="Embarazo" Type="nvarchar" MaxLength="50" />
+    <Property Name="Fecha_de_Actualizacion" Type="date" />
     <Property Name="Activo" Type="bit" />
   </EntityType>
   <EntityType Name="Departamentos">
@@ -165,7 +249,7 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
   </EntityType>
   <EntityType Name="Educacion">
     <Key>
@@ -173,9 +257,12 @@
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ID_Atleta" Type="int" Nullable="false" />
-    <Property Name="Preguntas" Type="varchar" MaxLength="500" Nullable="false" />
-    <Property Name="Respuestas" Type="varchar" MaxLength="500" Nullable="false" />
-    <Property Name="Detalles" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="Preguntas" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Respuestas" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Detalles" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Fecha_de_Registro" Type="date" />
+    <Property Name="Fecha_de_Actualizacion" Type="date" />
+    <Property Name="Estado" Type="bit" />
   </EntityType>
   <EntityType Name="Equipo_Deportivo">
     <Key>
@@ -195,15 +282,18 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
-    <Property Name="Lugar" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Lugar" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Fecha_de_Registro" Type="date" />
+    <Property Name="Fecha_de_Actualizacion" Type="date" />
+    <Property Name="Estado" Type="bit" />
   </EntityType>
   <EntityType Name="Examen_Fisico">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Estructura" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Estructura" Type="nvarchar" MaxLength="200" Nullable="false" />
   </EntityType>
   <EntityType Name="Examen_Fisico_Principal">
     <Key>
@@ -212,8 +302,11 @@
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ID_Atleta" Type="int" Nullable="false" />
     <Property Name="ID_Examen_Fisico" Type="int" Nullable="false" />
-    <Property Name="Normal" Type="char" MaxLength="5" Nullable="false" />
-    <Property Name="Hallazgos_Anormales" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="Normal" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Hallazgos_Anormales" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Fecha_de_Registro" Type="date" />
+    <Property Name="Fecha_de_Actualizacion" Type="date" />
+    <Property Name="Estado" Type="bit" />
   </EntityType>
   <EntityType Name="Examenes">
     <Key>
@@ -230,19 +323,22 @@
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ID_Atleta" Type="int" Nullable="false" />
-    <Property Name="Nombre_Y_Apellidos" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="Nombre_Y_Apellidos" Type="nvarchar" MaxLength="500" Nullable="false" />
     <Property Name="Evaluacion" Type="int" Nullable="false" />
     <Property Name="Fecha_De_Evaluacion" Type="date" Nullable="false" />
-    <Property Name="Sexo" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="Sexo" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Fecha_De_Nacimiento" Type="date" Nullable="false" />
-    <Property Name="Menstruacion" Type="char" MaxLength="5" Nullable="false" />
-    <Property Name="Antropometrista" Type="varchar" MaxLength="500" Nullable="false" />
-    <Property Name="Anotador" Type="varchar" MaxLength="500" Nullable="false" />
-    <Property Name="Txt_Ficha_Antropometrica" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="Menstruacion" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Antropometrista" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Anotador" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Txt_Ficha_Antropometrica" Type="nvarchar" MaxLength="500" Nullable="false" />
     <Property Name="Toma1" Type="decimal" Precision="5" Scale="2" Nullable="false" />
     <Property Name="Toma2" Type="decimal" Precision="5" Scale="2" Nullable="false" />
     <Property Name="Toma3" Type="decimal" Precision="5" Scale="2" Nullable="false" />
     <Property Name="Promedio_Mediana" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+    <Property Name="Fecha_de_Registro" Type="date" />
+    <Property Name="Fecha_de_Actualizacion" Type="date" />
+    <Property Name="Estado" Type="bit" />
   </EntityType>
   <EntityType Name="Habitacion">
     <Key>
@@ -250,9 +346,12 @@
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ID_Atleta" Type="int" Nullable="false" />
-    <Property Name="Preguntas" Type="varchar" MaxLength="500" Nullable="false" />
-    <Property Name="Respuestas" Type="varchar" MaxLength="500" Nullable="false" />
-    <Property Name="Detalles" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="Preguntas" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Respuestas" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Detalles" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Fecha_de_Registro" Type="date" />
+    <Property Name="Fecha_de_Actualizacion" Type="date" />
+    <Property Name="Estado" Type="bit" />
   </EntityType>
   <EntityType Name="Habitos">
     <Key>
@@ -260,9 +359,12 @@
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ID_Atleta" Type="int" Nullable="false" />
-    <Property Name="Preguntas" Type="varchar" MaxLength="500" Nullable="false" />
-    <Property Name="Respuestas" Type="varchar" MaxLength="500" Nullable="false" />
-    <Property Name="Detalles" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="Preguntas" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Respuestas" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Detalles" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Fecha_de_Registro" Type="date" />
+    <Property Name="Fecha_de_Actualizacion" Type="date" />
+    <Property Name="Estado" Type="bit" />
   </EntityType>
   <EntityType Name="Historia_Familiar">
     <Key>
@@ -270,8 +372,11 @@
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ID_Atleta" Type="int" Nullable="false" />
-    <Property Name="Preguntas" Type="varchar" MaxLength="500" Nullable="false" />
-    <Property Name="Respuestas" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="Preguntas" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Respuestas" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Fecha_de_Registro" Type="date" />
+    <Property Name="Fecha_de_Actualizacion" Type="date" />
+    <Property Name="Estado" Type="bit" />
   </EntityType>
   <EntityType Name="Historial_Medico">
     <Key>
@@ -279,16 +384,19 @@
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ID_Atleta" Type="int" Nullable="false" />
-    <Property Name="Preguntas" Type="varchar" MaxLength="500" Nullable="false" />
-    <Property Name="Respuestas" Type="varchar" MaxLength="500" Nullable="false" />
-    <Property Name="Detalles" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="Preguntas" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Respuestas" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Detalles" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Fecha_de_Registro" Type="date" />
+    <Property Name="Fecha_de_Actualizacion" Type="date" />
+    <Property Name="Estado" Type="bit" />
   </EntityType>
   <EntityType Name="Hospital">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
   </EntityType>
   <EntityType Name="Informacion_Familiar">
     <Key>
@@ -296,17 +404,24 @@
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ID_Atleta" Type="int" Nullable="false" />
-    <Property Name="Preguntas" Type="varchar" MaxLength="500" Nullable="false" />
-    <Property Name="Respuestas" Type="varchar" MaxLength="500" Nullable="false" />
-    <Property Name="Detalles" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="Preguntas" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Respuestas" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Detalles" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Fecha_de_Registro" Type="date" />
+    <Property Name="Fecha_de_Actualizacion" Type="date" />
+    <Property Name="Estado" Type="bit" />
   </EntityType>
   <EntityType Name="Lesiones">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
-    <Property Name="Tipo" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="ID_Atleta" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Tipo" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Fecha_de_Registro" Type="date" />
+    <Property Name="Fecha_de_Actualizacion" Type="date" />
+    <Property Name="Estado" Type="bit" />
   </EntityType>
   <EntityType Name="Medicamentos">
     <Key>
@@ -314,17 +429,20 @@
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ID_Atleta" Type="int" Nullable="false" />
-    <Property Name="Medicamentos" Type="varchar" MaxLength="500" Nullable="false" />
-    <Property Name="Descripcion" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="Medicamentos" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Descripcion" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Fecha_de_Registro" Type="date" />
+    <Property Name="Fecha_de_Actualizacion" Type="date" />
+    <Property Name="Estado" Type="bit" />
   </EntityType>
   <EntityType Name="Medico">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
-    <Property Name="Apellido" Type="varchar" MaxLength="100" Nullable="false" />
-    <Property Name="Tipo_Medico" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Apellido" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Tipo_Medico" Type="nvarchar" MaxLength="100" Nullable="false" />
   </EntityType>
   <EntityType Name="Municipio">
     <Key>
@@ -332,14 +450,27 @@
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ID_Departamento" Type="int" Nullable="false" />
-    <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Notas_Evaluacion">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_Atleta" Type="int" Nullable="false" />
+    <Property Name="Fecha" Type="nvarchar" MaxLength="50" />
+    <Property Name="Notas" Type="nvarchar(max)" />
+    <Property Name="F" Type="nvarchar(max)" />
+    <Property Name="Fecha_de_Registro" Type="date" />
+    <Property Name="Fecha_de_Actualizacion" Type="date" />
+    <Property Name="Estado" Type="bit" />
   </EntityType>
   <EntityType Name="Roles">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Rol" Type="varchar" MaxLength="100" />
+    <Property Name="Rol" Type="nvarchar" MaxLength="100" />
     <Property Name="Activo" Type="bit" />
   </EntityType>
   <EntityType Name="Situacion_Laboral">
@@ -348,8 +479,11 @@
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ID_Atleta" Type="int" Nullable="false" />
-    <Property Name="Preguntas" Type="varchar" MaxLength="500" Nullable="false" />
-    <Property Name="Respuestas" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="Preguntas" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Respuestas" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="Fecha_de_Registro" Type="date" />
+    <Property Name="Fecha_de_Actualizacion" Type="date" />
+    <Property Name="Estado" Type="bit" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
@@ -366,9 +500,9 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Nombre" Type="varchar" MaxLength="50" />
-    <Property Name="Contraseña" Type="varchar" MaxLength="200" />
-    <Property Name="Correo" Type="varchar" MaxLength="50" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
+    <Property Name="Contraseña" Type="nvarchar" MaxLength="200" />
+    <Property Name="Correo" Type="nvarchar" MaxLength="50" />
     <Property Name="ID_Rol" Type="int" />
     <Property Name="Activo" Type="bit" />
   </EntityType>
@@ -578,6 +712,62 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserClaims">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserLogins">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+    <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetRoles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRoles">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Educacion_Datos_Atleta">
     <End Role="Datos_Atleta" Type="Self.Datos_Atleta" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -742,6 +932,20 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Notas_Evaluacion_Datos_Atleta">
+    <End Role="Datos_Atleta" Type="Self.Datos_Atleta" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Notas_Evaluacion" Type="Self.Notas_Evaluacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Datos_Atleta">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Notas_Evaluacion">
+        <PropertyRef Name="ID_Atleta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Situacion_Laboral_Datos_Atleta">
     <End Role="Datos_Atleta" Type="Self.Datos_Atleta" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -807,6 +1011,11 @@
     <EntitySet Name="Anexos" EntityType="Self.Anexos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Aparato_Locomotor" EntityType="Self.Aparato_Locomotor" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Apoyo_Economico" EntityType="Self.Apoyo_Economico" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Atleta_Categoria" EntityType="Self.Atleta_Categoria" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Carrera_Deportiva" EntityType="Self.Carrera_Deportiva" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Carrera_Deportiva_Evento" EntityType="Self.Carrera_Deportiva_Evento" Schema="dbo" store:Type="Tables" />
@@ -835,6 +1044,7 @@
     <EntitySet Name="Medicamentos" EntityType="Self.Medicamentos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Medico" EntityType="Self.Medico" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Municipio" EntityType="Self.Municipio" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Notas_Evaluacion" EntityType="Self.Notas_Evaluacion" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Situacion_Laboral" EntityType="Self.Situacion_Laboral" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
@@ -899,6 +1109,22 @@
       <End Role="Municipio" EntitySet="Municipio" />
       <End Role="Datos_Atleta" EntitySet="Datos_Atleta" />
     </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
     <AssociationSet Name="FK_Educacion_Datos_Atleta" Association="Self.FK_Educacion_Datos_Atleta">
       <End Role="Datos_Atleta" EntitySet="Datos_Atleta" />
       <End Role="Educacion" EntitySet="Educacion" />
@@ -946,6 +1172,10 @@
     <AssociationSet Name="FK_Municipio_Departamentos" Association="Self.FK_Municipio_Departamentos">
       <End Role="Departamentos" EntitySet="Departamentos" />
       <End Role="Municipio" EntitySet="Municipio" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Notas_Evaluacion_Datos_Atleta" Association="Self.FK_Notas_Evaluacion_Datos_Atleta">
+      <End Role="Datos_Atleta" EntitySet="Datos_Atleta" />
+      <End Role="Notas_Evaluacion" EntitySet="Notas_Evaluacion" />
     </AssociationSet>
     <AssociationSet Name="FK_Situacion_Laboral_Datos_Atleta" Association="Self.FK_Situacion_Laboral_Datos_Atleta">
       <End Role="Datos_Atleta" EntitySet="Datos_Atleta" />

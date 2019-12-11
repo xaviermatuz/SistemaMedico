@@ -4,13 +4,13 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="67ddcc3ff8c44e519cae6c1e7864c251" Name="Diagram1">
+      <Diagram DiagramId="67ddcc3ff8c44e519cae6c1e7864c251" Name="Diagram1" ZoomLevel="72">
         <EntityTypeShape EntityType="MeSysModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="MeSysModel.Alergias" Width="1.5" PointX="7.5" PointY="8.5" IsExpanded="true" />
         <EntityTypeShape EntityType="MeSysModel.Anexos" Width="1.5" PointX="7.5" PointY="11.25" IsExpanded="true" />
         <EntityTypeShape EntityType="MeSysModel.Aparato_Locomotor" Width="1.5" PointX="7.5" PointY="14.125" IsExpanded="true" />
         <EntityTypeShape EntityType="MeSysModel.Apoyo_Economico" Width="1.5" PointX="7.5" PointY="16.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="MeSysModel.Atleta_Categoria" Width="1.5" PointX="10.5" PointY="34.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MeSysModel.Atleta_Categoria" Width="1.75" PointX="10.5" PointY="34.125" IsExpanded="true" />
         <EntityTypeShape EntityType="MeSysModel.Carrera_Deportiva" Width="1.5" PointX="7.5" PointY="22.75" IsExpanded="true" />
         <EntityTypeShape EntityType="MeSysModel.Carrera_Deportiva_Evento" Width="1.5" PointX="7.5" PointY="25.625" IsExpanded="true" />
         <EntityTypeShape EntityType="MeSysModel.Carrera_Deportiva_Familiar" Width="1.5" PointX="7.5" PointY="28.75" IsExpanded="true" />
@@ -71,6 +71,15 @@
         <AssociationConnector Association="MeSysModel.FK_Municipio_Departamentos" ManuallyRouted="false" />
         <AssociationConnector Association="MeSysModel.FK_Examen_Fisico_Principal_Examen_Fisico" ManuallyRouted="false" />
         <AssociationConnector Association="MeSysModel.FK_Usuarios_Roles" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="MeSysModel.AspNetRoles" Width="1.5" PointX="10.375" PointY="2.5" />
+        <EntityTypeShape EntityType="MeSysModel.AspNetUserClaims" Width="1.5" PointX="14.875" PointY="1" />
+        <EntityTypeShape EntityType="MeSysModel.AspNetUserLogins" Width="1.5" PointX="14.875" PointY="3.75" />
+        <EntityTypeShape EntityType="MeSysModel.AspNetUsers" Width="1.5" PointX="12.625" PointY="1.375" />
+        <EntityTypeShape EntityType="MeSysModel.Notas_Evaluacion" Width="1.5" PointX="7.5" PointY="73" />
+        <AssociationConnector Association="MeSysModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="MeSysModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="MeSysModel.FK_Notas_Evaluacion_Datos_Atleta" />
+        <AssociationConnector Association="MeSysModel.AspNetUserRoles" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

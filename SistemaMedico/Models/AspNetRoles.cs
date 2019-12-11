@@ -12,16 +12,18 @@ namespace SistemaMedico.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Aparato_Locomotor
+    public partial class AspNetRoles
     {
-        public int ID { get; set; }
-        public int ID_Atleta { get; set; }
-        public string Preguntas { get; set; }
-        public string Respuestas { get; set; }
-        public Nullable<System.DateTime> Fecha_de_Registro { get; set; }
-        public Nullable<System.DateTime> Fecha_de_Actualizacion { get; set; }
-        public Nullable<bool> Estado { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public AspNetRoles()
+        {
+            this.AspNetUsers = new HashSet<AspNetUsers>();
+        }
     
-        public virtual Datos_Atleta Datos_Atleta { get; set; }
+        public string Id { get; set; }
+        public string Name { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AspNetUsers> AspNetUsers { get; set; }
     }
 }

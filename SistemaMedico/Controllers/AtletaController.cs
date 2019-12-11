@@ -1,4 +1,4 @@
-﻿using SistemaMedico.Clases;
+﻿//using SistemaMedico.Clases;
 using SistemaMedico.Models;
 using System;
 using System.Collections.Generic;
@@ -160,7 +160,7 @@ namespace SistemaMedico.Controllers
                     {
                         atle.ID_Atleta = view.Model.ID;
                         
-                        atle.activo = true;
+                        atle.Estado = true;
                         db.Atleta_Categoria.AddRange(view.Model.Atleta_Categoria);
                     }
 
@@ -522,7 +522,7 @@ public bool TienePropositos(string nombre)
                             view.Model.ID = view.Model.ID;
                             atle.ID_Atleta = view.Model.ID;
                             atle.ID_Categoria = atle.ID_Categoria;
-                            atle.activo = true;
+                            atle.Estado = true;
                             db.Atleta_Categoria.Add(atle);
                             db.SaveChanges();
 

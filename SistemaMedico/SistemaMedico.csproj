@@ -147,6 +147,8 @@
     <Content Include="Recursos\plugins\dropify\src\images\test-image-1.jpg" />
     <Content Include="Recursos\plugins\dropify\src\images\test-image-2.jpg" />
     <Content Include="Recursos\plugins\dropify\src\js\dropify.js" />
+    <Content Include="Scripts\Atleta1\CatDeportAtle.js" />
+    <Content Include="Scripts\Atleta1\CreateAtle.js" />
     <Content Include="Scripts\select2.min.js" />
     <Content Include="Content\style.css" />
     <Content Include="Content\style.min.css" />
@@ -4347,6 +4349,19 @@
     <Compile Include="Models\Apoyo_Economico.cs">
       <DependentUpon>LoginDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\AspNetRoles.cs">
+      <DependentUpon>LoginDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserClaims.cs">
+      <DependentUpon>LoginDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserLogins.cs">
+      <DependentUpon>LoginDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUsers.cs">
+      <DependentUpon>LoginDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AtletaView.cs" />
     <Compile Include="Models\Atleta_Categoria.cs">
       <DependentUpon>LoginDataModel.tt</DependentUpon>
     </Compile>
@@ -4384,6 +4399,9 @@
       <DependentUpon>LoginDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Educacion.cs">
+      <DependentUpon>LoginDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Equipo_Deportivo.cs">
       <DependentUpon>LoginDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Eventos.cs">
@@ -4453,6 +4471,12 @@
       <DependentUpon>LoginDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Situacion_Laboral.cs">
+      <DependentUpon>LoginDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>LoginDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagrams_Result.cs">
       <DependentUpon>LoginDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagrams.cs">

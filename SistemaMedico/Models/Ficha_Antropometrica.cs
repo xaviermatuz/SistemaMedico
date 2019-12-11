@@ -24,14 +24,14 @@ namespace SistemaMedico.Models
         public string Menstruacion { get; set; }
         public string Antropometrista { get; set; }
         public string Anotador { get; set; }
+        public string Txt_Ficha_Antropometrica { get; set; }
         public decimal Toma1 { get; set; }
         public decimal Toma2 { get; set; }
         public decimal Toma3 { get; set; }
         public decimal Promedio_Mediana { get; set; }
-        public string Txt_Ficha_Antropometrica { get; set; }
         public Nullable<System.DateTime> Fecha_de_Registro { get; set; }
-        public Nullable<bool> Estado { get; set; }
         public Nullable<System.DateTime> Fecha_de_Actualizacion { get; set; }
+        public Nullable<bool> Estado { get; set; }
     
         public virtual Datos_Atleta Datos_Atleta { get; set; }
     }

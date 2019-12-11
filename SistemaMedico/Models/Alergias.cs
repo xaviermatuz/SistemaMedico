@@ -19,8 +19,8 @@ namespace SistemaMedico.Models
         public string Alergia { get; set; }
         public string Descripcion { get; set; }
         public System.DateTime Fecha_de_Registro { get; set; }
-        public bool Estado { get; set; }
         public Nullable<System.DateTime> Fecha_de_Actualizacion { get; set; }
+        public bool Estado { get; set; }
     
         public virtual Datos_Atleta Datos_Atleta { get; set; }
     }

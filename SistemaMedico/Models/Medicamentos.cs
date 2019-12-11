@@ -19,8 +19,8 @@ namespace SistemaMedico.Models
         public string Medicamentos1 { get; set; }
         public string Descripcion { get; set; }
         public Nullable<System.DateTime> Fecha_de_Registro { get; set; }
-        public Nullable<bool> Estado { get; set; }
         public Nullable<System.DateTime> Fecha_de_Actualizacion { get; set; }
+        public Nullable<bool> Estado { get; set; }
     
         public virtual Datos_Atleta Datos_Atleta { get; set; }
     }

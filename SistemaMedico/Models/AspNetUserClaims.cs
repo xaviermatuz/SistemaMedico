@@ -12,16 +12,13 @@ namespace SistemaMedico.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Aparato_Locomotor
+    public partial class AspNetUserClaims
     {
-        public int ID { get; set; }
-        public int ID_Atleta { get; set; }
-        public string Preguntas { get; set; }
-        public string Respuestas { get; set; }
-        public Nullable<System.DateTime> Fecha_de_Registro { get; set; }
-        public Nullable<System.DateTime> Fecha_de_Actualizacion { get; set; }
-        public Nullable<bool> Estado { get; set; }
+        public int Id { get; set; }
+        public string UserId { get; set; }
+        public string ClaimType { get; set; }
+        public string ClaimValue { get; set; }
     
-        public virtual Datos_Atleta Datos_Atleta { get; set; }
+        public virtual AspNetUsers AspNetUsers { get; set; }
     }
 }
