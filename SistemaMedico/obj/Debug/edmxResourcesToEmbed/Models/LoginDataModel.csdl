@@ -59,6 +59,7 @@
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="ID_Atleta" Type="Int32" Nullable="false" />
     <Property Name="ID_Categoria" Type="Int32" Nullable="false" />
+    <Property Name="activo" Type="Boolean" />
     <NavigationProperty Name="Categorias" Relationship="Self.FK_Atleta_Categoria_Categorias" FromRole="Atleta_Categoria" ToRole="Categorias" />
     <NavigationProperty Name="Datos_Atleta" Relationship="Self.FK_Atleta_Categoria_Datos_Atleta" FromRole="Atleta_Categoria" ToRole="Datos_Atleta" />
   </EntityType>
@@ -149,12 +150,12 @@
     <Property Name="Nombre_Completo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="Edad" Type="Int32" />
     <Property Name="Fecha_De_Registro" Type="DateTime" Precision="0" />
-    <Property Name="Genero" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="Genero" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="Numero_De_Cedula" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
     <Property Name="Correo_Electronico" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="Telefono_Convencional" Type="String" MaxLength="14" FixedLength="false" Unicode="true" />
     <Property Name="Telefono_Celular" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
-    <Property Name="Tiene_Seguro" Type="String" MaxLength="7" FixedLength="true" Unicode="false" />
+    <Property Name="Tiene_Seguro" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
     <Property Name="Hospital" Type="Int32" Nullable="false" />
     <Property Name="Dirreccion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
     <Property Name="Municipio" Type="Int32" Nullable="false" />
@@ -164,7 +165,7 @@
     <Property Name="Telefono_Padre" Type="String" MaxLength="14" FixedLength="false" Unicode="true" />
     <Property Name="Emergencia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Dirreccion_Emergencia" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="Embarazo" Type="String" MaxLength="7" FixedLength="true" Unicode="false" />
+    <Property Name="Embarazo" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
     <Property Name="Activo" Type="Boolean" />
     <NavigationProperty Name="Alergias" Relationship="Self.FK_Alergias_Datos_Atleta" FromRole="Datos_Atleta" ToRole="Alergias" />
     <NavigationProperty Name="Anexos" Relationship="Self.FK_Anexos_Datos_Atleta" FromRole="Datos_Atleta" ToRole="Anexos" />
@@ -179,6 +180,7 @@
     <NavigationProperty Name="Hospital1" Relationship="Self.FK_Datos_Atleta_Hospital" FromRole="Datos_Atleta" ToRole="Hospital" />
     <NavigationProperty Name="Municipio1" Relationship="Self.FK_Datos_Atleta_Municipio" FromRole="Datos_Atleta" ToRole="Municipio" />
     <NavigationProperty Name="Educacion" Relationship="Self.FK_Educacion_Datos_Atleta" FromRole="Datos_Atleta" ToRole="Educacion" />
+    <NavigationProperty Name="Equipo_Deportivo" Relationship="Self.FK_Equipo_Deportivo_Datos_Atleta" FromRole="Datos_Atleta" ToRole="Equipo_Deportivo" />
     <NavigationProperty Name="Examen_Fisico_Principal" Relationship="Self.FK_Examen_Fisico_Principal_Datos_Atleta" FromRole="Datos_Atleta" ToRole="Examen_Fisico_Principal" />
     <NavigationProperty Name="Ficha_Antropometrica" Relationship="Self.FK_Ficha_Antropometrica_Datos_Atleta" FromRole="Datos_Atleta" ToRole="Ficha_Antropometrica" />
     <NavigationProperty Name="Habitacion" Relationship="Self.FK_Habitacion_Datos_Atleta" FromRole="Datos_Atleta" ToRole="Habitacion" />
@@ -215,6 +217,20 @@
     <Property Name="Respuestas" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Detalles" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="Datos_Atleta" Relationship="Self.FK_Educacion_Datos_Atleta" FromRole="Educacion" ToRole="Datos_Atleta" />
+  </EntityType>
+  <EntityType Name="Equipo_Deportivo">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_Atleta" Type="Int32" Nullable="false" />
+    <Property Name="equipdep" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="relaentre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="relacompa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ra_ina_entre" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ra_ina_compa" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Activo" Type="Boolean" />
+    <NavigationProperty Name="Datos_Atleta" Relationship="Self.FK_Equipo_Deportivo_Datos_Atleta" FromRole="Equipo_Deportivo" ToRole="Datos_Atleta" />
   </EntityType>
   <EntityType Name="Eventos">
     <Key>
@@ -267,7 +283,7 @@
     <Property Name="Menstruacion" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
     <Property Name="Antropometrista" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Anotador" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="ID_Ficha_Antropometrica" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Txt_Ficha_Antropometrica" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Toma1" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
     <Property Name="Toma2" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
     <Property Name="Toma3" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
@@ -335,6 +351,14 @@
     <Property Name="Respuestas" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Detalles" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="Datos_Atleta" Relationship="Self.FK_Informacion_Familiar_Datos_Atleta" FromRole="Informacion_Familiar" ToRole="Datos_Atleta" />
+  </EntityType>
+  <EntityType Name="Lesiones">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Tipo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
   </EntityType>
   <EntityType Name="Medicamentos">
     <Key>
@@ -626,6 +650,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Equipo_Deportivo_Datos_Atleta">
+    <End Role="Datos_Atleta" Type="Self.Datos_Atleta" Multiplicity="1" />
+    <End Role="Equipo_Deportivo" Type="Self.Equipo_Deportivo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Datos_Atleta">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Equipo_Deportivo">
+        <PropertyRef Name="ID_Atleta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Examen_Fisico_Principal_Datos_Atleta">
     <End Role="Datos_Atleta" Type="Self.Datos_Atleta" Multiplicity="1" />
     <End Role="Examen_Fisico_Principal" Type="Self.Examen_Fisico_Principal" Multiplicity="*" />
@@ -810,6 +846,7 @@
     <EntitySet Name="Departamentos" EntityType="Self.Departamentos" />
     <EntitySet Name="Deporte" EntityType="Self.Deporte" />
     <EntitySet Name="Educacion" EntityType="Self.Educacion" />
+    <EntitySet Name="Equipo_Deportivo" EntityType="Self.Equipo_Deportivo" />
     <EntitySet Name="Eventos" EntityType="Self.Eventos" />
     <EntitySet Name="Examen_Fisico" EntityType="Self.Examen_Fisico" />
     <EntitySet Name="Examen_Fisico_Principal" EntityType="Self.Examen_Fisico_Principal" />
@@ -821,6 +858,7 @@
     <EntitySet Name="Historial_Medico" EntityType="Self.Historial_Medico" />
     <EntitySet Name="Hospital" EntityType="Self.Hospital" />
     <EntitySet Name="Informacion_Familiar" EntityType="Self.Informacion_Familiar" />
+    <EntitySet Name="Lesiones" EntityType="Self.Lesiones" />
     <EntitySet Name="Medicamentos" EntityType="Self.Medicamentos" />
     <EntitySet Name="Medico" EntityType="Self.Medico" />
     <EntitySet Name="Municipio" EntityType="Self.Municipio" />
@@ -892,6 +930,10 @@
       <End Role="Datos_Atleta" EntitySet="Datos_Atleta" />
       <End Role="Educacion" EntitySet="Educacion" />
     </AssociationSet>
+    <AssociationSet Name="FK_Equipo_Deportivo_Datos_Atleta" Association="Self.FK_Equipo_Deportivo_Datos_Atleta">
+      <End Role="Datos_Atleta" EntitySet="Datos_Atleta" />
+      <End Role="Equipo_Deportivo" EntitySet="Equipo_Deportivo" />
+    </AssociationSet>
     <AssociationSet Name="FK_Examen_Fisico_Principal_Datos_Atleta" Association="Self.FK_Examen_Fisico_Principal_Datos_Atleta">
       <End Role="Datos_Atleta" EntitySet="Datos_Atleta" />
       <End Role="Examen_Fisico_Principal" EntitySet="Examen_Fisico_Principal" />
@@ -940,5 +982,46 @@
       <End Role="Roles" EntitySet="Roles" />
       <End Role="Usuarios" EntitySet="Usuarios" />
     </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(MeSysModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(MeSysModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
   </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
 </Schema>

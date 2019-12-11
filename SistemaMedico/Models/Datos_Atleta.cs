@@ -28,6 +28,7 @@ namespace SistemaMedico.Models
             this.Condiciones_Clinicas_Actuales_Principal = new HashSet<Condiciones_Clinicas_Actuales_Principal>();
             this.Consiste_Apoyo = new HashSet<Consiste_Apoyo>();
             this.Educacion = new HashSet<Educacion>();
+            this.Equipo_Deportivo = new HashSet<Equipo_Deportivo>();
             this.Examen_Fisico_Principal = new HashSet<Examen_Fisico_Principal>();
             this.Ficha_Antropometrica = new HashSet<Ficha_Antropometrica>();
             this.Habitacion = new HashSet<Habitacion>();
@@ -90,6 +91,8 @@ namespace SistemaMedico.Models
         public virtual Municipio Municipio1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Educacion> Educacion { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Equipo_Deportivo> Equipo_Deportivo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Examen_Fisico_Principal> Examen_Fisico_Principal { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

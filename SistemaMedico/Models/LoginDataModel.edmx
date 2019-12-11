@@ -60,6 +60,7 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ID_Atleta" Type="int" Nullable="false" />
           <Property Name="ID_Categoria" Type="int" Nullable="false" />
+          <Property Name="activo" Type="bit" />
         </EntityType>
         <EntityType Name="Carrera_Deportiva">
           <Key>
@@ -139,12 +140,12 @@
           <Property Name="Nombre_Completo" Type="text" />
           <Property Name="Edad" Type="int" />
           <Property Name="Fecha_De_Registro" Type="date" />
-          <Property Name="Genero" Type="char" MaxLength="10" />
+          <Property Name="Genero" Type="varchar" MaxLength="10" />
           <Property Name="Numero_De_Cedula" Type="nvarchar" MaxLength="20" />
           <Property Name="Correo_Electronico" Type="nvarchar" MaxLength="100" />
           <Property Name="Telefono_Convencional" Type="nvarchar" MaxLength="14" />
           <Property Name="Telefono_Celular" Type="varchar" MaxLength="14" />
-          <Property Name="Tiene_Seguro" Type="char" MaxLength="7" />
+          <Property Name="Tiene_Seguro" Type="varchar" MaxLength="7" />
           <Property Name="Hospital" Type="int" Nullable="false" />
           <Property Name="Dirreccion" Type="varchar" MaxLength="500" />
           <Property Name="Municipio" Type="int" Nullable="false" />
@@ -154,7 +155,7 @@
           <Property Name="Telefono_Padre" Type="nvarchar" MaxLength="14" />
           <Property Name="Emergencia" Type="varchar" MaxLength="50" />
           <Property Name="Dirreccion_Emergencia" Type="varchar" MaxLength="200" />
-          <Property Name="Embarazo" Type="char" MaxLength="7" />
+          <Property Name="Embarazo" Type="varchar" MaxLength="7" />
           <Property Name="Activo" Type="bit" />
         </EntityType>
         <EntityType Name="Departamentos">
@@ -180,6 +181,19 @@
           <Property Name="Preguntas" Type="varchar" MaxLength="500" Nullable="false" />
           <Property Name="Respuestas" Type="varchar" MaxLength="500" Nullable="false" />
           <Property Name="Detalles" Type="varchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Equipo_Deportivo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Atleta" Type="int" Nullable="false" />
+          <Property Name="equipdep" Type="varchar" MaxLength="50" />
+          <Property Name="relaentre" Type="varchar" MaxLength="50" />
+          <Property Name="relacompa" Type="varchar" MaxLength="50" />
+          <Property Name="ra_ina_entre" Type="varchar" MaxLength="200" />
+          <Property Name="ra_ina_compa" Type="varchar" MaxLength="200" />
+          <Property Name="Activo" Type="bit" />
         </EntityType>
         <EntityType Name="Eventos">
           <Key>
@@ -229,7 +243,7 @@
           <Property Name="Menstruacion" Type="char" MaxLength="5" Nullable="false" />
           <Property Name="Antropometrista" Type="varchar" MaxLength="500" Nullable="false" />
           <Property Name="Anotador" Type="varchar" MaxLength="500" Nullable="false" />
-          <Property Name="ID_Ficha_Antropometrica" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Txt_Ficha_Antropometrica" Type="varchar" MaxLength="500" Nullable="false" />
           <Property Name="Toma1" Type="decimal" Precision="5" Scale="2" Nullable="false" />
           <Property Name="Toma2" Type="decimal" Precision="5" Scale="2" Nullable="false" />
           <Property Name="Toma3" Type="decimal" Precision="5" Scale="2" Nullable="false" />
@@ -290,6 +304,14 @@
           <Property Name="Preguntas" Type="varchar" MaxLength="500" Nullable="false" />
           <Property Name="Respuestas" Type="varchar" MaxLength="500" Nullable="false" />
           <Property Name="Detalles" Type="varchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Lesiones">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Tipo" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <EntityType Name="Medicamentos">
           <Key>
@@ -575,6 +597,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Equipo_Deportivo_Datos_Atleta">
+          <End Role="Datos_Atleta" Type="Self.Datos_Atleta" Multiplicity="1" />
+          <End Role="Equipo_Deportivo" Type="Self.Equipo_Deportivo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Datos_Atleta">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Equipo_Deportivo">
+              <PropertyRef Name="ID_Atleta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Examen_Fisico_Principal_Datos_Atleta">
           <End Role="Datos_Atleta" Type="Self.Datos_Atleta" Multiplicity="1" />
           <End Role="Examen_Fisico_Principal" Type="Self.Examen_Fisico_Principal" Multiplicity="*" />
@@ -741,6 +775,37 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="MeSysModelStoreContainer">
           <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Alergias" EntityType="Self.Alergias" Schema="dbo" store:Type="Tables" />
@@ -759,6 +824,7 @@
           <EntitySet Name="Departamentos" EntityType="Self.Departamentos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Deporte" EntityType="Self.Deporte" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Educacion" EntityType="Self.Educacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Equipo_Deportivo" EntityType="Self.Equipo_Deportivo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Eventos" EntityType="Self.Eventos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Examen_Fisico" EntityType="Self.Examen_Fisico" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Examen_Fisico_Principal" EntityType="Self.Examen_Fisico_Principal" Schema="dbo" store:Type="Tables" />
@@ -770,6 +836,7 @@
           <EntitySet Name="Historial_Medico" EntityType="Self.Historial_Medico" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Hospital" EntityType="Self.Hospital" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Informacion_Familiar" EntityType="Self.Informacion_Familiar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Lesiones" EntityType="Self.Lesiones" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Medicamentos" EntityType="Self.Medicamentos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Medico" EntityType="Self.Medico" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Municipio" EntityType="Self.Municipio" Schema="dbo" store:Type="Tables" />
@@ -840,6 +907,10 @@
           <AssociationSet Name="FK_Educacion_Datos_Atleta" Association="Self.FK_Educacion_Datos_Atleta">
             <End Role="Datos_Atleta" EntitySet="Datos_Atleta" />
             <End Role="Educacion" EntitySet="Educacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Equipo_Deportivo_Datos_Atleta" Association="Self.FK_Equipo_Deportivo_Datos_Atleta">
+            <End Role="Datos_Atleta" EntitySet="Datos_Atleta" />
+            <End Role="Equipo_Deportivo" EntitySet="Equipo_Deportivo" />
           </AssociationSet>
           <AssociationSet Name="FK_Examen_Fisico_Principal_Datos_Atleta" Association="Self.FK_Examen_Fisico_Principal_Datos_Atleta">
             <End Role="Datos_Atleta" EntitySet="Datos_Atleta" />
@@ -954,6 +1025,7 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ID_Atleta" Type="Int32" Nullable="false" />
           <Property Name="ID_Categoria" Type="Int32" Nullable="false" />
+          <Property Name="activo" Type="Boolean" />
           <NavigationProperty Name="Categorias" Relationship="Self.FK_Atleta_Categoria_Categorias" FromRole="Atleta_Categoria" ToRole="Categorias" />
           <NavigationProperty Name="Datos_Atleta" Relationship="Self.FK_Atleta_Categoria_Datos_Atleta" FromRole="Atleta_Categoria" ToRole="Datos_Atleta" />
         </EntityType>
@@ -1044,12 +1116,12 @@
           <Property Name="Nombre_Completo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Edad" Type="Int32" />
           <Property Name="Fecha_De_Registro" Type="DateTime" Precision="0" />
-          <Property Name="Genero" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="Genero" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="Numero_De_Cedula" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="Correo_Electronico" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Telefono_Convencional" Type="String" MaxLength="14" FixedLength="false" Unicode="true" />
           <Property Name="Telefono_Celular" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
-          <Property Name="Tiene_Seguro" Type="String" MaxLength="7" FixedLength="true" Unicode="false" />
+          <Property Name="Tiene_Seguro" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
           <Property Name="Hospital" Type="Int32" Nullable="false" />
           <Property Name="Dirreccion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="Municipio" Type="Int32" Nullable="false" />
@@ -1059,7 +1131,7 @@
           <Property Name="Telefono_Padre" Type="String" MaxLength="14" FixedLength="false" Unicode="true" />
           <Property Name="Emergencia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Dirreccion_Emergencia" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="Embarazo" Type="String" MaxLength="7" FixedLength="true" Unicode="false" />
+          <Property Name="Embarazo" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
           <Property Name="Activo" Type="Boolean" />
           <NavigationProperty Name="Alergias" Relationship="Self.FK_Alergias_Datos_Atleta" FromRole="Datos_Atleta" ToRole="Alergias" />
           <NavigationProperty Name="Anexos" Relationship="Self.FK_Anexos_Datos_Atleta" FromRole="Datos_Atleta" ToRole="Anexos" />
@@ -1074,6 +1146,7 @@
           <NavigationProperty Name="Hospital1" Relationship="Self.FK_Datos_Atleta_Hospital" FromRole="Datos_Atleta" ToRole="Hospital" />
           <NavigationProperty Name="Municipio1" Relationship="Self.FK_Datos_Atleta_Municipio" FromRole="Datos_Atleta" ToRole="Municipio" />
           <NavigationProperty Name="Educacion" Relationship="Self.FK_Educacion_Datos_Atleta" FromRole="Datos_Atleta" ToRole="Educacion" />
+          <NavigationProperty Name="Equipo_Deportivo" Relationship="Self.FK_Equipo_Deportivo_Datos_Atleta" FromRole="Datos_Atleta" ToRole="Equipo_Deportivo" />
           <NavigationProperty Name="Examen_Fisico_Principal" Relationship="Self.FK_Examen_Fisico_Principal_Datos_Atleta" FromRole="Datos_Atleta" ToRole="Examen_Fisico_Principal" />
           <NavigationProperty Name="Ficha_Antropometrica" Relationship="Self.FK_Ficha_Antropometrica_Datos_Atleta" FromRole="Datos_Atleta" ToRole="Ficha_Antropometrica" />
           <NavigationProperty Name="Habitacion" Relationship="Self.FK_Habitacion_Datos_Atleta" FromRole="Datos_Atleta" ToRole="Habitacion" />
@@ -1110,6 +1183,20 @@
           <Property Name="Respuestas" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Detalles" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Datos_Atleta" Relationship="Self.FK_Educacion_Datos_Atleta" FromRole="Educacion" ToRole="Datos_Atleta" />
+        </EntityType>
+        <EntityType Name="Equipo_Deportivo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Atleta" Type="Int32" Nullable="false" />
+          <Property Name="equipdep" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="relaentre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="relacompa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ra_ina_entre" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ra_ina_compa" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Activo" Type="Boolean" />
+          <NavigationProperty Name="Datos_Atleta" Relationship="Self.FK_Equipo_Deportivo_Datos_Atleta" FromRole="Equipo_Deportivo" ToRole="Datos_Atleta" />
         </EntityType>
         <EntityType Name="Eventos">
           <Key>
@@ -1162,7 +1249,7 @@
           <Property Name="Menstruacion" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="Antropometrista" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Anotador" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ID_Ficha_Antropometrica" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Txt_Ficha_Antropometrica" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Toma1" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
           <Property Name="Toma2" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
           <Property Name="Toma3" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
@@ -1230,6 +1317,14 @@
           <Property Name="Respuestas" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Detalles" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Datos_Atleta" Relationship="Self.FK_Informacion_Familiar_Datos_Atleta" FromRole="Informacion_Familiar" ToRole="Datos_Atleta" />
+        </EntityType>
+        <EntityType Name="Lesiones">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Tipo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
         <EntityType Name="Medicamentos">
           <Key>
@@ -1521,6 +1616,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Equipo_Deportivo_Datos_Atleta">
+          <End Role="Datos_Atleta" Type="Self.Datos_Atleta" Multiplicity="1" />
+          <End Role="Equipo_Deportivo" Type="Self.Equipo_Deportivo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Datos_Atleta">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Equipo_Deportivo">
+              <PropertyRef Name="ID_Atleta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Examen_Fisico_Principal_Datos_Atleta">
           <End Role="Datos_Atleta" Type="Self.Datos_Atleta" Multiplicity="1" />
           <End Role="Examen_Fisico_Principal" Type="Self.Examen_Fisico_Principal" Multiplicity="*" />
@@ -1705,6 +1812,7 @@
           <EntitySet Name="Departamentos" EntityType="Self.Departamentos" />
           <EntitySet Name="Deporte" EntityType="Self.Deporte" />
           <EntitySet Name="Educacion" EntityType="Self.Educacion" />
+          <EntitySet Name="Equipo_Deportivo" EntityType="Self.Equipo_Deportivo" />
           <EntitySet Name="Eventos" EntityType="Self.Eventos" />
           <EntitySet Name="Examen_Fisico" EntityType="Self.Examen_Fisico" />
           <EntitySet Name="Examen_Fisico_Principal" EntityType="Self.Examen_Fisico_Principal" />
@@ -1716,6 +1824,7 @@
           <EntitySet Name="Historial_Medico" EntityType="Self.Historial_Medico" />
           <EntitySet Name="Hospital" EntityType="Self.Hospital" />
           <EntitySet Name="Informacion_Familiar" EntityType="Self.Informacion_Familiar" />
+          <EntitySet Name="Lesiones" EntityType="Self.Lesiones" />
           <EntitySet Name="Medicamentos" EntityType="Self.Medicamentos" />
           <EntitySet Name="Medico" EntityType="Self.Medico" />
           <EntitySet Name="Municipio" EntityType="Self.Municipio" />
@@ -1787,6 +1896,10 @@
             <End Role="Datos_Atleta" EntitySet="Datos_Atleta" />
             <End Role="Educacion" EntitySet="Educacion" />
           </AssociationSet>
+          <AssociationSet Name="FK_Equipo_Deportivo_Datos_Atleta" Association="Self.FK_Equipo_Deportivo_Datos_Atleta">
+            <End Role="Datos_Atleta" EntitySet="Datos_Atleta" />
+            <End Role="Equipo_Deportivo" EntitySet="Equipo_Deportivo" />
+          </AssociationSet>
           <AssociationSet Name="FK_Examen_Fisico_Principal_Datos_Atleta" Association="Self.FK_Examen_Fisico_Principal_Datos_Atleta">
             <End Role="Datos_Atleta" EntitySet="Datos_Atleta" />
             <End Role="Examen_Fisico_Principal" EntitySet="Examen_Fisico_Principal" />
@@ -1835,7 +1948,48 @@
             <End Role="Roles" EntitySet="Roles" />
             <End Role="Usuarios" EntitySet="Usuarios" />
           </AssociationSet>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(MeSysModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(MeSysModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
         </EntityContainer>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1900,6 +2054,7 @@
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="ID_Atleta" ColumnName="ID_Atleta" />
                 <ScalarProperty Name="ID_Categoria" ColumnName="ID_Categoria" />
+                <ScalarProperty Name="activo" ColumnName="activo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2034,6 +2189,20 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Equipo_Deportivo">
+            <EntityTypeMapping TypeName="MeSysModel.Equipo_Deportivo">
+              <MappingFragment StoreEntitySet="Equipo_Deportivo">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_Atleta" ColumnName="ID_Atleta" />
+                <ScalarProperty Name="equipdep" ColumnName="equipdep" />
+                <ScalarProperty Name="relaentre" ColumnName="relaentre" />
+                <ScalarProperty Name="relacompa" ColumnName="relacompa" />
+                <ScalarProperty Name="ra_ina_entre" ColumnName="ra_ina_entre" />
+                <ScalarProperty Name="ra_ina_compa" ColumnName="ra_ina_compa" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Eventos">
             <EntityTypeMapping TypeName="MeSysModel.Eventos">
               <MappingFragment StoreEntitySet="Eventos">
@@ -2085,7 +2254,7 @@
                 <ScalarProperty Name="Menstruacion" ColumnName="Menstruacion" />
                 <ScalarProperty Name="Antropometrista" ColumnName="Antropometrista" />
                 <ScalarProperty Name="Anotador" ColumnName="Anotador" />
-                <ScalarProperty Name="ID_Ficha_Antropometrica" ColumnName="ID_Ficha_Antropometrica" />
+                <ScalarProperty Name="Txt_Ficha_Antropometrica" ColumnName="Txt_Ficha_Antropometrica" />
                 <ScalarProperty Name="Toma1" ColumnName="Toma1" />
                 <ScalarProperty Name="Toma2" ColumnName="Toma2" />
                 <ScalarProperty Name="Toma3" ColumnName="Toma3" />
@@ -2152,6 +2321,15 @@
                 <ScalarProperty Name="Preguntas" ColumnName="Preguntas" />
                 <ScalarProperty Name="Respuestas" ColumnName="Respuestas" />
                 <ScalarProperty Name="Detalles" ColumnName="Detalles" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Lesiones">
+            <EntityTypeMapping TypeName="MeSysModel.Lesiones">
+              <MappingFragment StoreEntitySet="Lesiones">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2226,6 +2404,30 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="MeSysModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="MeSysModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="MeSysModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="MeSysModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MeSysModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="MeSysModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MeSysModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="MeSysModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="MeSysModel.Store.sp_upgraddiagrams" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

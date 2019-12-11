@@ -2,6 +2,9 @@
 
 @model SistemaMedico.Models.AtletaView
 
+@using SistemaMedico.Clases;
+@using SistemaMedico.Models;
+
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -19,7 +22,6 @@
     <link href="~/Recursos/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
     <link href="~/Recursos/css/notificacion.css" rel="stylesheet" />
 }
-
 <a id="UrlGetMunicipiosPorDpto" href="@Url.Action("GetMunicipiosPorDpto","Atleta")" hidden></a>
 <a id="UrlGetCategoriaDeporte" href="@Url.Action("GetCategoriaDeporte","Atleta")" hidden></a>
 <a id="UrlAddCategoryToAthlete" href="@Url.Action("AddCategoryToAthlete","Atleta")" hidden></a>
@@ -55,7 +57,7 @@
                                                 <label>Seleccione una fotografia</label>
                                             </div>
                                             @* <input type="file" name="foto" id="input-file-now" class="dropify" />*@
-                                            @Html.TextBoxFor(modelo => modelo.ImageFile, new { type = "file", @class = "dropify" })
+                                            @Html.TextBoxFor(modelo => modelo.ImageFile, new { type = "file", @class = "dropify", @onchange = "previewFile(500,0.1)" })
 
 
                                         </div>
@@ -66,7 +68,7 @@
                                             <div class="form-group form-float ">
                                                 <div class="form-line">
                                                     @* <input type="text" id="pnombre" style="text-transform: capitalize;" class="form-control" name="pnombre" value="">*@
-                                                    @Html.EditorFor(model => model.Primer_Nombre, new { htmlAttributes = new { @class = "form-control", @style = "text-transform: capitalize;" } })
+                                                    @Html.EditorFor(model => model.Model.Primer_Nombre, new { htmlAttributes = new { @class = "form-control", @style = "text-transform: capitalize;" } })
                                                     <label class="form-label">Primer Nombre</label>
                                                 </div>
                                             </div>
@@ -75,7 +77,7 @@
                                             <div class="form-group form-float">
                                                 <div class="form-line">
                                                     @*<input type="text" id="snombre" style="text-transform: capitalize;" class="form-control" name="snombre" value="">*@
-                                                    @Html.EditorFor(model => model.Segundo_Nombre, new { htmlAttributes = new { @class = "form-control", @style = "text-transform: capitalize;" } })
+                                                    @Html.EditorFor(model => model.Model.Segundo_Nombre, new { htmlAttributes = new { @class = "form-control", @style = "text-transform: capitalize;" } })
                                                     <label class="form-label">Segundo Nombre</label>
                                                 </div>
                                             </div>
@@ -84,7 +86,7 @@
                                             <div class="form-group form-float">
                                                 <div class="form-line">
                                                     @*<input type="text" id="papellido" style="text-transform: capitalize;" class="form-control" name="papellido" value="">*@
-                                                    @Html.EditorFor(model => model.Primer_Apellido, new { htmlAttributes = new { @class = "form-control", @style = "text-transform: capitalize;" } })
+                                                    @Html.EditorFor(model => model.Model.Primer_Apellido, new { htmlAttributes = new { @class = "form-control", @style = "text-transform: capitalize;" } })
                                                     <label class="form-label">Primer Apellido</label>
                                                 </div>
                                             </div>
@@ -93,7 +95,7 @@
                                             <div class="form-group form-float ">
                                                 <div class="form-line">
                                                     @*<input type="text" id="sapellido" class="form-control" style="text-transform: capitalize;" name="sapellido" value="">*@
-                                                    @Html.EditorFor(model => model.Segundo_Apellido, new { htmlAttributes = new { @class = "form-control", @style = "text-transform: capitalize;" } })
+                                                    @Html.EditorFor(model => model.Model.Segundo_Apellido, new { htmlAttributes = new { @class = "form-control", @style = "text-transform: capitalize;" } })
                                                     <label class="form-label">Segundo Apellido</label>
                                                 </div>
                                             </div>
@@ -102,7 +104,7 @@
                                             <div class="form-group form-float">
                                                 <div class="form-line">
                                                     @*<input type="number" min="1" class="form-control" name="edad" value="" id="edad">*@
-                                                    @Html.EditorFor(model => model.Edad, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.EditorFor(model => model.Model.Edad, new { htmlAttributes = new { @class = "form-control", @onKeyPress = "return soloNumeros(event)", @maxlength = "3", @type = "text" } })
                                                     <label class="form-label">Edad</label>
                                                 </div>
                                             </div>
@@ -111,11 +113,12 @@
                                             <div class="form-group form-float">
                                                 <div class="form-line">
                                                     @* <input type="text" class="form-control" minlength="14" maxlength="14" name="numcedula" value="" id="numcedula">*@
-                                                    @Html.EditorFor(model => model.Numero_De_Cedula, new { htmlAttributes = new { @class = "form-control", @minlength = "14", @maxlength = "14" } })
+                                                    @Html.EditorFor(model => model.Model.Numero_De_Cedula, new { htmlAttributes = new { @class = "form-control", @style = "text-transform: capitalize;" , @minlength = "16", @maxlength = "16" } })
                                                     <label class="form-label">Numero de Cedula</label>
                                                 </div>
                                             </div>
                                         </div>
+
                                         <div class=" col-md-6">
                                             <label>Genero</label>
                                             <div class="form-group">
@@ -124,7 +127,9 @@
                                                         <option value="Masculino">Masculino</option>
                                                         <option value="Femenino">Femenino</option>
                                                     </select>*@
-                                                @Html.DropDownList("Genero", (IEnumerable<SelectListItem>)ViewBag.Genero, "Seleccione Genero", new { @class = "form-control" })
+                                                @* @Html.DropDownList("Genero", (IEnumerable<SelectListItem>)ViewBag.Genero, "Seleccione Genero", new { @class = "form-control" })*@
+
+                                                @Html.DropDownListFor(model => model.Model.Genero, (IEnumerable<SelectListItem>)ViewBag.Genero, "Seleccione Genero", new { @class = "form-control" })
                                             </div>
                                         </div>
                                         <div class="col-md-6 m-t-5" id="dvembarazo" style="display:none;">
@@ -139,10 +144,10 @@
                                                     @Html.RadioButtonFor(model => model.Embarazo, "Si")
                                                     No
                                                     @Html.RadioButtonFor(model => model.Embarazo, "No")*@
-                                                @Html.RadioButtonFor(m => m.Embarazo, "No", new { id = "radio_1" })
+                                                @Html.RadioButtonFor(m => m.Model.Embarazo, "No", new { id = "radio_1" })
                                                 @Html.Label("radio_1", "No")
 
-                                                @Html.RadioButtonFor(m => m.Embarazo, "Si", new { id = "radio_2" })
+                                                @Html.RadioButtonFor(m => m.Model.Embarazo, "Si", new { id = "radio_2" })
                                                 @Html.Label("radio_2", "Si")
                                             </div>
 
@@ -160,7 +165,7 @@
                                         <div class="form-group form-float ">
                                             <div class="form-line">
                                                 @*<input type="email" id="correoelec" class="form-control" name="correoe" value="">*@
-                                                @Html.EditorFor(model => model.Correo_Electronico, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.EditorFor(model => model.Model.Correo_Electronico, new { htmlAttributes = new { @class = "form-control" } })
                                                 <label class="form-label">Correo Electronico</label>
                                             </div>
                                         </div>
@@ -169,7 +174,7 @@
                                         <div class="form-group form-float">
                                             <div class="form-line">
                                                 @*<input type="text" minlength="8" maxlength="8" class="form-control" id="telefonocelular" name="tcelular" value="">*@
-                                                @Html.EditorFor(model => model.Telefono_Celular, new { htmlAttributes = new { @class = "form-control", @minlength = "8", @maxlength = "8" } })
+                                                @Html.EditorFor(model => model.Model.Telefono_Celular, new { htmlAttributes = new { @class = "form-control", @minlength = "8", @maxlength = "8", @onKeyPress = "return soloNumeros(event)" } })
                                                 <label class="form-label">Telefono Celular</label>
                                             </div>
                                         </div>
@@ -178,7 +183,7 @@
                                         <div class="form-group form-float">
                                             <div class="form-line">
                                                 @*<input type="text" minlength="8" maxlength="8" class="form-control" name="tconvencional" id="telconven" value="">*@
-                                                @Html.EditorFor(model => model.Telefono_Convencional, new { htmlAttributes = new { @class = "form-control", @minlength = "8", @maxlength = "8" } })
+                                                @Html.EditorFor(model => model.Model.Telefono_Convencional, new { htmlAttributes = new { @class = "form-control", @onKeyPress = "return soloNumeros(event)", @minlength = "8", @maxlength = "8" } })
 
                                                 <label class="form-label">Telefono Convencional</label>
                                             </div>
@@ -188,7 +193,7 @@
                                         <div class="form-group form-float">
                                             <div class="form-line">
                                                 @*<input type="text" class="form-control" id="direccion" name="direccion" value="">*@
-                                                @Html.EditorFor(model => model.Dirreccion, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.EditorFor(model => model.Model.Dirreccion, new { htmlAttributes = new { @class = "form-control", @style = "text-transform: capitalize;" } })
 
                                                 <label class="form-label">Direccion</label>
                                             </div>
@@ -214,7 +219,7 @@
                                                 </select>*@
                                             @Html.Label("Municipio")
                                             <br />
-                                            @Html.DropDownListFor(m => m.Municipio, Enumerable.Empty<SelectListItem>(), "Seleccione un Municipio", new { @class = "form-control p-0" })
+                                            @Html.DropDownListFor(model => model.Model.Municipio, (SelectList)ViewBag.ListaMunicipios, "Seleccione un Municipio", new { @class = "form-control p-0", @id = "Municipio" })
                                         </div>
                                     </div>
                                     <div class="col-md-12">
@@ -233,10 +238,10 @@
                                                         <input type="radio" id="radio17" name="seguro" value="Si" @((Model.Tiene_Seguro ?? "").Equals("Si")) {<text>checked</text>}>
                                                         @Html.RadioButton("Si", new { value = Model.Tiene_Seguro, @checked = true})
                                                         <label for="radio17">si </label>*@
-                                                    @Html.RadioButtonFor(m => m.Tiene_Seguro, "No", new { id = "radio16" })
+                                                    @Html.RadioButtonFor(m => m.Model.Tiene_Seguro, "No", new { id = "radio16" })
                                                     @Html.Label("radio16", "No")
 
-                                                    @Html.RadioButtonFor(m => m.Tiene_Seguro, "Si", new { id = "radio17" })
+                                                    @Html.RadioButtonFor(m => m.Model.Tiene_Seguro, "Si", new { id = "radio17" })
                                                     @Html.Label("radio17", "Si")
                                                 </div>
 
@@ -249,7 +254,7 @@
 
                                                 @Html.Label("Hospital")
                                                 <br />
-                                                @Html.DropDownListFor(x => x.Hospital, SistemaMedico.Controllers.AtletaController.GetDropDown(), new { @class = "form-control" })
+                                                @Html.DropDownListFor(x => x.Model.Hospital, SistemaMedico.Controllers.AtletaController.GetDropDown(), new { @class = "form-control" })
                                                 @*@Html.DropDownList("Hospital", ViewBag.Hospital as List<SelectListItem>, new { @class = "form-control" })*@
                                                 @*@Html.DropDownList("Hospital", ViewData["Hospital"] as SelectList, new { @id = "Id" })*@
 
@@ -266,9 +271,9 @@
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             @*<select class="form-control p-0" name="deporte" id="select-deporte">
-                                                    <option value="0" disable="true" selected="true">=== Seleccione un deporte ===</option>
-                                                    <option value=""></option>
-                                                </select>*@
+                    <option value="0" disable="true" selected="true">=== Seleccione un deporte ===</option>
+                    <option value=""></option>
+                </select>*@
                                             @Html.Label("Deporte")
                                             <br />
                                             @Html.DropDownList("DlDeport", (SelectList)ViewBag.ListaDeportes, "Seleccione un Deporte", new { @class = "form-control p-0" })
@@ -279,6 +284,7 @@
                                         </div>
 
                                     </div>
+
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             @Html.Label("Categoria Por Deporte")
@@ -294,6 +300,92 @@
                                             <ul id="CategoriasSeleccionadas" class="list-group"></ul>
                                         </div>
                                     </div>
+                                
+                                       
+
+                                            <div class="col-md-12">
+
+                                                <div>
+                                                    <label>Equipamiento Deportivo</label><br>
+                                                    @Html.RadioButtonFor(m => m.equip.equipdep, "Cuenta Con Todo El Equipamiento", new { id = "radio20" })
+                                                    @Html.Label("radio20", "Cuenta Con Todo El Equipamiento")
+
+                                                    @Html.RadioButtonFor(m => m.equip.equipdep, "Cuenta Con Algun Equipamiento Necesario", new { id = "radio21" })
+                                                    @Html.Label("radio21", "Cuenta Con Algun Equipamiento Necesario")
+
+                                                    @Html.RadioButtonFor(m => m.equip.equipdep, "No Cuenta Con Equipamiento Alguno", new { id = "radio22" })
+                                                    @Html.Label("radio22", "No Cuenta Con Equipamiento Alguno")
+                                                </div>
+                                            </div>
+                                       
+   <div class="col-md-12">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <div>
+                                                    <label>Relaciones En El Entorno De Entrenamiento Y Competencia</label><br>
+                                                    <label>Con El Entrenador</label><br>
+                                                    @Html.RadioButtonFor(m => m.equip.relaentre, "Optimas", new { id = "radio23" })
+                                                    @Html.Label("radio23", "Optimas")
+
+                                                    @Html.RadioButtonFor(m => m.equip.relaentre, "Adecuadas", new { id = "radio24" })
+                                                    @Html.Label("radio24", "Adecuadas")
+
+                                                    @Html.RadioButtonFor(m => m.equip.relaentre, "Inadecuadas", new { id = "radio25" })
+                                                    @Html.Label("radio25", "Inadecuadas")
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4" id="relaentre" style="display:none">
+                                            <div class="form-group">
+
+                                                <div class="form-line">
+
+                                                    <label>Razon de las relaciones inadecuadas</label><br>
+                                                    @*<input type="text" class="form-control" id="direccion" name="direccion" value="">*@
+                                                    @Html.EditorFor(model => model.equip.ra_ina_entre, new { htmlAttributes = new { @class = "form-control" } })
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <div>
+                                                    <label>Relaciones En El Entorno De Entrenamiento Y Competencia</label><br>
+                                                    <label>Con Los Compañeros</label><br>
+                                                    @Html.RadioButtonFor(m => m.equip.relacompa, "Optimas", new { id = "radio26" })
+                                                    @Html.Label("radio26", "Optimas")
+
+                                                    @Html.RadioButtonFor(m => m.equip.relacompa, "Adecuadas", new { id = "radio27" })
+                                                    @Html.Label("radio27", "Adecuadas")
+
+                                                    @Html.RadioButtonFor(m => m.equip.relacompa, "Inadecuadas", new { id = "radio28" })
+                                                    @Html.Label("radio28", "Inadecuadas")
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4" id="relacompa" style="display:none">
+                                            <div class="form-group">
+
+                                                <div class="form-line">
+
+                                                    <label>Razon de las relaciones inadecuadas</label><br>
+                                                    @*<input type="text" class="form-control" id="direccion" name="direccion" value="">*@
+                                                    @Html.EditorFor(model => model.equip.ra_ina_compa, new { htmlAttributes = new { @class = "form-control" } })
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+
+
 
                                 </div>
                             </fieldset>
@@ -305,7 +397,7 @@
                                         <div class="form-group form-float">
                                             <div class="form-line">
                                                 @*<input type="text" class="form-control" name="nombremadre" id="nombmadre" value="">*@
-                                                @Html.EditorFor(model => model.Nombre_Madre, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.EditorFor(model => model.Model.Nombre_Madre, new { htmlAttributes = new { @class = "form-control", @style = "text-transform: capitalize;" } })
 
                                                 <label class="form-label">Nombre de la madre</label>
                                             </div>
@@ -316,7 +408,7 @@
                                         <div class="form-group form-float">
                                             <div class="form-line">
                                                 @*<input type="text" minlength="8" maxlength="8" class="form-control" name="telmadre" id="telmadre" value="">*@
-                                                @Html.EditorFor(model => model.Telefono_Madre, new { htmlAttributes = new { @class = "form-control", @minlength = "8", @maxlength = "8" } })
+                                                @Html.EditorFor(model => model.Model.Telefono_Madre, new { htmlAttributes = new { @class = "form-control", @onKeyPress = "return soloNumeros(event)", @minlength = "8", @maxlength = "8" } })
                                                 <label class="form-label">Telefono de la madre</label>
                                             </div>
 
@@ -326,7 +418,7 @@
                                         <div class="form-group form-float">
                                             <div class="form-line">
                                                 @*<input type="text" class="form-control" name="nombrepadre" id="nombrepadre" value="">*@
-                                                @Html.EditorFor(model => model.Nombre_Padre, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.EditorFor(model => model.Model.Nombre_Padre, new { htmlAttributes = new { @class = "form-control", @style = "text-transform: capitalize;" } })
                                                 <label class="form-label">Nombre del padre</label>
                                             </div>
 
@@ -336,7 +428,7 @@
                                         <div class="form-group form-float">
                                             <div class="form-line">
                                                 @*<input type="text" minlength="8" maxlength="8" class="form-control" name="telpadre" id="telpadre" value="">*@
-                                                @Html.EditorFor(model => model.Telefono_Padre, new { htmlAttributes = new { @class = "form-control", @minlength = "8", @maxlength = "8" } })
+                                                @Html.EditorFor(model => model.Model.Telefono_Padre, new { htmlAttributes = new { @class = "form-control", @minlength = "8", @maxlength = "8", @onKeyPress = "return soloNumeros(event)" } })
                                                 <label class="form-label">Telefono del padre</label>
                                             </div>
                                         </div>
@@ -345,7 +437,7 @@
                                         <div class="form-group form-float">
                                             <div class="form-line">
                                                 @*<input type="text" class="form-control" name="emergencia" id="emergencia" value="">*@
-                                                @Html.EditorFor(model => model.Emergencia, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.EditorFor(model => model.Model.Emergencia, new { htmlAttributes = new { @class = "form-control", @style = "text-transform: capitalize;" } })
                                                 <label class="form-label">En emergencia llamar a: </label>
                                             </div>
                                             <span class="help-block"><small>(Nombre)</small></span>
@@ -355,7 +447,7 @@
                                         <div class="form-group form-float">
                                             <div class="form-line">
                                                 @*<input type="text" class="form-control" name="diremergencia" id="diremergencia" value="">*@
-                                                @Html.EditorFor(model => model.Dirreccion_Emergencia, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.EditorFor(model => model.Model.Dirreccion_Emergencia, new { htmlAttributes = new { @class = "form-control", @style = "text-transform: capitalize;" } })
                                                 <label class="form-label">Direccion: </label>
                                             </div>
                                         </div>
@@ -452,19 +544,9 @@
 
 }
 
-@section Scripts
-{
-    <script src="@Url.Content("~/Scripts/Atleta/Create.js")"></script>
-
-}
-
-@section categoriadep
-  {
-
-    <script src="@Url.Content("~/Scripts/Atleta/CatDeport.js")"></script>
 
 
-}
+
 
 
 
@@ -474,7 +556,9 @@
     <script src="~/Recursos/plugins/dropify/dist/js/dropify.min.js"></script>
     <script src="~/Recursos/plugins/bootstrap-notify/bootstrap-notify.js"></script>
     <script src="~/Recursos/js/notificacion.js"></script>
-    <script src="~/Scripts/Atleta/CatDeport.js"></script>
+    <script src="@Url.Content("~/Scripts/Atleta/CreateAtle.js")"></script>
+    <script src="@Url.Content("~/Scripts/Atleta/CatDeportAtle.js")"></script>
+
 
     <!--Modal Hospital-->
     <script>
@@ -522,7 +606,7 @@
     <!--Hacer visible/invisible Div Genero-->
     <script type="text/javascript">
         $(function () {
-            $('#Genero').on('change', generoFunc);
+            $('#Model_Genero').on('change', generoFunc);
         });
 
         function generoFunc() {
@@ -537,6 +621,14 @@
         }
     </script>
 
+    @*---------------------*@
+    <script type="text/javascript">
+        // Solo permite ingresar numeros.
+        function soloNumeros(e) {
+            var key = window.Event ? e.which : e.keyCode
+            return (key >= 48 && key <= 57)
+        }
+    </script>
 
     <!--Hacer visible/invisible Div Hospital-->
     <script>
@@ -546,6 +638,34 @@
             });
             $("#radio17").click(function () {
                 $("#hosp").show();
+            });
+        });
+    </script>
+    <!--Hacer visible/invisible Div relainadecuada-->
+    <script>
+        $(document).ready(function () {
+            $("#radio23").click(function () {
+                $("#relaentre").hide();
+            });
+            $("#radio24").click(function () {
+                $("#relaentre").hide();
+            });
+            $("#radio25").click(function () {
+                $("#relaentre").show();
+            });
+        });
+    </script>
+    <!--Hacer visible/invisible Div relainadecuada-->
+    <script>
+        $(document).ready(function () {
+            $("#radio26").click(function () {
+                $("#relacompa").hide();
+            });
+            $("#radio27").click(function () {
+                $("#relacompa").hide();
+            });
+            $("#radio28").click(function () {
+                $("#relacompa").show();
             });
         });
     </script>

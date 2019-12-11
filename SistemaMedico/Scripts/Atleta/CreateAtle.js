@@ -34,7 +34,17 @@ function CargarMunicipios(SelectorMunicipios, IdDepartamento) {
     });
 }
 
+function ShowImagePreview(imageUploader, previewImage) {
+    if (imageUploader.files && imageUploader.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $(previewImage).attr('src', e.target.result);
+        }
+        reader.readAsDataURL(imageUploader.files[0]);
+    }
+}
 var idListaCategActuales = '#CategoriasSeleccionadas';
+
 
 function AsociarCategoriaConAtleta() {
     var categoriaSeleccionadaId = $('#DdlCategoria option:selected').val();
@@ -54,7 +64,7 @@ function AsociarCategoriaConAtleta() {
         data: {},
         success: function (result) {
             $(idListaCategActuales).append(result);
-            renameInputs(idListaCategActuales, 'li', 'categorias');
+            renameInputs(idListaCategActuales, 'li', 'Model.Atleta_Categoria');
         },
         error: function (xhr) {
             //debugger;
@@ -63,11 +73,29 @@ function AsociarCategoriaConAtleta() {
     });
 }
 
-function removeCatg(item) {
-    //console.log(item);
-    $(item).parent().remove();
-    renameInputs(idListaCategActuales, 'li', 'categorias');
+function removeCatg(endpointUrl, element) {
+    console.log('element', element);
+    //var values = $('#id').val(); _> aqui casi lo tenias
+    var elementId = $(element).siblings('#ID').val();
+    if (elementId == 0) {
+        //Si el elemento es nuevo (no está guardardo en la bd solo lo borras de la vista)
+        //var i = id.parentNode.parentNode.idListaCategActuales;
+        //document.getElementById('ID_Categoria').remove(); -> Aquiestas borrando siempre el primer elemento que encuentre con ese ID.
+        $(element).parent('li').remove(); //->Aqu le estamos diciendo que dle elemento que le pasas como parmaetro, busque al Pdre de tipo 'li' y lo borre
+        renameInputs(idListaCategActuales, 'li', 'Model.Atleta_Categoria');
+
+    } else {
+        $.ajax({
+            type: 'POST',
+            url: endpointUrl,
+            success: function (response) {
+                $(element).parent('li').remove();
+                renameInputs(idListaCategActuales, 'li', 'Model.Atleta_Categoria');
+            }
+        });
+    }
 }
+
 
 function renameInputs(parentElementId, itemsSelector, modelName) {
     var items = $(parentElementId + ' ' + itemsSelector);
@@ -77,3 +105,4 @@ function renameInputs(parentElementId, itemsSelector, modelName) {
         });
     });
 }
+

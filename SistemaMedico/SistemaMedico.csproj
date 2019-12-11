@@ -138,8 +138,8 @@
     <Content Include="Recursos\plugins\dropify\src\images\test-image-1.jpg" />
     <Content Include="Recursos\plugins\dropify\src\images\test-image-2.jpg" />
     <Content Include="Recursos\plugins\dropify\src\js\dropify.js" />
-    <Content Include="Scripts\Atleta\CatDeport.js" />
-    <Content Include="Scripts\Atleta\Create.js" />
+    <Content Include="Scripts\Atleta\CatDeportAtle.js" />
+    <Content Include="Scripts\Atleta\CreateAtle.js" />
     <Content Include="Scripts\select2.min.js" />
     <Content Include="Content\style.css" />
     <Content Include="Content\style.min.css" />
@@ -4327,6 +4327,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="GlobalClass.cs" />
     <Compile Include="Helper\HtmlHelperExtensions.cs" />
     <Compile Include="Models\Alergias.cs">
       <DependentUpon>LoginDataModel.tt</DependentUpon>
@@ -4380,6 +4381,9 @@
     <Compile Include="Models\Educacion.cs">
       <DependentUpon>LoginDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Equipo_Deportivo.cs">
+      <DependentUpon>LoginDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Eventos.cs">
       <DependentUpon>LoginDataModel.tt</DependentUpon>
     </Compile>
@@ -4413,6 +4417,9 @@
     <Compile Include="Models\Informacion_Familiar.cs">
       <DependentUpon>LoginDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Lesiones.cs">
+      <DependentUpon>LoginDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\LoginDataModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -4443,6 +4450,12 @@
     <Compile Include="Models\Situacion_Laboral.cs">
       <DependentUpon>LoginDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>LoginDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagrams_Result.cs">
+      <DependentUpon>LoginDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\sysdiagrams.cs">
       <DependentUpon>LoginDataModel.tt</DependentUpon>
     </Compile>
@@ -4462,7 +4475,6 @@
     <None Include="packages.config" />
     <Content Include="Views\HomeAdmin\Vista.cshtml" />
     <Content Include="Views\Atleta\Crear.cshtml" />
-    <Content Include="Views\Atleta\Actualizar.cshtml" />
     <Content Include="Views\Atleta\Index.cshtml" />
     <Content Include="Views\ExamenFisico\Index.cshtml" />
     <Content Include="Views\ExamenFisico\Crear.cshtml" />
@@ -4473,6 +4485,7 @@
     <Content Include="Views\HomeAdmin\Editar.cshtml" />
     <Content Include="Views\HomeAdmin\Nuevo.cshtml" />
     <Content Include="Views\Atleta\_Category.cshtml" />
+    <Content Include="Views\Atleta\Actualizar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -4482,6 +4495,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\File\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

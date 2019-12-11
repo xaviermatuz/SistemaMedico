@@ -1,8 +1,14 @@
 ﻿@using SistemaMedico.Models
 @model Atleta_Categoria
 
-<li class="list-group-item d-flex justify-content-between align-items-center show_hide_hover">
+
+<li class="list-group-item d-flex justify-content-between align-items-center show_hide_hover" id="atleta_categoria">
     <input hidden id="ID_Categoria" value="@Model.ID_Categoria" name="categorias[].ID_Categoria" />
-    @Model.Categorias.Categoria <span class="" style="color:darkred; cursor:pointer;" onclick="removeCatg(this)"> (Eliminar) </span>
+    <input hidden id="ID_Atleta" value="@Model.ID_Atleta" name="categorias[].ID_Atleta" />
+    <input hidden id="ID" value="@Model.ID" name="categorias[].ID" />
+    @($"({(Model.Categorias?.Deporte?.Nombre ?? "")})  {Model.Categorias.Categoria}") <span class="" id="cate" style="color:darkred; cursor:pointer;" onclick="removeCatg('@Url.Action("DeleteAtletaCat", "Atleta", new { id=Model.ID})',this)"> (Eliminar) </span>
+    @*<input hidden id="Id_Deporte" value="@Model.Categorias.Deporte.Nombre" name="deportes[].ID_Deporte" />
+        @Model.Categorias.Deporte <span class="" id="cate" style="color:darkred; cursor:pointer;"/>*@
 </li>
+
 

@@ -24,7 +24,7 @@ namespace SistemaMedico.Models
         public string Menstruacion { get; set; }
         public string Antropometrista { get; set; }
         public string Anotador { get; set; }
-        public string ID_Ficha_Antropometrica { get; set; }
+        public string Txt_Ficha_Antropometrica { get; set; }
         public decimal Toma1 { get; set; }
         public decimal Toma2 { get; set; }
         public decimal Toma3 { get; set; }

@@ -59,6 +59,7 @@
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="ID_Atleta" ColumnName="ID_Atleta" />
           <ScalarProperty Name="ID_Categoria" ColumnName="ID_Categoria" />
+          <ScalarProperty Name="activo" ColumnName="activo" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -193,6 +194,20 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Equipo_Deportivo">
+      <EntityTypeMapping TypeName="MeSysModel.Equipo_Deportivo">
+        <MappingFragment StoreEntitySet="Equipo_Deportivo">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ID_Atleta" ColumnName="ID_Atleta" />
+          <ScalarProperty Name="equipdep" ColumnName="equipdep" />
+          <ScalarProperty Name="relaentre" ColumnName="relaentre" />
+          <ScalarProperty Name="relacompa" ColumnName="relacompa" />
+          <ScalarProperty Name="ra_ina_entre" ColumnName="ra_ina_entre" />
+          <ScalarProperty Name="ra_ina_compa" ColumnName="ra_ina_compa" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Eventos">
       <EntityTypeMapping TypeName="MeSysModel.Eventos">
         <MappingFragment StoreEntitySet="Eventos">
@@ -244,7 +259,7 @@
           <ScalarProperty Name="Menstruacion" ColumnName="Menstruacion" />
           <ScalarProperty Name="Antropometrista" ColumnName="Antropometrista" />
           <ScalarProperty Name="Anotador" ColumnName="Anotador" />
-          <ScalarProperty Name="ID_Ficha_Antropometrica" ColumnName="ID_Ficha_Antropometrica" />
+          <ScalarProperty Name="Txt_Ficha_Antropometrica" ColumnName="Txt_Ficha_Antropometrica" />
           <ScalarProperty Name="Toma1" ColumnName="Toma1" />
           <ScalarProperty Name="Toma2" ColumnName="Toma2" />
           <ScalarProperty Name="Toma3" ColumnName="Toma3" />
@@ -311,6 +326,15 @@
           <ScalarProperty Name="Preguntas" ColumnName="Preguntas" />
           <ScalarProperty Name="Respuestas" ColumnName="Respuestas" />
           <ScalarProperty Name="Detalles" ColumnName="Detalles" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Lesiones">
+      <EntityTypeMapping TypeName="MeSysModel.Lesiones">
+        <MappingFragment StoreEntitySet="Lesiones">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -385,5 +409,29 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="MeSysModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="MeSysModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="MeSysModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="MeSysModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MeSysModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="MeSysModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MeSysModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="MeSysModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="MeSysModel.Store.sp_upgraddiagrams" />
   </EntityContainerMapping>
 </Mapping>

@@ -55,6 +55,7 @@
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ID_Atleta" Type="int" Nullable="false" />
     <Property Name="ID_Categoria" Type="int" Nullable="false" />
+    <Property Name="activo" Type="bit" />
   </EntityType>
   <EntityType Name="Carrera_Deportiva">
     <Key>
@@ -134,12 +135,12 @@
     <Property Name="Nombre_Completo" Type="text" />
     <Property Name="Edad" Type="int" />
     <Property Name="Fecha_De_Registro" Type="date" />
-    <Property Name="Genero" Type="char" MaxLength="10" />
+    <Property Name="Genero" Type="varchar" MaxLength="10" />
     <Property Name="Numero_De_Cedula" Type="nvarchar" MaxLength="20" />
     <Property Name="Correo_Electronico" Type="nvarchar" MaxLength="100" />
     <Property Name="Telefono_Convencional" Type="nvarchar" MaxLength="14" />
     <Property Name="Telefono_Celular" Type="varchar" MaxLength="14" />
-    <Property Name="Tiene_Seguro" Type="char" MaxLength="7" />
+    <Property Name="Tiene_Seguro" Type="varchar" MaxLength="7" />
     <Property Name="Hospital" Type="int" Nullable="false" />
     <Property Name="Dirreccion" Type="varchar" MaxLength="500" />
     <Property Name="Municipio" Type="int" Nullable="false" />
@@ -149,7 +150,7 @@
     <Property Name="Telefono_Padre" Type="nvarchar" MaxLength="14" />
     <Property Name="Emergencia" Type="varchar" MaxLength="50" />
     <Property Name="Dirreccion_Emergencia" Type="varchar" MaxLength="200" />
-    <Property Name="Embarazo" Type="char" MaxLength="7" />
+    <Property Name="Embarazo" Type="varchar" MaxLength="7" />
     <Property Name="Activo" Type="bit" />
   </EntityType>
   <EntityType Name="Departamentos">
@@ -175,6 +176,19 @@
     <Property Name="Preguntas" Type="varchar" MaxLength="500" Nullable="false" />
     <Property Name="Respuestas" Type="varchar" MaxLength="500" Nullable="false" />
     <Property Name="Detalles" Type="varchar" MaxLength="500" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Equipo_Deportivo">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_Atleta" Type="int" Nullable="false" />
+    <Property Name="equipdep" Type="varchar" MaxLength="50" />
+    <Property Name="relaentre" Type="varchar" MaxLength="50" />
+    <Property Name="relacompa" Type="varchar" MaxLength="50" />
+    <Property Name="ra_ina_entre" Type="varchar" MaxLength="200" />
+    <Property Name="ra_ina_compa" Type="varchar" MaxLength="200" />
+    <Property Name="Activo" Type="bit" />
   </EntityType>
   <EntityType Name="Eventos">
     <Key>
@@ -224,7 +238,7 @@
     <Property Name="Menstruacion" Type="char" MaxLength="5" Nullable="false" />
     <Property Name="Antropometrista" Type="varchar" MaxLength="500" Nullable="false" />
     <Property Name="Anotador" Type="varchar" MaxLength="500" Nullable="false" />
-    <Property Name="ID_Ficha_Antropometrica" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="Txt_Ficha_Antropometrica" Type="varchar" MaxLength="500" Nullable="false" />
     <Property Name="Toma1" Type="decimal" Precision="5" Scale="2" Nullable="false" />
     <Property Name="Toma2" Type="decimal" Precision="5" Scale="2" Nullable="false" />
     <Property Name="Toma3" Type="decimal" Precision="5" Scale="2" Nullable="false" />
@@ -285,6 +299,14 @@
     <Property Name="Preguntas" Type="varchar" MaxLength="500" Nullable="false" />
     <Property Name="Respuestas" Type="varchar" MaxLength="500" Nullable="false" />
     <Property Name="Detalles" Type="varchar" MaxLength="500" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Lesiones">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Tipo" Type="varchar" MaxLength="100" Nullable="false" />
   </EntityType>
   <EntityType Name="Medicamentos">
     <Key>
@@ -570,6 +592,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Equipo_Deportivo_Datos_Atleta">
+    <End Role="Datos_Atleta" Type="Self.Datos_Atleta" Multiplicity="1" />
+    <End Role="Equipo_Deportivo" Type="Self.Equipo_Deportivo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Datos_Atleta">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Equipo_Deportivo">
+        <PropertyRef Name="ID_Atleta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Examen_Fisico_Principal_Datos_Atleta">
     <End Role="Datos_Atleta" Type="Self.Datos_Atleta" Multiplicity="1" />
     <End Role="Examen_Fisico_Principal" Type="Self.Examen_Fisico_Principal" Multiplicity="*" />
@@ -736,6 +770,37 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <EntityContainer Name="MeSysModelStoreContainer">
     <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Alergias" EntityType="Self.Alergias" Schema="dbo" store:Type="Tables" />
@@ -754,6 +819,7 @@
     <EntitySet Name="Departamentos" EntityType="Self.Departamentos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Deporte" EntityType="Self.Deporte" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Educacion" EntityType="Self.Educacion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Equipo_Deportivo" EntityType="Self.Equipo_Deportivo" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Eventos" EntityType="Self.Eventos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Examen_Fisico" EntityType="Self.Examen_Fisico" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Examen_Fisico_Principal" EntityType="Self.Examen_Fisico_Principal" Schema="dbo" store:Type="Tables" />
@@ -765,6 +831,7 @@
     <EntitySet Name="Historial_Medico" EntityType="Self.Historial_Medico" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Hospital" EntityType="Self.Hospital" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Informacion_Familiar" EntityType="Self.Informacion_Familiar" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Lesiones" EntityType="Self.Lesiones" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Medicamentos" EntityType="Self.Medicamentos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Medico" EntityType="Self.Medico" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Municipio" EntityType="Self.Municipio" Schema="dbo" store:Type="Tables" />
@@ -835,6 +902,10 @@
     <AssociationSet Name="FK_Educacion_Datos_Atleta" Association="Self.FK_Educacion_Datos_Atleta">
       <End Role="Datos_Atleta" EntitySet="Datos_Atleta" />
       <End Role="Educacion" EntitySet="Educacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Equipo_Deportivo_Datos_Atleta" Association="Self.FK_Equipo_Deportivo_Datos_Atleta">
+      <End Role="Datos_Atleta" EntitySet="Datos_Atleta" />
+      <End Role="Equipo_Deportivo" EntitySet="Equipo_Deportivo" />
     </AssociationSet>
     <AssociationSet Name="FK_Examen_Fisico_Principal_Datos_Atleta" Association="Self.FK_Examen_Fisico_Principal_Datos_Atleta">
       <End Role="Datos_Atleta" EntitySet="Datos_Atleta" />

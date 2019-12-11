@@ -1,4 +1,9 @@
-﻿@model SistemaMedico.Models.Usuarios
+﻿@model SistemaMedico.Models.AtletaView
+@using SistemaMedico.Clases;
+@using SistemaMedico.Models;
+
+
+
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
     if (Session["ID"] == null)
@@ -8,7 +13,7 @@
 
 }
 
-@section ActualizarAtletaCss
+@section CrearAtletaCss
 {
     <link href="~/Recursos/plugins/dropify/dist/css/dropify.min.css" rel="stylesheet" />
     <!-- Bootstrap Select Css -->
@@ -16,14 +21,29 @@
     <link href="~/Recursos/css/notificacion.css" rel="stylesheet" />
 }
 
-<div class="row clearfix">
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-        <div class="card">
-            <div class="header">
-                <h2>REGISTRO DE ATLETAS</h2>
-            </div>
-            <div class="body">
-                <form role="form" action="" method="post" autocomplete="off" enctype="multipart/form-data" novalidate="true">
+<a id="UrlGetMunicipiosPorDpto" href="@Url.Action("GetMunicipiosPorDpto","Atleta")" hidden></a>
+<a id="UrlGetCategoriaDeporte" href="@Url.Action("GetCategoriaDeporte","Atleta")" hidden></a>
+<a id="UrlAddCategoryToAthlete" href="@Url.Action("AddCategoryToAthlete","Atleta")" hidden></a>
+
+@using (Html.BeginForm("Actualizar", "Atleta", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+
+
+    @Html.AntiForgeryToken()
+    <div class="row clearfix">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="card">
+                <div class="header">
+                    <h2>REGISTRO DE ATLETAS</h2>
+                </div>
+
+                @Html.HiddenFor(model => model.Model.ID)
+                @*@Html.HiddenFor(Model = Model.equip.ID)*@
+                @Html.HiddenFor(model => model.Model.Foto)
+                <div class="body">
+
+                    @*<form role="form" action="~/Controllers/Atleta" method="post" autocomplete="off" enctype="multipart/form-data" novalidate="true">*@
                     <!--Nav tabs  -->
                     <ul class="nav nav-tabs customtab" role="tablist">
                         <li class="active"><a href="#tab1" data-toggle="tab">Datos Generales</a></li>
@@ -33,7 +53,7 @@
                     </ul>
                     <!-- Tab panes -->
                     <div class="tab-content">
-                        <div class="tab-pane active" id="tab1" role="tabpanel">
+                        <div class="tab-pane active" id="tab1" rol="tabpanel">
                             <fieldset>
                                 <div class="row clearfix">
                                     <!-- Foto -->
@@ -42,7 +62,23 @@
                                             <div class="col-md-12 m-b-30">
                                                 <label>Seleccione una fotografia</label>
                                             </div>
-                                            <input type="file" name="foto" id="input-file-now" class="dropify" />
+                                            @* <input type="file" name="foto" id="input-file-now" class="dropify" />*@
+                                            @Html.TextBoxFor(modelo => modelo.ImageFile, new { type = "file", @class = "dropify", @onchange = "previewFile(500,0.1)" })
+
+                                            @*<div class="col-md-10">
+                                                    <input type="file" name="@Model.ImageFile" class="dropify" accept="image/jpeg, image/png" onchange="ShowImagePreview(this,document.getElementById('imagePreview'))" />
+                                                    <img src="~/@Url.Content(Model.Model.Foto)" style="height:100px;width:100px"id="imagePreview" />
+
+                                                </div>*@
+
+                                            @{
+                                                if (!string.IsNullOrEmpty(Model.Model.Foto))
+                                                {
+                                                    <img src="~/@Url.Content(Model.Model.Foto)" alt="Image" style="height:150px;width:150px" />
+                                                }
+                                            }
+
+
                                         </div>
                                     </div>
                                     <!-- Datos Iniciales -->
@@ -50,7 +86,8 @@
                                         <div class="col-md-3">
                                             <div class="form-group form-float ">
                                                 <div class="form-line">
-                                                    <input type="text" id="pnombre" style="text-transform: capitalize;" class="form-control" name="pnombre" value="">
+                                                    @* <input type="text" id="pnombre" style="text-transform: capitalize;" class="form-control" name="pnombre" value="">*@
+                                                    @Html.EditorFor(model => model.Model.Primer_Nombre, new { htmlAttributes = new { @class = "form-control", @style = "text-transform: capitalize;" } })
                                                     <label class="form-label">Primer Nombre</label>
                                                 </div>
                                             </div>
@@ -58,7 +95,8 @@
                                         <div class="col-md-3">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" id="snombre" style="text-transform: capitalize;" class="form-control" name="snombre" value="">
+                                                    @*<input type="text" id="snombre" style="text-transform: capitalize;" class="form-control" name="snombre" value="">*@
+                                                    @Html.EditorFor(model => model.Model.Segundo_Nombre, new { htmlAttributes = new { @class = "form-control", @style = "text-transform: capitalize;" } })
                                                     <label class="form-label">Segundo Nombre</label>
                                                 </div>
                                             </div>
@@ -66,7 +104,8 @@
                                         <div class="col-md-3">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" id="papellido" style="text-transform: capitalize;" class="form-control" name="papellido" value="">
+                                                    @*<input type="text" id="papellido" style="text-transform: capitalize;" class="form-control" name="papellido" value="">*@
+                                                    @Html.EditorFor(model => model.Model.Primer_Apellido, new { htmlAttributes = new { @class = "form-control", @style = "text-transform: capitalize;" } })
                                                     <label class="form-label">Primer Apellido</label>
                                                 </div>
                                             </div>
@@ -74,7 +113,8 @@
                                         <div class="col-md-3">
                                             <div class="form-group form-float ">
                                                 <div class="form-line">
-                                                    <input type="text" id="sapellido" class="form-control" style="text-transform: capitalize;" name="sapellido" value="">
+                                                    @*<input type="text" id="sapellido" class="form-control" style="text-transform: capitalize;" name="sapellido" value="">*@
+                                                    @Html.EditorFor(model => model.Model.Segundo_Apellido, new { htmlAttributes = new { @class = "form-control", @style = "text-transform: capitalize;" } })
                                                     <label class="form-label">Segundo Apellido</label>
                                                 </div>
                                             </div>
@@ -82,7 +122,8 @@
                                         <div class="col-md-4">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="number" min="1" class="form-control" name="edad" value="" id="edad">
+                                                    @*<input type="number" min="1" class="form-control" name="edad" value="" id="edad">*@
+                                                    @Html.EditorFor(model => model.Model.Edad, new { htmlAttributes = new { @class = "form-control", @onKeyPress = "return soloNumeros(event)", @maxlength = "3", @type = "text" } })
                                                     <label class="form-label">Edad</label>
                                                 </div>
                                             </div>
@@ -90,7 +131,8 @@
                                         <div class="col-md-4">
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input type="text" class="form-control" minlength="14" maxlength="14" name="numcedula" value="" id="numcedula">
+                                                    @* <input type="text" class="form-control" minlength="14" maxlength="14" name="numcedula" value="" id="numcedula">*@
+                                                    @Html.EditorFor(model => model.Model.Numero_De_Cedula, new { htmlAttributes = new { @class = "form-control", @style = "text-transform: none;", @minlength = "16", @maxlength = "16" } })
                                                     <label class="form-label">Numero de Cedula</label>
                                                 </div>
                                             </div>
@@ -98,22 +140,35 @@
                                         <div class=" col-md-6">
                                             <label>Genero</label>
                                             <div class="form-group">
-                                                <select class="form-control" name="genero" id="Genero">
-                                                    <option disable="true">Seleccione un Genero</option>
-                                                    <option value="Masculino">Masculino</option>
-                                                    <option value="Femenino">Femenino</option>
-                                                </select>
+                                                @*<select class="form-control" name="  " id="Genero">
+                                                        <option disable="true">Seleccione un Genero</option>
+                                                        <option value="Masculino">Masculino</option>
+                                                        <option value="Femenino">Femenino</option>
+                                                    </select>*@
+                                                @Html.DropDownListFor(m => m.Model.Genero, (IEnumerable<SelectListItem>)ViewBag.Genero, "Seleccione Genero", new { @class = "form-control" })
                                             </div>
                                         </div>
-                                        <div class="col-md-6 m-t-5" id="dvembarazo" style="display:none;">
+                                        <div class="col-md-6 m-t-5" id="dvembarazo">
                                             <label>¿Esta embarazada?</label>
                                             <br>
                                             <div class="form-group">
-                                                <input type="radio" id="radio_1" value="No" name="embarazo">
-                                                <label for="radio_1">No</label>
-                                                <input type="radio" id="radio_2" value="Si" name="embarazo">
-                                                <label for="radio_2">Si</label>
+                                                @*<input type="radio" id="radio_1" value="No" name="embarazo">
+                                                    <label for="radio_1">No</label>
+                                                    <input type="radio" id="radio_2" value="Si" name="embarazo">
+                                                    <label for="radio_2">Si</label>*@
+                                                @*Si
+                                                    @Html.RadioButtonFor(model => model.model.Embarazo, "Si")
+                                                    No
+                                                    @Html.RadioButtonFor(model => model.model.Embarazo, "No")*@
+                                                @Html.RadioButtonFor(model => model.Model.Embarazo, "No", new { id = "radio_1" })
+                                                @Html.Label("radio_1", "No")
+
+                                                @Html.RadioButtonFor(model => model.Model.Embarazo, "Si", new { id = "radio_2" })
+                                                @Html.Label("radio_2", "Si")
                                             </div>
+
+
+
                                         </div>
                                     </div>
                                 </div>
@@ -125,7 +180,8 @@
                                     <div class="col-md-4">
                                         <div class="form-group form-float ">
                                             <div class="form-line">
-                                                <input type="email" id="correoelec" class="form-control" name="correoe" value="">
+                                                @*<input type="email" id="correoelec" class="form-control" name="correoe" value="">*@
+                                                @Html.EditorFor(model => model.Model.Correo_Electronico, new { htmlAttributes = new { @class = "form-control" } })
                                                 <label class="form-label">Correo Electronico</label>
                                             </div>
                                         </div>
@@ -133,7 +189,8 @@
                                     <div class="col-md-4">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" minlength="8" maxlength="8" class="form-control" id="telefonocelular" name="tcelular" value="">
+                                                @*<input type="text" minlength="8" maxlength="8" class="form-control" id="telefonocelular" name="tcelular" value="">*@
+                                                @Html.EditorFor(model => model.Model.Telefono_Celular, new { htmlAttributes = new { @class = "form-control", @minlength = "8", @maxlength = "8", @onKeyPress = "return soloNumeros(event)" } })
                                                 <label class="form-label">Telefono Celular</label>
                                             </div>
                                         </div>
@@ -141,7 +198,9 @@
                                     <div class="col-md-4">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" minlength="8" maxlength="8" class="form-control" name="tconvencional" id="telconven" value="">
+                                                @*<input type="text" minlength="8" maxlength="8" class="form-control" name="tconvencional" id="telconven" value="">*@
+                                                @Html.EditorFor(model => model.Model.Telefono_Convencional, new { htmlAttributes = new { @class = "form-control", @minlength = "8", @maxlength = "8", @onKeyPress = "return soloNumeros(event)" } })
+
                                                 <label class="form-label">Telefono Convencional</label>
                                             </div>
                                         </div>
@@ -149,46 +208,58 @@
                                     <div class="col-md-4">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" id="direccion" name="direccion" value="">
+                                                @*<input type="text" class="form-control" id="direccion" name="direccion" value="">*@
+                                                @Html.EditorFor(model => model.Model.Dirreccion, new { htmlAttributes = new { @class = "form-control" } })
+
                                                 <label class="form-label">Direccion</label>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group col-md-4 ">
-                                            <select class="form-control " name="departamento" id="select-departamento">
-                                                <option value="0" disable="true" selected="true">==Seleccione un Departamento==</option>
-                                                <option value=""></option>
-                                            </select>
+                                            @*<select class="form-control " name="departamento" id="select-departamento">
+                                                    <option value="0" disable="true" selected="true">==Seleccione un Departamento==</option>
+                                                    <option value=""></option>
+                                                </select>*@
+                                            @Html.Label("Departamento")
+                                            <br />
+                                            @Html.DropDownList("DdlDepto", (SelectList)ViewBag.ListaDepartamentos, "Seleccione un departemento", new { @class = "form-control" })
                                         </div>
                                     </div>
 
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <select class="form-control p-0" name="municipio" id="select-municipio">
-                                                <option value="0" disable="true" selected="true">=== Seleccione un municipio ===</option>
-                                            </select>
+
+                                            @Html.Label("Municipio")
+                                            <br />
+                                            @Html.DropDownListFor(model => model.Model.Municipio, (SelectList)ViewBag.ListaMunicipios, "Seleccione un Municipio", new { @class = "form-control p-0", @id = "Municipio" })
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="col-md-2">
                                             <div class="form-group">
-                                                <label>¿Tiene Seguro?</label><br>
+
                                                 <div>
-                                                    <input type="radio" id="radio16" value="No" name="seguro">
-                                                    <label for="radio16">No</label>
-                                                    <input type="radio" id="radio17" value="Si" name="seguro">
-                                                    <label for="radio17">Si </label>
+                                                    <label>¿Tiene Seguro?</label><br>
+
+                                                    @Html.RadioButtonFor(m => m.Model.Tiene_Seguro, "No", new { id = "radio16" })
+                                                    @Html.Label("radio16", "No")
+
+                                                    @Html.RadioButtonFor(m => m.Model.Tiene_Seguro, "Si", new { id = "radio17" })
+                                                    @Html.Label("radio17", "Si")
                                                 </div>
+
                                             </div>
+
                                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#responsive-modalH" class="model_img img-responsive"> Crear Hospital</button>
                                         </div>
                                         <div class="col-md-6" id="hosp" style="display:none;">
                                             <div class="form-group">
-                                                <select class="form-control" name="hospitalafiliado">
-                                                    <option value="0" disable="true" selected="true">=== Seleccione un hospital ===</option>
-                                                    <option value=""></option>
-                                                </select>
+
+                                                @Html.Label("Hospital")
+                                                <br />
+                                                @Html.DropDownListFor(model => model.Model.Hospital, SistemaMedico.Controllers.AtletaController.GetDropDown(), new { @class = "form-control" })
+
                                             </div>
                                         </div>
                                     </div>
@@ -199,22 +270,131 @@
                         <div class="tab-pane  p-20" id="tab3" role="tabpanel">
                             <fieldset>
                                 <div class="row col-md-12">
-                                    <div class="col-md-6">
+                                    <div class="col-md-3">
                                         <div class="form-group">
-                                            <select class="form-control p-0" name="deporte" id="select-deporte">
-                                                <option value="0" disable="true" selected="true">=== Seleccione un deporte ===</option>
-                                                <option value=""></option>
-                                            </select>
+
+                                            @Html.Label("Deporte")
+                                            <br />
+                                            @Html.DropDownList("DlDeport", (SelectList)ViewBag.ListaDeportes, "Seleccione un Deporte", new { @class = "form-control p-0" })
+                                        </div>
+                                        <div>
+                                            <span>¿Su categoría no aparece en la lista?</span>
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#responsive-modal" class="model_img img-responsive"> Crear Categoría</button>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            @Html.Label("Categoria Por Deporte")
+                                            <br />
+                                            @Html.DropDownList("DdlCategoria", Enumerable.Empty<SelectListItem>(), "Seleccione una Categoria", new { @class = "form-control" })
+                                        </div>
+                                        <button type="button" class="btn btn-primary model_img img-responsive" onclick="AsociarCategoriaConAtleta()">Agregar categoría</button>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            @Html.Label("Categorias seleccionadas")
+                                            <ul id="CategoriasSeleccionadas" class="list-group">
+                                                @{
+                                                    if (Model.Model.Atleta_Categoria != null)
+                                                    {
+                                                        foreach (Atleta_Categoria catg in Model.Model.Atleta_Categoria)
+                                                        {
+                                                            Html.RenderPartial("/Views/Atleta/_Category.cshtml", catg);
+                                                        }
+                                                    }
+                                                }
+                                            </ul>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <select class="form-control p-0" name="categoria" id="select-categoria">
-                                                <option value="0" disable="true" selected="true">=== Seleccione sus Categoria ===</option>
-                                            </select>
-                                        </div>
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#responsive-modal" class="model_img img-responsive"> Crear Categoria</button>
-                                    </div>
+
+                                    @{
+                                        if (Model.Model.Equipo_Deportivo != null)
+                                        {
+                                            foreach (Equipo_Deportivo equip in Model.Model.Equipo_Deportivo)
+                                            {
+                                                <div class="col-md-12">
+
+                                                    <div>
+                                                        <label>Equipamiento Deportivo</label><br>
+                                                        @Html.RadioButtonFor(m => equip.equipdep, "Cuenta con todo el equipamiento", new { id = "radio20" })
+                                                        @Html.Label("radio20", "Cuenta con todo el equipamiento")
+
+                                                        @Html.RadioButtonFor(m => equip.equipdep, "Cuenta con algun equipamiento necesario", new { id = "radio21" })
+                                                        @Html.Label("radio21", "Cuenta con algun equipamiento necesario")
+
+                                                        @Html.RadioButtonFor(m => equip.equipdep, "No cuenta con equipamiento alguno", new { id = "radio22" })
+                                                        @Html.Label("radio22", "No cuenta con equipamiento alguno")
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-12">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <div>
+                                                                <label>Relaciones En El Entorno De Entrenamiento Y Competencia</label><br>
+                                                                <label>Con El Entrenador</label><br>
+                                                                @Html.RadioButtonFor(m => equip.relaentre, "Optimas", new { id = "radio23" })
+                                                                @Html.Label("radio23", "Optimas")
+
+                                                                @Html.RadioButtonFor(m => equip.relaentre, "Adecuadas", new { id = "radio24" })
+                                                                @Html.Label("radio24", "Adecuadas")
+
+                                                                @Html.RadioButtonFor(m => equip.relaentre, "Inadecuadas", new { id = "radio25" })
+                                                                @Html.Label("radio25", "Inadecuadas")
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4" id="relaentre" style="display:none">
+                                                        <div class="form-group">
+
+                                                            <div class="form-line">
+
+                                                                <label>Razon de las relaciones inadecuadas</label><br>
+                                                                @Html.EditorFor(model => equip.ra_ina_entre, new { htmlAttributes = new { @class = "form-control" } })
+
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <div>
+                                                                <label>Relaciones En El Entorno De Entrenamiento Y Competencia</label><br>
+                                                                <label>Con Los Compañeros</label><br>
+                                                                @Html.RadioButtonFor(m => equip.relacompa, "Optimas", new { id = "radio26" })
+                                                                @Html.Label("radio26", "Optimas")
+
+                                                                @Html.RadioButtonFor(m => equip.relacompa, "Adecuadas", new { id = "radio27" })
+                                                                @Html.Label("radio27", "Adecuadas")
+
+                                                                @Html.RadioButtonFor(m => equip.relacompa, "Inadecuadas", new { id = "radio28" })
+                                                                @Html.Label("radio28", "Inadecuadas")
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4" id="relacompa" style="display:none">
+                                                        <div class="form-group">
+
+                                                            <div class="form-line">
+
+                                                                <label>Razon de las relaciones inadecuadas</label><br>
+                                                                @Html.EditorFor(model => equip.ra_ina_compa, new { htmlAttributes = new { @class = "form-control" } })
+
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
+                                        }
+
+                                    }
+
+
 
                                 </div>
                             </fieldset>
@@ -225,7 +405,8 @@
                                     <div class="col-md-6">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" name="nombremadre" id="nombmadre" value="">
+                                                @Html.EditorFor(model => model.Model.Nombre_Madre, new { htmlAttributes = new { @class = "form-control" } })
+
                                                 <label class="form-label">Nombre de la madre</label>
                                             </div>
                                         </div>
@@ -234,7 +415,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" minlength="8" maxlength="8" class="form-control" name="telmadre" id="telmadre" value="">
+                                                @Html.EditorFor(model => model.Model.Telefono_Madre, new { htmlAttributes = new { @class = "form-control", @minlength = "8", @maxlength = "8", @onKeyPress = "return soloNumeros(event)" } })
                                                 <label class="form-label">Telefono de la madre</label>
                                             </div>
 
@@ -243,7 +424,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" name="nombrepadre" id="nombrepadre" value="">
+                                                @Html.EditorFor(model => model.Model.Nombre_Padre, new { htmlAttributes = new { @class = "form-control", @style = "text-transform: capitalize;" } })
                                                 <label class="form-label">Nombre del padre</label>
                                             </div>
 
@@ -252,7 +433,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" minlength="8" maxlength="8" class="form-control" name="telpadre" id="telpadre" value="">
+                                                @Html.EditorFor(model => model.Model.Telefono_Padre, new { htmlAttributes = new { @class = "form-control", @minlength = "8", @maxlength = "8", @onKeyPress = "return soloNumeros(event)" } })
                                                 <label class="form-label">Telefono del padre</label>
                                             </div>
                                         </div>
@@ -260,7 +441,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" name="emergencia" id="emergencia" value="">
+                                                @Html.EditorFor(model => model.Model.Emergencia, new { htmlAttributes = new { @class = "form-control" } })
                                                 <label class="form-label">En emergencia llamar a: </label>
                                             </div>
                                             <span class="help-block"><small>(Nombre)</small></span>
@@ -269,7 +450,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" name="diremergencia" id="diremergencia" value="">
+                                                @Html.EditorFor(model => model.Model.Dirreccion_Emergencia, new { htmlAttributes = new { @class = "form-control" } })
                                                 <label class="form-label">Direccion: </label>
                                             </div>
                                         </div>
@@ -295,80 +476,91 @@
                             </fieldset>
                         </div>
                     </div>
-                </form>
+                    @*</form>*@
+                </div>
+                <!--Fin Body-->
             </div>
-            <!--Fin Body-->
         </div>
     </div>
-</div>
 
 
-<!--Modal Categoria-->
-<div class="modal fade" id="responsive-modal" tabindex="-1" role="dialog" style="display: none;">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h4 style="color:black;" class="modal-title">Crear Categoria</h4>
-            </div>
+    <!--Modal Categoria-->
+    <div class="modal fade" id="responsive-modal" tabindex="-1" role="dialog" style="display: none;">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 style="color:black;" class="modal-title">Crear Categoria</h4>
+                </div>
 
-            <div class="modal-body">
-                <form id="form_Categoria" action="" method="POST" role="form">
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <select class="form-control p-0" name="c_deporte" id="select-deporte-categoria">
-                                <option value="0" disable="true" selected="true">=== Seleccione un deporte ===</option>
-                                <option value=""></option>
-                            </select>
+                <div class="modal-body">
+                    <form id="form_Categoria" action="" method="POST" role="form">
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <select class="form-control p-0" name="c_deporte" id="select-deporte-categoria">
+                                    <option value="0" disable="true" selected="true">=== Seleccione un deporte ===</option>
+                                    <option value=""></option>
+                                </select>
+                            </div>
+                            <div class="form-group form-float">
+                                <div id="div_texto" class="form-line">
+                                    <input type="text" name="categoria_nombre" class="form-control" id="categoria_nombre">
+                                    <label for="categoria_nombre" class="form-label">Nombre de la Categoria</label>
+                                </div>
+                            </div>
                         </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Cerrar</button>
+                            <button type="submit" class="btn btn-danger waves-effect waves-light " id="guardar_categoria">Guardar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Modal Hospital-->
+    <div id="responsive-modalH" class="modal fade" tabindex="-1" role="dialog" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 style="color:black;" class="modal-title">Crear Hospital</h4>
+                </div>
+                <form class="floating-labels" action="" method="POST" id="form_hospital" role="form">
+                    <div class="modal-body">
                         <div class="form-group form-float">
-                            <div id="div_texto" class="form-line">
-                                <input type="text" name="categoria_nombre" class="form-control" id="categoria_nombre">
-                                <label for="categoria_nombre" class="form-label">Nombre de la Categoria</label>
+                            <div class="form-line">
+                                <input type="text" name="Hospital" class="form-control" id="hospitalnombre">
+                                <label for="hospitalnombre" class="form-label">Nombre del Hospital</label>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Cerrar</button>
-                        <button type="submit" class="btn btn-danger waves-effect waves-light " id="guardar_categoria">Guardar</button>
+                        <button type="submit" class="btn btn-danger waves-effect waves-light " id="guardar_hospital">Guardar</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-</div>
 
-<!--Modal Hospital-->
-<div id="responsive-modalH" class="modal fade" tabindex="-1" role="dialog" style="display: none;">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h4 style="color:black;" class="modal-title">Crear Hospital</h4>
-            </div>
-            <form class="floating-labels" action="" method="POST" id="form_hospital" role="form">
-                <div class="modal-body">
-                    <div class="form-group form-float">
-                        <div class="form-line">
-                            <input type="text" name="Hospital" class="form-control" id="hospitalnombre">
-                            <label for="hospitalnombre" class="form-label">Nombre del Hospital</label>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Cerrar</button>
-                    <button type="submit" class="btn btn-danger waves-effect waves-light " id="guardar_hospital">Guardar</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
+}
 
-@section ActualizarAtletaScript
+
+
+
+
+
+@section CrearAtletaScript
 {
     <script src="~/Recursos/plugins/dropify/dist/js/dropify.min.js"></script>
     <script src="~/Recursos/plugins/bootstrap-notify/bootstrap-notify.js"></script>
     <script src="~/Recursos/js/notificacion.js"></script>
+    <script src="@Url.Content("~/Scripts/Atleta/CreateAtle.js")"></script>
+    <script src="@Url.Content("~/Scripts/Atleta/CatDeportAtle.js")"></script>
+
+
 
     <!--Modal Hospital-->
     <script>
@@ -414,22 +606,33 @@
         });
     </script>
     <!--Hacer visible/invisible Div Genero-->
-    <script type="text/javascript">
+
+    <script>
         $(function () {
-            $('#Genero').on('change', generoFunc);
+            $("#Model_Genero").change(function () {
+                ToggleDropdown();
+            });
+            ToggleDropdown(); // Done to ensure correct hiding/showing on page reloads due to validation errors
         });
 
-        function generoFunc() {
-            var value = $(this).val();
-            if (value == "Femenino") {
+        function ToggleDropdown() {
+            if ($("#Model_Genero").val() == "Masculino") {
+                $("#dvembarazo").hide();
+            } else {
                 $("#dvembarazo").show();
             }
-            else {
-                $("#dvembarazo").hide();
-            }
 
-        }
+            if ($("#Model_Genero").val() == "Femenino") {
+                $("#dvembarazo").show();
+            } 
+        };
     </script>
+
+
+    @*---*@
+
+
+
     <!--Hacer visible/invisible Div Hospital-->
     <script>
         $(document).ready(function () {
@@ -439,6 +642,62 @@
             $("#radio17").click(function () {
                 $("#hosp").show();
             });
+
+            if ($("#radio17").is(':checked')) {
+                $("#hosp").show();
+            } else {
+                $("#hosp").hide();
+            }
+
+
+        });
+    </script>
+    <!--Hacer visible/invisible Div relainadecuada-->
+    <script>
+        $(document).ready(function () {
+            $("#radio23").click(function () {
+                $("#relaentre").hide();
+            });
+            $("#radio24").click(function () {
+                $("#relaentre").hide();
+            });
+            $("#radio25").click(function () {
+                $("#relaentre").show();
+            });
+
+            if ($("#radio25").is(':checked')) {
+                $("#relaentre").show();
+            } else {
+                $("#relaentre").hide();
+            }
+        });
+    </script>
+    @*---------------------*@
+    <script type="text/javascript">
+        // Solo permite ingresar numeros.
+        function soloNumeros(e) {
+            var key = window.Event ? e.which : e.keyCode
+            return (key >= 48 && key <= 57)
+        }
+    </script>
+    <!--Hacer visible/invisible Div relainadecuada-->
+    <script>
+        $(document).ready(function () {
+            $("#radio26").click(function () {
+                $("#relacompa").hide();
+            });
+            $("#radio27").click(function () {
+                $("#relacompa").hide();
+            });
+            $("#radio28").click(function () {
+                $("#relacompa").show();
+            });
+
+            if ($("#radio28").is(':checked')) {
+                $("#relacompa").show();
+            } else {
+                $("#relacompa").hide();
+            }
         });
     </script>
     <!--Select Dinamico Deporte y Categoria-->

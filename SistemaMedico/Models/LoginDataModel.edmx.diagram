@@ -4,41 +4,43 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="7972fec966e041cdbd66b52620dca33e" Name="Diagram1">
+      <Diagram DiagramId="67ddcc3ff8c44e519cae6c1e7864c251" Name="Diagram1">
         <EntityTypeShape EntityType="MeSysModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MeSysModel.Alergias" Width="1.5" PointX="7.5" PointY="8.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="MeSysModel.Anexos" Width="1.5" PointX="7.5" PointY="11" IsExpanded="true" />
-        <EntityTypeShape EntityType="MeSysModel.Aparato_Locomotor" Width="1.5" PointX="7.5" PointY="13.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="MeSysModel.Apoyo_Economico" Width="1.5" PointX="7.5" PointY="16.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="MeSysModel.Atleta_Categoria" Width="1.5" PointX="10.5" PointY="32.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="MeSysModel.Carrera_Deportiva" Width="1.5" PointX="7.5" PointY="22.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="MeSysModel.Carrera_Deportiva_Evento" Width="1.5" PointX="7.5" PointY="25.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="MeSysModel.Carrera_Deportiva_Familiar" Width="1.5" PointX="7.5" PointY="28.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="MeSysModel.Categorias" Width="1.5" PointX="8.25" PointY="40.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="MeSysModel.Condiciones_Clinicas_Actuales" Width="1.5" PointX="8.25" PointY="31.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="MeSysModel.Condiciones_Clinicas_Actuales_Principal" Width="1.5" PointX="10.5" PointY="29" IsExpanded="true" />
-        <EntityTypeShape EntityType="MeSysModel.Consiste_Apoyo" Width="1.5" PointX="7.5" PointY="34.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="MeSysModel.Datos_Atleta" Width="1.5" PointX="5.25" PointY="28.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="MeSysModel.Departamentos" Width="1.5" PointX="0.75" PointY="32.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="MeSysModel.Deporte" Width="1.5" PointX="6" PointY="40.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="MeSysModel.Educacion" Width="1.5" PointX="7.5" PointY="37.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MeSysModel.Alergias" Width="1.5" PointX="7.5" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MeSysModel.Anexos" Width="1.5" PointX="7.5" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MeSysModel.Aparato_Locomotor" Width="1.5" PointX="7.5" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MeSysModel.Apoyo_Economico" Width="1.5" PointX="7.5" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MeSysModel.Atleta_Categoria" Width="1.5" PointX="10.5" PointY="34.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MeSysModel.Carrera_Deportiva" Width="1.5" PointX="7.5" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MeSysModel.Carrera_Deportiva_Evento" Width="1.5" PointX="7.5" PointY="25.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MeSysModel.Carrera_Deportiva_Familiar" Width="1.5" PointX="7.5" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MeSysModel.Categorias" Width="1.5" PointX="8.25" PointY="44.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MeSysModel.Condiciones_Clinicas_Actuales" Width="1.5" PointX="8.25" PointY="32.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MeSysModel.Condiciones_Clinicas_Actuales_Principal" Width="1.5" PointX="10.5" PointY="31" IsExpanded="true" />
+        <EntityTypeShape EntityType="MeSysModel.Consiste_Apoyo" Width="1.5" PointX="7.5" PointY="34.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MeSysModel.Datos_Atleta" Width="1.5" PointX="5.25" PointY="30" IsExpanded="true" />
+        <EntityTypeShape EntityType="MeSysModel.Departamentos" Width="1.5" PointX="0.75" PointY="34.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MeSysModel.Deporte" Width="1.5" PointX="6" PointY="44.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MeSysModel.Educacion" Width="1.5" PointX="7.5" PointY="37.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MeSysModel.Equipo_Deportivo" Width="1.5" PointX="7.5" PointY="40.5" IsExpanded="true" />
         <EntityTypeShape EntityType="MeSysModel.Eventos" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="MeSysModel.Examen_Fisico" Width="1.5" PointX="8.25" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="MeSysModel.Examen_Fisico_Principal" Width="1.5" PointX="10.5" PointY="35" IsExpanded="true" />
+        <EntityTypeShape EntityType="MeSysModel.Examen_Fisico_Principal" Width="1.5" PointX="10.5" PointY="37" IsExpanded="true" />
         <EntityTypeShape EntityType="MeSysModel.Examenes" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MeSysModel.Ficha_Antropometrica" Width="1.5" PointX="7.5" PointY="43.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="MeSysModel.Habitacion" Width="1.5" PointX="7.5" PointY="48" IsExpanded="true" />
-        <EntityTypeShape EntityType="MeSysModel.Habitos" Width="1.5" PointX="7.5" PointY="50.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="MeSysModel.Historia_Familiar" Width="1.5" PointX="7.5" PointY="53.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="MeSysModel.Historial_Medico" Width="1.5" PointX="7.5" PointY="56.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="MeSysModel.Hospital" Width="1.5" PointX="3" PointY="29.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="MeSysModel.Informacion_Familiar" Width="1.5" PointX="7.5" PointY="59.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="MeSysModel.Medicamentos" Width="1.5" PointX="7.5" PointY="62.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="MeSysModel.Medico" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MeSysModel.Municipio" Width="1.5" PointX="3" PointY="32.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MeSysModel.Ficha_Antropometrica" Width="1.5" PointX="7.5" PointY="47.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MeSysModel.Habitacion" Width="1.5" PointX="7.5" PointY="52" IsExpanded="true" />
+        <EntityTypeShape EntityType="MeSysModel.Habitos" Width="1.5" PointX="7.5" PointY="54.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MeSysModel.Historia_Familiar" Width="1.5" PointX="7.5" PointY="57.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MeSysModel.Historial_Medico" Width="1.5" PointX="7.5" PointY="60.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MeSysModel.Hospital" Width="1.5" PointX="3" PointY="31.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MeSysModel.Informacion_Familiar" Width="1.5" PointX="7.5" PointY="63.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MeSysModel.Lesiones" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MeSysModel.Medicamentos" Width="1.5" PointX="7.5" PointY="66.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MeSysModel.Medico" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MeSysModel.Municipio" Width="1.5" PointX="3" PointY="34.25" IsExpanded="true" />
         <EntityTypeShape EntityType="MeSysModel.Roles" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="MeSysModel.Situacion_Laboral" Width="1.5" PointX="7.5" PointY="65.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="MeSysModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MeSysModel.Situacion_Laboral" Width="1.5" PointX="7.5" PointY="69.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MeSysModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="MeSysModel.Usuarios" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="MeSysModel.FK_Alergias_Datos_Atleta" ManuallyRouted="false" />
         <AssociationConnector Association="MeSysModel.FK_Anexos_Datos_Atleta" ManuallyRouted="false" />
@@ -56,6 +58,7 @@
         <AssociationConnector Association="MeSysModel.FK_Datos_Atleta_Hospital" ManuallyRouted="false" />
         <AssociationConnector Association="MeSysModel.FK_Datos_Atleta_Municipio" ManuallyRouted="false" />
         <AssociationConnector Association="MeSysModel.FK_Educacion_Datos_Atleta" ManuallyRouted="false" />
+        <AssociationConnector Association="MeSysModel.FK_Equipo_Deportivo_Datos_Atleta" ManuallyRouted="false" />
         <AssociationConnector Association="MeSysModel.FK_Examen_Fisico_Principal_Datos_Atleta" ManuallyRouted="false" />
         <AssociationConnector Association="MeSysModel.FK_Ficha_Antropometrica_Datos_Atleta" ManuallyRouted="false" />
         <AssociationConnector Association="MeSysModel.FK_Habitacion_Datos_Atleta" ManuallyRouted="false" />
