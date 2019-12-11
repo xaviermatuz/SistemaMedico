@@ -19,6 +19,9 @@ namespace SistemaMedico.Models
         public string Evento { get; set; }
         public string FechayLugar { get; set; }
         public string Resultado { get; set; }
+        public Nullable<System.DateTime> Fecha_de_Registro { get; set; }
+        public Nullable<bool> Estado { get; set; }
+        public Nullable<System.DateTime> Fecha_de_Actualizacion { get; set; }
     
         public virtual Datos_Atleta Datos_Atleta { get; set; }
     }

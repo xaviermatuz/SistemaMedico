@@ -1,14 +1,21 @@
-﻿@using SistemaMedico.Models
-
+﻿@*@using SistemaMedico.Models*@
+@model IEnumerable<SistemaMedico.Models.Carrera_Deportiva_Evento>
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
     if (Session["ID"] == null)
     {
         Response.Redirect("~/Login/Index");
     }
-
+    IEnumerable<SistemaMedico.Models.Carrera_Deportiva_Evento> cdetabla1 = (IEnumerable<SistemaMedico.Models.Carrera_Deportiva_Evento>)ViewBag.cdetabla;
+    IEnumerable<SistemaMedico.Models.Carrera_Deportiva_Familiar> cdftabla2 = (IEnumerable<SistemaMedico.Models.Carrera_Deportiva_Familiar>)ViewBag.cdftabla;
 
 }
+
+@section CrearHistorialMedicoCss
+{
+
+}
+
 <div class="row clearfix">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="card">
@@ -18,7 +25,7 @@
             <div class="body">
                 <form action="" method="post" autocomplete="off" enctype="multipart/form-data">
                     <div style="display:none;">
-                        <input type="text" value="@ViewBag.id" class="form-control" name="txt_atleta">
+                        <input type="text" value="@ViewBag.id" id="atleta" class="form-control" name="txt_atleta">
                     </div>
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs customtab" role="tablist">
@@ -100,9 +107,9 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <input id="rdsi" value="si" name="alergia" type="radio" />
+                                            <input id="rdsi" value="Si" name="alergia" type="radio" />
                                             <label for="rdsi"> Si</label>
-                                            <input type="radio" id="rdno" value="no" name="alergia" />
+                                            <input type="radio" id="rdno" value="No" name="alergia" />
                                             <label for="rdno"> No</label>
                                         </div>
                                     </div>
@@ -216,7 +223,7 @@
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div class="form-group">
-                                                        <input id="rdsi_preg_B" value="si" name="pregunta_B" type="radio" />
+                                                        <input id="rdsi_preg_B" value="Si" name="pregunta_B" type="radio" />
                                                         <label for="rdsi_preg_B"> Si</label>
                                                         <input type="radio" id="rdno_preg_B" value="No" name="pregunta_B" />
                                                         <label for="rdno_preg_B"> No</label>
@@ -246,7 +253,7 @@
                                                 </div>
                                                 <div class="col-sm-2">
                                                     <div class="form-group">
-                                                        <input id="rdsi_preg_D" value="si" name="pregunta_D" type="radio" />
+                                                        <input id="rdsi_preg_D" value="Si" name="pregunta_D" type="radio" />
                                                         <label for="rdsi_preg_D"> Si</label>
                                                         <input type="radio" id="rdno_preg_D" value="No" name="pregunta_D" />
                                                         <label for="rdno_preg_D"> No</label>
@@ -255,7 +262,7 @@
                                             </div><!-- fin del row 4 pregunta 4 -->
                                             <div class="row col-md-12">
                                                 <div class="col-sm-10">
-                                                    <div class="form-group"><label for="">E) ¿Naciste o te falta un riñon,un ojo,untesticulo u algun otro órgano?</label></div>
+                                                    <div class="form-group"><label for="">E) ¿Naciste o te falta un riñon,un ojo,un testiculo u algun otro órgano?</label></div>
                                                 </div>
                                                 <div class="col-sm-2">
                                                     <div class="form-group">
@@ -287,7 +294,7 @@
                                                 </div>
                                                 <div class="col-sm-2">
                                                     <div class="form-group">
-                                                        <input id="rdsi_preg_G" value="si" name="pregunta_G" type="radio" />
+                                                        <input id="rdsi_preg_G" value="Si" name="pregunta_G" type="radio" />
                                                         <label for="rdsi_preg_G"> Si</label>
                                                         <input type="radio" id="rdno_preg_G" value="No" name="pregunta_G" />
                                                         <label for="rdno_preg_G"> No</label>
@@ -433,9 +440,9 @@
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div class="form-group">
-                                                        <input id="rdsi_pregunta_fam1" value="si" name="pregunta_fam_1" type="radio" />
+                                                        <input id="rdsi_pregunta_fam1" value="Si" name="pregunta_fam_1" type="radio" />
                                                         <label for="rdsi_pregunta_fam1"> Si</label>
-                                                        <input type="radio" id="rdno_pregunta_fam1" value="no" name="pregunta_fam_1" />
+                                                        <input type="radio" id="rdno_pregunta_fam1" value="No" name="pregunta_fam_1" />
                                                         <label for="rdno_pregunta_fam1"> No</label>
                                                     </div>
                                                 </div>
@@ -448,9 +455,9 @@
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div class="form-group">
-                                                        <input id="rdsi_preg_fam_2" value="si" name="pregunta_fam_2" type="radio" />
+                                                        <input id="rdsi_preg_fam_2" value="Si" name="pregunta_fam_2" type="radio" />
                                                         <label for="rdsi_preg_fam_2"> Si</label>
-                                                        <input type="radio" id="rdno_preg_fam_2" value="no" name="pregunta_fam_2" />
+                                                        <input type="radio" id="rdno_preg_fam_2" value="No" name="pregunta_fam_2" />
                                                         <label for="rdno_preg_fam_2"> No</label>
                                                     </div>
                                                 </div>
@@ -461,9 +468,9 @@
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div class="form-group">
-                                                        <input id="rdsi_preg_fam_3" value="si" name="pregunta_fam_3" type="radio" />
+                                                        <input id="rdsi_preg_fam_3" value="Si" name="pregunta_fam_3" type="radio" />
                                                         <label for="rdsi_preg_fam_3"> Si</label>
-                                                        <input type="radio" id="rdno_preg_fam_3" value="no" name="pregunta_fam_3" />
+                                                        <input type="radio" id="rdno_preg_fam_3" value="No" name="pregunta_fam_3" />
                                                         <label for="rdno_preg_fam_3"> No</label>
                                                     </div>
                                                 </div>
@@ -474,9 +481,9 @@
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div class="form-group">
-                                                        <input id="rdsi_preg_fam_4" value="si" name="pregunta_fam_4" type="radio" />
+                                                        <input id="rdsi_preg_fam_4" value="Si" name="pregunta_fam_4" type="radio" />
                                                         <label for="rdsi_preg_fam_4"> Si</label>
-                                                        <input type="radio" id="rdno_preg_fam_4" value="no" name="pregunta_fam_4" />
+                                                        <input type="radio" id="rdno_preg_fam_4" value="No" name="pregunta_fam_4" />
                                                         <label for="rdno_preg_fam_4"> No</label>
                                                     </div>
                                                 </div>
@@ -487,9 +494,9 @@
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div class="form-group">
-                                                        <input id="rdsi_preg_fam_5" value="si" name="pregunta_fam_5" type="radio" />
+                                                        <input id="rdsi_preg_fam_5" value="Si" name="pregunta_fam_5" type="radio" />
                                                         <label for="rdsi_preg_fam_5"> Si</label>
-                                                        <input type="radio" id="rdno_preg_fam_5" value="no" name="pregunta_fam_5" />
+                                                        <input type="radio" id="rdno_preg_fam_5" value="No" name="pregunta_fam_5" />
                                                         <label for="rdno_preg_fam_5"> No</label>
                                                     </div>
                                                 </div>
@@ -503,9 +510,9 @@
                                             </div>
                                             <div class="col-md-2">
                                                 <div class="form-group">
-                                                    <input id="rdsi_pregunta_locomotor_1" value="si" name="pregunta_locomotor_1" type="radio" />
+                                                    <input id="rdsi_pregunta_locomotor_1" value="Si" name="pregunta_locomotor_1" type="radio" />
                                                     <label for="rdsi_pregunta_locomotor_1"> Si</label>
-                                                    <input type="radio" id="rdno_pregunta_locomotor_1" value="no" name="pregunta_locomotor_1" />
+                                                    <input type="radio" id="rdno_pregunta_locomotor_1" value="No" name="pregunta_locomotor_1" />
                                                     <label for="rdno_pregunta_locomotor_1"> No</label>
                                                 </div>
                                             </div>
@@ -516,9 +523,9 @@
                                             </div>
                                             <div class="col-md-2">
                                                 <div class="form-group">
-                                                    <input id="rdsi_pregunta_locomotor_2" value="si" name="pregunta_locomotor_2" type="radio" />
+                                                    <input id="rdsi_pregunta_locomotor_2" value="Si" name="pregunta_locomotor_2" type="radio" />
                                                     <label for="rdsi_pregunta_locomotor_2"> Si</label>
-                                                    <input type="radio" id="rdno_pregunta_locomotor_2" value="no" name="pregunta_locomotor_2" />
+                                                    <input type="radio" id="rdno_pregunta_locomotor_2" value="No" name="pregunta_locomotor_2" />
                                                     <label for="rdno_pregunta_locomotor_2"> No</label>
                                                 </div>
                                             </div>
@@ -529,9 +536,9 @@
                                             </div>
                                             <div class="col-md-2">
                                                 <div class="form-group">
-                                                    <input id="rdsi_pregunta_locomotor_3" value="si" name="pregunta_locomotor_3" type="radio" />
+                                                    <input id="rdsi_pregunta_locomotor_3" value="Si" name="pregunta_locomotor_3" type="radio" />
                                                     <label for="rdsi_pregunta_locomotor_3"> Si</label>
-                                                    <input type="radio" id="rdno_pregunta_locomotor_3" value="no" name="pregunta_locomotor_3" />
+                                                    <input type="radio" id="rdno_pregunta_locomotor_3" value="No" name="pregunta_locomotor_3" />
                                                     <label for="rdno_pregunta_locomotor_3"> No</label>
                                                 </div>
                                             </div>
@@ -542,9 +549,9 @@
                                             </div>
                                             <div class="col-md-2">
                                                 <div class="form-group">
-                                                    <input id="rdsi_pregunta_locomotor_4" value="si" name="pregunta_locomotor_4" type="radio" />
+                                                    <input id="rdsi_pregunta_locomotor_4" value="Si" name="pregunta_locomotor_4" type="radio" />
                                                     <label for="rdsi_pregunta_locomotor_4"> Si</label>
-                                                    <input type="radio" id="rdno_pregunta_locomotor_4" value="no" name="pregunta_locomotor_4" />
+                                                    <input type="radio" id="rdno_pregunta_locomotor_4" value="No" name="pregunta_locomotor_4" />
                                                     <label for="rdno_pregunta_locomotor_4"> No</label>
                                                 </div>
                                             </div>
@@ -555,9 +562,9 @@
                                             </div>
                                             <div class="col-md-2">
                                                 <div class="form-group">
-                                                    <input id="rdsi_pregunta_locomotor_5" value="si" name="pregunta_locomotor_5" type="radio" />
+                                                    <input id="rdsi_pregunta_locomotor_5" value="Si" name="pregunta_locomotor_5" type="radio" />
                                                     <label for="rdsi_pregunta_locomotor_5"> Si</label>
-                                                    <input type="radio" id="rdno_pregunta_locomotor_5" value="no" name="pregunta_locomotor_5" />
+                                                    <input type="radio" id="rdno_pregunta_locomotor_5" value="No" name="pregunta_locomotor_5" />
                                                     <label for="rdno_pregunta_locomotor_5"> No</label>
                                                 </div>
                                             </div>
@@ -568,9 +575,9 @@
                                             </div>
                                             <div class="col-md-2">
                                                 <div class="form-group">
-                                                    <input id="rdsi_pregunta_locomotor_6" value="si" name="pregunta_locomotor_6" type="radio" />
+                                                    <input id="rdsi_pregunta_locomotor_6" value="Si" name="pregunta_locomotor_6" type="radio" />
                                                     <label for="rdsi_pregunta_locomotor_6"> Si</label>
-                                                    <input type="radio" id="rdno_pregunta_locomotor_6" value="no" name="pregunta_locomotor_6" />
+                                                    <input type="radio" id="rdno_pregunta_locomotor_6" value="No" name="pregunta_locomotor_6" />
                                                     <label for="rdno_pregunta_locomotor_6"> No</label>
                                                 </div>
                                             </div>
@@ -632,31 +639,80 @@
                                     <div class="col-md-12 m-b-40">
                                         <label for="">Antecedentes Deportivos: a continuacion, mencione sus logros y medallas mas importantes en competencias como seleccionado (a) o en eventos olimpicos</label>
                                     </div>
-                                    <div class="col-md-12 m-t-10">
-                                        <table class="table table-hover small-text" id="tb">
-                                            <tr class="tr-header">
-                                                <th> Categoria/Prueba </th>
-                                                <th> Resultado/Marca </th>
-                                                <th> Fecha y Lugar </th>
-                                                <th> Evento  </th>
-                                                <th><a href="javascript:void(0);" style="font-size:18px;" id="addMore" title="Add More Person"><span class="fa fa-plus"></span></a></th>
-                                            </tr>
-
-                                            <tr>
-                                                <td>
-                                                    <input type="text" id="prueba" name="prueba[]" class="form-control" placeholder="Categoria/Prueba" />
-                                                </td>
-                                                <td>
-                                                    <input type="text" id="resultado" name="resultado[]" class="form-control" placeholder="Resultado/Marca" width="100%">
-                                                </td>
-                                                <td>
-                                                    <input type="text" id="fechaYlugar" name="fechaYlugar[]" class="form-control" placeholder="Fecha y Lugar" />
-                                                </td>
-                                                <td>
-                                                    <input type="text" id="evento" name="evento[]" class="form-control" placeholder="Evento" />
-                                                </td>
-                                                <td><a href='javascript:void(0);' class='remove'><span class='fa fa-remove'></span></a></td>
-                                            </tr>
+                                    <div class="col-md-12 m-t-10 table-responsive">
+                                        <table id="tblCDE" class="table table-striped table-bordered table-hover table-responsive-md responsive-table" cellpadding="0" cellspacing="0">
+                                            <thead class="thead-dark">
+                                                <tr>
+                                                    <th style="text-align:center; width:100px">Prueba</th>
+                                                    <th style="text-align:center; width:150px">Resultados</th>
+                                                    <th style="text-align:center; width:150px">Fecha y Lugar</th>
+                                                    <th style="text-align:center; width:150px">Evento</th>
+                                                    <th style="text-align:center; width:150px">Acción</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var CDET in cdetabla1)
+                                                {
+                                                    <tr>
+                                                        <td class="ID" style="display:none">
+                                                            <span>@CDET.ID</span>
+                                                            <input type="text" id="idcde" value="@CDET.ID" style="display:none" />
+                                                        </td>
+                                                        <td class="atletaid" style="display:none">
+                                                            <span>@CDET.ID_Atleta</span>
+                                                        </td>
+                                                        <td class="prueba" style="text-align:center;">
+                                                            <span>@CDET.Prueba</span>
+                                                            <input type="text" id="idprueba" value="@CDET.Prueba" style="display:none" />
+                                                        </td>
+                                                        <td class="resultado" style="text-align:center;">
+                                                            <span>@CDET.Resultado</span>
+                                                            <input type="text" value="@CDET.Resultado" style="display:none" />
+                                                        </td>
+                                                        <td class="fyl" style="text-align:center;">
+                                                            <span>@CDET.Fecha_Y_Lugar</span>
+                                                            <input type="text" value="@CDET.Fecha_Y_Lugar" style="display:none" />
+                                                        </td>
+                                                        <td class="evento" style="text-align:center;">
+                                                            <span>@CDET.Evento</span>
+                                                            <input type="text" value="@CDET.Evento" style="display:none" />
+                                                        </td>
+                                                        <td style="text-align:center;">
+                                                            <button class="btn btn-danger btn-circle waves-effect waves-circle waves-float elimina" type="button"><i class="fa fa-trash fa-md"></i></button>
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                        <table class="table table-striped table-bordered table-hover">
+                                            <thead class="thead-dark">
+                                                <tr>
+                                                    <th style="text-align:center; width:100px">Prueba</th>
+                                                    <th style="text-align:center; width:150px">Resultados</th>
+                                                    <th style="text-align:center; width:150px">Fecha y Lugar</th>
+                                                    <th style="text-align:center; width:150px">Evento</th>
+                                                    <th style="text-align:center; width:150px">Acción</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td style="text-align:center; width: 150px">
+                                                        <input type="text" id="txtprueba" style="width:140px" />
+                                                    </td>
+                                                    <td style="text-align:center; width: 150px">
+                                                        <input type="text" id="txtresultado" style="width:140px" />
+                                                    </td>
+                                                    <td style="text-align:center; width: 150px">
+                                                        <input type="text" id="txtfyl" style="width:140px" />
+                                                    </td>
+                                                    <td style="text-align:center; width: 150px">
+                                                        <input type="text" id="txtevento" style="width:140px" />
+                                                    </td>
+                                                    <td style="text-align:center; width: 200px">
+                                                        <button class="btn bg-teal waves-effect" type="button" id="btnAdd"><i class="material-icons">check_circle</i><span>Agregar</span></button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
                                         </table>
                                     </div>
                                 </div>
@@ -665,26 +721,70 @@
                                         <label for="">Especifique si algun familiar ha participado en eventos deportivos de alto rendimiento o de seleccion nacional.</label>
                                     </div>
                                     <div class="col-md-12 m-t-10">
-                                        <table class="table table-hover small-text" id="tb2">
-                                            <tr class="tr-header">
-                                                <th> Evento  </th>
-                                                <th> Resultado obtenido </th>
-                                                <th> Fecha y Lugar </th>
-                                                <th><a href="javascript:void(0);" style="font-size:18px;" id="addMore2" title="Add More Person"><span class="fa fa-plus"></span></a></th>
-                                            </tr>
-
-                                            <tr>
-                                                <td>
-                                                    <input type="text" name="evento_fam[]" class="form-control" placeholder="Evento" />
-                                                </td>
-                                                <td>
-                                                    <input type="text" name="resultado_fam[]" class="form-control" placeholder="Resultado/Marca" width="100%">
-                                                </td>
-                                                <td>
-                                                    <input type="text" name="fechaYlugarfam[]" class="form-control" placeholder="Fecha y Lugar" />
-                                                </td>
-                                                <td><a href='javascript:void(0);' class='remove2'><span class='fa fa-remove'></span></a></td>
-                                            </tr>
+                                        <table class="table table-hover small-text" id="tblCDF">
+                                            <thead class="thead-dark">
+                                                <tr>
+                                                    <th style="text-align:center; width:150px">Evento</th>
+                                                    <th style="text-align:center; width:150px">Fecha y Lugar</th>
+                                                    <th style="text-align:center; width:150px">Resultados</th>
+                                                    <th style="text-align:center; width:150px">Acción</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var item in cdftabla2)
+                                                {
+                                                <tr>
+                                                    <td class="ID" style="display:none">
+                                                        <span>@item.ID</span>
+                                                        <input type="text" id="idcde" value="@item.ID" style="display:none" />
+                                                    </td>
+                                                    <td class="atletaid" style="display:none">
+                                                        <span>@item.ID_Atleta</span>
+                                                    </td>
+                                                    <td class="evento" style="text-align:center;">
+                                                        <span>@item.Evento</span>
+                                                        <input type="text" value="@item.Evento" style="display:none" />
+                                                    </td>
+                                                    <td class="fyl" style="text-align:center;">
+                                                        <span>@item.FechayLugar</span>
+                                                        <input type="text" value="@item.FechayLugar" style="display:none" />
+                                                    </td>
+                                                    <td class="resultado" style="text-align:center;">
+                                                        <span>@item.Resultado</span>
+                                                        <input type="text" value="@item.Resultado" style="display:none" />
+                                                    </td>
+                                                    <td style="text-align:center;">
+                                                        <button class="btn btn-danger btn-circle waves-effect waves-circle waves-float elimina" type="button"><i class="fa fa-trash fa-md"></i></button>
+                                                    </td>
+                                                </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                        <table class="table table-striped table-bordered table-hover">
+                                            <thead class="thead-dark">
+                                                <tr>
+                                                    <th style="text-align:center; width:150px">Evento</th>
+                                                    <th style="text-align:center; width:150px">Fecha y Lugar</th>
+                                                    <th style="text-align:center; width:150px">Resultados</th>
+                                                    <th style="text-align:center; width:150px">Acción</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td style="text-align:center; width: 150px">
+                                                        <input type="text" id="txtevento2" style="width:140px" />
+                                                    </td>
+                                                    <td style="text-align:center; width: 150px">
+                                                        <input type="text" id="txtfyl2" style="width:140px" />
+                                                    </td>
+                                                    <td style="text-align:center; width: 150px">
+                                                        <input type="text" id="txtresultado2" style="width:140px" />
+                                                    </td>
+                                                    <td style="text-align:center; width: 200px">
+                                                        <button class="btn bg-teal waves-effect" type="button" id="btnaddcdf"><i class="material-icons">check_circle</i><span>Agregar</span></button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
                                         </table>
                                     </div>
                                 </div>
@@ -702,7 +802,7 @@
                                                 <label for="entre1y3dias"> Entre 1 y 3 dias</label>
                                                 <input id="entre3y5dias" value="Entre 3 y 5 dias" name="entrenamiento" type="radio" />
                                                 <label for="entre3y5dias"> Entre 3 y 5 dias</label>
-                                                <input type="radio" id="entre5y10dias" value="Entre 5 y 10 años" name="entrenamiento" />
+                                                <input type="radio" id="entre5y10dias" value="Entre 5 y 10 dias" name="entrenamiento" />
                                                 <label for="entre5y10dias"> Entre 5 y 10 dias</label>
                                                 <input id="masde10dias" value="Mas de 10 dias" name="entrenamiento" type="radio" />
                                                 <label for="masde10dias"> Mas de 10 dias</label>
@@ -729,7 +829,7 @@
                                                 <label for="2y4horas">2 y 4 horas</label>
                                                 <input id="4y6horas" value="4 y 6 horas" name="por_sesion" type="radio" />
                                                 <label for="4y6horas">4 y 6 horas</label>
-                                                <input type="radio" id="masde6" value="mas de 6 horas" name="por_sesion" />
+                                                <input type="radio" id="masde6" value="Mas de 6 horas" name="por_sesion" />
                                                 <label for="masde6"> Mas de 6 horas </label>
                                             </div>
                                         </div>
@@ -740,7 +840,7 @@
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <input id="sinentrenador" value="Sin intrenador" name="modalidad_entrenamiento" type="radio" />
+                                                <input id="sinentrenador" value="Sin entrenador" name="modalidad_entrenamiento" type="radio" />
                                                 <label for="sinentrenador"> Sin Entrenador</label>
                                                 <input type="radio" id="soloyentrenador" value="Solo y / o con entrenador" name="modalidad_entrenamiento" />
                                                 <label for="soloyentrenador"> Solo y/o con entrenador</label>
@@ -758,7 +858,7 @@
                                         <div class="col-md-12 m-t-10">
                                             <div class="form-group ">
 
-                                                <input id="cons" value="conozco y sigo" name="plan" type="radio" />
+                                                <input id="cons" value="Conozco y sigo" name="plan" type="radio" />
                                                 <label for="cons">Conozco y sigo</label>
                                                 <input type="radio" id="consns" value="Conozco,Pero no sigo" name="plan" />
                                                 <label for="consns">Conozco,pero no sigo</label>
@@ -1094,7 +1194,7 @@
                                                 <label>4)Números de personas con las que Vive</label>
                                             </div>
                                             <div class="col-sm-12">
-                                                <input type="checkbox" id="menosde4" class="filled-in" name="numvive" value="4 o menos" onchange="javascript:mostrarcontenido(this.id,menosdecuatro)" />
+                                                <input type="radio" id="menosde4" class="filled-in" name="numvive" value="4 o menos" onchange="javascript:mostrarcontenido(this.id,menosdecuatro)" />
                                                 <label for="menosde4">4 o menos</label><br>
                                                 <div class="col-md-12" id="menosdecuatro" style="display:none;">
                                                     <div class="form-group form-float">
@@ -1104,11 +1204,11 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <input type="checkbox" id="4a7" class="filled-in" name="numvive" value="De 4 a 7" />
+                                                <input type="radio" id="4a7" class="filled-in" name="numvive" value="De 4 a 7" />
                                                 <label for="4a7">De 4 a 7</label><br>
-                                                <input type="checkbox" id="masde7" class="filled-in" name="numvive" value="Mas de 7" />
+                                                <input type="radio" id="masde7" class="filled-in" name="numvive" value="Mas de 7" />
                                                 <label for="masde7">Mas de 7</label><br>
-                                                <input type="checkbox" id="compañerosdeportivo" class="filled-in" name="numvive" value="Con Compañeros en alojamiento deportivo" />
+                                                <input type="radio" id="compañerosdeportivo" class="filled-in" name="numvive" value="Con Compañeros en alojamiento deportivo" />
                                                 <label for="compañerosdeportivo">Con Compañeros en alojamiento deportivo</label>
                                             </div>
                                         </div>
@@ -1169,15 +1269,15 @@
                                             </div>
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <input id="b" class="filled-in" value="Bueno" name="barrio" type="checkbox" />
+                                                    <input id="b" class="filled-in" value="Bueno" name="barrio" type="radio" />
                                                     <label for="b"> Bueno</label><br>
-                                                    <input type="checkbox" class="filled-in" id="r" value="Regular" name="barrio" />
+                                                    <input type="radio" class="filled-in" id="r" value="Regular" name="barrio" />
                                                     <label for="r"> Regular</label><br>
-                                                    <input type="checkbox" class="filled-in" id="ba" value="Bajo" name="barrio" />
+                                                    <input type="radio" class="filled-in" id="ba" value="Bajo" name="barrio" />
                                                     <label for="ba">Bajo</label><br>
-                                                    <input id="ha" value="Ha tenido abandonos frecuentes" class="filled-in" name="barrio" type="checkbox" />
+                                                    <input id="ha" value="Ha tenido abandonos frecuentes" class="filled-in" name="barrio" type="radio" />
                                                     <label for="ha"> Ha tenido abandonos frecuentes</label><br>
-                                                    <input id="ot" value="Otros" class="filled-in" name="barrio" type="checkbox" onchange="javascript:mostrarcontenido(this.id,otrosbarrios1)" />
+                                                    <input id="ot" value="Otros" class="filled-in" name="barrio" type="radio" onchange="javascript:mostrarcontenido(this.id,otrosbarrios1)" />
                                                     <label for="ot"> Otros</label><br>
                                                     <div class="col-md-12" id="otrosbarrios1" style="display:none;">
                                                         <div class="form-group form-float">
@@ -1292,6 +1392,7 @@
 </div>
 @section CrearHistorialMedicoScript
 {
+
     <!-- muestra el div de alergias -->
     <script>
         $(document).ready(function () {
@@ -1354,22 +1455,6 @@
         });
     </script>
     <script>
-        $(function () {
-            $('#addMore').on('click', function () {
-                var data = $("#tb tr:eq(1)").clone(true).appendTo("#tb");
-                data.find("input").val('');
-            });
-            $(document).on('click', '.remove', function () {
-                var trIndex = $(this).closest("tr").index();
-                if (trIndex > 1) {
-                    $(this).closest("tr").remove();
-                } else {
-                    alert("lo siento no se puede eliminar la primera fila ");
-                }
-            });
-        });
-    </script>
-    <script>
         $(document).ready(function () {
             $("#rdno_fuma").click(function () {
                 $("#si_cigarros").hide();
@@ -1405,20 +1490,7 @@
             });
         });
     </script>
-    <script>
-        $(function () {
-            $('#addMore2').on('click', function () {
-                var data = $("#tb2 tr:eq(1)").clone(true).appendTo("#tb2");
-                data.find("input").val('');
-            });
-            $(document).on('click', '.remove2', function () {
-                var trIndex2 = $(this).closest("tr").index();
-                if (trIndex2 > 1) {
-                    $(this).closest("tr").remove();
-                } else {
-                    alert("lo siento no se puede eliminar la primera fila ");
-                }
-            });
-        });
-    </script>
+
+     <script src="~/Recursos/js/Tabla1 - Crear.js"></script> 
+     <script src="~/Recursos/js/Tabla2_Crear.js"></script> 
 }

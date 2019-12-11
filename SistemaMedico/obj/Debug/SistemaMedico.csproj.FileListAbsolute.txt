@@ -382,6 +382,7 @@ C:\Users\TIC_Xavi\source\repos\SistemaMedico\bin\EntityFramework.dll
 C:\Users\TIC_Xavi\source\repos\SistemaMedico\bin\EntityFramework.SqlServer.dll
 C:\Users\TIC_Xavi\source\repos\SistemaMedico\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\TIC_Xavi\source\repos\SistemaMedico\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\TIC_Xavi\source\repos\SistemaMedico\bin\System.Web.Entity.dll
 C:\Users\TIC_Xavi\source\repos\SistemaMedico\bin\System.Web.Helpers.dll
 C:\Users\TIC_Xavi\source\repos\SistemaMedico\bin\System.Web.Mvc.dll
 C:\Users\TIC_Xavi\source\repos\SistemaMedico\bin\System.Web.Razor.dll
@@ -408,577 +409,252 @@ C:\Users\TIC_Xavi\source\repos\SistemaMedico\obj\Debug\SistemaMedico.csproj.Core
 C:\Users\TIC_Xavi\source\repos\SistemaMedico\obj\Debug\SistemaMedico.csproj.CopyComplete
 C:\Users\TIC_Xavi\source\repos\SistemaMedico\obj\Debug\SistemaMedico.dll
 C:\Users\TIC_Xavi\source\repos\SistemaMedico\obj\Debug\SistemaMedico.pdb
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\SistemaMedico.dll.config
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\SistemaMedico.dll
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\SistemaMedico.pdb
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\csc.exe
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\csc.exe.config
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\csc.rsp
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\csi.exe
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\csi.exe.config
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\csi.rsp
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.CodeAnalysis.dll
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.CSharp.Core.targets
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.Managed.Core.targets
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.VisualBasic.Core.targets
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.Win32.Primitives.dll
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.AppContext.dll
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Collections.Immutable.dll
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Console.dll
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Diagnostics.StackTrace.dll
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Globalization.Calendars.dll
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.IO.Compression.dll
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.IO.Compression.ZipFile.dll
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.IO.FileSystem.dll
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.IO.FileSystem.Primitives.dll
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Net.Http.dll
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Net.Sockets.dll
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Reflection.Metadata.dll
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Security.Cryptography.Algorithms.dll
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Security.Cryptography.Encoding.dll
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Security.Cryptography.Primitives.dll
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Text.Encoding.CodePages.dll
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Threading.Tasks.Extensions.dll
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.ValueTuple.dll
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Xml.ReaderWriter.dll
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Xml.XmlDocument.dll
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Xml.XPath.dll
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Xml.XPath.XDocument.dll
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\vbc.exe
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\vbc.exe.config
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\vbc.rsp
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\VBCSCompiler.exe
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\VBCSCompiler.exe.config
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\EntityFramework.dll
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\EntityFramework.SqlServer.dll
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\Microsoft.Web.Infrastructure.dll
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.Helpers.dll
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.Mvc.dll
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.Razor.dll
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.WebPages.Deployment.dll
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.WebPages.dll
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.WebPages.Razor.dll
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\EntityFramework.xml
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\EntityFramework.SqlServer.xml
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.Helpers.xml
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.Mvc.xml
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.Razor.xml
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.WebPages.xml
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.WebPages.Deployment.xml
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.WebPages.Razor.xml
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\es\System.Web.Helpers.resources.dll
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\es\System.Web.Mvc.resources.dll
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\es\System.Web.Razor.resources.dll
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\es\System.Web.WebPages.resources.dll
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\es\System.Web.WebPages.Deployment.resources.dll
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\bin\es\System.Web.WebPages.Razor.resources.dll
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\obj\Debug\SistemaMedico.csprojAssemblyReference.cache
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\obj\Debug\SistemaMedico.csproj.CoreCompileInputs.cache
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\obj\Debug\SistemaMedico.csproj.CopyComplete
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\obj\Debug\SistemaMedico.dll
-C:\Users\lopez\Desktop\sismedico\SistemaMedico\SistemaMedico\obj\Debug\SistemaMedico.pdb
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\SistemaMedico.dll.config
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\SistemaMedico.dll
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\SistemaMedico.pdb
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\csc.exe
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\csc.exe.config
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\csc.rsp
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\csi.exe
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\csi.exe.config
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\csi.rsp
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.CodeAnalysis.dll
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.CSharp.Core.targets
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.Managed.Core.targets
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.VisualBasic.Core.targets
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.Win32.Primitives.dll
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.AppContext.dll
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Collections.Immutable.dll
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Console.dll
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Diagnostics.StackTrace.dll
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Globalization.Calendars.dll
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.IO.Compression.dll
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.IO.Compression.ZipFile.dll
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.IO.FileSystem.dll
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.IO.FileSystem.Primitives.dll
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Net.Http.dll
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Net.Sockets.dll
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Reflection.Metadata.dll
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Security.Cryptography.Algorithms.dll
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Security.Cryptography.Encoding.dll
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Security.Cryptography.Primitives.dll
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Text.Encoding.CodePages.dll
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Threading.Tasks.Extensions.dll
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.ValueTuple.dll
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Xml.ReaderWriter.dll
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Xml.XmlDocument.dll
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Xml.XPath.dll
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Xml.XPath.XDocument.dll
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\vbc.exe
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\vbc.exe.config
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\vbc.rsp
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\VBCSCompiler.exe
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\VBCSCompiler.exe.config
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\EntityFramework.dll
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\EntityFramework.SqlServer.dll
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\Microsoft.Web.Infrastructure.dll
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.Helpers.dll
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.Mvc.dll
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.Razor.dll
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.WebPages.Deployment.dll
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.WebPages.dll
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.WebPages.Razor.dll
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\EntityFramework.xml
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\EntityFramework.SqlServer.xml
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.Helpers.xml
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.Mvc.xml
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.Razor.xml
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.WebPages.xml
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.WebPages.Deployment.xml
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.WebPages.Razor.xml
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\es\System.Web.Helpers.resources.dll
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\es\System.Web.Mvc.resources.dll
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\es\System.Web.Razor.resources.dll
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\es\System.Web.WebPages.resources.dll
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\es\System.Web.WebPages.Deployment.resources.dll
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\bin\es\System.Web.WebPages.Razor.resources.dll
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\obj\Debug\SistemaMedico.csprojAssemblyReference.cache
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\obj\Debug\SistemaMedico.csproj.CoreCompileInputs.cache
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\obj\Debug\SistemaMedico.csproj.CopyComplete
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\obj\Debug\SistemaMedico.dll
-C:\Users\agonzalez\Downloads\sismedico\sismedico\SistemaMedico\SistemaMedico\obj\Debug\SistemaMedico.pdb
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\SistemaMedico.dll.config
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\SistemaMedico.dll
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\SistemaMedico.pdb
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\csc.exe
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\csc.exe.config
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\csc.rsp
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\csi.exe
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\csi.exe.config
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\csi.rsp
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.CodeAnalysis.dll
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.CSharp.Core.targets
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.Managed.Core.targets
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.VisualBasic.Core.targets
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.Win32.Primitives.dll
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.AppContext.dll
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Collections.Immutable.dll
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Console.dll
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Diagnostics.StackTrace.dll
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Globalization.Calendars.dll
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.IO.Compression.dll
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.IO.Compression.ZipFile.dll
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.IO.FileSystem.dll
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.IO.FileSystem.Primitives.dll
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Net.Http.dll
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Net.Sockets.dll
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Reflection.Metadata.dll
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Security.Cryptography.Algorithms.dll
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Security.Cryptography.Encoding.dll
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Security.Cryptography.Primitives.dll
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Text.Encoding.CodePages.dll
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Threading.Tasks.Extensions.dll
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.ValueTuple.dll
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Xml.ReaderWriter.dll
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Xml.XmlDocument.dll
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Xml.XPath.dll
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Xml.XPath.XDocument.dll
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\vbc.exe
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\vbc.exe.config
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\vbc.rsp
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\VBCSCompiler.exe
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\VBCSCompiler.exe.config
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\EntityFramework.dll
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\EntityFramework.SqlServer.dll
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\Microsoft.Web.Infrastructure.dll
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.Helpers.dll
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.Mvc.dll
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.Razor.dll
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.WebPages.Deployment.dll
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.WebPages.dll
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.WebPages.Razor.dll
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\EntityFramework.xml
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\EntityFramework.SqlServer.xml
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.Helpers.xml
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.Mvc.xml
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.Razor.xml
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.WebPages.xml
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.WebPages.Deployment.xml
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.WebPages.Razor.xml
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\es\System.Web.Helpers.resources.dll
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\es\System.Web.Mvc.resources.dll
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\es\System.Web.Razor.resources.dll
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\es\System.Web.WebPages.resources.dll
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\es\System.Web.WebPages.Deployment.resources.dll
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\es\System.Web.WebPages.Razor.resources.dll
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\obj\Debug\SistemaMedico.csprojAssemblyReference.cache
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\obj\Debug\SistemaMedico.csproj.CoreCompileInputs.cache
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\obj\Debug\SistemaMedico.csproj.CopyComplete
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\obj\Debug\SistemaMedico.dll
-C:\Users\lopez\Downloads\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\obj\Debug\SistemaMedico.pdb
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\SistemaMedico.dll.config
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\SistemaMedico.dll
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\SistemaMedico.pdb
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\csc.exe
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\csc.exe.config
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\csc.rsp
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\csi.exe
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\csi.exe.config
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\csi.rsp
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.CodeAnalysis.dll
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.CSharp.Core.targets
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.Managed.Core.targets
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.VisualBasic.Core.targets
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.Win32.Primitives.dll
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.AppContext.dll
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Collections.Immutable.dll
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Console.dll
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Diagnostics.StackTrace.dll
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Globalization.Calendars.dll
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.IO.Compression.dll
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.IO.Compression.ZipFile.dll
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.IO.FileSystem.dll
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.IO.FileSystem.Primitives.dll
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Net.Http.dll
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Net.Sockets.dll
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Reflection.Metadata.dll
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Security.Cryptography.Algorithms.dll
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Security.Cryptography.Encoding.dll
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Security.Cryptography.Primitives.dll
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Text.Encoding.CodePages.dll
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Threading.Tasks.Extensions.dll
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.ValueTuple.dll
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Xml.ReaderWriter.dll
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Xml.XmlDocument.dll
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Xml.XPath.dll
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Xml.XPath.XDocument.dll
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\vbc.exe
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\vbc.exe.config
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\vbc.rsp
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\VBCSCompiler.exe
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\VBCSCompiler.exe.config
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\EntityFramework.dll
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\EntityFramework.SqlServer.dll
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\Microsoft.Web.Infrastructure.dll
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.Helpers.dll
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.Mvc.dll
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.Razor.dll
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.WebPages.Deployment.dll
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.WebPages.dll
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.WebPages.Razor.dll
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\EntityFramework.xml
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\EntityFramework.SqlServer.xml
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.Helpers.xml
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.Mvc.xml
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.Razor.xml
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.WebPages.xml
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.WebPages.Deployment.xml
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.WebPages.Razor.xml
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\es\System.Web.Helpers.resources.dll
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\es\System.Web.Mvc.resources.dll
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\es\System.Web.Razor.resources.dll
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\es\System.Web.WebPages.resources.dll
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\es\System.Web.WebPages.Deployment.resources.dll
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\es\System.Web.WebPages.Razor.resources.dll
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\obj\Debug\SistemaMedico.csprojAssemblyReference.cache
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\obj\Debug\SistemaMedico.csproj.CoreCompileInputs.cache
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\obj\Debug\SistemaMedico.csproj.CopyComplete
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\obj\Debug\SistemaMedico.dll
-C:\Users\USER\Desktop\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\obj\Debug\SistemaMedico.pdb
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\SistemaMedico.dll.config
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\SistemaMedico.dll
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\SistemaMedico.pdb
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\csc.exe
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\csc.exe.config
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\csc.rsp
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\csi.exe
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\csi.exe.config
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\csi.rsp
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.CodeAnalysis.dll
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.CSharp.Core.targets
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.Managed.Core.targets
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.VisualBasic.Core.targets
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.Win32.Primitives.dll
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.AppContext.dll
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Collections.Immutable.dll
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Console.dll
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Diagnostics.StackTrace.dll
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Globalization.Calendars.dll
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.IO.Compression.dll
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.IO.Compression.ZipFile.dll
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.IO.FileSystem.dll
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.IO.FileSystem.Primitives.dll
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Net.Http.dll
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Net.Sockets.dll
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Reflection.Metadata.dll
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Security.Cryptography.Algorithms.dll
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Security.Cryptography.Encoding.dll
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Security.Cryptography.Primitives.dll
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Text.Encoding.CodePages.dll
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Threading.Tasks.Extensions.dll
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.ValueTuple.dll
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Xml.ReaderWriter.dll
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Xml.XmlDocument.dll
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Xml.XPath.dll
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Xml.XPath.XDocument.dll
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\vbc.exe
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\vbc.exe.config
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\vbc.rsp
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\VBCSCompiler.exe
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\VBCSCompiler.exe.config
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\EntityFramework.dll
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\EntityFramework.SqlServer.dll
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\Microsoft.Web.Infrastructure.dll
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.Helpers.dll
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.Mvc.dll
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.Razor.dll
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.WebPages.Deployment.dll
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.WebPages.dll
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.WebPages.Razor.dll
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\EntityFramework.xml
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\EntityFramework.SqlServer.xml
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.Helpers.xml
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.Mvc.xml
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.Razor.xml
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.WebPages.xml
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.WebPages.Deployment.xml
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.WebPages.Razor.xml
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\es\System.Web.Helpers.resources.dll
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\es\System.Web.Mvc.resources.dll
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\es\System.Web.Razor.resources.dll
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\es\System.Web.WebPages.resources.dll
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\es\System.Web.WebPages.Deployment.resources.dll
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\es\System.Web.WebPages.Razor.resources.dll
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\obj\Debug\SistemaMedico.csprojAssemblyReference.cache
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\obj\Debug\SistemaMedico.csproj.CoreCompileInputs.cache
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\obj\Debug\SistemaMedico.csproj.CopyComplete
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\obj\Debug\SistemaMedico.dll
-C:\Users\USER\Desktop\sismedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\obj\Debug\SistemaMedico.pdb
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\SistemaMedico.dll.config
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\SistemaMedico.dll
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\SistemaMedico.pdb
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\csc.exe
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\csc.exe.config
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\csc.rsp
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\csi.exe
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\csi.exe.config
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\csi.rsp
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.CodeAnalysis.dll
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.CSharp.Core.targets
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.Managed.Core.targets
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.VisualBasic.Core.targets
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.Win32.Primitives.dll
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.AppContext.dll
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Collections.Immutable.dll
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Console.dll
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Diagnostics.StackTrace.dll
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Globalization.Calendars.dll
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.IO.Compression.dll
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.IO.Compression.ZipFile.dll
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.IO.FileSystem.dll
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.IO.FileSystem.Primitives.dll
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Net.Http.dll
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Net.Sockets.dll
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Reflection.Metadata.dll
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Security.Cryptography.Algorithms.dll
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Security.Cryptography.Encoding.dll
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Security.Cryptography.Primitives.dll
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Text.Encoding.CodePages.dll
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Threading.Tasks.Extensions.dll
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.ValueTuple.dll
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Xml.ReaderWriter.dll
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Xml.XmlDocument.dll
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Xml.XPath.dll
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Xml.XPath.XDocument.dll
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\vbc.exe
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\vbc.exe.config
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\vbc.rsp
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\VBCSCompiler.exe
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\VBCSCompiler.exe.config
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\EntityFramework.dll
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\EntityFramework.SqlServer.dll
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\Microsoft.Web.Infrastructure.dll
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.Helpers.dll
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.Mvc.dll
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.Razor.dll
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.WebPages.Deployment.dll
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.WebPages.dll
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.WebPages.Razor.dll
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\EntityFramework.xml
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\EntityFramework.SqlServer.xml
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.Helpers.xml
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.Mvc.xml
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.Razor.xml
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.WebPages.xml
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.WebPages.Deployment.xml
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.WebPages.Razor.xml
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\es\System.Web.Helpers.resources.dll
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\es\System.Web.Mvc.resources.dll
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\es\System.Web.Razor.resources.dll
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\es\System.Web.WebPages.resources.dll
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\es\System.Web.WebPages.Deployment.resources.dll
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\es\System.Web.WebPages.Razor.resources.dll
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\obj\Debug\SistemaMedico.csprojAssemblyReference.cache
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\obj\Debug\SistemaMedico.csproj.CoreCompileInputs.cache
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\obj\Debug\SistemaMedico.csproj.CopyComplete
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\obj\Debug\SistemaMedico.dll
-C:\Users\USER\Desktop\sismedico\SistemaMedico\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\obj\Debug\SistemaMedico.pdb
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\SistemaMedico.dll.config
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\SistemaMedico.dll
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\SistemaMedico.pdb
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\csc.exe
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\csc.exe.config
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\csc.rsp
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\csi.exe
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\csi.exe.config
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\csi.rsp
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.CodeAnalysis.dll
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.CSharp.Core.targets
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.Managed.Core.targets
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.VisualBasic.Core.targets
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.Win32.Primitives.dll
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.AppContext.dll
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Collections.Immutable.dll
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Console.dll
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Diagnostics.StackTrace.dll
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Globalization.Calendars.dll
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.IO.Compression.dll
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.IO.Compression.ZipFile.dll
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.IO.FileSystem.dll
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.IO.FileSystem.Primitives.dll
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Net.Http.dll
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Net.Sockets.dll
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Reflection.Metadata.dll
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Security.Cryptography.Algorithms.dll
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Security.Cryptography.Encoding.dll
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Security.Cryptography.Primitives.dll
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Text.Encoding.CodePages.dll
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Threading.Tasks.Extensions.dll
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.ValueTuple.dll
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Xml.ReaderWriter.dll
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Xml.XmlDocument.dll
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Xml.XPath.dll
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\System.Xml.XPath.XDocument.dll
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\vbc.exe
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\vbc.exe.config
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\vbc.rsp
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\VBCSCompiler.exe
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\roslyn\VBCSCompiler.exe.config
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\EntityFramework.dll
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\EntityFramework.SqlServer.dll
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\Microsoft.Web.Infrastructure.dll
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.Helpers.dll
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.Mvc.dll
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.Razor.dll
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.WebPages.Deployment.dll
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.WebPages.dll
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.WebPages.Razor.dll
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\EntityFramework.xml
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\EntityFramework.SqlServer.xml
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.Helpers.xml
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.Mvc.xml
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.Razor.xml
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.WebPages.xml
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.WebPages.Deployment.xml
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\System.Web.WebPages.Razor.xml
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\es\System.Web.Helpers.resources.dll
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\es\System.Web.Mvc.resources.dll
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\es\System.Web.Razor.resources.dll
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\es\System.Web.WebPages.resources.dll
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\es\System.Web.WebPages.Deployment.resources.dll
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\bin\es\System.Web.WebPages.Razor.resources.dll
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\obj\Debug\SistemaMedico.csproj.CoreCompileInputs.cache
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\obj\Debug\SistemaMedico.csproj.CopyComplete
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\obj\Debug\SistemaMedico.dll
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\obj\Debug\SistemaMedico.pdb
-C:\wilmer\sismedico_edit_atleta\sismedico\SistemaMedico\SistemaMedico\obj\Debug\SistemaMedico.csprojAssemblyReference.cache
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\SistemaMedico.dll.config
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\SistemaMedico.dll
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\SistemaMedico.pdb
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\roslyn\csc.exe
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\roslyn\csc.exe.config
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\roslyn\csc.rsp
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\roslyn\csi.exe
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\roslyn\csi.exe.config
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\roslyn\csi.rsp
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\roslyn\System.AppContext.dll
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\roslyn\System.Console.dll
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\roslyn\System.Globalization.Calendars.dll
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\roslyn\System.IO.Compression.dll
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\roslyn\System.IO.Compression.ZipFile.dll
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\roslyn\System.Net.Http.dll
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\roslyn\System.Net.Sockets.dll
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\roslyn\System.ValueTuple.dll
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\roslyn\System.Xml.XPath.dll
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\roslyn\vbc.exe
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\roslyn\vbc.exe.config
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\roslyn\vbc.rsp
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\roslyn\VBCSCompiler.exe
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\EntityFramework.dll
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\EntityFramework.SqlServer.dll
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\System.Web.Entity.dll
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\System.Web.Helpers.dll
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\System.Web.Mvc.dll
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\System.Web.Razor.dll
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\System.Web.WebPages.Deployment.dll
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\System.Web.WebPages.dll
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\System.Web.WebPages.Razor.dll
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\EntityFramework.xml
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\EntityFramework.SqlServer.xml
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\System.Web.Helpers.xml
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\System.Web.Mvc.xml
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\System.Web.Razor.xml
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\System.Web.WebPages.xml
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\System.Web.WebPages.Deployment.xml
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\System.Web.WebPages.Razor.xml
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\es\System.Web.Helpers.resources.dll
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\es\System.Web.Mvc.resources.dll
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\es\System.Web.Razor.resources.dll
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\es\System.Web.WebPages.resources.dll
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\es\System.Web.WebPages.Deployment.resources.dll
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\bin\es\System.Web.WebPages.Razor.resources.dll
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\obj\Debug\SistemaMedico.csproj.CoreCompileInputs.cache
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\obj\Debug\SistemaMedico.csproj.CopyComplete
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\obj\Debug\SistemaMedico.dll
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\obj\Debug\SistemaMedico.pdb
+C:\Users\TIC_Xavi\source\SistemaMedico\SistemaMedico\obj\Debug\SistemaMedico.csprojAssemblyReference.cache
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\obj\Debug\SistemaMedico.csprojAssemblyReference.cache
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\obj\Debug\SistemaMedico.csproj.CoreCompileInputs.cache
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\obj\Debug\SistemaMedico.dll
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\obj\Debug\SistemaMedico.pdb
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\SistemaMedico.dll.config
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\SistemaMedico.dll
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\SistemaMedico.pdb
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\roslyn\csc.exe
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\roslyn\csc.exe.config
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\roslyn\csc.rsp
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\roslyn\csi.exe
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\roslyn\csi.exe.config
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\roslyn\csi.rsp
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.CodeAnalysis.dll
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.CSharp.Core.targets
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.Managed.Core.targets
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.VisualBasic.Core.targets
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.Win32.Primitives.dll
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\roslyn\System.AppContext.dll
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\roslyn\System.Collections.Immutable.dll
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\roslyn\System.Console.dll
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\roslyn\System.Diagnostics.StackTrace.dll
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\roslyn\System.Globalization.Calendars.dll
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\roslyn\System.IO.Compression.dll
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\roslyn\System.IO.Compression.ZipFile.dll
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\roslyn\System.IO.FileSystem.dll
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\roslyn\System.IO.FileSystem.Primitives.dll
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\roslyn\System.Net.Http.dll
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\roslyn\System.Net.Sockets.dll
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\roslyn\System.Reflection.Metadata.dll
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\roslyn\System.Security.Cryptography.Encoding.dll
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\roslyn\System.Security.Cryptography.Primitives.dll
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\roslyn\System.Text.Encoding.CodePages.dll
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\roslyn\System.Threading.Tasks.Extensions.dll
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\roslyn\System.ValueTuple.dll
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\roslyn\System.Xml.ReaderWriter.dll
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\roslyn\System.Xml.XmlDocument.dll
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\roslyn\System.Xml.XPath.dll
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\roslyn\System.Xml.XPath.XDocument.dll
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\roslyn\vbc.exe
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\roslyn\vbc.exe.config
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\roslyn\vbc.rsp
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\roslyn\VBCSCompiler.exe
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\roslyn\VBCSCompiler.exe.config
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\EntityFramework.dll
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\EntityFramework.SqlServer.dll
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\Microsoft.Web.Infrastructure.dll
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\System.Web.Entity.dll
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\System.Web.Helpers.dll
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\System.Web.Mvc.dll
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\System.Web.Razor.dll
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\System.Web.WebPages.Deployment.dll
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\System.Web.WebPages.dll
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\System.Web.WebPages.Razor.dll
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\EntityFramework.xml
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\EntityFramework.SqlServer.xml
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\System.Web.Helpers.xml
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\System.Web.Mvc.xml
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\System.Web.Razor.xml
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\System.Web.WebPages.xml
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\System.Web.WebPages.Deployment.xml
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\System.Web.WebPages.Razor.xml
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\es\System.Web.Helpers.resources.dll
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\es\System.Web.Mvc.resources.dll
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\es\System.Web.Razor.resources.dll
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\es\System.Web.WebPages.resources.dll
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\es\System.Web.WebPages.Deployment.resources.dll
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\bin\es\System.Web.WebPages.Razor.resources.dll
+G:\Sistema medico final final\SistemaMedico\SistemaMedico\obj\Debug\SistemaMedico.csproj.CopyComplete
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\SistemaMedico.dll.config
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\SistemaMedico.dll
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\SistemaMedico.pdb
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\roslyn\csc.exe
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\roslyn\csc.exe.config
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\roslyn\csc.rsp
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\roslyn\csi.exe
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\roslyn\csi.exe.config
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\roslyn\csi.rsp
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.CodeAnalysis.dll
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.CSharp.Core.targets
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.Managed.Core.targets
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.VisualBasic.Core.targets
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\roslyn\Microsoft.Win32.Primitives.dll
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\roslyn\System.AppContext.dll
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\roslyn\System.Collections.Immutable.dll
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\roslyn\System.Console.dll
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\roslyn\System.Diagnostics.StackTrace.dll
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\roslyn\System.Globalization.Calendars.dll
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\roslyn\System.IO.Compression.dll
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\roslyn\System.IO.Compression.ZipFile.dll
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\roslyn\System.IO.FileSystem.dll
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\roslyn\System.IO.FileSystem.Primitives.dll
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\roslyn\System.Net.Http.dll
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\roslyn\System.Net.Sockets.dll
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\roslyn\System.Reflection.Metadata.dll
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\roslyn\System.Security.Cryptography.Encoding.dll
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\roslyn\System.Security.Cryptography.Primitives.dll
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\roslyn\System.Text.Encoding.CodePages.dll
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\roslyn\System.Threading.Tasks.Extensions.dll
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\roslyn\System.ValueTuple.dll
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\roslyn\System.Xml.ReaderWriter.dll
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\roslyn\System.Xml.XmlDocument.dll
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\roslyn\System.Xml.XPath.dll
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\roslyn\System.Xml.XPath.XDocument.dll
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\roslyn\vbc.exe
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\roslyn\vbc.exe.config
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\roslyn\vbc.rsp
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\roslyn\VBCSCompiler.exe
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\roslyn\VBCSCompiler.exe.config
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\EntityFramework.dll
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\EntityFramework.SqlServer.dll
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\Microsoft.Web.Infrastructure.dll
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\System.Web.Entity.dll
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\System.Web.Helpers.dll
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\System.Web.Mvc.dll
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\System.Web.Razor.dll
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\System.Web.WebPages.Deployment.dll
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\System.Web.WebPages.dll
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\System.Web.WebPages.Razor.dll
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\EntityFramework.xml
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\EntityFramework.SqlServer.xml
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\System.Web.Helpers.xml
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\System.Web.Mvc.xml
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\System.Web.Razor.xml
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\System.Web.WebPages.xml
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\System.Web.WebPages.Deployment.xml
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\System.Web.WebPages.Razor.xml
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\es\System.Web.Helpers.resources.dll
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\es\System.Web.Mvc.resources.dll
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\es\System.Web.Razor.resources.dll
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\es\System.Web.WebPages.resources.dll
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\es\System.Web.WebPages.Deployment.resources.dll
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\bin\es\System.Web.WebPages.Razor.resources.dll
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\obj\Debug\SistemaMedico.csproj.CoreCompileInputs.cache
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\obj\Debug\SistemaMedico.csproj.CopyComplete
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\obj\Debug\SistemaMedico.dll
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\obj\Debug\SistemaMedico.pdb
+G:\SistemaMedico_real\SistemaMedico\SistemaMedico\obj\Debug\SistemaMedico.csprojAssemblyReference.cache

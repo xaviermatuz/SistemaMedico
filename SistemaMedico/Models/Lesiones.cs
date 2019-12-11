@@ -15,7 +15,11 @@ namespace SistemaMedico.Models
     public partial class Lesiones
     {
         public int ID { get; set; }
+        public int ID_Atleta { get; set; }
         public string Nombre { get; set; }
         public string Tipo { get; set; }
+        public Nullable<System.DateTime> Fecha_de_Registro { get; set; }
+        public Nullable<System.DateTime> Fecha_de_Actualizacion { get; set; }
+        public Nullable<bool> Estado { get; set; }
     }
 }

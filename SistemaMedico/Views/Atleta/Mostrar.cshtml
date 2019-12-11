@@ -1,0 +1,2030 @@
+﻿@*@using SistemaMedico.Models*@
+@* @model SistemaMedico.Models.ViewModel.MostrarViewModel*@
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    if (Session["ID"] == null)
+    {
+        Response.Redirect("~/Login/Index");
+    }
+    IEnumerable<SistemaMedico.Models.Alergias> alergia = (IEnumerable<SistemaMedico.Models.Alergias>)ViewBag.alergias;
+    IEnumerable<SistemaMedico.Models.Medicamentos> medicamento = (IEnumerable<SistemaMedico.Models.Medicamentos>)ViewBag.medicamentos;
+    IEnumerable<SistemaMedico.Models.Historial_Medico> historialmedico = (IEnumerable<SistemaMedico.Models.Historial_Medico>)ViewBag.historial;
+    IEnumerable<SistemaMedico.Models.Aparato_Locomotor> aparato_locomotor = (IEnumerable<SistemaMedico.Models.Aparato_Locomotor>)ViewBag.aparato;
+    IEnumerable<SistemaMedico.Models.Historia_Familiar> historialfamiliar = (IEnumerable<SistemaMedico.Models.Historia_Familiar>)ViewBag.historialf;
+    IEnumerable<SistemaMedico.Models.Carrera_Deportiva> carrera_deportiva = (IEnumerable<SistemaMedico.Models.Carrera_Deportiva>)ViewBag.carrera_deportiva;
+    IEnumerable<SistemaMedico.Models.Carrera_Deportiva_Evento> carrera_deportiva_Evento = (IEnumerable<SistemaMedico.Models.Carrera_Deportiva_Evento>)ViewBag.carrera_deportiva_E;
+    IEnumerable<SistemaMedico.Models.Carrera_Deportiva_Familiar> carrera_deportiva_Familiar = (IEnumerable<SistemaMedico.Models.Carrera_Deportiva_Familiar>)ViewBag.carrera_deportiva_F;
+    IEnumerable<SistemaMedico.Models.Situacion_Laboral> Situacion = (IEnumerable<SistemaMedico.Models.Situacion_Laboral>)ViewBag.SL;
+    IEnumerable<SistemaMedico.Models.Apoyo_Economico> Apoyo = (IEnumerable<SistemaMedico.Models.Apoyo_Economico>)ViewBag.AP;
+    IEnumerable<SistemaMedico.Models.Consiste_Apoyo> ca = (IEnumerable<SistemaMedico.Models.Consiste_Apoyo>)ViewBag.CA;
+    IEnumerable<SistemaMedico.Models.Informacion_Familiar> INf = (IEnumerable<SistemaMedico.Models.Informacion_Familiar>)ViewBag.If;
+    IEnumerable<SistemaMedico.Models.Educacion> EDU = (IEnumerable<SistemaMedico.Models.Educacion>)ViewBag.ed;
+    IEnumerable<SistemaMedico.Models.Habitacion> LH = (IEnumerable<SistemaMedico.Models.Habitacion>)ViewBag.lh;
+    IEnumerable<SistemaMedico.Models.Habitos> HAB = (IEnumerable<SistemaMedico.Models.Habitos>)ViewBag.hab;
+    IEnumerable<SistemaMedico.Models.Examen_Fisico_Principal> EFP = (IEnumerable<SistemaMedico.Models.Examen_Fisico_Principal>)ViewBag.efp;
+    IEnumerable<SistemaMedico.Models.Anexos> Anexos = (IEnumerable<SistemaMedico.Models.Anexos>)ViewBag.anex;
+    IEnumerable<SistemaMedico.Models.Condiciones_Clinicas_Actuales_Principal> condiciones = (IEnumerable<SistemaMedico.Models.Condiciones_Clinicas_Actuales_Principal>)ViewBag.CCa;
+    IEnumerable<SistemaMedico.Models.Ficha_Antropometrica> Ficha = (IEnumerable<SistemaMedico.Models.Ficha_Antropometrica>)ViewBag.ficha;
+    var i = 1;
+    var i2 = 1;
+    var pregunta ="";
+    var pregunta2 = "";
+    var preguntab3 ="";
+    var preguntab4 = "";
+    var preguntab5 ="";
+    var preguntab6 = "";
+    var list = new List<string>();
+    var list2 = new List<string>();
+    var list3 = new List<string>();
+    var list4 = new List<string>();
+    var list5= new List<string>();
+    var list6= new List<string>();
+    string[] otros = new string[3];
+    string[] otros2 = new string[4];
+    var  respuesta2 = "";
+    var  respuesta3 = "";
+    var  respuestab4 = "";
+    var detalles = "";
+    int  fo = 1;
+    string otroshallazgos="";
+    string recomendaciones="";
+    var nombre = "";
+    var sexo="";
+    var evaluacion = "";
+    var fe = "";
+    var fn = "";
+    var anotador = "";
+    var antropo = "";
+    var menstruacion = "";
+
+        }
+
+<style>
+    .imgRedonda {
+        border-radius: 160px;
+        border: 5px solid #666;
+    }
+    th {
+        text-align: center;
+        background-color: #dddddd;
+    }
+    textarea {
+        width: 100%;
+        height: 150px;
+        padding: 12px 20px;
+        box-sizing: border-box;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        background-color: #f8f8f8;
+        font-size: 16px;
+        resize: none;
+        margin: 0px;
+    }
+</style>
+@* datos basicos*@
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header bg-green" style="text-align:center;">
+                <h2>
+                    Datos Basicos
+                    <small>
+                        Fecha Registro: @ViewBag.Fecha_De_Registro
+                    </small>
+                </h2>
+                <div class="header-dropdown m-r--5">
+                    <div style="text-align: center;">
+                        <button type="button" class="btn bg-teal btn-circle waves-effect waves-circle waves-float">
+                            <i class="material-icons">mode_edit</i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="body">
+                
+                    <div class="row clearfix">
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12"></div>
+                        @* card 1 *@
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+                                <div class="card">
+                                
+                                    <div class="body">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div style="text-align: center;">
+                                                    <img class="imgRedonda" width="250" height="250" src="~/@ViewBag.Foto" alt="Nombre" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div style="text-align:center;">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    @model SistemaMedico.Models.ViewModel.MostrarViewModel
+                                                    <div class="col-md-12">
+                                                        <label>Nombre Completo:</label><br />
+                                                        @Html.DisplayFor(model => model.Nombre_Completo)
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <label>Género:</label><br />
+                                                        @Html.DisplayFor(model => model.Genero)
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <label>Edad:</label><br />
+                                                        @Html.DisplayFor(model => model.Edad) años
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <label>Número de Cédula:</label><br />
+                                                        @Html.DisplayFor(model => model.Numero_De_Cedula)
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <label>Departamento:</label><br />
+                                                        @*@Html.DisplayFor(model => model.Numero_De_Cedula)*@
+                                                        <p>@ViewBag.depa</p>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <label>Municipio:</label><br />
+                                                        <p>@ViewBag.munici</p>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <label>Dirección:</label><br />
+                                                        @Html.DisplayFor(model => model.Dirreccion)
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+
+                                                    <div class="col-md-12">
+                                                        <label>Telefono Celular:</label><br />
+                                                        @Html.DisplayFor(model => model.Telefono_Celular)
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <label>Telefono Convencional:</label><br />
+                                                        @Html.DisplayFor(model => model.Telefono_Convencional)
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <label>Tiene Seguro:</label><br />
+                                                        @Html.DisplayFor(model => model.Tiene_Seguro)
+                                                    </div>
+                                                    @if (@ViewBag.hosp == "si")
+                                                    {
+                                                        <div class="col-md-12">
+                                                            <label>Hospital Afiliado:</label><br />
+                                                            @Html.DisplayFor(model => model.Hospital)
+                                                        </div>
+                                                    }
+                                                    <div class="col-md-12">
+                                                        <label>Nombre de la Madre:</label><br />
+                                                        @Html.DisplayFor(model => model.Nombre_Madre)
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <label>Telefono de la Madre:</label><br />
+                                                        @Html.DisplayFor(model => model.Telefono_Madre)
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <label>Nombre del Padre:</label><br />
+                                                        @Html.DisplayFor(model => model.Nombre_Padre)
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <label>Telefono del Padre:</label><br />
+                                                        @Html.DisplayFor(model => model.Telefono_Padre)
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12"></div>
+                    </div>
+               
+            </div>
+        </div>
+    </div>
+</div>
+@* historial medico *@
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header bg-green" style="text-align:center;">
+                <h2>
+                   Historial Medico
+                </h2>
+                <div class="header-dropdown m-r--5">
+                    <div style="text-align: center;">
+                        
+                            <a  class="btn bg-teal btn-circle waves-effect waves-circle waves-float" href="~/HistorialMedico/Actualizar/@ViewBag.idatleta">
+                                <i class="material-icons">mode_edit</i>
+                            </a>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="body">
+                @* <form action="" method="post" autocomplete="off" enctype="multipart/form-data">*@
+                <div style="display:none;">
+                    <input type="text" value="@ViewBag.id" class="form-control" name="txt_atleta">
+                </div>
+                <!-- Nav tabs -->
+
+                <ul class="nav nav-tabs customtab" role="tablist">
+                    <li class="active"> <a data-toggle="tab" href="#tab1" role="tab">Alergias</a> </li>
+                    <li> <a data-toggle="tab" href="#tab2" role="tab">Preguntas</a> </li>
+                    <li> <a data-toggle="tab" href="#tab3" role="tab">Carrera Deportiva</a></li>
+                    <li> <a data-toggle="tab" href="#tab4" role="tab">Info.laboral/economica</a> </li>
+                    <li> <a data-toggle="tab" href="#tab5" role="tab">Informacion Extra </a></li>
+                </ul>
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    @*tab 1*@
+                    <div class="tab-pane active" id="tab1" role="tabpanel">
+                        <fieldset>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <div class="card">
+                                    <div class="header" style="text-align:center">
+                                        <h2>Medicamentos</h2>
+                                    </div>
+                                    <div class="body">
+                                        <div class="row">
+                                            @foreach (SistemaMedico.Models.Medicamentos item in medicamento)
+                                            {
+                                                if (item.Medicamentos1 == "No tiene Alergia")
+                                                {
+                                                    <div class="col-md-12">
+                                                        <label>@item.Medicamentos1</label>
+                                                    </div>
+                                                }
+                                                else
+                                                {
+                                                    <div class="col-md-5">
+                                                        <label>@item.Medicamentos1</label>
+                                                        <p>@item.Descripcion</p>
+                                                    </div>
+                                                }
+
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <div class="card">
+                                    <div class="header" style="text-align:center">
+                                        <h2>Alergias</h2>
+                                    </div>
+                                    <div class="body">
+                                        <div class="row">
+                                            @foreach (SistemaMedico.Models.Alergias item in alergia)
+                                            {
+                                                if (item.Alergia == "No tiene Alergia")
+                                                {
+                                                    <div class="col-md-12">
+                                                        <label>@item.Alergia</label>
+                                                    </div>
+                                                }
+                                                else
+                                                {
+                                                    <div class="col-md-6">
+                                                        <label>@item.Alergia</label>
+                                                        <p>@item.Descripcion</p>
+                                                    </div>
+                                                }
+
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        
+                        </div>
+                    <!-- tab 2 -->
+                    <div class="tab-pane" id="tab2" role="tabpanel">
+                        <fieldset>
+                            <ul class="nav nav-tabs customtab" role="tablist">
+                                <li class="active"><a href="#sub1" data-toggle="tab" role="tab">Historial Medico</a></li>
+                                <li><a href="#sub2" data-toggle="tab" role="tab">Historial Familiar</a></li>
+                                <li><a href="#sub3" data-toggle="tab" role="tab">Aparato Locomotor</a></li>
+                            </ul>
+                            <!-- sub tab content -->
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="sub1">
+                                    <fieldset>
+                                        <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+                                            <div class="card">
+                                                @*<div class="header" style="text-align:center">
+                                                    <h2>Medicamentos</h2>
+                                                </div>*@
+                                                <div class="body">
+                                                        
+                                                    <div class="row">
+                                                        @if (historialmedico != null)
+                                                        {
+                                                            foreach (SistemaMedico.Models.Historial_Medico item in historialmedico)
+                                                            {
+
+                                                                //if (i <= 6)
+                                                                //{
+                                                                    <div class="col-md-12">
+                                                                        <label>@item.Preguntas</label>
+                                                                        <p>@item.Respuestas</p>
+                                                                        @if (item.Detalles != "")
+                                                                        {
+                                                                        <label>Detalles</label>
+                                                                        <p>@item.Detalles</p>
+                                                                        }
+                                                                    </div>
+                                                                //}
+
+                                                                    @*<div class="col-md-6">
+                                                                        @if (i > 6)
+                                                                        {
+
+                                                                            <label>@item.Preguntas</label>
+                                                                            <p>@item.Respuestas</p>
+                                                                            if (item.Detalles != "")
+                                                                            {
+                                                                                <label>Detalles</label>
+                                                                                <p>@item.Detalles</p>
+                                                                            }
+
+                                                                        }
+                                                                    </div>*@
+                                                                    //i = i + 1;
+                                                                }
+                                                            }
+                                                        </div>
+                                                        
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+
+                                </div>
+                                <div class="tab-pane p-20" id="sub2">
+                                    <fieldset>
+                                        <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+                                            <div class="card">
+                                                @*<div class="header">
+                                                    <h2>
+                                                        Historial Familiar
+                                                    </h2>  
+                                                </div>*@
+                                                <div class="body">
+                                                    <div class="row clearfix">
+                                                        @if (historialfamiliar != null)
+                                                        {
+                                                            foreach (SistemaMedico.Models.Historia_Familiar item in historialfamiliar)
+                                                            {
+
+
+                                                                <div class="col-md-12">
+                                                                    <label>@item.Preguntas</label>
+                                                                    <p>@item.Respuestas</p>
+                                                                    @*@if (item.Detalles != "")
+                                                                    {
+                                                                        <label>Detalles</label>
+                                                                        <p>@item.Detalles</p>
+                                                                    }*@
+                                                                </div>
+
+                                                            }
+                                                        }
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                                <div class="tab-pane p-20" id="sub3">
+                                    <fieldset>
+                                        <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+                                            <div class="card">
+                                                @*<div class="header bg-green">
+                                                    <h2>
+                                                        Aparato Locomotor
+                                                    </h2>
+                                                    <div class="header-dropdown m-r-0">
+
+                                                    </div>
+                                                </div>*@
+                                                <div class="body">
+                                                    <div class="row ">
+                                                        @if (aparato_locomotor != null)
+                                                        {
+                                                            foreach (SistemaMedico.Models.Aparato_Locomotor item in aparato_locomotor)
+                                                            {
+                                                                <div class="col-md-12">
+                                                                    <label>@item.Preguntas</label>
+                                                                    <p>@item.Respuestas</p>
+                                                                </div>
+                                                            }
+                                                        }
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div> @**@
+                            </div>
+                        </fieldset>
+                    </div>
+                    <!-- tab 3 -->
+                    <div class="tab-pane" id="tab3" role="tabpanel">
+                        <fieldset>
+                            <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+                                <div class="card">
+                                    <div class="body">
+                                        <div class="row clearfix">
+                                            @if (carrera_deportiva != null)
+                                            {
+                                                foreach (SistemaMedico.Models.Carrera_Deportiva item in carrera_deportiva)
+                                                {
+                                                    <div class="col-md-12">
+                                                        <label>@item.Preguntas</label>
+                                                        <p>@item.Respuestas</p>
+                                                        @if (item.Preguntas == "Entreno(dias por semana)" && item.Detalles != null)
+                                                        {
+                                                            <label>Detalles</label>
+                                                            <p> Numero de sesiones Por semana: @item.Detalles</p>
+                                                        }
+                                                        else if (item.Preguntas == "Sus actividades se adaptan a sus horararios y sesiones de entrenamiento" && item.Detalles != null)
+                                                        {
+                                                            <label>¿Porqué?</label>
+                                                            <p>@item.Detalles</p>
+                                                        }
+                                                        else if (item.Preguntas == "Su sitio de entrenamiento es:" && item.Detalles != null)
+                                                        {
+                                                            <label>Inadecuado porque</label>
+                                                            <p>@item.Detalles</p>
+                                                        }
+                                                        </div>
+
+
+                                                }
+                                            }
+
+                                            <div class="col-md-6">
+                                                <div class="card">
+                                                    <div class="header">
+                                                        <h2>Antecedentes Deportivos</h2>
+                                                    </div>
+                                                    <div class="body table-responsive">
+                                                        <table class="table table-striped">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>#</th>
+                                                                    <th>Categoria/Prueba</th>
+                                                                    <th>Marca/REsultado</th>
+                                                                    <th>fechaylugar</th>
+                                                                    <th>Evento</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                @foreach (SistemaMedico.Models.Carrera_Deportiva_Evento item in carrera_deportiva_Evento)
+                                                                {
+                                                                    <tr>
+                                                                        <th>@i</th>
+                                                                        <th>@item.Prueba</th>
+                                                                        <th>@item.Resultado</th>
+                                                                        <th>@item.Fecha_Y_Lugar</th>
+                                                                        <th>@item.Evento</th>
+                                                                    </tr>
+                                                                    i++;
+                                                                }
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="card">
+                                                    <div class="header">
+                                                        <h2>Antecedentes Deportivos Familiares</h2>
+                                                    </div>
+                                                    <div class="body table-responsive">
+                                                        <table class="table table-striped">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>#</th>
+                                                                    <th>Evento</th>
+                                                                    <th>Resultado Obtenido</th>
+                                                                    <th>fechaylugar</th>
+                                                                    @*<th>Evento</th>*@
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                   
+                                                                @foreach (SistemaMedico.Models.Carrera_Deportiva_Familiar item in carrera_deportiva_Familiar)
+                                                                {
+                                                                    <tr>
+                                                                        <th>@i2</th>
+                                                                        <th>@item.Evento</th>
+                                                                        <th>@item.Resultado</th>
+                                                                        <th>@item.Resultado</th>
+                                                                        @*<th>@item.Evento</th>*@
+                                                                    </tr>
+                                                                    i2++;
+                                                                }
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <!-- tab 4 -->
+                    <div class="tab-pane" id="tab4" role="tabpanel">
+                        <fieldset>
+                            <div class="card">
+                                <div class="header"></div>
+                                <div class="body">
+                                    <div class="row clearfix">
+                                        @if (Situacion != null)
+                                        {
+                                            foreach (SistemaMedico.Models.Situacion_Laboral item in Situacion)
+                                            {
+                                                <div class="col-md-12">
+                                                    <label>@item.Preguntas</label>
+                                                    <p>@item.Respuestas</p>
+                                                </div>
+
+
+                                            }
+                                        }
+                                    </div>
+                                    <div class="row ">
+                                        @if (Apoyo != null)
+                                        {
+
+                                            foreach (SistemaMedico.Models.Apoyo_Economico item in Apoyo)
+                                            {
+                                                if (item.Preguntas == "Las necesidades economicas del atleta para su practica deportiva son asumidas por:")
+                                                {
+
+
+                                                    pregunta = item.Preguntas;
+                                                    if (item.Respuestas== "Otros Familiares" && item.Detalles!=null)
+                                                    {
+                                                        otros[0] = item.Detalles;
+                                                    }
+                                                    else if (item.Respuestas== "Otros" && item.Detalles != null)
+                                                    {
+                                                        otros[1] = item.Detalles;
+                                                    }
+                                                    else if(item.Respuestas == "Otros apoyos" && item.Detalles != null)
+                                                    {
+                                                        otros[2] = item.Detalles;
+                                                    }
+                                                    list.Add(item.Respuestas);
+                                                }
+                                                else if (item.Preguntas == "En que invierte su apoyo monetario")
+                                                {
+
+                                                    pregunta2 = item.Preguntas;
+                                                    list2.Add(item.Respuestas);
+                                                }
+                                                else
+                                                {
+
+                                                }
+                                            }
+                                        <div class="col-md-6">
+                                            @if (pregunta != "")
+                                            {
+                                                /**/
+                                                <label>
+                                                    @pregunta
+                                                </label>
+                                                foreach (var item in list)
+                                                {
+                                                    if (item == "Otros Familiares")
+                                                    {
+                                                        <p>@item: @otros[0]</p>
+                                                    }
+                                                    else if (item == "Otros")
+                                                    {
+                                                        <p>@item: @otros[1]</p>
+                                                    }
+                                                    else if (item == "Otros apoyos")
+                                                    {
+                                                        <p>@item: @otros[2]</p>
+                                                    }
+                                                    else
+                                                    {
+                                                        <p>@item</p>
+                                                    }
+
+                                                }
+
+                                            }
+                                        </div>
+                                        <div class="col-md-6">
+                                            @if (pregunta2!=null)
+                                            {
+	                                            <label>@pregunta2</label>
+                                                foreach (var item in list2)
+                                                {
+                                                    <p>@item</p>
+                                                }
+                                            }
+                                        </div>
+                                        }
+
+                                    </div>
+                                    <div class="row clearfix">
+                                        <div class="col-md-12">
+                                            @if (ca!=null)
+                                            {
+                                            <label>En que consiste el apoyo que recibe:</label>
+                                                foreach (var item in ca)
+                                                {
+                                                    <p>@item.Respuestas</p>
+                                                }
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <!-- tab 5 -->
+                    <div class="tab-pane " id="tab5" role="tabpanel">
+                        <fieldset>
+                            <div class="row ">
+                                @if (INf != null)
+                                {
+
+                                    foreach (SistemaMedico.Models.Informacion_Familiar item in INf)
+                                    {
+                                        if (item.Preguntas == "Con quien vive")
+                                        {
+
+
+                                            pregunta = item.Preguntas;
+                                            if (item.Respuestas == "Hermanos" && item.Detalles != null)
+                                            {
+                                                otros2[0] = item.Detalles;
+                                            }
+                                            else if (item.Respuestas == "Hijos" && item.Detalles != null)
+                                            {
+                                                otros2[1] = item.Detalles;
+                                            }
+                                            else if (item.Respuestas == "Otros Familiares" && item.Detalles != null)
+                                            {
+                                                otros2[2] = item.Detalles;
+                                            }
+                                            else if (item.Respuestas == "Otros" && item.Detalles != null)
+                                            {
+                                                otros2[3] = item.Detalles;
+                                            }
+                                            list3.Add(item.Respuestas);
+                                        }
+                                        else if (item.Preguntas == "¿Tiene Hijos?")
+                                        {
+
+                                            pregunta2 = item.Preguntas;
+                                            // list4.Add(item.Respuestas);
+                                            respuesta2 = item.Respuestas;
+                                        }
+                                        else if (item.Preguntas == "¿Proyecta Tener Hijos?")
+                                        {
+                                            preguntab3 = item.Preguntas;
+                                            respuesta3 = item.Respuestas;
+                                        }
+                                        else if (item.Preguntas== "Números de personas con las que Vive")
+                                        {
+                                            preguntab4 = item.Preguntas;
+                                            respuestab4 = item.Respuestas;
+                                            detalles = item.Detalles;
+                                        }
+                                    }
+                                    <div class="col-md-4">
+                                        @if (pregunta != "")
+                                        {
+                                            /**/
+                                            <label>
+                                                @pregunta
+                                            </label>
+                                            foreach (var item in list3)
+                                            {
+                                                if (item == "Hermanos")
+                                                {
+                                                    <p>@item: @otros2[0]</p>
+                                                }
+                                                else if (item == "Hermanos")
+                                                {
+                                                    <p>@item: @otros2[1]</p>
+                                                }
+                                                else if (item == "Otros Familiares")
+                                                {
+                                                    <p>@item: @otros2[2]</p>
+                                                }
+                                                else if (item == "Otros")
+                                                {
+                                                    <p>@item: @otros2[3]</p>
+                                                }
+                                                else
+                                                {
+                                                    <p>@item</p>
+                                                }
+
+                                            }
+
+                                        }
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="col-md-12">
+                                            @if (pregunta2 != null)
+                                            {
+                                                <label>@pregunta2</label>
+                                                <p>@respuesta2</p>
+
+                                            }
+                                        </div>
+                                        <div class="col-md-12">
+                                            <label>@preguntab3</label>
+                                            <p>@respuesta3</p>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <label>@preguntab4</label>
+                                            <p>@respuestab4: @detalles</p>
+                                        </div>
+
+                                    </div>
+                                 
+                                }
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="col-sm-4">
+                                        <h4 class="card-inside-title">Educacion y Formacion</h4>
+                                        <div class="col-md-12">
+                                            @if (EDU != null)
+                                            {
+                                                foreach (var item in EDU)
+                                                {
+                                                    <label>@item.Preguntas</label>
+
+                                                    if (item.Detalles != "")
+                                                    {
+                                                        <p>@item.Respuestas:  @item.Detalles</p>
+                                                    }
+                                                    else
+                                                    {
+                                                        <p>@item.Respuestas</p>
+                                                    }
+                                                }
+                                            }
+
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <h4 class="card-inside-title">Lugar de habitacion</h4>
+                                        <div class="col-md-12">
+                                            @if (LH != null)
+                                            {
+                                                foreach (var item in LH)
+                                                {
+                                                    <label>@item.Preguntas</label>
+
+                                                    if (item.Detalles != "")
+                                                    {
+                                                        <p>@item.Respuestas:  @item.Detalles</p>
+                                                    }
+                                                    else
+                                                    {
+                                                        <p>@item.Respuestas</p>
+                                                    }
+                                                }
+                                            }
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <h4 class="card-inside-title">
+                                        Habitos
+                                    </h4>
+                                    <div class="row col-md-12">
+                                        @if (HAB != null)
+                                        {
+                                            foreach (var item in HAB)
+                                            {
+                                                <div class="col-md-4">
+                                                    <label>@item.Preguntas</label>
+
+                                                    @if (item.Detalles != "")
+                                                    {
+                                                    <p>@item.Respuestas:  @item.Detalles</p>
+                                                    }
+                                                    else
+                                                    {
+                                                    <p>@item.Respuestas</p>
+                                                    }
+                                                </div>
+                                                
+                                            }
+
+                                        }
+
+                                        <div class="col-md-4">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+                @*</form>*@
+            </div>
+        </div>
+    </div>
+</div>
+@* Examen Fisico *@
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header bg-blue" style="text-align:center;">
+                <h2>
+                    Examen Fisico
+                </h2>
+                <div class="header-dropdown m-r--5">
+                    <div style="text-align: center;">
+
+                        <a class="btn bg-teal btn-circle waves-effect waves-circle waves-float" href="~/ExamenFisico/Actualizar/@ViewBag.idatleta">
+                            <i class="material-icons">mode_edit</i>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="body">
+                @* <form action="" method="post" autocomplete="off" enctype="multipart/form-data">*@
+              
+                <!-- Nav tabs -->
+
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#tabE1" data-toggle="tab">Examen Fisico</a></li>
+                    <li><a href="#tabE2" data-toggle="tab">Condiciones Clinicas Actuales</a></li>
+                    <li><a href="#tabE3" data-toggle="tab">Ficha De Antropometria</a></li>
+                    <li><a href="#tabE4" data-toggle="tab">Notas De Evaluacion</a></li>
+                </ul>
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    @*tab 1*@
+                    <div class="tab-pane active" id="tabE1" role="tabpanel">
+                        <fieldset>
+                            <div class="row clearfix">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="body table-responsive">
+                                        <table id="mainTable" class="table table-bordered">
+                                            <tr>
+                                                <th>N°</th>
+                                                <th>Estructura anatomica</th>
+                                                <th>Normal</th>
+                                                <th>Hallazgos Anormales</th>
+                                                <!--Output Data for each row-->
+                                            </tr>
+                                            @foreach (var item in EFP)
+                                            {
+                                                <tr>
+                                                    <td align="center">@fo</td>
+
+                                                    @if (item.ID_Examen_Fisico == 1)
+                                                    {
+                                                        <td>
+                                                            Cuello
+                                                        </td>
+                                                    }
+                                                    else if (item.ID_Examen_Fisico == 2)
+                                                    {
+                                                        <td>
+                                                            Espalda
+                                                        </td>
+                                                    }
+                                                    else if (item.ID_Examen_Fisico == 3)
+                                                    {
+                                                        <td>
+                                                            Hombro/Brazo
+                                                        </td>
+                                                    }
+                                                    else if (item.ID_Examen_Fisico == 4)
+                                                    {
+                                                        <td>
+                                                            Codo/Antebrazo
+                                                        </td>
+                                                    }
+                                                    else if (item.ID_Examen_Fisico == 5)
+                                                    {
+                                                        <td>
+                                                            Muñeca/Mano/Dedos
+                                                        </td>
+                                                    }
+                                                    else if (item.ID_Examen_Fisico == 6)
+                                                    {
+                                                        <td>
+                                                            Cadera/Muslo
+                                                        </td>
+                                                    }
+                                                    else if (item.ID_Examen_Fisico == 7)
+                                                    {
+                                                        <td>
+                                                            Rodilla
+                                                        </td>
+                                                    }
+                                                    else if (item.ID_Examen_Fisico == 8)
+                                                    {
+                                                        <td>
+                                                            Pierna/Tobillo
+                                                        </td>
+                                                    }
+                                                    else if (item.ID_Examen_Fisico == 9)
+                                                    {
+                                                        <td>
+                                                            Pie/Dedos
+                                                        </td>
+                                                    }
+
+                                                    <td align="center">
+                                                        @if (item.Normal == "Si")
+                                                        {
+                                                            @*<input type="checkbox" id="1" name="Si_Cuello" class="chk-col-green" onclick="Habilitar_DesabilitarTXT(this,HA_Cuello)">*@
+                                                            <p>Si</p>
+                                                        }
+                                                        else
+                                                        {
+                                                            <p>No</p>
+                                                        }
+                                                        @*<input type="checkbox" id="1" name="Si_Cuello" class="chk-col-green" onclick="Habilitar_DesabilitarTXT(this,HA_Cuello)">
+                                    <label for="1">Si</label>*@
+                                                    </td>
+                                                    <td>
+                                                        @if (item.Hallazgos_Anormales == null)
+                                                        {
+                                                            <input type="text" id="HA_Cuello" disabled name="HA_Cuello" class="form-control">
+                                                        }
+                                                        else
+                                                        {
+                                                            @*<input type="text" id="HA_Cuello" disabled value="@item.Hallazgos_Anormales" name="HA_Cuello" class="form-control">*@
+                                                            <label>@item.Hallazgos_Anormales</label>
+                                                        }
+
+                                                    </td>
+                                                </tr>
+                                                fo++;
+                                            }
+
+
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="header">
+                                <!--       Otros hallazgos                                  -->
+                                @foreach (var item in Anexos)
+                                {
+                                    if (item.Otros_Hallazgos!=null)
+                                    {
+                                        otroshallazgos = item.Otros_Hallazgos;
+                                    }
+                                    if (item.Recomendaciones!=null)
+                                    {
+                                        recomendaciones = item.Recomendaciones;
+                                    }
+                                }
+                                <h4 class="card-inside-title">
+                                    Otros Hallazgos
+                                </h4>
+                                <textarea name="otroshallazgos" disabled rows="6" cols="40" @*value="@otroshallazgos"*@ placeholder="Detalles...">@otroshallazgos</textarea>
+                                <!--                                    Recomendaciones                                                           -->
+                                <h4 class="card-inside-title">
+                                    Recomendaciones
+                                </h4>
+                                <textarea name="Recomendaciones" disabled rows="6" cols="40" placeholder="Detalles...">@recomendaciones</textarea>
+                            </div>
+                        </fieldset>
+
+                    </div>
+                    <!-- tab 2 -->
+                    <div class="tab-pane" id="tabE2" role="tabpanel">
+                        <fieldset>
+                            <div class="row clearfix">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <!--#INICIO TABLA CONDICIONES CLINICAS ACTUALES#-->
+                                    <div class="body table-responsive">
+
+                                        <table id='mainTable' class='table table-bordered'>
+                                            <tr>
+                                                <th>Musculo esqueletico</th>
+                                                <th>Neurologico</th>
+                                                <th>General</th>
+                                                <th>Respiratorio</th>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    @foreach (var item in condiciones)
+                                                    {
+                                                        if (item.ID_Condiciones_Clinicas_Actuales == 1)
+                                                        {
+
+                                                            if (item.Nombre == "Practica Deportiva" && item.Valor == "Si")
+                                                            {
+                                                                <input type="checkbox" disabled checked name="PD" id="$11" class="chk-col-green">
+                                                                <label for="$11">Practica Deportiva</label><br>
+                                                            }
+                                                            if (item.Nombre == "Economia Familiar" && item.Valor == "Si")
+                                                            {
+                                                                <input type="checkbox" disabled checked name="EF" id="$12" class="chk-col-green">
+                                                                <label for="$12">Economia Familiar</label><br>
+                                                            }
+                                                            if (item.Nombre == "Educacion" && item.Valor == "Si")
+                                                            {
+                                                                <input type="checkbox" disabled checked name="Educa" id="$13" class="chk-col-green">
+                                                                <label for="$13">Educacion</label><br>
+                                                            }
+                                                            if (item.Nombre == "Dolor articular" && item.Valor == "Si")
+                                                            {
+                                                                <input type="checkbox" disabled checked name="Da" id="$14" class="chk-col-green">
+                                                                <label for="$14">Dolor articular</label><br>
+                                                            }
+                                                            if (item.Nombre == "Rigidez en articulaciones" && item.Valor == "Si")
+                                                            {
+                                                                <input type="checkbox" checked disabled name="Ra" id="$15" class="chk-col-green">
+                                                                <label for="$15">Rigidez en articulaciones</label><br>
+                                                            }
+                                                            if (item.Nombre == "Fracturas" && item.Valor == "Si")
+                                                            {
+                                                                <input type="checkbox" checked disabled name="Fracturas" id="$16" class="chk-col-green">
+                                                                <label for="$16">Fracturas</label><br>
+                                                            }
+                                                            if (item.Nombre == "Debilidad Muscular" && item.Valor == "Si")
+                                                            {
+                                                                <input type="checkbox" checked disabled name="DM" id="$17" class="chk-col-green">
+                                                                <label for="$17">Debilidad Muscular</label><br>
+                                                            }
+                                                            if (item.Nombre == "Hinchazon articular" && item.Valor == "Si")
+                                                            {
+                                                                <input type="checkbox" checked disabled name="HA" id="$18" class="chk-col-green">
+                                                                <label for="$18">Hinchazon articular</label>
+                                                            }
+
+                                                        }@* fin primer if*@
+
+                                                    }
+                                                </td>
+                                                <td>
+                                                    @foreach (var item in condiciones)
+                                                    {
+                                                        if (item.ID_Condiciones_Clinicas_Actuales == 2)
+                                                        {
+                                                            if (item.Nombre == "Paralisis" && item.Valor == "Si")
+                                                            {
+                                                                <input type="checkbox" disabled checked name="Paralisis" id="$21" class="chk-col-green">
+                                                                <label for="$21">Paralisis</label><br>
+                                                            }
+                                                            if (item.Nombre == "Temblores" && item.Valor == "Si")
+                                                            {
+                                                                <input type="checkbox" disabled checked name="Temblores" id="$22" class="chk-col-green">
+                                                                <label for="$22">Temblores</label><br>
+                                                            }
+                                                            if (item.Nombre == "Alteraciones de la conciencia" && item.Valor == "Si")
+                                                            {
+                                                                <input type="checkbox" disabled checked name="Ac" id="$23" class="chk-col-green">
+                                                                <label for="$23">Alteraciones de la conciencia</label>
+                                                            }
+
+                                                        }@* fin segundo if*@
+
+                                                    }
+                                                </td>
+                                                <td>
+                                                    @foreach (var item in condiciones)
+                                                    {
+                                                        if (item.ID_Condiciones_Clinicas_Actuales == 3)
+                                                        {
+                                                            if (item.Nombre == "Perdida de peso" && item.Valor == "Si")
+                                                            {
+                                                                <input type="checkbox" disabled checked name="PP" id="$31" class="chk-col-green">
+                                                                <label for="$31">Perdida de peso</label><br>
+                                                            }
+                                                            if (item.Nombre == "Aumento de peso" && item.Valor == "Si")
+                                                            {
+                                                                <input type="checkbox" disabled checked name="AP" id="$32" class="chk-col-green">
+                                                                <label for="$32">Aumento de peso</label><br>
+                                                            }
+                                                            if (item.Nombre == "Fiebre" && item.Valor == "Si")
+                                                            {
+                                                                <input type="checkbox" disabled checked name="Fiebre" id="$33" class="chk-col-green">
+                                                                <label for="$33">Fiebre</label><br>
+                                                            }
+                                                            if (item.Nombre == "Escalofrios" && item.Valor == "Si")
+                                                            {
+                                                                <input type="checkbox" disabled checked name="Escalofrios" id="$34" class="chk-col-green">
+                                                                <label for="$34">Escalofrios</label>
+                                                            }
+
+
+                                                        }@* fin 3er if*@
+
+                                                    }
+                                                </td>
+                                                <td>
+                                                    @foreach (var item in condiciones)
+                                                    {
+                                                        if (item.ID_Condiciones_Clinicas_Actuales == 4)
+                                                        {
+                                                            if (item.Nombre == "Sibilancia" && item.Valor == "Si")
+                                                            {
+                                                                <input type="checkbox" disabled checked name="Sibilancia" id="$41" class="chk-col-green">
+                                                                <label for="$41">Sibilancia</label><br>
+                                                            }
+                                                            if (item.Nombre == "Tos" && item.Valor == "Si")
+                                                            {
+                                                                <input type="checkbox" disabled checked name="Tos" id="$42" class="chk-col-green">
+                                                                <label for="$42">Tos</label><br>
+                                                            }
+                                                            if (item.Nombre == "Dolor al respirar" && item.Valor == "Si")
+                                                            {
+                                                                <input type="checkbox" disabled checked name="DAR" id="$43" class="chk-col-green">
+                                                                <label for="$43">Dolor al respirar</label><br>
+                                                            }
+                                                            if (item.Nombre == "Toser coagulos de sangre" && item.Valor == "Si")
+                                                            {
+                                                                <input type="checkbox" disabled checked name="TCS" id="$44" class="chk-col-green">
+                                                                <label for="$44">Toser coagulos de sangre</label>
+                                                            }
+
+
+                                                        }@* fin 4to if*@
+
+                                                    }
+                                                </td>
+                                            <tr>
+                                                <th align="center">Dermatologico</th>
+                                                <th align="center">Cabeza</th>
+                                                <th align="center">Ojos</th>
+                                                <th align="center">Oidos,Nariz,Garganta</th>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    @foreach (var item in condiciones)
+                                                    {
+                                                        if (item.ID_Condiciones_Clinicas_Actuales == 5)
+                                                        {
+                                                            if (item.Nombre == "Erupciones/Purito" && item.Valor == "Si")
+                                                            {
+                                                                <input type="checkbox" disabled checked name="EP" id="$121" class="chk-col-green">
+                                                                <label for="$121">Erupciones/Purito</label><br>
+                                                            }
+                                                            if (item.Nombre == "Ulceras/Llagas" && item.Valor == "Si")
+                                                            {
+                                                                <input type="checkbox" disabled checked name="Ulceras" id="$122" class="chk-col-green">
+                                                                <label for="$122">Ulceras/Llagas</label><br>
+                                                            }
+                                                            if (item.Nombre == "Hongos en los pies" && item.Valor == "Si")
+                                                            {
+                                                                <input type="checkbox" disabled checked name="hongos" id="$123" class="chk-col-green">
+                                                                <label for="$123">Hongos en los pies</label><br>
+                                                            }
+                                                        }@* fin 5to if*@
+
+                                                    }
+                                                </td>
+                                                <td>
+                                                    @foreach (var item in condiciones)
+                                                    {
+                                                        if (item.ID_Condiciones_Clinicas_Actuales == 6)
+                                                        {
+                                                            if (item.Nombre == "Dolores de Cabeza" && item.Valor == "Si")
+                                                            {
+                                                                <input type="checkbox" disabled checked name="Dc" id="$221" class="chk-col-green">
+                                                                <label for="$221">Dolores de Cabeza</label><br>
+                                                            }
+                                                            if (item.Nombre == "Convulsiones" && item.Valor == "Si")
+                                                            {
+                                                                <input type="checkbox" disabled checked name="Convulsiones" id="$222" class="chk-col-green">
+                                                                <label for="$222">Convulsiones</label><br>
+                                                            }
+                                                            if (item.Nombre == "Perdida de la conciencia" && item.Valor == "Si")
+                                                            {
+                                                                <input type="checkbox" disabled checked name="PConciencia" id="$223" class="chk-col-green">
+                                                                <label for="$223">Perdida de la conciencia</label>
+                                                            }@* fin 6to if*@
+
+                                                        }
+                                                    }
+                                                </td>
+                                                <td>
+                                                    @foreach (var item in condiciones)
+                                                    {
+                                                        if (item.ID_Condiciones_Clinicas_Actuales == 7)
+                                                        {
+                                                            if (item.Nombre == "Cambios en la vision" && item.Valor == "Si")
+                                                            {
+                                                                <input type="checkbox" disabled checked name="cambiosVision" id="$321" class="chk-col-green">
+                                                                <label for="$321">Cambios en la vision</label><br>
+                                                            }
+                                                            if (item.Nombre == "Fotofobia" && item.Valor == "Si")
+                                                            {
+                                                                <input type="checkbox" disabled checked name="fotofobia" id="$322" class="chk-col-green">
+                                                                <label for="$322">Fotofobia</label><br>
+                                                            }
+                                                            if (item.Nombre == "Dolor/enrojecimiento" && item.Valor == "Si")
+                                                            {
+                                                                <input type="checkbox" disabled checked name="DE" id="$323" class="chk-col-green">
+                                                                <label for="$323">Dolor/enrojecimiento</label><br>
+                                                            }
+                                                            if (item.Nombre == "Lagrimeo excesivo" && item.Valor == "Si")
+                                                            {
+                                                                <input type="checkbox" disabled checked name="lagrimeoe" id="$324" class="chk-col-green">
+                                                                <label for="$324">Lagrimeo excesivo</label>
+                                                            }
+
+
+                                                        }@* fin 7to if*@
+
+                                                    }
+                                                </td>
+                                                <td>
+                                                    @foreach (var item in condiciones)
+                                                    {
+                                                        if (item.ID_Condiciones_Clinicas_Actuales == 8)
+                                                        {
+                                                            if (item.Nombre == "Perdida audicion" && item.Valor == "Si")
+                                                            {
+                                                                <input type="checkbox" disabled checked name="PA" id="$421" class="chk-col-green">
+                                                                <label for="$421">Perdida audicion</label><br>
+                                                            }
+                                                            if (item.Nombre == "Vertigo" && item.Valor == "Si")
+                                                            {
+                                                                <input type="checkbox" disabled checked name="Vertigo" id="$422" class="chk-col-green">
+                                                                <label for="$422">Vertigo</label><br>
+                                                            }
+                                                            if (item.Nombre == "Sangrado de nariz" && item.Valor == "Si")
+                                                            {
+                                                                <input type="checkbox" disabled checked name="sangradoN" id="$423" class="chk-col-green">
+                                                                <label for="$423">Sangrado de nariz</label><br>
+                                                            }
+                                                            if (item.Nombre == "Ronquidos" && item.Valor == "Si")
+                                                            {
+                                                                <input type="checkbox" disabled checked name="Ronquidos" id="$424" class="chk-col-green">
+                                                                <label for="$424">Ronquidos</label>
+                                                            }
+
+
+                                                        }@* fin 8to if*@
+
+                                                    }
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th align="center">Genitourinario</th>
+                                                <th align="center">Cardiovascular</th>
+                                                <th align="center">Gastrointestinal</th>
+                                                <th align="center">Otros</th>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    @foreach (var item in condiciones)
+                                                    {
+                                                        if (item.ID_Condiciones_Clinicas_Actuales == 9)
+                                                        {
+                                                            if (item.Nombre == "Perdida control de vejiga" && item.Valor == "Si")
+                                                            {
+                                                                <input type="checkbox" disabled checked name="PCVe" id="$131" class="chk-col-green">
+                                                                <label for="$131">Perdida control de vejiga</label><br>
+                                                            }
+                                                            if (item.Nombre == "Miccion frecuente" && item.Valor == "Si")
+                                                            {
+                                                                <input type="checkbox" disabled checked name="MiccionF" id="$132" class="chk-col-green">
+                                                                <label for="$132">Miccion frecuente</label>
+                                                            }
+
+                                                        }@* fin 9to if*@
+
+                                                    }
+                                                </td>
+                                                <td>
+                                                    @foreach (var item in condiciones)
+                                                    {
+                                                        if (item.ID_Condiciones_Clinicas_Actuales == 10)
+                                                        {
+                                                            if (item.Nombre == "Dolor en el pecho" && item.Valor == "Si")
+                                                            {
+                                                                <input type="checkbox" disabled checked name="DolorP" id="$231" class="chk-col-green">
+                                                                <label for="$231">Dolor en el pecho</label><br>
+                                                            }
+                                                            if (item.Nombre == "Palpitaciones" && item.Valor == "Si")
+                                                            {
+                                                                <input type="checkbox" disabled checked name="Palpitaciones" id="$232" class="chk-col-green">
+                                                                <label for="$232">Palpitaciones</label><br>
+                                                            }
+                                                            if (item.Nombre == "Falta de Aliento" && item.Valor == "Si")
+                                                            {
+                                                                <input type="checkbox" disabled checked name="FaltaAliento" id="$233" class="chk-col-green">
+                                                                <label for="$233">Falta de aliento</label>
+                                                            }@* fin 10to if*@
+
+                                                        }
+                                                    }
+                                                </td>
+                                                <td>
+                                                    @foreach (var item in condiciones)
+                                                    {
+                                                        if (item.ID_Condiciones_Clinicas_Actuales == 11)
+                                                        {
+                                                            if (item.Nombre == "Dificultad para deglutir" && item.Valor == "Si")
+                                                            {
+                                                                <input type="checkbox" disabled checked name="Dificultaddeglutir" id="$331" class="chk-col-green">
+                                                                    <label for="$331">Dificultad para deglutir</label><br>
+                                                            }
+                                                            if (item.Nombre == "Ardor estomacal" && item.Valor == "Si")
+                                                            {
+                                                                <input type="checkbox" disabled checked name="ardorEstomacal" id="$332" class="chk-col-green">
+                                                                    <label for="$332">Ardor estomacal</label><br>
+                                                            }
+                                                            if (item.Nombre == "Nauseas/Vomito" && item.Valor == "Si")
+                                                            {
+                                                                <input type="checkbox" disabled checked name="NV" id="$333" class="chk-col-green">
+                                                                    <label for="$333">Nauseas/Vomito</label><br>
+                                                            }
+                                                            if (item.Nombre == "Sangrado intestinal" && item.Valor == "Si")
+                                                            {
+                                                                <input type="checkbox" disabled checked  name="Sangradointestinal" id="$334" class="chk-col-green">
+                                                                    <label for="$334">Sangrado intestinal</label>
+                                                            }
+
+
+                                                        }@* fin 11to if*@
+
+                                                    }
+                                                </td>
+                                                <td>
+                                                    @foreach (var item in condiciones)
+                                                    {
+                                                        if (item.ID_Condiciones_Clinicas_Actuales == 12)
+                                                        {
+                                                            if (item.Nombre == "Otros" && item.Valor != "")
+                                                            {
+                                                              <textarea name="otrosCCA" disabled width="200px" placeholder="Detallar">@item.Valor</textarea>
+                                                            }
+                                                           
+
+                                                        }@* fin 11to if*@
+
+                                                    }
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="row clearfix">
+                                <div class="header">
+                                    <!--Observaciones-->
+                                    <h4 class="card-inside-title">
+                                        Observaciones
+                                    </h4>
+                                    @foreach (var item in Anexos)
+                                    {
+                                        if (item.Observaciones == "")
+                                        {
+                                            <textarea name="observacioneCCA" disabled rows="6" cols="40" placeholder="Detalles..."></textarea>
+
+                                        }
+                                        else
+                                        {
+                                            <textarea name="observacioneCCA" disabled rows="6" cols="40" placeholder="Detalles..."> @item.Observaciones</textarea>
+                                        }
+                                    }
+
+                                </div>
+                            </div>
+                            </fieldset>
+                        </div>
+                <!-- tab 3 -->
+                <div class="tab-pane" id="tabE3" role="tabpanel">
+                        <fieldset>
+                            <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
+                                @foreach (var item in Ficha)
+                                {
+                                    nombre = item.Nombre_Y_Apellidos;
+                                    sexo = item.Sexo;
+                                    evaluacion = item.Evaluacion.ToString();
+                                    fe = Convert.ToDateTime(item.Fecha_De_Evaluacion).ToShortDateString();
+                                    fn = Convert.ToDateTime(item.Fecha_De_Nacimiento).ToShortDateString();
+                                    menstruacion = item.Menstruacion;
+                                    anotador = item.Anotador;
+                                    antropo = item.Antropometrista;
+
+                                }
+                                <div class="row clearfix">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input disable="true" class="form-control" type="text" disabled name="nombreAtleta" value="@nombre" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <input class="form-control" type="text" disable="true" name="genero" value="@sexo" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <input type="text" value="@evaluacion" name="numEvaluacion" disabled class="form-control" />
+                                                <label class="form-label">Evaluacion Nº</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <input type="text" name="fechaEv" disabled  class="form-control" id="fecha" value="@fe">
+                                                <label class="form-label">Fecha de evaluacion</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <input type="text" class="form-control" name="Antropometrista" disabled value="@antropo" />
+                                                <label class="form-label">Antropometrista/Evaluador</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <input type="text" class="form-control" name="Anotador" disabled value="@anotador" />
+                                                <label class="form-label">Anotador </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="demo-masked-input">
+                                            <div class="input-group">
+                                                <div class="form-line">
+                                                    <input type="text" name="fechaNac" class="form-control date" placeholder="Fecha De Nacimiento Ejemplo: 30/07/2016" disabled value="@fn">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                            <div class="form-group form-float">
+                                                <div class="form-line">
+                                                    <input type="text" disabled class="form-control" value="@menstruacion" name="menstruacion" />
+                                                    <label class="form-label">Mentruacion </label>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                </div>
+
+
+                                <!--INICIO TABLA FICHA ANTROPOMETRICA -->
+                                <div class="body table-responsive">
+                                    <table id="mainTable" class="table table-bordered">
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Promedio/Mediana</th>
+                                            <th>TOMA 1</th>
+                                            <th>TOMA 2</th>
+                                            <th>TOMA 3</th>
+                                            <th>Promedio/Mediana</th>
+                                        <tr>
+                                            @foreach (var item in Ficha)
+                                            {
+                                                if (item.Txt_Ficha_Antropometrica == "01-Peso corporal (kg)")
+                                                {
+                                                    <td align="center">1</td>
+                                                    <td>Peso corporal (kg)</td>
+                                                    <td><input type="text" name="PCtoma1" disabled value="@item.Toma1"></td>
+                                                    <td><input type="text" name="PCtoma2" disabled value="@item.Toma2"></td>
+                                                    <td><input type="text" name="PCtoma3" disabled value="@item.Toma3"></td>
+                                                    <td><input type="text" name="PCpromed" disabled value="@item.Promedio_Mediana"></td>
+                                                }
+                                            }
+                                         </tr> 
+                                        <tr>
+                                            @foreach (var item in Ficha)
+                                            {
+                                                if (item.Txt_Ficha_Antropometrica == "02-Talla (cm)")
+                                                {
+                                                    <td align="center">2</td>
+                                                    <td>Talla (cm)</td>
+                                                    <td><input type="text" name="PCtoma1" disabled value="@item.Toma1"></td>
+                                                    <td><input type="text" name="PCtoma2" disabled value="@item.Toma2"></td>
+                                                    <td><input type="text" name="PCtoma3" disabled value="@item.Toma3"></td>
+                                                    <td><input type="text" name="PCpromed" disabled value="@item.Promedio_Mediana"></td>
+                                                }
+                                            }
+                                            @*<td align="center">2</td>
+                                            <td>Talla (cm)</td>
+                                            <td><input type="text" name="Ttoma1"></td>
+                                            <td><input type="text" name="Ttoma2"></td>
+                                            <td><input type="text" name="Ttoma3"></td>
+                                            <td><input type="text" name="Tpromed"></td>*@
+                                        </tr>
+                                        <tr>
+                                            @foreach (var item in Ficha)
+                                            {
+                                                if (item.Txt_Ficha_Antropometrica == "03-Talla sentado (cm)")
+                                                {
+                                                    <td align="center">3</td>
+                                                    <td>Talla sentado (cm)</td>
+                                                    <td><input type="text" name="PCtoma1" disabled value="@item.Toma1"></td>
+                                                    <td><input type="text" name="PCtoma2" disabled value="@item.Toma2"></td>
+                                                    <td><input type="text" name="PCtoma3" disabled value="@item.Toma3"></td>
+                                                    <td><input type="text" name="PCpromed" disabled value="@item.Promedio_Mediana"></td>
+                                                }
+                                            }
+                                            @*<td align="center">3</td>
+                                            <td>Talla sentado (cm)</td>
+                                            <td><input type="text" name="Tstoma1"></td>
+                                            <td><input type="text" name="Tstoma2"></td>
+                                            <td><input type="text" name="Tstoma3"></td>
+                                            <td><input type="text" name="Tspromed"></td>*@
+                                        </tr>
+                                        <tr>
+                                            @foreach (var item in Ficha)
+                                            {
+                                                if (item.Txt_Ficha_Antropometrica == "04-Envergadura (mm)")
+                                                {
+                                                    <td align="center">4</td>
+                                                    <td>Envergadura (mm)</td>
+                                                    <td><input type="text" name="PCtoma1" disabled value="@item.Toma1"></td>
+                                                    <td><input type="text" name="PCtoma2" disabled value="@item.Toma2"></td>
+                                                    <td><input type="text" name="PCtoma3" disabled value="@item.Toma3"></td>
+                                                    <td><input type="text" name="PCpromed" disabled value="@item.Promedio_Mediana"></td>
+                                                }
+                                            }
+                                            @*<td align="center">4</td>
+                                            <td>Envergadura (mm)</td>
+                                            <td><input type="text" name="Etoma1"></td>
+                                            <td><input type="text" name="Etoma2"></td>
+                                            <td><input type="text" name="Etoma3"></td>
+                                            <td><input type="text" name="Epromed"></td>*@
+                                        </tr>
+                                        <tr>
+                                            <th colspan="6">Pliegues cutaneos (mm)</th>
+                                        </tr>
+                                        <tr>
+                                            @foreach (var item in Ficha)
+                                            {
+                                                if (item.Txt_Ficha_Antropometrica == "05-Subescapular")
+                                                {
+                                                    <td align="center">5</td>
+                                                    <td>Subescapular</td>
+                                                    <td><input type="text" name="PCtoma1" disabled value="@item.Toma1"></td>
+                                                    <td><input type="text" name="PCtoma2" disabled value="@item.Toma2"></td>
+                                                    <td><input type="text" name="PCtoma3" disabled value="@item.Toma3"></td>
+                                                    <td><input type="text" name="PCpromed" disabled value="@item.Promedio_Mediana"></td>
+                                                }
+                                            }
+                                            @*<td align="center">5</td>
+                                            <td>Subescapular</td>
+                                            <td><input type="text" name="SCtoma1"></td>
+                                            <td><input type="text" name="SCtoma2"></td>
+                                            <td><input type="text" name="SCtoma3"></td>
+                                            <td><input type="text" name="SCpromed"></td>*@
+                                            </tr>
+                                        <tr>
+                                            @foreach (var item in Ficha)
+                                            {
+                                                if (item.Txt_Ficha_Antropometrica == "06-Tricipital")
+                                                {
+                                                    <td align="center">6</td>
+                                                    <td>Tricipital</td>
+                                                    <td><input type="text" name="PCtoma1" disabled value="@item.Toma1"></td>
+                                                    <td><input type="text" name="PCtoma2" disabled value="@item.Toma2"></td>
+                                                    <td><input type="text" name="PCtoma3" disabled value="@item.Toma3"></td>
+                                                    <td><input type="text" name="PCpromed" disabled value="@item.Promedio_Mediana"></td>
+                                                }
+                                            }
+                                            @*<td align="center">6</td>
+                                            <td>Tricipital</td>
+                                            <td><input type="text" name="TTtoma1"></td>
+                                            <td><input type="text" name="TTtoma2"></td>
+                                            <td><input type="text" name="TTtoma3"></td>
+                                            <td><input type="text" name="TTpromed"></td>*@
+                                        </tr>
+                                        <tr>
+                                            @foreach (var item in Ficha)
+                                            {
+                                                if (item.Txt_Ficha_Antropometrica == "07-Bicipital")
+                                                {
+                                                    <td align="center">7</td>
+                                                    <td>Bicipital</td>
+                                                    <td><input type="text" name="PCtoma1" disabled value="@item.Toma1"></td>
+                                                    <td><input type="text" name="PCtoma2" disabled value="@item.Toma2"></td>
+                                                    <td><input type="text" name="PCtoma3" disabled value="@item.Toma3"></td>
+                                                    <td><input type="text" name="PCpromed" disabled value="@item.Promedio_Mediana"></td>
+                                                }
+                                            }
+                                            @*<td align="center">7</td>
+                                            <td>Bicipital</td>
+                                            <td><input type="text" name="BCtoma1"></td>
+                                            <td><input type="text" name="BCtoma2"></td>
+                                            <td><input type="text" name="BCtoma3"></td>
+                                            <td><input type="text" name="BCpromed"></td>*@
+                                        </tr>
+                                        <tr>
+                                            @foreach (var item in Ficha)
+                                            {
+                                                if (item.Txt_Ficha_Antropometrica == "08-Supracrestal o cresta iliaca")
+                                                {
+                                                    <td align="center">8</td>
+                                                    <td>Supracrestal o cresta iliaca</td>
+                                                    <td><input type="text" name="PCtoma1" disabled value="@item.Toma1"></td>
+                                                    <td><input type="text" name="PCtoma2" disabled value="@item.Toma2"></td>
+                                                    <td><input type="text" name="PCtoma3" disabled value="@item.Toma3"></td>
+                                                    <td><input type="text" name="PCpromed" disabled value="@item.Promedio_Mediana"></td>
+                                                }
+                                            }
+                                            @*<td align="center">8</td>
+                                            <td>Supracrestal o cresta iliaca</td>
+                                            <td><input type="text" name="CItoma1"></td>
+                                            <td><input type="text" name="CItoma2"></td>
+                                            <td><input type="text" name="CItoma3"></td>
+                                            <td><input type="text" name="CIpromed"></td>*@
+                                        </tr>
+                                        <tr>
+                                            @foreach (var item in Ficha)
+                                            {
+                                                if (item.Txt_Ficha_Antropometrica == "09-Supracrestal o suprailiaco")
+                                                {
+                                                    <td align="center">9</td>
+                                                    <td>Supracrestal o suprailiaco</td>
+                                                    <td><input type="text" name="PCtoma1" disabled value="@item.Toma1"></td>
+                                                    <td><input type="text" name="PCtoma2" disabled value="@item.Toma2"></td>
+                                                    <td><input type="text" name="PCtoma3" disabled value="@item.Toma3"></td>
+                                                    <td><input type="text" name="PCpromed" disabled value="@item.Promedio_Mediana"></td>
+                                                }
+                                            }
+                                                @*<td align="center">9</td>
+                                                <td>Supracrestal o suprailiaco</td>
+                                                <td><input type="text" name="SCotoma1"></td>
+                                                <td><input type="text" name="SCotoma2"></td>
+                                                <td><input type="text" name="SCotoma3"></td>
+                                                <td><input type="text" name="SCopromed"></td>*@
+                                        </tr>
+                                        <tr>
+                                            @foreach (var item in Ficha)
+                                            {
+                                                if (item.Txt_Ficha_Antropometrica == "10-Abdominal")
+                                                {
+                                                    <td align="center">10</td>
+                                                    <td>Abdominal</td>
+                                                    <td><input type="text" name="PCtoma1" disabled value="@item.Toma1"></td>
+                                                    <td><input type="text" name="PCtoma2" disabled value="@item.Toma2"></td>
+                                                    <td><input type="text" name="PCtoma3" disabled value="@item.Toma3"></td>
+                                                    <td><input type="text" name="PCpromed" disabled value="@item.Promedio_Mediana"></td>
+                                                }
+                                            }
+                                            @*<td align="center">10</td>
+                                            <td>Abdominal</td>
+                                            <td><input type="text" name="ABtoma1"></td>
+                                            <td><input type="text" name="ABtoma2"></td>
+                                            <td><input type="text" name="ABtoma3"></td>
+                                            <td><input type="text" name="ABpromed"></td>*@
+                                        </tr>
+                                        <tr>
+                                            @foreach (var item in Ficha)
+                                            {
+                                                if (item.Txt_Ficha_Antropometrica == "11-Muslo anterior")
+                                                {
+                                                    <td align="center">11</td>
+                                                    <td>Muslo anterior</td>
+                                                    <td><input type="text" name="PCtoma1" disabled value="@item.Toma1"></td>
+                                                    <td><input type="text" name="PCtoma2" disabled value="@item.Toma2"></td>
+                                                    <td><input type="text" name="PCtoma3" disabled value="@item.Toma3"></td>
+                                                    <td><input type="text" name="PCpromed" disabled value="@item.Promedio_Mediana"></td>
+                                                }
+                                            }
+                                            @*<td align="center">11</td>
+                                            <td>Muslo anterior</td>
+                                            <td><input type="text" name="MAtoma1"></td>
+                                            <td><input type="text" name="MAtoma2"></td>
+                                            <td><input type="text" name="MAtoma3"></td>
+                                            <td><input type="text" name="MApromed"></td>*@
+                                        </tr>
+                                        <tr>
+                                            @foreach (var item in Ficha)
+                                            {
+                                                if (item.Txt_Ficha_Antropometrica == "12-Pierna medial")
+                                                {
+                                                    <td align="center">12</td>
+                                                    <td>Pierna medial</td>
+                                                    <td><input type="text" name="PCtoma1" disabled value="@item.Toma1"></td>
+                                                    <td><input type="text" name="PCtoma2" disabled value="@item.Toma2"></td>
+                                                    <td><input type="text" name="PCtoma3" disabled value="@item.Toma3"></td>
+                                                    <td><input type="text" name="PCpromed" disabled value="@item.Promedio_Mediana"></td>
+                                                }
+                                            }
+                                            @*<td align="center">12</td>
+                                            <td>Pierna medial</td>
+                                            <td><input type="text" name="PMtoma1"></td>
+                                            <td><input type="text" name="PMtoma2"></td>
+                                            <td><input type="text" name="PMtoma3"></td>
+                                            <td><input type="text" name="PMpromed"></td>*@
+                                        </tr>
+                                        <tr>
+                                            @foreach (var item in Ficha)
+                                            {
+                                                if (item.Txt_Ficha_Antropometrica.IndexOf("12.5").Equals(0))
+                                                {
+                                                    //foreach (var item2 in item.Txt_Ficha_Antropometrica)
+                                                    //{
+
+                                                    //}
+                                                    char[] MyChar = { '1', '2', '.', '5'};
+                                                    <td align="center">12.5</td>
+                                                    <td>@item.Txt_Ficha_Antropometrica.TrimStart(MyChar)</td>
+                                                    <td><input type="text" name="PCtoma1" disabled value="@item.Toma1"></td>
+                                                    <td><input type="text" name="PCtoma2" disabled value="@item.Toma2"></td>
+                                                    <td><input type="text" name="PCtoma3" disabled value="@item.Toma3"></td>
+                                                    <td><input type="text" name="PCpromed" disabled value="@item.Promedio_Mediana"></td>
+                                                }
+                                                
+                                            }
+                                           @*<td colspan="2"><input name="otros1" placeholder="Otros:"></td>
+                                            <td><input type="text" name="otros1toma1"></td>
+                                            <td><input type="text" name="otros1toma2"></td>
+                                            <td><input type="text" name="otros1toma3"></td>
+                                            <td><input type="text" name="otros1promed"></td>*@
+                                        </tr>
+                                        <tr>
+                                            <th colspan="6">Perimetros (cm)</th>
+                                        </tr>
+                                        <tr>
+                                            @foreach (var item in Ficha)
+                                            {
+                                                if (item.Txt_Ficha_Antropometrica == "13-Brazo relajado")
+                                                {
+                                                    <td align="center">13</td>
+                                                    <td>Brazo relajado</td>
+                                                    <td><input type="text" name="PCtoma1" disabled value="@item.Toma1"></td>
+                                                    <td><input type="text" name="PCtoma2" disabled value="@item.Toma2"></td>
+                                                    <td><input type="text" name="PCtoma3" disabled value="@item.Toma3"></td>
+                                                    <td><input type="text" name="PCpromed" disabled value="@item.Promedio_Mediana"></td>
+                                                }
+                                            }
+                                            @*<td align="center">13</td>
+                                            <td>Brazo relajado</td>
+                                            <td><input type="text" name="BRtoma1"></td>
+                                            <td><input type="text" name="BRtoma2"></td>
+                                            <td><input type="text" name="BRtoma3"></td>
+                                            <td><input type="text" name="BRpromed"></td>*@
+                                        </tr>
+                                        <tr>
+                                            @foreach (var item in Ficha)
+                                            {
+                                                if (item.Txt_Ficha_Antropometrica == "14-Brazo flexionado y contraido")
+                                                {
+                                                    <td align="center">14</td>
+                                                    <td>Brazo flexionado y contraido</td>
+                                                    <td><input type="text" name="PCtoma1" disabled value="@item.Toma1"></td>
+                                                    <td><input type="text" name="PCtoma2" disabled value="@item.Toma2"></td>
+                                                    <td><input type="text" name="PCtoma3" disabled value="@item.Toma3"></td>
+                                                    <td><input type="text" name="PCpromed" disabled value="@item.Promedio_Mediana"></td>
+                                                }
+                                            }
+                                            @*<td align="center">14</td>
+                                            <td>Brazo flexionado y contraido</td>
+                                            <td><input type="text" name="BFCtoma1"></td>
+                                            <td><input type="text" name="BFCtoma2"></td>
+                                            <td><input type="text" name="BFCtoma3"></td>
+                                            <td><input type="text" name="BFCpromed"></td>*@
+                                        </tr>
+                                        <tr>
+                                            @foreach (var item in Ficha)
+                                            {
+                                                if (item.Txt_Ficha_Antropometrica == "15-Muslo medial")
+                                                {
+                                                    <td align="center">15</td>
+                                                    <td>Muslo medial</td>
+                                                    <td><input type="text" name="PCtoma1" disabled value="@item.Toma1"></td>
+                                                    <td><input type="text" name="PCtoma2" disabled value="@item.Toma2"></td>
+                                                    <td><input type="text" name="PCtoma3" disabled value="@item.Toma3"></td>
+                                                    <td><input type="text" name="PCpromed" disabled value="@item.Promedio_Mediana"></td>
+                                                }
+                                            }
+                                            @*<td align="center">15</td>
+                                            <td>Muslo medial</td>
+                                            <td><input type="text" name="MMtoma1"></td>
+                                            <td><input type="text" name="MMtoma2"></td>
+                                            <td><input type="text" name="MMtoma3"></td>
+                                            <td><input type="text" name="MMpromed"></td>*@
+                                         </tr>
+                                        <tr>
+                                            @foreach (var item in Ficha)
+                                            {
+                                                if (item.Txt_Ficha_Antropometrica == "16-Pantorilla")
+                                                {
+                                                    <td align="center">16</td>
+                                                    <td>Pantorilla</td>
+                                                    <td><input type="text" name="PCtoma1" disabled value="@item.Toma1"></td>
+                                                    <td><input type="text" name="PCtoma2" disabled value="@item.Toma2"></td>
+                                                    <td><input type="text" name="PCtoma3" disabled value="@item.Toma3"></td>
+                                                    <td><input type="text" name="PCpromed" disabled value="@item.Promedio_Mediana"></td>
+                                                }
+                                            }
+                                            @*<td align="center">16</td>
+                                            <td>Pantorilla</td>
+                                            <td><input type="text" name="PANtoma1"></td>
+                                            <td><input type="text" name="PANtoma2"></td>
+                                            <td><input type="text" name="PANtoma3"></td>
+                                            <td><input type="text" name="PANpromed"></td>*@
+                                        </tr>
+                                        <tr>
+                                            @foreach (var item in Ficha)
+                                            {
+                                                if (item.Txt_Ficha_Antropometrica == "17-Cintura")
+                                                {
+                                                    <td align="center">17</td>
+                                                    <td>Cintura</td>
+                                                    <td><input type="text" name="PCtoma1" disabled value="@item.Toma1"></td>
+                                                    <td><input type="text" name="PCtoma2" disabled value="@item.Toma2"></td>
+                                                    <td><input type="text" name="PCtoma3" disabled value="@item.Toma3"></td>
+                                                    <td><input type="text" name="PCpromed" disabled value="@item.Promedio_Mediana"></td>
+                                                }
+                                            }
+                                            @*<td align="center">17</td>
+                                            <td>Cintura</td>
+                                            <td><input type="text" name="CINtoma1"></td>
+                                            <td><input type="text" name="CINtoma2"></td>
+                                            <td><input type="text" name="CINtoma3"></td>
+                                            <td><input type="text" name="CINpromed"></td>
+                                        </tr>*@
+                                        <tr>
+                                            @foreach (var item in Ficha)
+                                            {
+                                                if (item.Txt_Ficha_Antropometrica == "18-Cadera")
+                                                {
+                                                    <td align="center">18</td>
+                                                    <td>Cadera</td>
+                                                    <td><input type="text" name="PCtoma1" disabled value="@item.Toma1"></td>
+                                                    <td><input type="text" name="PCtoma2" disabled value="@item.Toma2"></td>
+                                                    <td><input type="text" name="PCtoma3" disabled value="@item.Toma3"></td>
+                                                    <td><input type="text" name="PCpromed" disabled value="@item.Promedio_Mediana"></td>
+                                                }
+                                            }
+                                            @*<td align="center">18</td>
+                                            <td>Cadera</td>
+                                            <td><input type="text" name="CADtoma1"></td>
+                                            <td><input type="text" name="CADtoma2"></td>
+                                            <td><input type="text" name="CADtoma3"></td>
+                                            <td><input type="text" name="CADpromed"></td>*@
+                                        </tr>
+                                        <tr>
+                                            @foreach (var item in Ficha)
+                                            {
+                                                if (item.Txt_Ficha_Antropometrica.IndexOf("19").Equals(0))
+                                                {
+                                                    //foreach (var item2 in item.Txt_Ficha_Antropometrica)
+                                                    //{
+
+                                                    //}
+                                                    char[] MyChar = { '1', '9' };
+                                                    <td align="center">19</td>
+                                                    <td>@item.Txt_Ficha_Antropometrica.TrimStart(MyChar)</td>
+                                                    <td><input type="text" name="PCtoma1" disabled value="@item.Toma1"></td>
+                                                    <td><input type="text" name="PCtoma2" disabled value="@item.Toma2"></td>
+                                                    <td><input type="text" name="PCtoma3" disabled value="@item.Toma3"></td>
+                                                    <td><input type="text" name="PCpromed" disabled value="@item.Promedio_Mediana"></td>
+                                                }
+
+                                            }
+                                            @*<td colspan="2"><input name="otros2" placeholder="Otros:"></td>
+                                            <td><input type="text" name="otros2toma1"></td>
+                                            <td><input type="text" name="otros2toma2"></td>
+                                            <td><input type="text" name="otros2toma3"></td>
+                                            <td><input type="text" name="otros2promed"></td>*@
+                                        </tr>
+                                        <tr>
+                                            <th colspan="6">Diametros (cm)</th>
+                                        </tr>
+
+                                        <tr>
+                                            @foreach (var item in Ficha)
+                                            {
+                                                if (item.Txt_Ficha_Antropometrica == "20-Humero")
+                                                {
+                                                    <td align="center">20</td>
+                                                    <td>Humero</td>
+                                                    <td><input type="text" name="PCtoma1" disabled value="@item.Toma1"></td>
+                                                    <td><input type="text" name="PCtoma2" disabled value="@item.Toma2"></td>
+                                                    <td><input type="text" name="PCtoma3" disabled value="@item.Toma3"></td>
+                                                    <td><input type="text" name="PCpromed" disabled value="@item.Promedio_Mediana"></td>
+                                                }
+                                            }
+                                            @*<td align="center">20</td>
+                                            <td>Humero</td>
+                                            <td><input type="text" name="Humerotoma1"></td>
+                                            <td><input type="text" name="Humerotoma2"></td>
+                                            <td><input type="text" name="Humerotoma3"></td>
+                                            <td><input type="text" name="Humeropromed"></td>*@
+                                        </tr>
+                                        <tr>
+                                            @foreach (var item in Ficha)
+                                            {
+                                                if (item.Txt_Ficha_Antropometrica == "21-Muñeca")
+                                                {
+                                                    <td align="center">21</td>
+                                                    <td>Muñeca</td>
+                                                    <td><input type="text" name="PCtoma1" disabled value="@item.Toma1"></td>
+                                                    <td><input type="text" name="PCtoma2" disabled value="@item.Toma2"></td>
+                                                    <td><input type="text" name="PCtoma3" disabled value="@item.Toma3"></td>
+                                                    <td><input type="text" name="PCpromed" disabled value="@item.Promedio_Mediana"></td>
+                                                }
+                                            }
+                                            @*<td align="center">21</td>
+                                            <td>Muñeca</td>
+                                            <td><input type="text" name="Muñecatoma1"></td>
+                                            <td><input type="text" name="Muñecatoma2"></td>
+                                            <td><input type="text" name="Muñecatoma3"></td>
+                                            <td><input type="text" name="Muñecapromed"></td>*@
+                                        </tr>
+                                        <tr>
+                                            @foreach (var item in Ficha)
+                                            {
+                                                if (item.Txt_Ficha_Antropometrica == "22-Femur")
+                                                {
+                                                    <td align="center">22</td>
+                                                    <td>Femur</td>
+                                                    <td><input type="text" name="PCtoma1" disabled value="@item.Toma1"></td>
+                                                    <td><input type="text" name="PCtoma2" disabled value="@item.Toma2"></td>
+                                                    <td><input type="text" name="PCtoma3" disabled value="@item.Toma3"></td>
+                                                    <td><input type="text" name="PCpromed" disabled value="@item.Promedio_Mediana"></td>
+                                                }
+                                            }
+                                            @*<td align="center">22</td>
+                                            <td>Femur</td>
+                                            <td><input type="text" name="femurtoma1"></td>
+                                            <td><input type="text" name="femurtoma2"></td>
+                                            <td><input type="text" name="femurtoma3"></td>
+                                            <td><input type="text" name="femurpromed"></td>*@
+</tr>
+                                        <tr>
+                                            @foreach (var item in Ficha)
+                                            {
+                                                if (item.Txt_Ficha_Antropometrica.IndexOf("23").Equals(0))
+                                                {
+                                                    //foreach (var item2 in item.Txt_Ficha_Antropometrica)
+                                                    //{
+
+                                                    //}
+                                                    char[] MyChar = { '2', '3' };
+                                                    <td align="center">23   </td>
+                                                    <td>@item.Txt_Ficha_Antropometrica.TrimStart(MyChar)</td>
+                                                    <td><input type="text" name="PCtoma1" disabled value="@item.Toma1"></td>
+                                                    <td><input type="text" name="PCtoma2" disabled value="@item.Toma2"></td>
+                                                    <td><input type="text" name="PCtoma3" disabled value="@item.Toma3"></td>
+                                                    <td><input type="text" name="PCpromed" disabled value="@item.Promedio_Mediana"></td>
+                                                }
+
+                                            }
+                                            @*<td colspan="2"><input name="otros3" placeholder="Otros:"></td>
+        <td><input type="text" name="otros3toma1"></td>
+        <td><input type="text" name="otros3toma2"></td>
+        <td><input type="text" name="otros3toma3"></td>
+        <td><input type="text" name="otros3promed"></td>*@
+                                        </tr>
+                                    </table>
+                                    <!--FINAL TABLA ANTROPOMETRIA-->
+                                    <h4>
+                                        <small> *Medidas de peril restringido (ISAK nivel 1)</small>
+                                    </h4>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div><!-- tab 4 --><div class="tab-pane" id="tabE4" role="tabpanel">
+                        <fieldset>
+                            4
+                        </fieldset>
+                    </div><!-- tab 5 -->@*<div class="tab-pane " id="tabE5" role="tabpanel">
+                       <fieldset>
+                           5
+                        </fieldset>
+                    </div>*@</div>@*</form>*@</div></div></div></div>

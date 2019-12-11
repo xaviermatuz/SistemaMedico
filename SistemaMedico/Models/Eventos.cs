@@ -17,5 +17,8 @@ namespace SistemaMedico.Models
         public int ID { get; set; }
         public string Nombre { get; set; }
         public string Lugar { get; set; }
+        public Nullable<System.DateTime> Fecha_de_Registro { get; set; }
+        public Nullable<bool> Estado { get; set; }
+        public Nullable<System.DateTime> Fecha_de_Actualizacion { get; set; }
     }
 }

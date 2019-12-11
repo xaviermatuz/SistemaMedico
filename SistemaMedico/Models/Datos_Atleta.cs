@@ -38,6 +38,7 @@ namespace SistemaMedico.Models
             this.Informacion_Familiar = new HashSet<Informacion_Familiar>();
             this.Medicamentos = new HashSet<Medicamentos>();
             this.Situacion_Laboral = new HashSet<Situacion_Laboral>();
+            this.Notas_Evaluacion = new HashSet<Notas_Evaluacion>();
         }
     
         public int ID { get; set; }
@@ -66,6 +67,7 @@ namespace SistemaMedico.Models
         public string Dirreccion_Emergencia { get; set; }
         public string Embarazo { get; set; }
         public Nullable<bool> Activo { get; set; }
+        public Nullable<System.DateTime> Fecha_de_Actualizacion { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Alergias> Alergias { get; set; }
@@ -111,5 +113,7 @@ namespace SistemaMedico.Models
         public virtual ICollection<Medicamentos> Medicamentos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Situacion_Laboral> Situacion_Laboral { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Notas_Evaluacion> Notas_Evaluacion { get; set; }
     }
 }
